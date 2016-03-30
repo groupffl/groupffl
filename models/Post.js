@@ -3,7 +3,7 @@
   const mongoose = require('mongoose');
 
   let postSchema = new mongoose.Schema({
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: 'Team', required: true },
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     league: { type: mongoose.Schema.Types.ObjectId, ref: 'League', required: true },
     // title: { type: String, required: true },
@@ -18,6 +18,7 @@
 
     mongoose.model('League').findById(req.body.leagueId, (err, foundLeague) => { // FIXME: Change to findOne for ID && teamId in teams array
       if (err) { return res.status(400).send(err); }
+      if (!foundLeague) { return res.status(400).send('There is no League with this ID'); }
       if (!foundLeague.teams.indexOf(req.body.teamId) === -1) { return res.status(400).send('Selected Team does not belong to selected League'); }
       mongoose.model('Team').findOne({ _id: req.body.teamId, owner: req.user }, (err, foundTeam) => {
         if (err) { return res.status(400).send(err); }
@@ -26,7 +27,7 @@
         let newPost = new Post();
         newPost.title = req.body.title;
         newPost.description = req.body.description;
-        newPost.author = req.user;
+        newPost.author = req.body.teamId;
         newPost.league = foundLeague._id;
 
         foundLeague.posts.push(newPost._id);

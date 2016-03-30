@@ -37,7 +37,7 @@ class LeagueInfo extends Component {
         <h4>FFL URL</h4>
         <a href="#">httpffl.com/league/9090909</a>
         <h4>Commissioner</h4>
-        <p>{leagueData.commissioner}</p>
+        <p>Email: {leagueData.commissioner.email}</p>
         <h4>Members</h4>
         <ul>
           {this.renderTeamList()}
@@ -48,6 +48,7 @@ class LeagueInfo extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return state.leagueData;
 }
 
