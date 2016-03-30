@@ -11,11 +11,13 @@ class LeagueInfo extends Component {
     }
 
     return this.props.leagueData.teams.map(team => {
-      return <li>
-              <div>
-                <h5>{team.name}</h5>
-              </div>
-            </li>
+      return (
+        <li>
+          <div>
+            <h5>{team.name}</h5>
+          </div>
+        </li>
+      )
     });
   }
 
@@ -45,6 +47,11 @@ class LeagueInfo extends Component {
           <a href="#">httpffl.com/league/9090909</a>
           <h4>Commissioner</h4>
           <p>Email: {leagueData.commissioner.email}</p>
+          <h4>Related Links</h4>
+          <a className="related-links" href="">ESPN Fantasy News</a>
+          <a className="related-links" href="">Yahoo Fantasy News</a>
+          <a className="related-links" href="">NFL Fantasy News</a>
+          <a className="related-links" href="">Rotoworld Fantasy News</a>
         </div>
 
         <h4 className="league-member-title">Members</h4>

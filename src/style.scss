@@ -286,7 +286,19 @@ body {
     a {
       margin: 0px;
       display:block;
-      padding-bottom: 10px;
+      padding-bottom: 16px;
+      color: #004599;
+      padding-left: 20px;
+    }
+
+    .related-links {
+      margin: 0;
+      padding-bottom: 0px;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: #005ccc;
     }
 
     h4 {
@@ -298,7 +310,8 @@ body {
     p {
       color: #888;
       margin: 0px;
-      padding-bottom: 10px;
+      padding-bottom: 16px;
+      padding-left: 20px;
     }
   }
 
@@ -337,6 +350,10 @@ body {
             color: #333;
           }
         }
+      }
+
+      li:hover {
+        // background-color: #eee;
       }
 
 
