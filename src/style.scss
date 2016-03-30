@@ -107,6 +107,17 @@ body {
   // background-color: white;
   margin-top: 25px;
 
+  a:hover {
+
+    .join-icons-panel {
+      background-color: #eee;
+
+      .bold {
+        color: red;
+      }
+    }
+  }
+
   .header {
     background-color: #00316b;
     color: #f0f0f0;
@@ -160,9 +171,6 @@ body {
 
 }
 
-.join-panel-buttons:hover {
-  background-color: #e6e6e6;
-}
 
 .league-header {
   background-color: #00316b;

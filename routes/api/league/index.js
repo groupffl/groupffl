@@ -9,6 +9,7 @@
   const User = require(global.models + '/User');
 
   router.get('/:leagueId', User.isLoggedIn, (req, res) => {
+    console.log('req.params', req.params);
     User.findById(req.user, (err, user) => {
       if (err) { return res.status(400).send(err); }
       if (user.leagues.indexOf(req.params.leagueId) === -1) { return res.status(400).send('You do not belong to this league'); }
