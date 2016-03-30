@@ -132,7 +132,7 @@
           _id: league._id
         };
       });
-      console.log('user leagues in get user leagues', req.userLeagues);
+      // console.log('user leagues in get user leagues', req.userLeagues);
       next();
     });
   };

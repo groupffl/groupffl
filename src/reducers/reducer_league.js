@@ -1,6 +1,10 @@
-import { CREATE_LEAGUE, FETCH_LEAGUES, LOGOUT_USER } from '../actions/index';
+import {
+  CREATE_LEAGUE,
+  FETCH_LEAGUES,
+  LOGOUT_USER
+ } from '../actions/index';
 
-const INITIAL_STATE = { all: [], league: null };
+const INITIAL_STATE = { all: [], league: null, leagueData: null };
 
 export default function(state = INITIAL_STATE, action) {
 
@@ -11,7 +15,6 @@ export default function(state = INITIAL_STATE, action) {
     case CREATE_LEAGUE:
       return { all: action.payload.data };
     case LOGOUT_USER:
-      console.log('logout user');
       return state = undefined;
     default:
       return state;

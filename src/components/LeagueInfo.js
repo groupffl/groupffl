@@ -1,28 +1,75 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class LeagueInfo extends Component {
+class LeagueInfo extends Component {
+
+  renderTeamList() {
+    if (!this.props.leagueData.teams) {
+      return (
+        <div>No Teams</div>
+      );
+    }
+
+    return this.props.leagueData.teams.map(team => {
+      return (
+        <li>
+          <div>
+            <h5>{team.name}</h5>
+          </div>
+        </li>
+      )
+    });
+  }
+
+
   render() {
+
+    if (!this.props.leagueData) {
+      return (
+        <div>loading league data...</div>
+      )
+    }
+
+    const { leagueData } = this.props;
+
+
+    // TODO: populated commisioner and fantasy link url
+    console.log(leagueData);
     return (
-      <div className="col-xs-3 league-info">
-        <h3>League Name</h3>
-        <h4>League ID</h4>
-        <p>aa;klfdjakldasdfadaf</p>
-        <h4>FFL URL</h4>
-        <a href="#">httpffl.com/league/9090909</a>
-        <h4>Commissioner</h4>
-        <p>Humpty dumpty</p>
-        <h4>Members</h4>
-        <ul>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-        </ul>
+      <div className="league-info">
+
+        <h3>{leagueData.name}</h3>
+
+        <div className="league-info-details">
+          <h4>League ID</h4>
+          <p>{leagueData._id}</p>
+          <h4>FFL URL</h4>
+          <a href="#">httpffl.com/league/9090909</a>
+          <h4>Commissioner</h4>
+          <p>Email: {leagueData.commissioner.email}</p>
+          <h4>Related Links</h4>
+          <a className="related-links" href="">ESPN Fantasy News</a>
+          <a className="related-links" href="">Yahoo Fantasy News</a>
+          <a className="related-links" href="">NFL Fantasy News</a>
+          <a className="related-links" href="">Rotoworld Fantasy News</a>
+        </div>
+
+        <h4 className="league-member-title">Members</h4>
+        <div className="league-members-list">
+
+          <ul>
+            {this.renderTeamList()}
+          </ul>
+        </div>
+
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  console.log(state);
+  return state.leagueData;
+}
+
+export default connect(mapStateToProps)(LeagueInfo);

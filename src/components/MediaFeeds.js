@@ -12,7 +12,6 @@ class MediaFeeds extends Component {
   }
 
   renderList() {
-    console.log(this.props.rss);
     return this.props.rss.data.map(article =>
       <li
         key={article.NewsID}
@@ -36,20 +35,18 @@ class MediaFeeds extends Component {
     }
     console.log(this.props.rss.data);
     return (
-      <div className="col-xs-3 media-feeds">
-        <div className="row">
-          <div className="media-rss">
-            <ul>
-              {this.renderList()}
-            </ul>
+      <div className="media-feeds">
+        <h3>News</h3>
+        {/*<img src="http://movietvtechgeeks.com/wp-content/uploads/2014/11/Fantasy-Football-NFL-Images-2014.jpg" width="100%" alt=""/>*/}
+        <img src="http://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0103%2Fr41245_1296x729_16%2D9.jpg&w=570" width="100%" alt=""/>
+        {/*<img src="http://static.nfl.com/static/content/public/photo/2016/03/30/0ap3000000648992.jpg" width="100%" alt=""/>*/}
+          <div className="row">
+            <div className="media-rss">
+              <ul>
+                {this.renderList()}
+              </ul>
+            </div>
           </div>
-        </div>
-
-        {/*
-        <div className="row">
-          <a className="twitter-timeline" href="https://twitter.com/hashtag/FantasyFootball" data-widget-id="713864014485282816">#FantasyFootball Tweets</a>
-        </div>
-        */}
       </div>
     );
   }

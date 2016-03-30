@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLeagues } from '../actions/index';
+import { fetchLeagues, fetchLeagueData } from '../actions/index';
 import { Link } from 'react-router';
 
 class LeaguesPanel extends Component {
@@ -20,6 +20,13 @@ class LeaguesPanel extends Component {
     }
   }
 
+  handleClick(id) {
+    this.props.fetchLeagueData(id)
+      .then(props => {
+        console.log('fetched league data');
+      });
+  }
+
   renderList() {
 
     console.log('login is: ', this.props.isLoggedIn);
@@ -31,7 +38,7 @@ class LeaguesPanel extends Component {
       );
     }
 
-    if (this.props.leagues.length == 0) {
+    if (!this.props.leagues) {
       return (
         <div>No Leagues</div>
       );
@@ -44,7 +51,8 @@ class LeaguesPanel extends Component {
     }
 
     return this.props.leagues.map(league =>
-      <Link to={'league/' + league._id}>
+      <Link to={'league/' + league._id}
+            onClick={this.handleClick.bind(this, league._id)}>
         <li key={league._id}>
           <div>
             <h4>{league.teamName}</h4>
@@ -76,4 +84,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchLeagues })(LeaguesPanel);
+export default connect(mapStateToProps, { fetchLeagues, fetchLeagueData })(LeaguesPanel);

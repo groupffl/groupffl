@@ -107,6 +107,17 @@ body {
   // background-color: white;
   margin-top: 25px;
 
+  a:hover {
+
+    .join-icons-panel {
+      background-color: #eee;
+
+      .bold {
+        color: red;
+      }
+    }
+  }
+
   .header {
     background-color: #00316b;
     color: #f0f0f0;
@@ -160,9 +171,6 @@ body {
 
 }
 
-.join-panel-buttons:hover {
-  background-color: #e6e6e6;
-}
 
 .league-header {
   background-color: #00316b;
@@ -264,11 +272,97 @@ body {
 }
 
 .league-info {
-  // height: 600px;
-  background-color: white;
+  background-color: #f0f0f0;
   margin-top: 25px;
-  // border-radius: 2px;
-  // border: 1px solid rgb(221, 221, 221);
+
+  h3 {
+    margin-top: 25px;
+    color: #333;
+  }
+
+  .league-info-details {
+    background-color: white;
+    padding: 20px;
+
+    a {
+      margin: 0px;
+      display:block;
+      padding-bottom: 16px;
+      color: #004599;
+      padding-left: 20px;
+    }
+
+    .related-links {
+      margin: 0;
+      padding-bottom: 0px;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: #005ccc;
+    }
+
+    h4 {
+      color: #333;
+      margin: 0px;
+      padding-bottom: 4px;
+    }
+
+    p {
+      color: #888;
+      margin: 0px;
+      padding-bottom: 16px;
+      padding-left: 20px;
+    }
+  }
+
+  .league-member-title {
+    margin-top: 25px;
+    margin-bottom: 0px;
+
+    background-color: #00316b;
+    color: #f0f0f0;
+    text-align: center;
+    padding: 16px;
+    text-transform: uppercase;
+  }
+
+  .league-members-list {
+    background-color: white;
+    //height: 400px;
+    //overflow: scroll;
+
+    ul {
+      background-color: white;
+      padding-left: 0px;
+      margin-bottom: 0px;
+      text-align: left;
+
+      li {
+        list-style: none;
+
+        div {
+          margin-left: 20px;
+          margin-right: 20px;
+          border-bottom: 1px solid #ccc;
+          padding: 10px 20px;
+
+          h5 {
+            color: #333;
+          }
+        }
+      }
+
+      li:hover {
+        // background-color: #eee;
+      }
+
+
+    }
+  }
+
+
+
 }
 
 .posts {
@@ -300,6 +394,14 @@ body {
   // height: 600px;
   background-color: #f0f0f0;
 
+  h3 {
+    margin-top: 25px;
+    color: #333;
+  }
+
+  img {
+  }
+
   .media-rss {
     // height: 600px;
     overflow: scroll;
@@ -307,24 +409,36 @@ body {
     ul {
       padding-left: 0;
       background-color: #f0f0f0;
-      margin-top: 25px;
+      margin-top: 10px;
       border-radius: 0px;
 
       li {
-        background-color: white;
-        margin-bottom: 10px;
+        background-color: #f0f0f0;
         border-radius: 0px;
         border: none;
+        padding-top: 5px;
+        padding-bottom: 5px;
       }
 
       h5 {
+        margin: 0px;
+        background-color: white;
         color: #d20000;
         font-family: 'Oswald', sans-serif;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 4px;
       }
 
       h6 {
+        margin: 0px;
+        background-color: white;
         color: #666;
         line-height: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
       }
 
       a {

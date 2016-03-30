@@ -6,6 +6,7 @@
   const League = require(global.models + '/League');
   const User = require(global.models + '/User');
 
+
   router.get('/:leagueId', User.isLoggedIn, League.detailsMW, (req, res) => {
     res.send(req.details);
   });
