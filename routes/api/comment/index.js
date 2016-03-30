@@ -1,14 +1,21 @@
-const express = require('express');
-const router = express.Router();
+(function(){
+  'use strict';
+  const express = require('express');
+  const router = express.Router();
 
-const Comment = require(global.models + '/Comment');
-const User = require(global.models + '/User');
+  const Comment = require(global.models + '/Comment');
+  const User = require(global.models + '/User');
 
-router.get('/', User.isLoggedIn, (req, res) => {
-  Comment.find({ author: req.user }, (err, comments) => {
-    if (err) { return res.status(400).send(err); }
-    res.send(comments);
+  router.get('/', User.isLoggedIn, (req, res) => {
+    Comment.find({ author: req.user }, (err, comments) => {
+      if (err) { return res.status(400).send(err); }
+      res.send(comments);
+    });
   });
-});
 
-module.exports = router;
+  router.post('/', User.isLoggedIn, Comment.createMW, (req, res) => {
+    res.send('Comment created');
+  });
+
+  module.exports = router;
+}());
