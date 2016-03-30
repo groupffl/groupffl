@@ -276,7 +276,8 @@ body {
   margin-top: 25px;
 
   h3 {
-
+    margin-top: 25px;
+    color: #333;
   }
 
   .league-info-details {
@@ -393,6 +394,14 @@ body {
   // height: 600px;
   background-color: #f0f0f0;
 
+  h3 {
+    margin-top: 25px;
+    color: #333;
+  }
+
+  img {
+  }
+
   .media-rss {
     // height: 600px;
     overflow: scroll;
@@ -400,24 +409,36 @@ body {
     ul {
       padding-left: 0;
       background-color: #f0f0f0;
-      margin-top: 25px;
+      margin-top: 10px;
       border-radius: 0px;
 
       li {
-        background-color: white;
-        margin-bottom: 10px;
+        background-color: #f0f0f0;
         border-radius: 0px;
         border: none;
+        padding-top: 5px;
+        padding-bottom: 5px;
       }
 
       h5 {
+        margin: 0px;
+        background-color: white;
         color: #d20000;
         font-family: 'Oswald', sans-serif;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 4px;
       }
 
       h6 {
+        margin: 0px;
+        background-color: white;
         color: #666;
         line-height: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
       }
 
       a {
