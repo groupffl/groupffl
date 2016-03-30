@@ -24,9 +24,15 @@ class League extends Component {
         <Navbar />
         <div className="container">
           <div className="row">
-            <LeagueInfo />
-            {this.props.children}
-            <MediaFeeds />
+            <div className="col-xs-3">
+              <LeagueInfo />
+            </div>
+            <div className="col-xs-6">
+              {this.props.children}
+            </div>
+            <div className="col-xs-3">
+              <MediaFeeds />
+            </div>
           </div>
         </div>
       </div>

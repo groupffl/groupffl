@@ -30,9 +30,8 @@ class LeagueInfo extends Component {
     // TODO: populated commisioner and fantasy link url
     console.log(leagueData);
     return (
-      <div className="col-xs-3 league-info">
-        <h3>League Name</h3>
-        <p>{leagueData.name}</p>
+      <div className="league-info">
+        <h3>{leagueData.name}</h3>
         <h4>League ID</h4>
         <p>{leagueData._id}</p>
         <h4>FFL URL</h4>

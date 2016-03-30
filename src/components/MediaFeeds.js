@@ -35,7 +35,7 @@ class MediaFeeds extends Component {
     }
     console.log(this.props.rss.data);
     return (
-      <div className="col-xs-3 media-feeds">
+      <div className="media-feeds">
         <div className="row">
           <div className="media-rss">
             <ul>
