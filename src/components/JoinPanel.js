@@ -12,12 +12,11 @@ class JoinPanel extends Component {
   render() {
     return (
       <div className="join-panel">
-        <h3 className="header">Get Started</h3>
         <Link to="/join"
           className="join-button join-panel-buttons"
           onClick={this.handleClick.bind(this)}>
           <div className="join-icons-panel">
-            <span><Glyphicon glyph="plus" /></span>
+            <span><Glyphicon glyph="arrow-right" /></span>
             <h3 className="bold">Join</h3>
             <h3>a league</h3>
           </div>

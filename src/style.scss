@@ -104,9 +104,8 @@ body {
 
 .join-panel {
 
-  background-color: white;
+  // background-color: white;
   margin-top: 25px;
-  padding-bottom: 25px;
 
   .header {
     background-color: #00316b;
@@ -117,15 +116,15 @@ body {
   }
 
   .join-panel-buttons {
-    width: 320px;
-    margin: 20px 20px 0 20px;
+    width: 360px;
+    margin: 0 0 20px 0;
     background-color: #f0f0f0;
     display: inline-block;
     color: #00316b;
-    // box-shadow: 1px 1px 1px #2c2c2c;
+    box-shadow: 1px 1px 1px #2c2c2c;
 
     .join-icons-panel {
-
+      background-color: white;
       padding: 20px 40px;
 
       .glyphicon {
@@ -163,40 +162,58 @@ body {
 
 .join-panel-buttons:hover {
   background-color: #e6e6e6;
+}
 
-  .bold {
-    // color: #ff1a1a;
-  }
+.league-header {
+  background-color: #00316b;
+  color: #f0f0f0;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0;
+  padding: 16px;
 }
 
 .league-panel {
   background-color: white;
-  height: 358px;
-  margin-top: 25px;
+  height: 419px;
   overflow: scroll;
 
-  h3 {
-    background-color: #00316b;
-    color: #f0f0f0;
-    text-transform: uppercase;
-    text-align: center;
-    margin-top: 0px;
-    padding: 16px;
-  }
-
-  .leagues-group {
+  ul {
     background-color: white;
     padding-left: 0;
+    margin-bottom: 0;
     text-align: left;
 
-    .list-group-item {
-      background-color: #f0f0f0;
-      padding-right: 10px;
-      padding-left: 40px;
-      margin-left: 20px;
-      margin-right: 20px;
-      margin-bottom: 10px;
-      vertical-align: middle;
+    a:hover {
+      color: red;
+      text-decoration: none;
+
+      li {
+        background-color: #eee;
+      }
+    }
+
+    li {
+      list-style: none;
+
+      div {
+        margin-left: 20px;
+        margin-right: 20px;
+        border-bottom: 1px solid #ccc;
+        padding: 20px;
+      }
+
+      h4 {
+        margin: 0;
+        color: #333;
+        padding-bottom: 8px;
+      }
+
+      h5 {
+        margin: 0;
+        color: #888;
+      }
 
     }
   }

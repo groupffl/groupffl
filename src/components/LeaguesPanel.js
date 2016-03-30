@@ -44,24 +44,26 @@ class LeaguesPanel extends Component {
     }
 
     return this.props.leagues.map(league =>
-        <li className="leagues-group-item list-group-item" key={league._id}>
-          <h5><Link to={'league/' + league._id}>
-            <span>{league.leagueName}</span>
-          </Link></h5>
-          <h6>{league.teamName}</h6>
+      <Link to={'league/' + league._id}>
+        <li key={league._id}>
+          <div>
+            <h4>{league.teamName}</h4>
+            <h5>{league.leagueName}</h5>
+          </div>
         </li>
+      </Link>
     );
   }
 
   render() {
     return (
-      <div className="league-panel">
-        <h3>
-          My Leagues
-        </h3>
-        <ul className="leagues-group">
-          {this.renderList()}
-        </ul>
+      <div>
+        <h3 className="league-header">My Leagues</h3>
+        <div className="league-panel">
+          <ul>
+            {this.renderList()}
+          </ul>
+        </div>
       </div>
     );
   }

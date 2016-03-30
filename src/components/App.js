@@ -21,8 +21,8 @@ class App extends Component {
               {this.props.children}
             </div>
             <div className="col-xs-4">
-              <LeaguesPanel />
               <JoinPanel />
+              <LeaguesPanel />
             </div>
           </div>
         </div>
