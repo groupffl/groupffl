@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchLeagueData } from '../actions/index';
+import { fetchLeagueData, verifyLogin } from '../actions/index';
 import { connect } from 'react-redux';
 
 
@@ -10,6 +10,8 @@ import MediaFeeds from './MediaFeeds';
 class League extends Component {
   componentWillMount() {
     // console.log(this.props.params.id);
+    this.props.verifyLogin();
+
     this.props.fetchLeagueData(this.props.params.id)
       .then(response => {
         console.log('fetched league data in league');
@@ -38,4 +40,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(null, { fetchLeagueData })(League);
+export default connect(mapStateToProps, { fetchLeagueData, verifyLogin })(League);

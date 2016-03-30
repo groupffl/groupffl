@@ -38,7 +38,7 @@ class LeaguesPanel extends Component {
       );
     }
 
-    if (this.props.leagues.length == 0) {
+    if (!this.props.leagues) {
       return (
         <div>No Leagues</div>
       );
