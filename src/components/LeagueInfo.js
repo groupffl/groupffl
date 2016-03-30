@@ -32,6 +32,7 @@ class LeagueInfo extends Component {
     return (
       <div className="col-xs-3 league-info">
         <h3>League Name</h3>
+        <p>{leagueData.name}</p>
         <h4>League ID</h4>
         <p>{leagueData._id}</p>
         <h4>FFL URL</h4>
