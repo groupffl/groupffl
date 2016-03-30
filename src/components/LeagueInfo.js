@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 
 class LeagueInfo extends Component {
 
-  // renderTeamList() {
-  //   if (!this.props.leagueData.teams) {
-  //     return (
-  //       <div>No Teams</div>
-  //     );
-  //   }
-  //
-  //   return this.props.leagueData.teams(team => {
-  //     <li>{team.name}</li>
-  //   });
-  // }
+  renderTeamList() {
+    if (!this.props.leagueData.teams) {
+      return (
+        <div>No Teams</div>
+      );
+    }
+
+    return this.props.leagueData.teams.map(team => {
+      return <li>{team.name}</li>
+    });
+  }
 
 
   render() {
@@ -40,7 +40,7 @@ class LeagueInfo extends Component {
         <p>{leagueData.commissioner}</p>
         <h4>Members</h4>
         <ul>
-          {/*{this.renderTeamList()}*/}
+          {this.renderTeamList()}
         </ul>
       </div>
     );

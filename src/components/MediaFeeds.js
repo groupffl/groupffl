@@ -12,7 +12,6 @@ class MediaFeeds extends Component {
   }
 
   renderList() {
-    console.log(this.props.rss);
     return this.props.rss.data.map(article =>
       <li
         key={article.NewsID}

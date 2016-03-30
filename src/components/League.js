@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
+import { fetchLeagueData } from '../actions/index';
+import { connect } from 'react-redux';
+
 
 import Navbar from './Navbar';
 import LeagueInfo from './LeagueInfo';
 import MediaFeeds from './MediaFeeds';
 
-export default class League extends Component {
+class League extends Component {
+  componentWillMount() {
+    // console.log(this.props.params.id);
+    this.props.fetchLeagueData(this.props.params.id)
+      .then(response => {
+        console.log('fetched league data in league');
+      })
+  }
+
   render() {
     return (
       <div>
@@ -20,3 +31,11 @@ export default class League extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.isLoggedIn.isLoggedIn
+  }
+}
+
+export default connect(null, { fetchLeagueData })(League);
