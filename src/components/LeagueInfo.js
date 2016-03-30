@@ -11,7 +11,11 @@ class LeagueInfo extends Component {
     }
 
     return this.props.leagueData.teams.map(team => {
-      return <li>{team.name}</li>
+      return <li>
+              <div>
+                <h5>{team.name}</h5>
+              </div>
+            </li>
     });
   }
 
@@ -31,17 +35,26 @@ class LeagueInfo extends Component {
     console.log(leagueData);
     return (
       <div className="league-info">
+
         <h3>{leagueData.name}</h3>
-        <h4>League ID</h4>
-        <p>{leagueData._id}</p>
-        <h4>FFL URL</h4>
-        <a href="#">httpffl.com/league/9090909</a>
-        <h4>Commissioner</h4>
-        <p>Email: {leagueData.commissioner.email}</p>
-        <h4>Members</h4>
-        <ul>
-          {this.renderTeamList()}
-        </ul>
+
+        <div className="league-info-details">
+          <h4>League ID</h4>
+          <p>{leagueData._id}</p>
+          <h4>FFL URL</h4>
+          <a href="#">httpffl.com/league/9090909</a>
+          <h4>Commissioner</h4>
+          <p>Email: {leagueData.commissioner.email}</p>
+        </div>
+
+        <h4 className="league-member-title">Members</h4>
+        <div className="league-members-list">
+
+          <ul>
+            {this.renderTeamList()}
+          </ul>
+        </div>
+
       </div>
     );
   }
