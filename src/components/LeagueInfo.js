@@ -2,27 +2,45 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class LeagueInfo extends Component {
+
+  // renderTeamList() {
+  //   if (!this.props.leagueData.teams) {
+  //     return (
+  //       <div>No Teams</div>
+  //     );
+  //   }
+  //
+  //   return this.props.leagueData.teams(team => {
+  //     <li>{team.name}</li>
+  //   });
+  // }
+
+
   render() {
-    console.log(this.props.leagueData);
+
+    if (!this.props.leagueData) {
+      return (
+        <div>loading league data...</div>
+      )
+    }
+
+    const { leagueData } = this.props;
+
+
+    // TODO: populated commisioner and fantasy link url
+    console.log(leagueData);
     return (
       <div className="col-xs-3 league-info">
         <h3>League Name</h3>
         <h4>League ID</h4>
-        <p>aa;klfdjakldasdfadaf</p>
+        <p>{leagueData._id}</p>
         <h4>FFL URL</h4>
         <a href="#">httpffl.com/league/9090909</a>
         <h4>Commissioner</h4>
-        <p>Humpty dumpty</p>
+        <p>{leagueData.commissioner}</p>
         <h4>Members</h4>
         <ul>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
-          <li>Some Players</li>
+          {/*{this.renderTeamList()}*/}
         </ul>
       </div>
     );
