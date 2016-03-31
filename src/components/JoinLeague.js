@@ -26,7 +26,7 @@ class JoinLeague extends Component {
         <h3>Join an existing league.</h3>
         <h4 className="login-title">Join with the league ID.</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
-          <img src="../images/ajax_get_colored_svg2.png" width="35%" alt=""/>
+          <img src="../images/handshake.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className={`form-group ${leagueId.touched && leagueId.invalid ? 'has-danger' : ''}`}>

@@ -30,7 +30,7 @@ class RegisterForm extends Component {
         <h3>One account. All your leagues.</h3>
         <h4 className="login-title">Register with your email.</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
-          <img src="../images/ajax_get_colored_svg2.png" width="35%" alt=""/>
+          <img src="../images/football.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
