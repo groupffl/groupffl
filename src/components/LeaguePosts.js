@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { createPost, fetchPosts } from '../actions/index';
 
 class LeaguePosts extends Component {
@@ -28,9 +29,15 @@ class LeaguePosts extends Component {
   }
 
   renderList() {
+    console.log(this.props.all);
     return this.props.all.map(post =>
       (
-        <li>{post.author.name} : {post.description}</li>
+        <li>
+          <div>{post.author.name} : {post.description}</div>
+          <div>{post.date}</div>
+          <Link to={`${post.league}/${post._id}`}>Comment</Link>
+          {this.props.children}
+        </li>
       )
     );
   }
