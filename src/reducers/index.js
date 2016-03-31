@@ -6,6 +6,7 @@ import LeagueReducer from './reducer_league';
 import TeamReducer from './reducer_team';
 import AuthReducer from './reducer_authentication';
 import LeagueInfoReducer from './reducer_league_info';
+import LeagueMembersReducer from './reducer_league_members.js';
 
 
 import { reducer as formReducer } from 'redux-form';
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   league: LeagueReducer,
   team: TeamReducer,
   isLoggedIn: AuthReducer,
-  leagueInfo: LeagueInfoReducer
+  leagueInfo: LeagueInfoReducer,
+  leagueMembers: LeagueMembersReducer
 });
 
 export default rootReducer;

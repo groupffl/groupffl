@@ -16,25 +16,6 @@ class LeagueInfo extends Component {
 
   }
 
-  renderTeamList() {
-    if (!this.props.leagueInfo.teams) {
-      return (
-        <div>No Teams</div>
-      );
-    }
-
-    return this.props.leagueInfo.teams.map(team =>
-    (
-        <li>
-          <div>
-            <h5>{team.name}</h5>
-          </div>
-        </li>
-      )
-    );
-  }
-
-
   render() {
 
     if (!this.props.leagueInfo) {
@@ -49,10 +30,8 @@ class LeagueInfo extends Component {
     // TODO: populated commisioner and fantasy link url
 
     return (
-      <div className="league-info">
-
+      <div>
         <h3>{leagueInfo.name}</h3>
-
         <div className="league-info-details">
           <h4>League ID</h4>
           <p>{leagueInfo._id}</p>
@@ -66,15 +45,6 @@ class LeagueInfo extends Component {
           <a className="related-links" href="">NFL Fantasy News</a>
           <a className="related-links" href="">Rotoworld Fantasy News</a>
         </div>
-
-        <h4 className="league-member-title">Members</h4>
-        <div className="league-members-list">
-
-          <ul>
-            {this.renderTeamList()}
-          </ul>
-        </div>
-
       </div>
     );
   }

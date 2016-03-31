@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import LeagueInfo from './LeagueInfo';
 import MediaFeeds from './MediaFeeds';
+import LeagueMembers from './LeagueMembers';
 
 class League extends Component {
   componentWillMount() {
@@ -23,7 +24,10 @@ class League extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xs-3">
-              <LeagueInfo leagueId={this.props.params.id}/>
+              <div className="league-info">
+                <LeagueInfo leagueId={this.props.params.id} />
+                <LeagueMembers leagueId={this.props.params.id} />
+              </div>
             </div>
             <div className="col-xs-6">
               {this.props.children}
