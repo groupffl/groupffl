@@ -29,13 +29,12 @@ class LeaguePosts extends Component {
   }
 
   renderList() {
-    console.log(this.props.all);
     return this.props.all.map(post =>
       (
         <li>
           <div>{post.author.name} : {post.description}</div>
           <div>{post.date}</div>
-          <Link to={`${post.league}/${post._id}`}>Comment</Link>
+          <Link to={`/league/${post.league}/${post._id}`}>Comment</Link>
           {this.props.children}
         </li>
       )

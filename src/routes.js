@@ -22,7 +22,7 @@ export default (
     </Route>
     <Route path="/league/:id" component={League}>
       <IndexRoute component={LeaguePosts}>
-        <Route path="/:postId" component={PostsComments} />
+        <Route path=":postId" component={PostsComments} />
       </IndexRoute>
     </Route>
   </div>
