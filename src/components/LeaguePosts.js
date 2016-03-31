@@ -17,7 +17,7 @@ class LeaguePosts extends Component {
       leagueId: this.props.params.id,
       title: 'NA'
     };
-
+    
     this.props.createPost(postObj);
   }
 

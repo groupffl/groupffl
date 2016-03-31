@@ -20,8 +20,6 @@
       console.log('team in Post model', team);
       req.body.teamId = team._id;
 
-
-
     if (!req.body.leagueId || !req.body.description || !req.body.teamId) {
       return res.status(400).send('League Id, Team Id, and Post Description are all required');
     }
