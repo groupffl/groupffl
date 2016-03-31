@@ -9,14 +9,18 @@ class PostsComments extends Component {
   }
 
   createComment() {
-    this.props.createComment(this.refs.commentInput.value)
+    const commentObj = {
+      text: this.refs.commentInput.value,
+      postId: this.props.params.postId
+    };
+
+    this.props.createComment(commentObj)
       .then((res) => {
         console.log('successful: ', res);
       });
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="comments">
         <div className="comment-area">
@@ -31,4 +35,8 @@ class PostsComments extends Component {
   }
 }
 
- export default connect(null, { createComment })(PostsComments);
+function mapStateToProps(state) {
+  return state.comments;
+}
+
+ export default connect(mapStateToProps, { createComment })(PostsComments);

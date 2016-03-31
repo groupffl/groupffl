@@ -12,6 +12,7 @@
     date: { type: Date, default: Date.now() }
   });
 
+  // text, postId
   commentSchema.statics.createMW = (req, res, next) => {
     if (!req.body.text || !req.body.postId) { return res.status(400).send('Missing Post ID and/or comment text'); }
     let newComment = new Comment();
