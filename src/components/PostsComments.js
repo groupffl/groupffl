@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createComment } from '../actions/index';
 
 class PostsComments extends Component {
   constructor(props) {
@@ -8,8 +9,10 @@ class PostsComments extends Component {
   }
 
   createComment() {
-    console.log(this.refs.commentInput.value);
-    
+    this.props.createComment(this.refs.commentInput.value)
+      .then((res) => {
+        console.log('successful: ', res);
+      });
   }
 
   render() {
@@ -28,4 +31,4 @@ class PostsComments extends Component {
   }
 }
 
- export default connect(null, null)(PostsComments);
+ export default connect(null, { createComment })(PostsComments);
