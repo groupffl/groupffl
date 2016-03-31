@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import { registerUser } from '../actions/index';
 // import { Link, browserHistory } from 'react-router'; // Only for Cancel
@@ -25,48 +26,49 @@ class RegisterForm extends Component {
     const { fields: { email, password, password2 }, handleSubmit } = this.props;
 
     return (
-      <div className="register-form">
-        <h2 className="login-title">Register</h2>
-
-        <form
-          onSubmit={handleSubmit(this.onSubmit.bind(this))}
-          className="col-xs-10 col-xs-offset-1">
-          <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
-            <label>Email address</label>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter an email"
-              {...email} />
-            <div className="text-help">
-              {email.touched ? email.error : ''}
+      <div className="login-register-form">
+        <h3>One account. All your leagues.</h3>
+        <h4 className="login-title">Register with your email.</h4>
+        <div className="form-wrapper col-xs-6 col-xs-offset-3">
+          <img src="../images/ajax_get_colored_svg2.png" width="35%" alt=""/>
+          <form
+            onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter your email"
+                {...email} />
+              <div className="text-help">
+                {email.touched ? email.error : ''}
+              </div>
             </div>
-          </div>
-          <div className={`form-group ${password.touched && password.invalid ? 'has-danger' : ''}`}>
-            <label>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Password"
-              {...password} />
-            <div className="text-help">
-              {password.touched ? password.error : ''}
+            <div className={`form-group ${password.touched && password.invalid ? 'has-danger' : ''}`}>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Enter your password"
+                {...password} />
+              <div className="text-help">
+                {password.touched ? password.error : ''}
+              </div>
             </div>
-          </div>
-          <div className={`form-group ${password2.touched && password2.invalid ? 'has-danger' : ''}`}>
-            <label>Password (again)</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Password"
-              {...password2} />
-            <div className="text-help">
-              {password2.touched ? password2.error : ''}
-            </div>
-          </div>
-          <button type="submit" className="btn btn-default">Register</button>
-        </form>
-
+            <div className={`form-group ${password2.touched && password2.invalid ? 'has-danger' : ''}`}>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Enter your password (again)"
+                {...password2} />
+              </div>
+              <div className="text-help">
+                {password2.touched ? password2.error : ''}
+              </div>
+            <button type="submit" className="btn btn-success form-control">Register</button>
+          </form>
+        </div>
+        <div className="col-xs-6 col-xs-offset-3">
+          <Link to="/login" className="login-noaccount" href="#">I already have an account</Link>
+        </div>
       </div>
     );
   }

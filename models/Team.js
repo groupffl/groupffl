@@ -24,7 +24,11 @@
       mongoose.model('League').findById(req.body.leagueId, (err, foundLeague) => {
         if (err) { return res.status(400).send(err); }
         if (!foundLeague) { return res.status(400).send('League not found – Please double check that the League ID is correct'); }
+//<<<<<<< HEAD
+        //mongoose.model('Team').findOne({ owner: req.user, leagueId: req.body.leagueId }, (err, foundTeam) => {
+//=======
         mongoose.model('Team').findOne({ owner: req.user, league: foundLeague.id }, (err, foundTeam) => {
+//>>>>>>> master
           if (err) { return res.status(400).send(err); }
           if (foundTeam) {
             return res.status(400).send({
