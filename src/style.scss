@@ -418,6 +418,17 @@ body {
     background-color: white;
     margin: 25px 10px 10px 10px;
     min-height: 1500px;
+
+    ul {
+      list-style: none;
+
+      li {
+        text-align: left;
+        border-bottom: 1px solid #333;
+        margin: 50px;
+      }
+    }
+
     // border-radius: 2px;
     // border: 1px solid rgb(221, 221, 221);
   }
