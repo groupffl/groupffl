@@ -13,11 +13,11 @@
     description: { type: String }
   });
 
-  teamSchema.statics.createMW = (req, res, next) => {
-
+  teamSchema.statics.createMW = (req, res, next) => { // FIXME: use promises to avoid callback hell
     if (!req.body.team || !req.body.leagueId) { return res.status(400).send('Both Team name & League ID are required to create a new Team'); }
     let title = req.body.team.trim();
     let titleReg = new RegExp(`^${title}$`, 'i');
+
     mongoose.model('Team').findOne({ name: titleReg }, (err, foundTeam) => {
       if (err) { return res.status(400).send(err); }
       if (foundTeam) { return res.status(400).send('A Team with this name already exists in this League – Please try again with a different Team name'); }
