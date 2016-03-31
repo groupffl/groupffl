@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 class LeaguesPanel extends Component {
   componentWillMount() {
     this.props.fetchLeagues()
-      .then((res) => {
+      .then(res => {
         console.log('fetched Leagues', res);
       });
   }
@@ -22,7 +22,7 @@ class LeaguesPanel extends Component {
 
   handleClick(id) {
     this.props.fetchLeagueData(id)
-      .then(props => {
+      .then(() => {
         console.log('fetched league data');
       });
   }

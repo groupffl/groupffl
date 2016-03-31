@@ -2,5 +2,4 @@ var Dispatcher = require('flux').Dispatcher;
 
 console.log('In app dispatcher');
 
-
-module.exports = new Dispacther();
+module.exports = new Dispatcher();
