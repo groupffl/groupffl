@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { fetchLeagueMembers } from '../actions/index';
 
 class LeagueMembers extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
   componentWillMount() {
     this.props.fetchLeagueMembers(this.props.leagueId)
-      .then((res) => {
+      .then(() => {
         console.log('got team members: ');
       });
   }

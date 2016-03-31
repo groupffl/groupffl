@@ -28,11 +28,11 @@ class LeaguePosts extends Component {
   }
 
   renderList() {
-    return this.props.all.map(post => {
-      return (
+    return this.props.all.map(post =>
+      (
         <li>{post.author.name} : {post.description}</li>
-      );
-    });
+      )
+    );
   }
 
   render() {
