@@ -3,15 +3,27 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { createPost, fetchPosts } from '../actions/index';
 
+import PostsComments from './PostsComments';
+
 class LeaguePosts extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      postId: ''
+    };
   }
 
   componentWillMount() {
     this.props.fetchPosts(this.props.params.id)
       .then(() => {
       });
+  }
+
+  handleClick(postId) {
+    console.log('postId', postId);
+    this.setState({
+      postId
+    });
   }
 
   addPost() {
@@ -31,11 +43,10 @@ class LeaguePosts extends Component {
   renderList() {
     return this.props.all.map(post =>
       (
-        <li>
+        <li key={post._id}>
           <div>{post.author.name} : {post.description}</div>
           <div>{post.date}</div>
-          <Link to={`/post/${post._id}`}>Comment</Link>
-          {this.props.children}
+          <PostsComments leagueId={post.league} postId={post._id} />
         </li>
       )
     );

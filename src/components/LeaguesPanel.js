@@ -53,7 +53,7 @@ class LeaguesPanel extends Component {
     }
 
     return this.props.leagues.map(league =>
-      <Link to={'league/' + league._id + '/posts'}
+      <Link to={'league/' + league._id +'/posts'}
             onClick={this.handleClick.bind(this, league._id)}>
         <li key={league._id}>
           <div>
