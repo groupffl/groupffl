@@ -58,16 +58,13 @@
     });
   };
 
-  leagueSchema.statics.detailsMW = (req, res, next) => { // FIXME:
+  leagueSchema.statics.detailsMW = (req, res, next) => {
     mongoose.model('User').findById(req.user, (err, user) => {
       if (err) { return res.status(400).send(err); }
       if (user.leagues.indexOf(req.params.leagueId) === -1) { return res.status(400).send('You do not belong to this league'); }
       League.findById(req.params.leagueId, (err, league) => {
         if (err) { return res.status(400).send(err); }
         if (!league) { return res.status(400).send('There is no league with this id'); }
-      })
-      .exec((err, league) => { // TODO: Change to promises and .then()
-        if (err) { return res.status(400).send(err); }
         mongoose.model('Team').populate(league, { path: 'teams', model: 'Team' }, (err, league) => {
           if (err) { return res.status(400).send(err); }
           mongoose.model('Post').populate(league, { path: 'posts teams.posts' }, (err, league) => {
@@ -88,7 +85,6 @@
       });
     });
   };
-
   const League = mongoose.model('League', leagueSchema);
 
   module.exports = League;
