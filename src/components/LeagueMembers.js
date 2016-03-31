@@ -5,14 +5,12 @@ import { fetchLeagueMembers } from '../actions/index';
 class LeagueMembers extends Component {
   constructor(props){
     super(props);
-
-
   }
 
   componentWillMount() {
     this.props.fetchLeagueMembers(this.props.leagueId)
       .then((res) => {
-        console.log('got team members: ', res);
+        console.log('got team members: ');
       });
   }
 
@@ -22,7 +20,7 @@ class LeagueMembers extends Component {
         <div>No Teams</div>
       );
     }
-    
+
     return this.props.leagueMembers.teams.map(team =>
     (
         <li>
@@ -49,7 +47,6 @@ class LeagueMembers extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.leagueMembers);
   return state.leagueMembers;
 }
 

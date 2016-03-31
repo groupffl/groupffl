@@ -10,12 +10,7 @@ import LeagueMembers from './LeagueMembers';
 
 class League extends Component {
   componentWillMount() {
-    console.log('params', this.props.params.id);
     this.props.verifyLogin();
-    //console.log(this.props.children);
-    //this.props.children.url = this.props.params.id;
-    console.log('this props children', this.props.children);
-
   }
 
   render() {

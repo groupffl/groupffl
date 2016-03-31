@@ -11,9 +11,8 @@ class LeagueInfo extends Component {
   componentWillMount() {
     this.props.fetchLeagueInfo(this.props.leagueId)
       .then((res) => {
-        console.log('fetched league data in league', res);
+        console.log('fetched league data in league');
       });
-
   }
 
   render() {

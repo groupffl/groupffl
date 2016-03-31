@@ -6,7 +6,6 @@ import { createLeague } from '../actions/index';
 
 class CreateLeague extends Component {
   componentWillMount() {
-    console.log('before create league', this.props.isLoggedIn);
     if (!this.props.isLoggedIn) {
       this.props.history.push('/login');
     }

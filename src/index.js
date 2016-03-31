@@ -11,8 +11,6 @@ import promise from 'redux-promise';
 
 require('./style.scss');
 
-console.log('in index.js');
-
 const createStoreWithMiddleware = applyMiddleware(
   promise
 )(createStore);

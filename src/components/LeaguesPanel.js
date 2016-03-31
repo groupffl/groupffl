@@ -7,7 +7,7 @@ class LeaguesPanel extends Component {
   componentWillMount() {
     this.props.fetchLeagues()
       .then(res => {
-        console.log('fetched Leagues', res);
+        console.log('fetched Leagues');
       });
   }
 
@@ -36,8 +36,6 @@ class LeaguesPanel extends Component {
         </div>
       );
     }
-    console.log(this.props.leagues);
-    console.log(!this.props.legues);
     if (this.props.leagues.length == 0) {
       return (
         <div>
