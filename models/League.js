@@ -6,11 +6,12 @@
     name: { type: String, required: true },
     commissioner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }],
-    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
+    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+    fflUrl: { type: String, required: true }
   });
 
   leagueSchema.statics.createMW = (req, res, next) => {
-    if (!req.body.team || !req.body.name) { return res.status(400).send('Missing League or Team name'); }
+    if (!req.body.team || !req.body.name || !req.body.fflUrl) { return res.status(400).send('Missing League name, Team name, or URL'); }
     let title = req.body.name.trim();
     let titleReg = new RegExp(`^${title}$`, 'i');
 
@@ -23,6 +24,7 @@
 
       newLeague.name = req.body.name;
       newLeague.commissioner = req.user;
+      newLeague.fflUrl = req.body.fflUrl;
 
       newTeam.name = req.body.team;
       newTeam.owner = req.user;
