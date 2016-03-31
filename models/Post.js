@@ -12,6 +12,16 @@
   });
 
   postSchema.statics.createMW = (req, res, next) => {
+    console.log('req.body', req.body);
+    console.log('req.user', req.user);
+
+    mongoose.model('Team').findOne({owner:req.user, league:req.body.leagueId}, (err, team) => {
+      if(err) { res.status(400).send(err); }
+      console.log('team in Post model', team);
+      req.body.teamId = team._id;
+
+
+
     if (!req.body.leagueId || !req.body.description || !req.body.teamId) {
       return res.status(400).send('League Id, Team Id, and Post Description are all required');
     }
@@ -41,6 +51,7 @@
       .catch(err => res.status(400).send(err));
     })
     .catch(err => res.status(400).send(err.message));
+    });
   };
   const Post = mongoose.model('Post', postSchema);
   module.exports = Post;

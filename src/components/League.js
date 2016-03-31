@@ -14,6 +14,7 @@ class League extends Component {
     this.props.verifyLogin();
     //console.log(this.props.children);
     //this.props.children.url = this.props.params.id;
+    console.log('this props children', this.props.children);
 
   }
 
@@ -29,7 +30,7 @@ class League extends Component {
                 <LeagueMembers leagueId={this.props.params.id} />
               </div>
             </div>
-            <div className="col-xs-6">
+            <div className="col-xs-6" leagueId={this.props.params.id}>
               {this.props.children}
             </div>
             <div className="col-xs-3">

@@ -8,7 +8,7 @@ import LoginForm from './components/LoginForm';
 import JoinLeague from './components/JoinLeague';
 import CreateLeague from './components/CreateLeague';
 import League from './components/League';
-import Posts from './components/Posts';
+import LeaguePosts from './components/LeaguePosts';
 
 export default (
   <div>
@@ -20,7 +20,7 @@ export default (
       <Route path="create" component={CreateLeague} />
     </Route>
     <Route path="/league/:id" component={League}>
-      <IndexRoute component={Posts} />
+      <IndexRoute component={LeaguePosts} />
     </Route>
   </div>
 );

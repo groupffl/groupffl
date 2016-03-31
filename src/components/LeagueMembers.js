@@ -22,7 +22,7 @@ class LeagueMembers extends Component {
         <div>No Teams</div>
       );
     }
-
+    
     return this.props.leagueMembers.teams.map(team =>
     (
         <li>

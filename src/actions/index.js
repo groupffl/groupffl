@@ -12,6 +12,7 @@ export const FETCH_LEAGUES = 'FETCH_LEAGUES';
 export const VERIFY_LOGIN = 'VERIFY_LOGIN';
 export const FETCH_LEAGUE_INFO = 'FETCH_LEAGUE_INFO';
 export const FETCH_LEAGUE_MEMBERS = 'FETCH_LEAGUE_MEMBERS';
+export const CREATE_POST = 'CREATE_POST';
 
 const REGISTER_URL = '/api/user/register';
 const LOGIN_URL = '/api/user/login';
@@ -22,8 +23,9 @@ const JOIN_LEAGUE_URL = '/api/team';
 const FETCH_LEAGUES_URL = '/api/league';
 const FETCH_LEAGUE_INFO_URL = '/api/league/';
 const FETCH_LEAGUE_MEMBERS_URL = '/api/league/';
+const CREATE_POST_URL = '/api/post';
 
-export function registerUser(props) {
+export function registerUser (props) {
   const request = axios.post(REGISTER_URL, { email: props.email, password: props.password });
 
   return {
@@ -107,6 +109,15 @@ export function fetchLeagueMembers(id) {
 
   return {
     type: FETCH_LEAGUE_MEMBERS,
+    payload: request
+  };
+}
+
+export function createPost(postObj) {
+  const request = axios.post(`${CREATE_POST_URL}`, postObj);
+
+  return {
+    type: CREATE_POST,
     payload: request
   };
 }
