@@ -39,7 +39,7 @@ app.all('/', (req, res) => {
   res.send('dist/index');
 });
 
-app.use((req, res, next) => { // FIXME: Remove this after React Router is implemented
+app.use((req, res, next) => {
   'use strict';
   let err = new Error('Not Found');
   err.status = 404;
