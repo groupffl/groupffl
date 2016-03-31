@@ -85,7 +85,6 @@
     "react/jsx-uses-vars": 1,
     "semi-spacing": [1, { "before": false, "after": true }],
     "semi": 2,
-    "sort-imports": 1,
     "space-before-blocks": [1, "always"],
     "space-before-function-paren": [1, "never"],
     "strict": 0,

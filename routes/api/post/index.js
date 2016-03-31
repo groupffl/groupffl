@@ -11,4 +11,16 @@ router.get('/', User.isLoggedIn, (req, res) => {
   });
 });
 
+router.get('/:leagueId', User.isLoggedIn, (req, res) => {
+  Post.find({ league: req.params.leagueId }).populate('author').exec((err, posts) => {
+    if (err) { return res.status(400).send(err); }
+    console.log('posts: ', posts);
+    res.send(posts);
+  });
+});
+
+router.post('/', User.isLoggedIn, Post.createMW, (req, res) => {
+  res.send('Post Created');
+});
+
 module.exports = router;

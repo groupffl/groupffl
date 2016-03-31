@@ -1,9 +1,3 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: __dirname + '/src/index.html',
-  inject: 'body'
-});
-
 module.exports = {
   entry: "./src/index.js",
   cache: true,
@@ -36,9 +30,6 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    HtmlWebpackPluginConfig
-  ],
   eslint: {
     configFile: ".eslintrc"
   }

@@ -18,6 +18,7 @@ const app = express();
 
 const mongoose = require('mongoose');
 const mongoUrl = process.env.MLAB_URI || 'mongodb://localhost/ffln';
+// const mongoUrl = 'mongodb://localhost/ffln';
 
 const mongoConnectMsg = process.env.MLAB_URI ? '.' : chalk.cyan(` ${mongoUrl}`);
 
@@ -35,8 +36,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/api', require('./routes/api'));
-app.all('/', (req, res) => {
-  res.send('dist/index');
+app.use('/*', (req, res) => {
+  res.render('index');
 });
 
 app.use((req, res, next) => {

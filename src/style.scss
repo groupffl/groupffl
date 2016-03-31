@@ -1,4 +1,505 @@
 $blueish: #44FFFF;
+$nflblue: #00316b;
+$nflred: #d20000;
+
+
 body {
-  background: $blueish;
+  // background: $blueish;
+  background-color: #f0f0f0;
+  font-family: helvetica;
+}
+
+// a {
+//   color: #f0f0f0;
+// }
+
+.navbar {
+  // background-color: white;
+  // margin-top: 25px;
+  // background-color: #2c2c2c;
+  background-color: $nflblue;
+  padding-bottom: 10px;
+  margin-bottom: 0;
+  border-radius: 0;
+  // min-width: 1000px;
+  // width: 1000px;
+
+  a {
+    margin-left: -20px;
+    // text-transform: uppercase;
+    color: #f0f0f0;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    margin-left: 20px;
+    font-family: helvetica;
+  }
+
+  .navbar-buttons {
+    margin-right: -20px;
+  }
+
+  .navbar-logo {
+    margin-top: 2px;
+  }
+
+  .navbar-login {
+    margin-top: 20px;
+  }
+
+  .navbar-logout {
+    margin-top: 20px;
+  }
+
+  .navbar-register {
+    margin-top: 20px;
+    margin-right: 5px;
+  }
+}
+
+.media-panel {
+  background-color: white;
+  margin-top: 25px;
+  padding-bottom: 25px;
+
+  .glyphicon {
+      font-size: 40px;
+      color: gray;
+  }
+
+  h2 {
+    padding-top: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    // text-align: justify;
+    // font-family: 'Oswald', sans-serif;
+  }
+
+  iframe {
+    margin: 0 auto;
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+
+  .icons-panel {
+    padding-left: 60px;
+    margin: 30px 0;
+
+    span {
+      padding-right: 15px;
+      vertical-align: middle;
+    }
+
+    .bold {
+      display: inline-block;
+      vertical-align: middle;
+      font-weight: bold;
+      padding-right: 15px;
+    }
+
+    .light {
+      display: inline-block;
+      vertical-align: middle;
+      color: #666;
+    }
+
+    h4 {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+
+.join-panel {
+
+  // background-color: white;
+  margin-top: 25px;
+
+  a:hover {
+
+    .join-icons-panel {
+      background-color: #eee;
+
+      .bold {
+        color: red;
+      }
+    }
+  }
+
+  .header {
+    background-color: $nflblue;
+    color: #f0f0f0;
+    text-align: center;
+    padding: 16px;
+    text-transform: uppercase;
+  }
+
+  .join-panel-buttons {
+    width: 360px;
+    margin: 0 0 20px 0;
+    background-color: #f0f0f0;
+    display: inline-block;
+    color: $nflblue;
+    box-shadow: 0px 1px 1px #2c2c2c;
+
+    .join-icons-panel {
+      background-color: white;
+      padding: 20px 40px;
+
+      .glyphicon {
+        font-size: 40px;
+        color: $nflblue;
+      }
+
+      span {
+        padding-right: 10px;
+        vertical-align: middle;
+      }
+
+      .bold {
+        color: $nflred;
+        display: inline-block;
+        vertical-align: middle;
+        font-weight: bold;
+        margin: 0;
+        font-family: 'Oswald', sans-serif;
+        padding-right: 10px;
+      }
+
+      h3 {
+        margin: 0;
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+    }
+  }
+
+}
+
+
+.league-header {
+  background-color: $nflblue;
+  color: #f0f0f0;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0;
+  padding: 16px;
+}
+
+.league-panel {
+  background-color: white;
+  height: 419px;
+  overflow: scroll;
+
+  ul {
+    background-color: white;
+    padding-left: 0;
+    margin-bottom: 0;
+    text-align: left;
+
+    a:hover {
+      color: red;
+      text-decoration: none;
+
+      li {
+        background-color: #eee;
+      }
+    }
+
+    li {
+      list-style: none;
+
+      div {
+        margin-left: 20px;
+        margin-right: 20px;
+        border-bottom: 1px solid #ccc;
+        padding: 20px;
+      }
+
+      h4 {
+        margin: 0;
+        color: #333;
+        padding-bottom: 8px;
+      }
+
+      h5 {
+        margin: 0;
+        color: #888;
+      }
+
+    }
+  }
+}
+
+.login-register-form {
+  background-color: white;
+  height: 677px;
+  margin-top: 25px;
+
+  h3 {
+    text-align: center;
+    color: #333;
+    padding-top: 30px;
+  }
+
+  h4 {
+    text-align: center;
+    color: #333;
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+  .form-wrapper {
+    background-color: #eee;
+    padding: 40px;
+    box-shadow: 0px 1px 1px #333;
+    text-align: center;
+
+    img {
+      display: inline-block;
+      margin-bottom: 40px;
+    }
+
+    form {
+
+      input {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+      button {
+        height: 42px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        background-color: $nflblue;
+        border-color: $nflblue;
+      }
+      a {
+        padding-top: 8px;
+      }
+    }
+  }
+
+  .login-noaccount {
+    padding-top: 20px;
+    display: block;
+    text-align: center;
+  }
+}
+
+
+
+.join-league-form {
+  background-color: lightgray;
+  height: 600px;
+
+  h2 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+}
+
+.create-league-form {
+  background-color: lightgray;
+  height: 600px;
+
+  h2 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+}
+
+.league-info {
+  background-color: #f0f0f0;
+  margin-top: 25px;
+
+  h3 {
+    margin-top: 25px;
+    color: #333;
+  }
+
+  .league-info-details {
+    background-color: white;
+    padding: 20px;
+
+    a {
+      margin: 0px;
+      display:block;
+      padding-bottom: 16px;
+      color: #004599;
+      padding-left: 20px;
+    }
+
+    .related-links {
+      margin: 0;
+      padding-bottom: 0px;
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: #005ccc;
+    }
+
+    h4 {
+      color: #333;
+      margin: 0px;
+      padding-bottom: 4px;
+    }
+
+    p {
+      color: #888;
+      margin: 0px;
+      padding-bottom: 16px;
+      padding-left: 20px;
+    }
+  }
+
+  .league-member-title {
+    margin-top: 25px;
+    margin-bottom: 0px;
+
+    background-color: $nflblue;
+    color: #f0f0f0;
+    text-align: center;
+    padding: 16px;
+    text-transform: uppercase;
+  }
+
+  .league-members-list {
+    background-color: white;
+    //height: 400px;
+    //overflow: scroll;
+
+    ul {
+      background-color: white;
+      padding-left: 0px;
+      margin-bottom: 0px;
+      text-align: left;
+
+      li {
+        list-style: none;
+
+        div {
+          margin-left: 20px;
+          margin-right: 20px;
+          border-bottom: 1px solid #ccc;
+          padding: 10px 20px;
+
+          h5 {
+            color: #333;
+          }
+        }
+      }
+
+      li:hover {
+        // background-color: #eee;
+      }
+
+
+    }
+  }
+
+
+
+}
+
+.posts {
+  height: 600px;
+  background-color: #f0f0f0;
+  text-align: center;
+
+  .post-wrapper {
+    background-color: white;
+    margin: 25px 10px 10px 10px;
+    min-height: 1500px;
+
+    ul {
+      list-style: none;
+
+      li {
+        text-align: left;
+        border-bottom: 1px solid #333;
+        margin: 50px;
+      }
+    }
+
+    // border-radius: 2px;
+    // border: 1px solid rgb(221, 221, 221);
+  }
+
+  .post-area {
+    display: inline-block;
+    width: 94%;
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  button {
+    margin-right: 3%;
+  }
+}
+
+.media-feeds {
+  // height: 600px;
+  background-color: #f0f0f0;
+
+  h3 {
+    margin-top: 25px;
+    color: #333;
+  }
+
+  img {
+  }
+
+  .media-rss {
+    // height: 600px;
+    overflow: scroll;
+
+    ul {
+      padding-left: 0;
+      background-color: #f0f0f0;
+      margin-top: 10px;
+      border-radius: 0px;
+
+      li {
+        background-color: #f0f0f0;
+        border-radius: 0px;
+        border: none;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      h5 {
+        margin: 0px;
+        background-color: white;
+        color: $nflred;
+        font-family: 'Oswald', sans-serif;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 4px;
+      }
+
+      h6 {
+        margin: 0px;
+        background-color: white;
+        color: #666;
+        line-height: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+      }
+
+      a {
+        color: $nflblue;
+        display: inline-block;
+      }
+    }
+  }
 }
