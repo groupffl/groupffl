@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { createPost, fetchPosts } from '../actions/index';
 
 class LeaguePosts extends Component {
@@ -11,6 +12,18 @@ class LeaguePosts extends Component {
     this.props.fetchPosts(this.props.params.id)
       .then(() => {
       });
+  }
+
+  renderComments(postId) {
+    console.log('params', this.props.params.postId);
+    console.log('this post id', postId);
+    if (postId == this.props.params.postId) {
+      return (
+        <div>
+          {this.props.children}
+        </div>
+      );
+    }
   }
 
   addPost() {
@@ -28,9 +41,15 @@ class LeaguePosts extends Component {
   }
 
   renderList() {
+    console.log('state', this.state);
     return this.props.all.map(post =>
       (
-        <li>{post.author.name} : {post.description}</li>
+        <li key={post._id}>
+          <div>{post.author.name} : {post.description}</div>
+          <div>{post.date}</div>
+          <Link to={`/league/${post.league}/posts/${post._id}`}>Comment</Link>
+          {this.renderComments(post._id)}
+        </li>
       )
     );
   }

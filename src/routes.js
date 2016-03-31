@@ -9,6 +9,7 @@ import JoinLeague from './components/JoinLeague';
 import CreateLeague from './components/CreateLeague';
 import League from './components/League';
 import LeaguePosts from './components/LeaguePosts';
+import PostsComments from './components/PostsComments';
 
 export default (
   <div>
@@ -20,7 +21,9 @@ export default (
       <Route path="create" component={CreateLeague} />
     </Route>
     <Route path="/league/:id" component={League}>
-      <IndexRoute component={LeaguePosts} />
+      <Route path="posts" component={LeaguePosts}>
+        <Route path=":postId" component={PostsComments} />
+      </Route>
     </Route>
   </div>
 );
