@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { createPost, fetchPosts } from '../actions/index';
 
-import PostsComments from './PostsComments';
-
 class LeaguePosts extends Component {
   constructor(props) {
     super(props);
