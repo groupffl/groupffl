@@ -10,17 +10,17 @@ export default class MediaVideo extends Component {
           <div className="icons-panel">
             <span><Glyphicon glyph="comment" /></span>
             <h4 className="bold">Talk fantasy football</h4>
-            <h4>with friends on your league timeline.</h4>
+            <h4 className="light">with friends on your league timeline.</h4>
           </div>
           <div className="icons-panel">
             <span><Glyphicon glyph="bullhorn" /></span>
             <h4 className="bold">Get recent news</h4>
-            <h4>from around the league.</h4>
+            <h4 className="light">from around the league.</h4>
           </div>
           <div className="icons-panel">
             <span><Glyphicon glyph="globe" /></span>
             <h4 className="bold">Find more</h4>
-            <h4>of what you've been missing.</h4>
+            <h4 className="light">of what you've been missing.</h4>
           </div>
         </div>
         <iframe width="84%" height="320px" src="https://www.youtube.com/embed/Y_NmwtttzA8" frameborder="0" allowfullscreen></iframe>

@@ -29,24 +29,28 @@ class LeaguesPanel extends Component {
 
   renderList() {
 
-    console.log('login is: ', this.props.isLoggedIn);
-    console.log('leagues is: ', this.props.leagues);
-
     if (!this.props.isLoggedIn) {
       return (
-        <div> Please log in </div>
+        <div>
+          <img src="../images/demo.png" width="100%" height="420px" alt=""/>
+        </div>
       );
     }
-
-    if (!this.props.leagues) {
+    console.log(this.props.leagues);
+    console.log(!this.props.legues);
+    if (this.props.leagues.length == 0) {
       return (
-        <div>No Leagues</div>
+        <div>
+          <img src="../images/demo.png" width="100%" height="420px" alt=""/>
+        </div>
       );
     }
 
     if (typeof this.props.leagues == 'string') {
       return (
-        <div>Please Log In</div>
+        <div>
+          <img src="../images/demo.png" width="100%" height="420px" alt=""/>
+        </div>
       );
     }
 
