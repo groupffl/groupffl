@@ -28,8 +28,7 @@ class JoinLeague extends Component {
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
           <img src="../images/ajax_get_colored_svg2.png" width="35%" alt=""/>
           <form
-            onSubmit={handleSubmit(this.onSubmit.bind(this))}
-            className="col-xs-10 col-xs-offset-1">
+            onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className={`form-group ${leagueId.touched && leagueId.invalid ? 'has-danger' : ''}`}>
               <input
                 type="text"
