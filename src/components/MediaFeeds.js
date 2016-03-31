@@ -33,7 +33,6 @@ class MediaFeeds extends Component {
         </div>
       );
     }
-    console.log(this.props.rss.data);
     return (
       <div className="media-feeds">
         <h3>News</h3>

@@ -9,13 +9,11 @@ import MediaFeeds from './MediaFeeds';
 
 class League extends Component {
   componentWillMount() {
-    // console.log(this.props.params.id);
+    console.log('params', this.props.params.id);
     this.props.verifyLogin();
+    //console.log(this.props.children);
+    //this.props.children.url = this.props.params.id;
 
-    this.props.fetchLeagueData(this.props.params.id)
-      .then(() => {
-        console.log('fetched league data in league');
-      });
   }
 
   render() {
@@ -25,7 +23,7 @@ class League extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xs-3">
-              <LeagueInfo />
+              <LeagueInfo leagueId={this.props.params.id}/>
             </div>
             <div className="col-xs-6">
               {this.props.children}

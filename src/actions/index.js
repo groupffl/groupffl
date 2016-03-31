@@ -10,7 +10,7 @@ export const CREATE_LEAGUE = 'CREATE_LEAGUE';
 export const JOIN_LEAGUE = 'JOIN_LEAGUE';
 export const FETCH_LEAGUES = 'FETCH_LEAGUES';
 export const VERIFY_LOGIN = 'VERIFY_LOGIN';
-export const FETCH_LEAGUE_DATA = 'FETCH_LEAGUE_DATA';
+export const FETCH_LEAGUE_INFO = 'FETCH_LEAGUE_INFO';
 
 const REGISTER_URL = '/api/user/register';
 const LOGIN_URL = '/api/user/login';
@@ -19,7 +19,7 @@ const RSS_URL_BACK = '/api/feed/rss';
 const CREATE_LEAGUE_URL = '/api/league';
 const JOIN_LEAGUE_URL = '/api/team';
 const FETCH_LEAGUES_URL = '/api/league';
-const FETCH_LEAGUE_DATA_URL = '/api/league/';
+const FETCH_LEAGUE_INFO_URL = '/api/league/';
 
 export function registerUser(props) {
   const request = axios.post(REGISTER_URL, { email: props.email, password: props.password });
@@ -92,13 +92,11 @@ export function verifyLogin() {
   };
 }
 
-export function fetchLeagueData(id) {
-  console.log(id);
-  console.log(`FETCH_LEAGUE_DATA_URL${id}`);
-  const request = axios.get(`${FETCH_LEAGUE_DATA_URL}${id}`);
+export function fetchLeagueInfo(id) {
+  const request = axios.get(`${FETCH_LEAGUE_INFO_URL}${id}`);
 
   return {
-    type: FETCH_LEAGUE_DATA,
+    type: FETCH_LEAGUE_INFO,
     payload: request
   };
 }

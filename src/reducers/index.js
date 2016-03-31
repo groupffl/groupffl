@@ -5,7 +5,7 @@ import RSSReducer from './reducer_rss_feed';
 import LeagueReducer from './reducer_league';
 import TeamReducer from './reducer_team';
 import AuthReducer from './reducer_authentication';
-import LeagueDataReducer from './reducer_league_data';
+import LeagueInfoReducer from './reducer_league_info';
 
 
 import { reducer as formReducer } from 'redux-form';
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   league: LeagueReducer,
   team: TeamReducer,
   isLoggedIn: AuthReducer,
-  leagueData: LeagueDataReducer
+  leagueInfo: LeagueInfoReducer
 });
 
 export default rootReducer;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLeagues, fetchLeagueData } from '../actions/index';
+import { fetchLeagues, fetchLeagueInfo } from '../actions/index';
 import { Link } from 'react-router';
 
 class LeaguesPanel extends Component {
@@ -21,7 +21,7 @@ class LeaguesPanel extends Component {
   }
 
   handleClick(id) {
-    this.props.fetchLeagueData(id)
+    this.props.fetchLeagueInfo(id)
       .then(() => {
         console.log('fetched league data');
       });
@@ -88,4 +88,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchLeagues, fetchLeagueData })(LeaguesPanel);
+export default connect(mapStateToProps, { fetchLeagues, fetchLeagueInfo })(LeaguesPanel);
