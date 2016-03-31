@@ -9,6 +9,7 @@ class PostsComments extends Component {
 
   createComment() {
     console.log(this.refs.commentInput.value);
+    
   }
 
   render() {
