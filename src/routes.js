@@ -20,10 +20,10 @@ export default (
       <Route path="join" component={JoinLeague} />
       <Route path="create" component={CreateLeague} />
     </Route>
-    <Route path="/league/:id" component={League}>
-      <IndexRoute component={LeaguePosts}>
-        <Route path=":postId" component={PostsComments} />
-      </IndexRoute>
+    <Route path="/league/:id/" component={League}>
+      <Route path="posts" component={LeaguePosts}>
+        <Route path="/post/:postId" component={PostsComments} />
+      </Route>
     </Route>
   </div>
 );
