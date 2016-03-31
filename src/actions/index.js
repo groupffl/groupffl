@@ -25,7 +25,7 @@ const FETCH_LEAGUES_URL = '/api/league';
 const FETCH_LEAGUE_INFO_URL = '/api/league/';
 const FETCH_LEAGUE_MEMBERS_URL = '/api/league/';
 const CREATE_POST_URL = '/api/post';
-const FETCH_POSTS_URL = '/api/post/';
+const FETCH_POSTS_URL = '/api/league/';
 
 export function registerUser(props) {
   const request = axios.post(REGISTER_URL, { email: props.email, password: props.password });
@@ -125,7 +125,7 @@ export function createPost(postObj) {
 }
 
 export function fetchPosts(id) {
-  const request = axios.get(`${FETCH_POSTS_URL}${id}`);
+  const request = axios.get(`${FETCH_POSTS_URL}${id}/posts`);
 
   return {
     type: FETCH_POSTS,

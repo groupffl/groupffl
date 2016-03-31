@@ -8,7 +8,7 @@
   router.get('/rss', (req, res) => {
     console.log('in rss');
     request(RSS_URL, {
-      headers: { 'Ocp-Apim-Subscription-Key': 'ff77733713e9497a8156473c5683ccfd' }
+      headers: { 'Ocp-Apim-Subscription-Key': 'ff77733713e9497a8156473c5683ccfd' } // FIXME: Change API key, move to .env
     }, function(err, response) {
       if (err) { return res.status(400).send(err); }
       res.send(response.body);
