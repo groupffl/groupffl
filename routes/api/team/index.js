@@ -13,14 +13,9 @@
     });
   });
 
-  // router.post('/', User.isLoggedIn, Team.createMW, (req, res) => {
-  //   console.log('team route')
-  //   res.send(req.resData);
-  // });
-
-  router.post('/', User.isLoggedIn, Team.createMW, (req, res) => {
-    console.log('team route');
-    res.send(req.resData);
+  router.post('/', User.isLoggedIn, Team.createMW, User.getUserLeaguesMW, (req, res) => {
+    console.log('in Team route: ', req.userLeagues);
+    res.send(req.userLeagues);
   });
 
   module.exports = router;
