@@ -3,6 +3,7 @@ import RegisterReducer from './reducer_register_form';
 import LoginReducer from './reducer_login_form';
 import RSSReducer from './reducer_rss_feed';
 import LeagueReducer from './reducer_league';
+import TeamReducer from './reducer_team';
 import AuthReducer from './reducer_authentication';
 import LeagueDataReducer from './reducer_league_data';
 
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   login: LoginReducer,
   rss: RSSReducer,
   league: LeagueReducer,
+  team: TeamReducer,
   isLoggedIn: AuthReducer,
   leagueData: LeagueDataReducer
 });

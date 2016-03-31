@@ -1,5 +1,6 @@
 import {
   CREATE_LEAGUE,
+  JOIN_LEAGUE,
   FETCH_LEAGUES,
   LOGOUT_USER
  } from '../actions/index';
@@ -14,6 +15,8 @@ export default function(state = INITIAL_STATE, action) {
       return { all: action.payload.data };
     case CREATE_LEAGUE:
       return { all: action.payload.data };
+    case JOIN_LEAGUE:
+      return { all: action.payload.data }
     case LOGOUT_USER:
       return state = undefined;
     default:
