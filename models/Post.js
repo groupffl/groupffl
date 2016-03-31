@@ -15,39 +15,33 @@
     if (!req.body.leagueId || !req.body.description || !req.body.teamId) {
       return res.status(400).send('League Id, Team Id, and Post Description are all required');
     }
-
-    mongoose.model('League').findById(req.body.leagueId, (err, foundLeague) => { // FIXME: Change to findOne for ID && teamId in teams array
-      if (err) { return res.status(400).send(err); }
-      if (!foundLeague) { return res.status(400).send('There is no League with this ID'); }
-      if (!foundLeague.teams.indexOf(req.body.teamId) === -1) { return res.status(400).send('Selected Team does not belong to selected League'); }
-      mongoose.model('Team').findOne({ _id: req.body.teamId, owner: req.user }, (err, foundTeam) => {
-        if (err) { return res.status(400).send(err); }
-        if (!foundTeam) { return res.status(403).send('You do not own a Team with this Id'); } //This should never happen if league has refernce to teamId
-
-        let newPost = new Post();
+    let newPost = new Post();
+    mongoose.model('League').findById(req.body.leagueId).exec()
+    .then(league => {
+      if (!league) { throw new Error('There is no League with this ID'); }
+      if (!league.teams.indexOf(req.body.teamId) === -1) { return res.status(400).send('This Team does not belong to this League'); }
+      newPost.league = league.id;
+      league.posts.push(newPost);
+      mongoose.model('Team').findOne({ _id: req.body.teamId, owner: req.user }).exec()
+      .then(team => {
+        if (!team) { throw new Error('You do not own a Team with this ID'); }
+        newPost.author = team._id;
+        team.posts.push(newPost);
+        return team.save();
+      })
+      .then(() => league.save())
+      .then(() => {
         newPost.title = req.body.title;
         newPost.description = req.body.description;
-        newPost.author = req.body.teamId;
-        newPost.league = foundLeague._id;
-
-        foundLeague.posts.push(newPost._id);
-        foundTeam.posts.push(newPost._id);
-
-        newPost.save(err => {
-          if (err) { return res.status(400).send(err); }
-          foundLeague.save(err => {
-            if (err) { return res.status(400).send(err); }
-            foundTeam.save(err => {
-              if (err) { return res.status(400).send(err); }
-              next();
-            });
-          });
-        });
-      });
-    });
+        return newPost.save();
+      })
+      .then(() => {
+        next();
+      })
+      .catch(err => res.status(400).send(err));
+    })
+    .catch(err => res.status(400).send(err.message));
   };
-
   const Post = mongoose.model('Post', postSchema);
-
   module.exports = Post;
 }());

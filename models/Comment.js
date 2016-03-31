@@ -1,6 +1,9 @@
 (function() {
   'use strict';
   const mongoose = require('mongoose');
+  const Promise = require('bluebird');
+  mongoose.Promise = Promise;
+  Promise.promisifyAll(mongoose);
 
   let commentSchema = new mongoose.Schema({
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'Team', required: true },
@@ -10,32 +13,37 @@
   });
 
   commentSchema.statics.createMW = (req, res, next) => {
-    mongoose.model('Post').findById(req.body.postId, (err, post) => {
-      if (err) { return res.status(400).send(err); }
-      if (!post) { return res.status(400).send('There is no Post with this ID'); }
-      mongoose.model('Team').findOne({ owner: req.user, league: post.league }, (err, team) => {
-        if (err) { return res.status(400).send(err); }
-        if (!team) { return res.status(400).send('You do not have a Team in this League'); }
-
-        let comment = new Comment();
-        comment.author = team._id;
-        comment.post = post._id;
-        comment.text = req.body.text;
-
-        post.comments.push(comment);
-        team.comments.push(comment);
-
-        comment.save(err => {
-          if (err) { return res.status(400).send(err); }
-          post.save(err => {
-            if (err) { return res.status(400).send(err); }
-            team.save(err => {
-              if (err) { return res.status(400).send(err); }
-              next();
-            });
-          });
-        });
+    if (!req.body.text || !req.body.postId) { return res.status(400).send('Missing Post ID and/or comment text'); }
+    let newComment = new Comment();
+    mongoose.model('Post').findById(req.body.postId).exec()
+    .then(post => {
+      if (!post) { throw new Error('There is no Post with this ID'); }
+      console.log('post 1:', post);
+      mongoose.model('Team').findOne({ owner: req.user, league: post.league }).exec()
+      .then(team => {
+        if (!team) { throw new Error('You do not have a team in this League'); }
+        newComment.author = team._id;
+        team.comments.push(newComment);
+        return team.save();
+      })
+      .then(() => {
+        newComment.post = post._id;
+        post.comments.push(newComment);
+        return post.save();
+      })
+      .then(() => {
+        newComment.text = req.body.text;
+        return newComment.save();
+      })
+      .then(() => {
+        next();
+      })
+      .catch(err => {
+        res.status(400).send(err.message);
       });
+    })
+    .catch(err => {
+      res.status(400).send(err.message);
     });
   };
 

@@ -13,49 +13,52 @@
     if (!req.body.team || !req.body.name) { return res.status(400).send('Missing League or Team name'); }
     let title = req.body.name.trim();
     let titleReg = new RegExp(`^${title}$`, 'i');
-    League.findOne({ name: titleReg }, (err, foundLeague) => {
-      if (err) { return res.status(400).send(err); }
-      if (foundLeague) { return res.status(400).send('A League with this name already exists'); }
 
-      let newLeague = new League();
+    let newLeague = new League();
+    let newTeam = new (mongoose.model('Team'));
+
+    League.findOne({ name: titleReg }).exec()
+    .then(league => {
+      if (league) { throw new Error('A League with this name already exists'); }
+
       newLeague.name = req.body.name;
       newLeague.commissioner = req.user;
 
-      let newTeam = new (mongoose.model('Team'));
-      console.log(newTeam);
       newTeam.name = req.body.team;
       newTeam.owner = req.user;
       newTeam.league = newLeague._id;
+      mongoose.model('User').findById(req.user).exec()
+      .then(user => {
+        user.leagues.push(newLeague._id);
+        user.teams.push(newTeam._id);
 
-      newLeague.teams.push(newTeam._id);
-
-      mongoose.model('User').findById(req.user, (err, foundUser) => {
-        if (err) { return res.status(400).send(err); }
-
-        foundUser.leagues.push(newLeague._id);
-        foundUser.teams.push(newTeam._id);
-        foundUser.save(err => {
-          if (err) { return res.status(400).send(err); }
-          newLeague.save(err => {
-            if (err) { return res.status(400).send(err); }
-            newTeam.save(err => {
-              if (err) { return res.status(400).send(err); }
-              req.resData = {
-                message: 'League created',
-                league: newLeague
-              };
-              req.resData.league.teams[0] = newTeam;
-              req.resData.league.commissioner.username = foundUser.username;
-              req.resData.league.commissioner.email = foundUser.email;
-              next();
-            });
-          });
-        });
+        req.resData = {
+          message: 'League created',
+          league: newLeague
+        };
+        req.resData.league.teams[0] = newTeam;
+        req.resData.league.commissioner.username = user.username;
+        req.resData.league.commissioner.email = user.email;
+        return user.save();
+      })
+      .then(() => {
+        newLeague.teams[0] = newTeam._id; //array has all of team data in an object pre-populated (for some reason), overwritten here
+        return newLeague.save();
+      })
+      .then(() => newTeam.save())
+      .then(() => next())
+      .catch(err => {
+        console.log(err);
+        res.status(400).send(err.message);
       });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).send(err.message);
     });
   };
 
-  leagueSchema.statics.detailsMW = (req, res, next) => {
+  leagueSchema.statics.detailsMW = (req, res, next) => { // FIXME:
     mongoose.model('User').findById(req.user, (err, user) => {
       if (err) { return res.status(400).send(err); }
       if (user.leagues.indexOf(req.params.leagueId) === -1) { return res.status(400).send('You do not belong to this league'); }
