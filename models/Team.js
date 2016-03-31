@@ -18,7 +18,7 @@
     let title = req.body.team.trim();
     let titleReg = new RegExp(`^${title}$`, 'i');
 
-    mongoose.model('Team').findOne({ name: titleReg, leagueId: req.body.leagueId }, (err, foundTeam) => {
+    mongoose.model('Team').findOne({ name: titleReg, league: req.body.leagueId }, (err, foundTeam) => {
       if (err) { return res.status(400).send(err); }
       if (foundTeam) { return res.status(400).send('A Team with this name already exists in this League – Please try again with a different Team name'); }
       mongoose.model('League').findById(req.body.leagueId, (err, foundLeague) => {
