@@ -232,20 +232,21 @@ body {
   height: 677px;
   margin-top: 25px;
 
-  h2 {
+  h4 {
     text-align: center;
     color: #333;
-    padding: 50px;
+    padding-top: 50px;
+    padding-bottom: 10px;
   }
   .form-wrapper {
     background-color: #eee;
-    padding: 50px;
+    padding: 40px;
     box-shadow: 0px 1px 1px #333;
     text-align: center;
 
     img {
       display: inline-block;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
     form {
@@ -258,8 +259,19 @@ body {
         height: 42px;
         padding-top: 8px;
         padding-bottom: 8px;
+        background-color: #00316b;
+        border-color: #00316b;
+      }
+      a {
+        padding-top: 8px;
       }
     }
+  }
+
+  .login-noaccount {
+    padding-top: 20px;
+    display: block;
+    text-align: center;
   }
 }
 

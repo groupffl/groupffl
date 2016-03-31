@@ -29,9 +29,9 @@ class LoginForm extends Component {
     return (
 
       <div className="login-form">
-        <h2 className="login-title">Sign in</h2>
+        <h4 className="login-title">Sign in with your email.</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
-          <img src="http://ncaa-football-teams.pointafter.com/ajax_get_colored_svg?app_id=7406&filename=_6623298.svg&color=e9e9e9" width="40%" alt=""/>
+          <img src="../images/ajax_get_colored_svg.png" width="40%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
@@ -55,7 +55,11 @@ class LoginForm extends Component {
               {password.touched ? password.error : ''}
             </div>
             <button type="submit" className="btn btn-success form-control">Sign in</button>
+            <a className="pull-right" href="#">Forgot password?</a>
           </form>
+        </div>
+        <div className="col-xs-6 col-xs-offset-3">
+          <a className="login-noaccount" href="#">I don't have an account</a>
         </div>
       </div>
     );
