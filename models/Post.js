@@ -29,7 +29,6 @@
       if (!league) { throw new Error('There is no League with this ID'); }
       if (!league.teams.indexOf(req.body.teamId) === -1) { return res.status(400).send('This Team does not belong to this League'); }
       newPost.league = league.id;
-      league.posts.push(newPost);
       mongoose.model('Team').findOne({ _id: req.body.teamId, owner: req.user }).exec()
       .then(team => {
         if (!team) { throw new Error('You do not own a Team with this ID'); }

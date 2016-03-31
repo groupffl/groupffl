@@ -5,18 +5,16 @@ import { fetchLeagueInfo } from '../actions/index';
 class LeagueInfo extends Component {
   constructor(props) {
     super(props);
-
   }
 
   componentWillMount() {
     this.props.fetchLeagueInfo(this.props.leagueId)
-      .then((res) => {
+      .then(() => {
         console.log('fetched league data in league');
       });
   }
 
   render() {
-
     if (!this.props.leagueInfo) {
       return (
         <div>loading league data...</div>

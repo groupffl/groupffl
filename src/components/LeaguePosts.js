@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createPost } from '../actions/index';
+import { createPost, fetchPosts } from '../actions/index';
 
 class LeaguePosts extends Component {
   constructor(props) {
@@ -11,30 +11,43 @@ class LeaguePosts extends Component {
   addPost() {
     console.log('post is: ', this.refs.postInput.value);
     console.log('params is: ', this.props.params.leagueId);
-    // description, teamId, leagueId, title
     const postObj = {
       description: this.refs.postInput.value,
       leagueId: this.props.params.id,
       title: 'NA'
     };
-    
-    this.props.createPost(postObj);
+    this.props.createPost(postObj)
+      .then(res => {
+        console.log('got posts', res);
+        this.props.fetchPosts(this.props.params.id)
+          .then(res => {
+            console.log('all posts', res);
+          });
+      });
+  }
+
+  renderList() {
+
   }
 
   render() {
+    console.log(this.props.leaguePosts);
     return (
       <div className="posts">
         <div className="post-wrapper">
           <textarea ref="postInput" type="text" className="post-area" placeholder="hello?"/>
           <button onClick={this.addPost.bind(this)} className="btn btn-primary pull-right">POST</button>
+          <div>
+            {this.renderList()}
+          </div>
         </div>
       </div>
     );
   }
 }
 
-// function mapStateToProps(state) {
-//   return state.leaguePosts;
-// }
+function mapStateToProps(state) {
+  return state.leaguePosts;
+}
 
-export default connect(null, { createPost })(LeaguePosts);
+export default connect(mapStateToProps, { createPost, fetchPosts })(LeaguePosts);
