@@ -1,4 +1,8 @@
 $blueish: #44FFFF;
+$nflblue: #00316b;
+$nflred: #d20000;
+
+
 body {
   // background: $blueish;
   background-color: #f0f0f0;
@@ -13,7 +17,7 @@ body {
   // background-color: white;
   // margin-top: 25px;
   // background-color: #2c2c2c;
-  background-color: #00316b;
+  background-color: $nflblue;
   padding-bottom: 10px;
   margin-bottom: 0;
   border-radius: 0;
@@ -119,7 +123,7 @@ body {
   }
 
   .header {
-    background-color: #00316b;
+    background-color: $nflblue;
     color: #f0f0f0;
     text-align: center;
     padding: 16px;
@@ -131,8 +135,8 @@ body {
     margin: 0 0 20px 0;
     background-color: #f0f0f0;
     display: inline-block;
-    color: #00316b;
-    box-shadow: 1px 1px 1px #2c2c2c;
+    color: $nflblue;
+    box-shadow: 0px 1px 1px #2c2c2c;
 
     .join-icons-panel {
       background-color: white;
@@ -140,7 +144,7 @@ body {
 
       .glyphicon {
         font-size: 40px;
-        color: #00316b;
+        color: $nflblue;
       }
 
       span {
@@ -149,7 +153,7 @@ body {
       }
 
       .bold {
-        color: #d20000;
+        color: $nflred;
         display: inline-block;
         vertical-align: middle;
         font-weight: bold;
@@ -173,7 +177,7 @@ body {
 
 
 .league-header {
-  background-color: #00316b;
+  background-color: $nflblue;
   color: #f0f0f0;
   text-transform: uppercase;
   text-align: center;
@@ -227,15 +231,21 @@ body {
   }
 }
 
-.login-form {
+.login-register-form {
   background-color: white;
   height: 677px;
   margin-top: 25px;
 
+  h3 {
+    text-align: center;
+    color: #333;
+    padding-top: 30px;
+  }
+
   h4 {
     text-align: center;
     color: #333;
-    padding-top: 50px;
+    padding-top: 30px;
     padding-bottom: 10px;
   }
   .form-wrapper {
@@ -259,8 +269,8 @@ body {
         height: 42px;
         padding-top: 8px;
         padding-bottom: 8px;
-        background-color: #00316b;
-        border-color: #00316b;
+        background-color: $nflblue;
+        border-color: $nflblue;
       }
       a {
         padding-top: 8px;
@@ -357,7 +367,7 @@ body {
     margin-top: 25px;
     margin-bottom: 0px;
 
-    background-color: #00316b;
+    background-color: $nflblue;
     color: #f0f0f0;
     text-align: center;
     padding: 16px;
@@ -460,7 +470,7 @@ body {
       h5 {
         margin: 0px;
         background-color: white;
-        color: #d20000;
+        color: $nflred;
         font-family: 'Oswald', sans-serif;
         padding-left: 20px;
         padding-right: 20px;
@@ -479,7 +489,7 @@ body {
       }
 
       a {
-        color: #00316b;
+        color: $nflblue;
         display: inline-block;
       }
     }
