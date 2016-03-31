@@ -27,7 +27,12 @@ class LeaguePosts extends Component {
   }
 
   renderList() {
-
+    console.log(this.props.all)
+    return this.props.all.map(post => {
+      return (
+        <li>{post.description}</li>
+      );
+    });
   }
 
   render() {
@@ -38,7 +43,9 @@ class LeaguePosts extends Component {
           <textarea ref="postInput" type="text" className="post-area" placeholder="hello?"/>
           <button onClick={this.addPost.bind(this)} className="btn btn-primary pull-right">POST</button>
           <div>
-            {this.renderList()}
+            <ul>
+              {this.renderList()}
+            </ul>
           </div>
         </div>
       </div>

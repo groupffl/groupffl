@@ -1,12 +1,11 @@
-import { CREATE_POST } from '../actions/index';
+import { FETCH_POSTS } from '../actions/index';
 
-const INITIAL_STATE = { all: [], post: null };
+const INITIAL_STATE = { all: [] };
 
 export default function(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case CREATE_POST:
-      console.log(action.payload);
-      return { post: action.payload.data };
+    case FETCH_POSTS:
+      return { all: action.payload.data };
     default:
       return state;
   }
