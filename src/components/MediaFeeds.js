@@ -17,7 +17,7 @@ class MediaFeeds extends Component {
     if (this.props.rss.data.statusCode == 403) {
       return (
         <div>Out of call volume quota</div>
-      )
+      );
     }
     return this.props.rss.data.map(article =>
       <li

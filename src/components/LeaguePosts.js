@@ -8,9 +8,6 @@ import PostsComments from './PostsComments';
 class LeaguePosts extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      postId: ''
-    };
   }
 
   componentWillMount() {
@@ -19,11 +16,16 @@ class LeaguePosts extends Component {
       });
   }
 
-  handleClick(postId) {
-    console.log('postId', postId);
-    this.setState({
-      postId
-    });
+  renderComments(postId) {
+    console.log('params', this.props.params.postId);
+    console.log('this post id', postId);
+    if (postId == this.props.params.postId) {
+      return (
+        <div>
+          {this.props.children}
+        </div>
+      );
+    }
   }
 
   addPost() {
@@ -41,12 +43,14 @@ class LeaguePosts extends Component {
   }
 
   renderList() {
+    console.log('state', this.state);
     return this.props.all.map(post =>
       (
         <li key={post._id}>
           <div>{post.author.name} : {post.description}</div>
           <div>{post.date}</div>
-          <PostsComments leagueId={post.league} postId={post._id} />
+          <Link to={`/league/${post.league}/posts/${post._id}`}>Comment</Link>
+          {this.renderComments(post._id)}
         </li>
       )
     );
