@@ -10,15 +10,15 @@ class LeagueInfo extends Component {
       );
     }
 
-    return this.props.leagueData.teams.map(team => {
-      return (
+    return this.props.leagueData.teams.map(team =>
+    (
         <li>
           <div>
             <h5>{team.name}</h5>
           </div>
         </li>
       )
-    });
+    );
   }
 
 
@@ -27,7 +27,7 @@ class LeagueInfo extends Component {
     if (!this.props.leagueData) {
       return (
         <div>loading league data...</div>
-      )
+      );
     }
 
     const { leagueData } = this.props;

@@ -16,7 +16,7 @@ export default function(state = INITIAL_STATE, action) {
     case CREATE_LEAGUE:
       return { all: action.payload.data };
     case JOIN_LEAGUE:
-      return { all: action.payload.data }
+      return { all: action.payload.data };
     case LOGOUT_USER:
       return state = undefined;
     default:

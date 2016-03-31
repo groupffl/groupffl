@@ -24,7 +24,7 @@ var UserStore = assign({}, EventEmitter.prototype, {
     return _users;
   },
   getUserById: function(id) {
-    return _.find (_users, { id: id });
+    return _.find(_users, { id: id });
   }
 });
 

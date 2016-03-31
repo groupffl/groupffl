@@ -13,7 +13,7 @@
     description: { type: String }
   });
 
-  teamSchema.statics.createMW = (req, res, next) => { // FIXME: use promises to avoid callback hell
+  teamSchema.statics.createMW = (req, res, next) => {
     if (!req.body.team || !req.body.leagueId) { return res.status(400).send('Both Team name & League ID are required to create a new Team'); }
     let title = req.body.team.trim();
     let titleReg = new RegExp(`^${title}$`, 'i');
@@ -24,11 +24,7 @@
       mongoose.model('League').findById(req.body.leagueId, (err, foundLeague) => {
         if (err) { return res.status(400).send(err); }
         if (!foundLeague) { return res.status(400).send('League not found – Please double check that the League ID is correct'); }
-//<<<<<<< HEAD
-        //mongoose.model('Team').findOne({ owner: req.user, leagueId: req.body.leagueId }, (err, foundTeam) => {
-//=======
         mongoose.model('Team').findOne({ owner: req.user, league: foundLeague.id }, (err, foundTeam) => {
-//>>>>>>> master
           if (err) { return res.status(400).send(err); }
           if (foundTeam) {
             return res.status(400).send({
@@ -36,8 +32,8 @@
               data: foundTeam
             });
           }
-          mongoose.model('User').findById(req.user, (err, foundUser) => {
-            if (err) { return res.status(400).send(err); }
+          mongoose.model('User').findById(req.user)
+          .then(foundUser => {
             let newTeam = new Team();
             newTeam.name = req.body.team.trim();
             newTeam.owner = foundUser._id;
@@ -47,23 +43,21 @@
             foundUser.teams.push(newTeam._id);
             foundUser.leagues.push(foundLeague._id);
 
-            newTeam.save(err => {
-              if (err) { return res.status(400).send(err); }
-              foundLeague.save(err => {
-                if (err) { return res.status(400).send(err); }
-                foundUser.save(err => {
-                  if (err) { return res.status(400).send(err); }
-                  req.resData = {
-                    message: 'Team created',
-                    team: newTeam
-                  };
-                  req.resData.team.owner = foundUser;
-                  req.resData.team.league.name = foundLeague.name;
-                  next();
-                });
-              });
-            });
-          });
+            newTeam.save()
+            .then(() => foundLeague.save())
+            .then(() => foundUser.save())
+            .then(() => {
+              req.resData = {
+                message: 'Team created',
+                team: newTeam
+              };
+              req.resData.team.owner = foundUser;
+              req.resData.team.league.name = foundLeague.name;
+              next();
+            })
+            .catch(err => res.status(400).send(err.message));
+          })
+          .catch(err => res.status(400).send(err.message));
         });
       });
     });

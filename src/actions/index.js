@@ -94,11 +94,11 @@ export function verifyLogin() {
 
 export function fetchLeagueData(id) {
   console.log(id);
-  console.log(`FETCH_LEAGUE_DATA_URL${id}`)
+  console.log(`FETCH_LEAGUE_DATA_URL${id}`);
   const request = axios.get(`${FETCH_LEAGUE_DATA_URL}${id}`);
 
   return {
     type: FETCH_LEAGUE_DATA,
     payload: request
-  }
+  };
 }

@@ -13,9 +13,9 @@ class League extends Component {
     this.props.verifyLogin();
 
     this.props.fetchLeagueData(this.props.params.id)
-      .then(response => {
+      .then(() => {
         console.log('fetched league data in league');
-      })
+      });
   }
 
   render() {
@@ -43,7 +43,7 @@ class League extends Component {
 function mapStateToProps(state) {
   return {
     isLoggedIn: state.isLoggedIn.isLoggedIn
-  }
+  };
 }
 
 export default connect(mapStateToProps, { fetchLeagueData, verifyLogin })(League);

@@ -16,7 +16,7 @@ class JoinLeague extends Component {
   onSubmit(props) {
     console.log('on submit', props);
     this.props.joinLeague(props)
-      .then((res) => true);
+      .then(() => true);
   }
   render() {
     const { fields: { leagueId, team }, handleSubmit } = this.props;
