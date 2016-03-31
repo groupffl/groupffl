@@ -13,18 +13,22 @@
     description: { type: String }
   });
 
-  teamSchema.statics.createMW = (req, res, next) => {
-
+  teamSchema.statics.createMW = (req, res, next) => { // FIXME: use promises to avoid callback hell
     if (!req.body.team || !req.body.leagueId) { return res.status(400).send('Both Team name & League ID are required to create a new Team'); }
     let title = req.body.team.trim();
     let titleReg = new RegExp(`^${title}$`, 'i');
-    mongoose.model('Team').findOne({ name: titleReg }, (err, foundTeam) => {
+
+    mongoose.model('Team').findOne({ name: titleReg, league: req.body.leagueId }, (err, foundTeam) => {
       if (err) { return res.status(400).send(err); }
       if (foundTeam) { return res.status(400).send('A Team with this name already exists in this League – Please try again with a different Team name'); }
       mongoose.model('League').findById(req.body.leagueId, (err, foundLeague) => {
         if (err) { return res.status(400).send(err); }
         if (!foundLeague) { return res.status(400).send('League not found – Please double check that the League ID is correct'); }
-        mongoose.model('Team').findOne({ owner: req.user }, (err, foundTeam) => {
+//<<<<<<< HEAD
+        //mongoose.model('Team').findOne({ owner: req.user, leagueId: req.body.leagueId }, (err, foundTeam) => {
+//=======
+        mongoose.model('Team').findOne({ owner: req.user, league: foundLeague.id }, (err, foundTeam) => {
+//>>>>>>> master
           if (err) { return res.status(400).send(err); }
           if (foundTeam) {
             return res.status(400).send({
