@@ -15,6 +15,7 @@
     console.log('req.body', req.body);
     console.log('req.user', req.user);
 
+
     mongoose.model('Team').findOne({owner:req.user, league:req.body.leagueId}, (err, team) => {
       if(err) { res.status(400).send(err); }
       console.log('team in Post model', team);

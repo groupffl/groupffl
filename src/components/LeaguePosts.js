@@ -30,7 +30,7 @@ class LeaguePosts extends Component {
   renderList() {
     return this.props.all.map(post => {
       return (
-        <li>{post.author} : {post.description}</li>
+        <li>{post.author.name} : {post.description}</li>
       );
     });
   }
