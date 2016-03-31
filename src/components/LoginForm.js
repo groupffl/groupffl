@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import { loginUser, verifyLogin } from '../actions/index';
 // import { Link, browserHistory } from 'react-router';
@@ -60,7 +61,7 @@ class LoginForm extends Component {
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">
-          <a className="login-noaccount" href="#">I don't have an account</a>
+          <Link to="/register" className="login-noaccount" href="#">I don't have an account</Link>
         </div>
       </div>
     );

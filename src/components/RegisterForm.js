@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import { registerUser } from '../actions/index';
 // import { Link, browserHistory } from 'react-router'; // Only for Cancel
@@ -66,7 +67,7 @@ class RegisterForm extends Component {
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">
-          <a className="login-noaccount" href="#">I already have an account</a>
+          <Link to="/login" className="login-noaccount" href="#">I already have an account</Link>
         </div>
       </div>
     );
