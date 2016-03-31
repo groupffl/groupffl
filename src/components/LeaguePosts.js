@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { createPost, fetchPosts } from '../actions/index';
 
 class LeaguePosts extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   componentWillMount() {
     this.props.fetchPosts(this.props.params.id)
