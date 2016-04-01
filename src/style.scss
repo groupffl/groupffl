@@ -37,8 +37,12 @@ body {
     font-family: helvetica;
   }
 
-  .navbar-buttons {
-    margin-right: -20px;
+  // .navbar-buttons {
+  //   margin-right: -20px;
+  // }
+
+  .navbar-buttons:hover {
+    color: red;//$nflred;
   }
 
   .navbar-logo {
@@ -52,6 +56,10 @@ body {
   .navbar-logout {
     margin-top: 20px;
   }
+
+  // .navbar-logout:hover {
+  //   color: red;
+  // }
 
   .navbar-register {
     margin-top: 20px;
