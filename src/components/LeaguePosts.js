@@ -50,7 +50,7 @@ class LeaguePosts extends Component {
           <h4>{post.author.name}</h4>
           <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
           <p>{post.description}</p>
-          <div>
+          <div className="post-link-wrapper">
             <Link to={`/league/${post.league}/posts/${post._id}`}>Comment</Link>
           </div>
           {this.renderComments(post._id)}
@@ -65,9 +65,9 @@ class LeaguePosts extends Component {
         <div className="post-wrapper">
           <div className="post-text">
             <textarea ref="postInput" type="text" placeholder=""/>
-            <button onClick={this.addPost.bind(this)} className="btn btn-primary pull-right">POST</button>
+            <button onClick={this.addPost.bind(this)} className="btn btn-primary pull-right">Post</button>
           </div>
-          <div>
+          <div className="post-list-wrapper">
             <ul>
               {this.renderList()}
             </ul>

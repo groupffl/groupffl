@@ -51,14 +51,14 @@ class PostsComments extends Component {
         <div className="comment-area">
           <textarea ref="commentInput" className="comment-area" />
           <button
-            onClick={this.createComment.bind(this)}
-            className="btn btn-success pull-right">Comment
+          onClick={this.createComment.bind(this)}
+          className="btn btn-success pull-right">Comment
           </button>
-          <div>
-            <ul>
-              {this.renderList()}
-            </ul>
-          </div>
+        </div>
+        <div className="comments-list-wrapper">
+          <ul>
+            {this.renderList()}
+          </ul>
         </div>
       </div>
     );
