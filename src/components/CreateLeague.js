@@ -24,7 +24,7 @@ class CreateLeague extends Component {
         <h3>Be a league commissioner.</h3>
         <h4 className="login-title">Create a league.</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
-          <img src="http://i.imgur.com/addEGTI.png" width="35%" height="185px" alt=""/>
+          <img src="http://i.imgur.com/addEGTI.png" width="13%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className={`form-group ${name.touched && name.invalid ? 'has-danger' : ''}`}>
