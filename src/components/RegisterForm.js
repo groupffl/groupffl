@@ -39,7 +39,7 @@ class RegisterForm extends Component {
                 className="form-control"
                 placeholder="Enter your email"
                 {...email} />
-              <div className="text-help">
+              <div className="text-help-register">
                 {email.touched ? email.error : ''}
               </div>
             </div>
@@ -49,7 +49,7 @@ class RegisterForm extends Component {
                 className="form-control"
                 placeholder="Enter your password"
                 {...password} />
-              <div className="text-help">
+              <div className="text-help-register">
                 {password.touched ? password.error : ''}
               </div>
             </div>

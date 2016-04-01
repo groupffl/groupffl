@@ -40,7 +40,7 @@ class LoginForm extends Component {
                 placeholder="Enter your email"
                 {...email} />
             </div>
-            <div className="text-help">
+            <div className="text-help-login">
               {email.touched ? email.error : ''}
             </div>
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
@@ -50,7 +50,7 @@ class LoginForm extends Component {
                 placeholder="Enter your password"
                 {...password} />
             </div>
-            <div className="text-help">
+            <div className="text-help-login">
               {password.touched ? password.error : ''}
             </div>
             <button type="submit" className="btn login-form-btn form-control">Sign in</button>

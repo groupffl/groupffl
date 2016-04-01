@@ -92,7 +92,7 @@ body {
   color: #f0f0f0;
 }
 
-.text-help {
+.text-help-register {
   color:$nflred;
 }
 
@@ -101,6 +101,14 @@ body {
   color:$nflred;
   bottom:13px;
 }
+
+.text-help-login {
+  position:relative;
+  color:$nflred;
+  bottom: 13px;
+}
+
+
 
 .media-panel {
   background-color: white;
