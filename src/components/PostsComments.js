@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createComment } from '../actions/index';
 import { fetchComments } from '../actions/index';
+import moment from 'moment';
 
 class PostsComments extends Component {
   constructor(props) {
@@ -37,8 +38,9 @@ class PostsComments extends Component {
     return this.props.all.map(comment => {
       return (
         <li key={comment._id}>
-          <div> {comment.author.name} : {comment.description} </div>
-          <div> {comment.date} </div>
+          <h4>{comment.author.name}</h4>
+          <h6>{moment(comment.date).format('MMMM Do, YYYY, h:mm a')}</h6>
+          <p>{comment.text}</p>
         </li>
       );
     });
