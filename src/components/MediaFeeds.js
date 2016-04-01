@@ -35,7 +35,6 @@ class MediaFeeds extends Component {
     if (!this.props.rss.data) {
       return (
         <div>
-          {/*}<img src="../images/Football.gif" height="100px" width="100px" alt=""/>*/}
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Football.gif" alt=""/>
         </div>
       );
@@ -43,9 +42,7 @@ class MediaFeeds extends Component {
     return (
       <div className="media-feeds">
         <h3>News</h3>
-        {/*<img src="http://movietvtechgeeks.com/wp-content/uploads/2014/11/Fantasy-Football-NFL-Images-2014.jpg" width="100%" alt=""/>*/}
         <img src="http://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0103%2Fr41245_1296x729_16%2D9.jpg&w=570" width="100%" alt=""/>
-        {/*<img src="http://static.nfl.com/static/content/public/photo/2016/03/30/0ap3000000648992.jpg" width="100%" alt=""/>*/}
           <div className="row">
             <div className="media-rss">
               <ul>

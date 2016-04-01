@@ -381,6 +381,7 @@ body {
       padding-left: 0px;
       margin-bottom: 0px;
       text-align: left;
+      min-height: 300px;
 
       li {
         list-style: none;
@@ -409,39 +410,140 @@ body {
 
 }
 
-.posts {
+.league-posts {
   height: 600px;
   background-color: #f0f0f0;
   text-align: center;
 
   .post-wrapper {
-    background-color: white;
+    background-color: #f0f0f0;
     margin: 25px 10px 10px 10px;
     min-height: 1500px;
+    padding-bottom: 30px;
 
-    ul {
-      list-style: none;
+    .post-text {
+      margin-top: 0px;
+      padding: 20px;
+      background-color: white;
+      padding-bottom: 52px;
 
-      li {
-        text-align: left;
-        border-bottom: 1px solid #333;
-        margin: 50px;
+      textarea {
+        display: inline-block;
+        width: 100%;
+        padding: 10px;
+        background-color: white;
+        margin-bottom: 6px;
       }
+
+      button {
+        background-color: $nflblue;
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+
     }
 
-    // border-radius: 2px;
-    // border: 1px solid rgb(221, 221, 221);
+
+    .post-list-wrapper {
+      margin-top: 20px;
+      background-color: #f0f0f0;
+
+
+      ul {
+        list-style: none;
+        padding: 0px;
+        background-color: #f0f0f0;
+
+        li {
+          text-align: left;
+          padding: 20px;
+          margin-bottom: 20px;
+          background-color: white;
+
+          h4 {
+            margin: 0px;
+            padding-bottom: 4px;
+          }
+
+          h6 {
+            margin: 0px;
+            color: #999;
+            font-weight: lighter;
+            padding-bottom: 12px;
+          }
+
+          p {
+            margin: 0px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 8px;
+          }
+
+          .post-link-wrapper {
+            margin: 0px;
+            text-align: right;
+            background-color: white;
+            padding-top: 8px;
+
+            a {
+              display: block;
+              padding-right: 10px;
+              color: $nflred;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.comments {
+  // background-color: green;
+  padding: 0px;
+
+  .comment-area {
+    padding-bottom: 46px;
+    padding-top: 10px;
+    padding-left: 40px;
+    border-bottom: 2px solid #666;
+
+    textarea {
+      width: 100%;
+      height: 60px;
+      padding: 10px !important;
+      border-bottom: 1px solid black;
+      border-color: #999 !important;
+    }
+
+    button {
+      background-color: $nflblue;
+      border: $nflblue;
+      color: #f0f0f0;
+    }
   }
 
-  .post-area {
-    display: inline-block;
-    width: 94%;
-    padding: 10px;
-    margin-top: 10px;
-  }
+  .comments-list-wrapper {
 
-  button {
-    margin-right: 3%;
+    ul {
+
+      li {
+        padding-top: 0px !important;
+        padding-left: 40px !important;
+        margin-bottom: 0px !important;
+        padding-right: 0px !important;
+        padding-bottom: 0px !important;
+
+        h4 {
+          padding-top: 20px !important;
+        }
+        h6 {
+
+        }
+
+        p {
+          border-bottom: none;
+        }
+      }
+    }
   }
 }
 

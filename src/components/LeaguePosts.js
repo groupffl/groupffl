@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { createPost, fetchPosts } from '../actions/index';
+import moment from 'moment';
 
 class LeaguePosts extends Component {
   constructor(props) {
@@ -34,6 +35,7 @@ class LeaguePosts extends Component {
     };
     this.props.createPost(postObj)
     .then((res) => {
+      this.refs.postInput.value = '';
       console.log('post created: ', res);
       this.props.fetchPosts(this.props.params.id)
         .then(() => {
@@ -46,9 +48,12 @@ class LeaguePosts extends Component {
     return this.props.all.map(post =>
       (
         <li key={post._id}>
-          <div>{post.author.name} : {post.description}</div>
-          <div>{post.date}</div>
-          <Link to={`/league/${post.league}/posts/${post._id}`}>Comment</Link>
+          <h4>{post.author.name}</h4>
+          <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
+          <p>{post.description}</p>
+          <div className="post-link-wrapper">
+            <Link to={`/league/${post.league}/posts/${post._id}`}>Comments: {post.comments.length}</Link>
+          </div>
           {this.renderComments(post._id)}
         </li>
       )
@@ -57,11 +62,13 @@ class LeaguePosts extends Component {
 
   render() {
     return (
-      <div className="posts">
+      <div className="league-posts">
         <div className="post-wrapper">
-          <textarea ref="postInput" type="text" className="post-area" placeholder=""/>
-          <button onClick={this.addPost.bind(this)} className="btn btn-primary pull-right">POST</button>
-          <div>
+          <div className="post-text">
+            <textarea ref="postInput" type="text" placeholder=""/>
+            <button onClick={this.addPost.bind(this)} className="btn btn-primary pull-right">Post</button>
+          </div>
+          <div className="post-list-wrapper">
             <ul>
               {this.renderList()}
             </ul>

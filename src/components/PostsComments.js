@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createComment } from '../actions/index';
 import { fetchComments } from '../actions/index';
+import moment from 'moment';
 
 class PostsComments extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class PostsComments extends Component {
       .then((res) => {
         console.log('successful: ', res);
         console.log('post id: ', this.props.params.postId);
+        this.refs.commentInput.value = '';
 
         this.props.fetchComments(this.props.params.postId)
           .then((res) => {
@@ -37,8 +39,9 @@ class PostsComments extends Component {
     return this.props.all.map(comment => {
       return (
         <li key={comment._id}>
-          <div> {comment.author.name} : {comment.description} </div>
-          <div> {comment.date} </div>
+          <h4>{comment.author.name}</h4>
+          <h6>{moment(comment.date).format('MMMM Do, YYYY, h:mm a')}</h6>
+          <p>{comment.text}</p>
         </li>
       );
     });
@@ -49,14 +52,14 @@ class PostsComments extends Component {
         <div className="comment-area">
           <textarea ref="commentInput" className="comment-area" />
           <button
-            onClick={this.createComment.bind(this)}
-            className="btn btn-success pull-right">Comment
+          onClick={this.createComment.bind(this)}
+          className="btn btn-success pull-right">Comment
           </button>
-          <div>
-            <ul>
-              {this.renderList()}
-            </ul>
-          </div>
+        </div>
+        <div className="comments-list-wrapper">
+          <ul>
+            {this.renderList()}
+          </ul>
         </div>
       </div>
     );
