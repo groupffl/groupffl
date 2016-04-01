@@ -63,7 +63,7 @@ class RegisterForm extends Component {
               <div className="text-help">
                 {password2.touched ? password2.error : ''}
               </div>
-            <button type="submit" className="btn btn-success form-control">Register</button>
+            <button type="submit" className="btn register-form-btn form-control">Register</button>
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">

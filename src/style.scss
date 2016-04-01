@@ -68,6 +68,30 @@ body {
   }
 }
 
+.register-form-btn {
+  color: #f0f0f0;
+}
+
+.register-form-btn:hover {
+  color: red;
+}
+
+.register-form-btn:focus {
+  color: #f0f0f0;
+}
+
+.login-form-btn {
+  color: #f0f0f0;
+}
+
+.login-form-btn:hover {
+  color: red;
+}
+
+.login-form-btn:focus {
+  color: #f0f0f0;
+}
+
 .media-panel {
   background-color: white;
   margin-top: 25px;

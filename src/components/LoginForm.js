@@ -26,10 +26,9 @@ class LoginForm extends Component {
     const { fields: { email, password }, handleSubmit } = this.props;
 
     return (
-
       <div className="login-register-form">
         <h3>One account. All your leagues.</h3>
-        <h4 className="login-title">Sign in with your email to join or create a league</h4>
+        <h4 className="login-title">Sign in with your email</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
           <img src=" http://i.imgur.com/FwW4B2K.png" width="35%" alt=""/>
           <form
@@ -54,7 +53,7 @@ class LoginForm extends Component {
             <div className="text-help">
               {password.touched ? password.error : ''}
             </div>
-            <button type="submit" className="btn btn-success form-control">Sign in</button>
+            <button type="submit" className="btn login-form-btn form-control">Sign in</button>
             <a className="pull-right" href="#">Forgot password?</a>
           </form>
         </div>
