@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createComment } from '../actions/index';
+import { fetchComments } from '../actions/index';
 
 class PostsComments extends Component {
   constructor(props) {
@@ -17,6 +18,12 @@ class PostsComments extends Component {
     this.props.createComment(commentObj)
       .then((res) => {
         console.log('successful: ', res);
+        console.log('post id: ', this.props.params.postId);
+        
+        this.props.fetchComments(this.props.params.postId)
+          .then((res) => {
+            console.log('successful post and get comments: ', res);
+          });
       });
   }
 
@@ -39,4 +46,4 @@ function mapStateToProps(state) {
   return state.comments;
 }
 
- export default connect(mapStateToProps, { createComment })(PostsComments);
+ export default connect(mapStateToProps, { createComment, fetchComments })(PostsComments);

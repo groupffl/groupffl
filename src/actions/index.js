@@ -15,6 +15,7 @@ export const FETCH_LEAGUE_MEMBERS = 'FETCH_LEAGUE_MEMBERS';
 export const CREATE_POST = 'CREATE_POST';
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
+export const FETCH_COMMENTS = 'FETCH_COMMENTS';
 
 const REGISTER_URL = '/api/user/register';
 const LOGIN_URL = '/api/user/login';
@@ -28,6 +29,7 @@ const FETCH_LEAGUE_MEMBERS_URL = '/api/league/';
 const CREATE_POST_URL = '/api/post';
 const FETCH_POSTS_URL = '/api/league/';
 const CREATE_COMMENT_URL = '/api/comment/';
+const FETCH_COMMENTS_URL = '/api/post/';
 
 export function registerUser(props) {
   const request = axios.post(REGISTER_URL, { email: props.email, password: props.password });
@@ -139,9 +141,19 @@ export function createComment(commentObj) {
   console.log('post id in action: ', commentObj);
   const request = axios.post(`${CREATE_COMMENT_URL}`, commentObj);
 
-
   return {
     type: CREATE_COMMENT,
+    payload: request
+  };
+}
+
+export function fetchComments(postId) {
+  console.log('post id in fetch comments: ', postId);
+  //      /:postId/comments
+  const request = axios.get(`${FETCH_COMMENTS_URL}${postId}/comments`);
+
+  return {
+    type: FETCH_COMMENTS,
     payload: request
   };
 }
