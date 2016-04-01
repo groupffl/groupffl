@@ -7,7 +7,7 @@
     commissioner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }],
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
-    fflUrl: { type: String, required: true }
+    fflUrl: { type: String }
   });
 
   leagueSchema.statics.createMW = (req, res, next) => {

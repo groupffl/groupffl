@@ -29,7 +29,9 @@
       .then(league => {
         if (!league) { throw new Error('There is no League with this ID'); }
         if (!league.teams.indexOf(req.body.teamId) === -1) { return res.status(400).send('This Team does not belong to this League'); }
-        newPost.league = league.id;
+        //console.log('')
+        // newPost.league = league.id;
+        newPost.league = league._id;
         mongoose.model('Team').findOne({ _id: req.body.teamId, owner: req.user }).exec()
         .then(team => {
           if (!team) { throw new Error('You do not own a Team with this ID'); }
@@ -37,16 +39,31 @@
           team.posts.push(newPost);
           return team.save();
         })
-        .then(() => league.save())
+        .catch(err => {
+          res.status(400).send(err);
+        })
+        .then(() => {
+          console.log('league:', league);
+          return league.save();
+        })
+        .catch(err => {
+          res.status(400).send(err);
+        })
         .then(() => {
           newPost.title = req.body.title;
           newPost.description = req.body.description;
           return newPost.save();
         })
+        .catch(err => {
+          res.status(400).send(err);
+        })
         .then(() => {
           next();
         })
-        .catch(err => res.status(400).send(err));
+        .catch(err => {
+          res.status(400).send(err);
+        }
+        );
       })
       .catch(err => res.status(400).send(err.message));
     });
