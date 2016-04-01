@@ -37,10 +37,10 @@ class LeagueInfo extends Component {
           <h4>Commissioner</h4>
           <p>Email: {leagueInfo.commissioner.email}</p>
           <h4>Related Links</h4>
-          <a className="related-links" href="">ESPN Fantasy News</a>
-          <a className="related-links" href="">Yahoo Fantasy News</a>
-          <a className="related-links" href="">NFL Fantasy News</a>
-          <a className="related-links" href="">Rotoworld Fantasy News</a>
+          <a className="related-links" href="http://games.espn.go.com/frontpage/football">ESPN Fantasy News</a>
+          <a className="related-links" href="http://football.fantasysports.yahoo.com/">Yahoo Fantasy News</a>
+          <a className="related-links" href="http://www.nfl.com/fantasyfootball/playernews">NFL Fantasy News</a>
+          <a className="related-links" href="http://www.rotoworld.com/playernews/nfl/football/">Rotoworld Fantasy News</a>
         </div>
       </div>
     );

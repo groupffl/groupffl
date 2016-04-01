@@ -58,6 +58,10 @@ body {
     margin-top: 20px;
   }
 
+  .navbar-logout:hover {
+    color:red;
+  }
+
   .navbar-register {
     margin-top: 20px;
     margin-right: 5px;
@@ -107,8 +111,6 @@ body {
   color:$nflred;
   bottom: 13px;
 }
-
-
 
 .media-panel {
   background-color: white;
