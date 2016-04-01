@@ -6,12 +6,12 @@ const User = require(global.models + '/User');
 const Comment = require(global.models + '/Comment');
 
 router.get('/:postId/comments', (req, res) => {
-  
+
 
   Comment.find({ post: req.params.postId }, (err, comments) => {
     if (err) { return res.status(400).send(err); }
     res.send(comments);
-  });
+  }).populate('author');
 });
 
 router.get('/', User.isLoggedIn, (req, res) => {

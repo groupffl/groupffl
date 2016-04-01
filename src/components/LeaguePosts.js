@@ -33,7 +33,8 @@ class LeaguePosts extends Component {
       title: 'NA'
     };
     this.props.createPost(postObj)
-    .then(() => {
+    .then((res) => {
+      console.log('post created: ', res);
       this.props.fetchPosts(this.props.params.id)
         .then(() => {
         });

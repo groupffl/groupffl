@@ -9,6 +9,12 @@ class PostsComments extends Component {
     console.log(props);
   }
 
+  componentWillMount() {
+    this.props.fetchComments(this.props.params.postId)
+      .then(() => {
+      });
+  }
+
   createComment() {
     const commentObj = {
       text: this.refs.commentInput.value,
@@ -19,7 +25,7 @@ class PostsComments extends Component {
       .then((res) => {
         console.log('successful: ', res);
         console.log('post id: ', this.props.params.postId);
-        
+
         this.props.fetchComments(this.props.params.postId)
           .then((res) => {
             console.log('successful post and get comments: ', res);
@@ -27,6 +33,16 @@ class PostsComments extends Component {
       });
   }
 
+  renderList() {
+    return this.props.all.map(comment => {
+      return (
+        <li key={comment._id}>
+          <div> {comment.author.name} : {comment.description} </div>
+          <div> {comment.date} </div>
+        </li>
+      );
+    });
+  }
   render() {
     return (
       <div className="comments">
@@ -36,6 +52,11 @@ class PostsComments extends Component {
             onClick={this.createComment.bind(this)}
             className="btn btn-success pull-right">Comment
           </button>
+          <div>
+            <ul>
+              {this.renderList()}
+            </ul>
+          </div>
         </div>
       </div>
     );
