@@ -92,6 +92,16 @@ body {
   color: #f0f0f0;
 }
 
+.text-help {
+  color:$nflred;
+}
+
+.text-help-password-again {
+  position: relative;
+  color:$nflred;
+  bottom:13px;
+}
+
 .media-panel {
   background-color: white;
   margin-top: 25px;

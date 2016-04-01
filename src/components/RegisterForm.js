@@ -56,11 +56,11 @@ class RegisterForm extends Component {
             <div className={`form-group ${password2.touched && password2.invalid ? 'has-danger' : ''}`}>
               <input
                 type="password"
-                className="form-control"
+                className="form-control form-reg-password-again"
                 placeholder="Enter your password (again)"
                 {...password2} />
               </div>
-              <div className="text-help">
+              <div className="text-help-password-again">
                 {password2.touched ? password2.error : ''}
               </div>
             <button type="submit" className="btn register-form-btn form-control">Register</button>
