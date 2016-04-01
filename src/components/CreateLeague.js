@@ -15,15 +15,16 @@ class CreateLeague extends Component {
     this.props.createLeague(props)
       .then(() => true/* this.props.fetchLeagues(); */);
   }
+  // {/*<div className="login-register-form">*/}
   render() {
     const { fields: { name, leagueURL, team }, handleSubmit } = this.props;
 
     return (
       <div className="login-register-form">
-        <h3>Be a league commisioner.</h3>
+        <h3>Be a league commissioner.</h3>
         <h4 className="login-title">Create a league.</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
-          <img src="../images/trophy.png" width="35%" alt=""/>
+          <img src="http://i.imgur.com/addEGTI.png" width="35%" height="185px" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className={`form-group ${name.touched && name.invalid ? 'has-danger' : ''}`}>

@@ -33,7 +33,7 @@ class LoginForm extends Component {
         <h3>One account. All your leagues.</h3>
         <h4 className="login-title">Sign in with your email.</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
-          <img src="../images/helmet.png" width="35%" alt=""/>
+          <img src=" http://i.imgur.com/FwW4B2K.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
