@@ -26,6 +26,7 @@ class PostsComments extends Component {
       .then((res) => {
         console.log('successful: ', res);
         console.log('post id: ', this.props.params.postId);
+        this.refs.commentInput.value = '';
 
         this.props.fetchComments(this.props.params.postId)
           .then((res) => {

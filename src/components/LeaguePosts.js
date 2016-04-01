@@ -35,6 +35,7 @@ class LeaguePosts extends Component {
     };
     this.props.createPost(postObj)
     .then((res) => {
+      this.refs.postInput.value = '';
       console.log('post created: ', res);
       this.props.fetchPosts(this.props.params.id)
         .then(() => {
@@ -51,7 +52,7 @@ class LeaguePosts extends Component {
           <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
           <p>{post.description}</p>
           <div className="post-link-wrapper">
-            <Link to={`/league/${post.league}/posts/${post._id}`}>Comment</Link>
+            <Link to={`/league/${post.league}/posts/${post._id}`}>Comments: {post.comments.length}</Link>
           </div>
           {this.renderComments(post._id)}
         </li>
