@@ -50,7 +50,6 @@ export function loginUser(props) {
 }
 
 export function logoutUser() {
-  // const request = axios.get(LOGOUT_URL);
   return {
     type: LOGOUT_USER,
     payload: null
