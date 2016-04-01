@@ -15,12 +15,10 @@ class LoginForm extends Component {
   }
 
   onSubmit(props) {
-    console.log('props: ', props);
     this.props.loginUser(props)
       .then(() => {
         this.props.verifyLogin();
         this.props.history.push('/');
-        console.log('login successful');
       });
   }
 
@@ -31,7 +29,7 @@ class LoginForm extends Component {
 
       <div className="login-register-form">
         <h3>One account. All your leagues.</h3>
-        <h4 className="login-title">Sign in with your email.</h4>
+        <h4 className="login-title">Sign in with your email to join or create a league</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
           <img src=" http://i.imgur.com/FwW4B2K.png" width="35%" alt=""/>
           <form
@@ -61,7 +59,7 @@ class LoginForm extends Component {
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">
-          <Link to="/register" className="login-noaccount" href="#">I don't have an account</Link>
+          <Link to="/register" className="login-noaccount" href="#">I do not have an account</Link>
         </div>
       </div>
     );

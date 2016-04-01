@@ -24,10 +24,10 @@ class Navbar extends Component {
       return (
         <div>
           <Link to="/register"
-            className="btn hidden-xs hidden-sm navbar-buttons navbar-register"
+            className="btn hidden-xs hidden-sm hidden-md navbar-buttons navbar-register"
             onClick={this.handleClick.bind(this)}> Register</Link>
           <Link to="/login"
-            className="btn hidden-xs hidden-sm navbar-buttons navbar-login"
+            className="btn hidden-xs hidden-sm hidden-md navbar-buttons navbar-login"
             onClick={this.handleClick.bind(this)}> Login</Link>
         </div>
       );
@@ -35,7 +35,7 @@ class Navbar extends Component {
       return (
         <div>
           <Link to="/"
-            className="btn hidden-xs hidden-sm navbar-buttons navbar-logout"
+            className="btn hidden-xs hidden-sm hidden-md navbar-buttons navbar-logout"
             onClick={this.logoutClick.bind(this)}>Logout</Link>
         </div>
       );

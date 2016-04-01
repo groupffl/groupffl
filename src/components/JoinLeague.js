@@ -14,7 +14,6 @@ class JoinLeague extends Component {
   }
 
   onSubmit(props) {
-    console.log('on submit', props);
     this.props.joinLeague(props)
       .then(() => true);
   }
