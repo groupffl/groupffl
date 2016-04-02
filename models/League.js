@@ -12,7 +12,6 @@
   });
 
   leagueSchema.statics.createMW = (req, res, next) => {
-    console.log('in createMW ');
     // if (!req.body.team || !req.body.name || !req.body.fflUrl) { return res.status(400).send('Missing League name, Team name, or URL'); }
     if (!req.body.team || !req.body.name) { return res.status(400).send('Missing League name, Team name, or URL'); }
     let title = req.body.name.trim();
@@ -23,13 +22,10 @@
 
     League.findOne({ name: titleReg }).exec()
     .then(league => {
-      console.log('in League find one: ', league);
       if (league) { throw new Error('A League with this name already exists'); }
-
-      console.log('in find one League');
       newLeague.name = req.body.name;
       newLeague.commissioner = req.user;
-      newLeague.commissionerTeamName = req.body.team; 
+      newLeague.commissionerTeamName = req.body.team;
       newLeague.fflUrl = req.body.fflUrl;
 
       newTeam.name = req.body.team;
@@ -37,10 +33,8 @@
       newTeam.league = newLeague._id;
       mongoose.model('User').findById(req.user).exec()
       .then(user => {
-        console.log('in find USER ');
         user.leagues.push(newLeague._id);
         user.teams.push(newTeam._id);
-
         req.resData = {
           message: 'League created',
           league: newLeague

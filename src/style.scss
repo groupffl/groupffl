@@ -96,6 +96,10 @@ body {
   color: #f0f0f0;
 }
 
+.text-help {
+  color:$nflred;
+}
+
 .text-help-register {
   color:$nflred;
 }
@@ -110,6 +114,18 @@ body {
   position:relative;
   color:$nflred;
   bottom: 13px;
+}
+
+.form-btn {
+  color: #f0f0f0;
+}
+
+.form-btn:hover {
+  color: red;
+}
+
+.form-btn:focus {
+  color: #f0f0f0;
 }
 
 .media-panel {

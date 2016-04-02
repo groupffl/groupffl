@@ -48,7 +48,7 @@ class CreateLeague extends Component {
                 {team.touched ? team.error : ''}
               </div>
             </div>
-            <button type="submit" className="btn form-control">Create</button>
+            <button type="submit" className="btn form-control form-btn">Create</button>
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">
