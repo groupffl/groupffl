@@ -23,9 +23,6 @@ class LeagueInfo extends Component {
 
     const { leagueInfo } = this.props;
 
-
-    // TODO: populated commisioner and fantasy link url
-
     return (
       <div>
         <h3>{leagueInfo.name}</h3>

@@ -7,12 +7,12 @@ import moment from 'moment';
 class PostsComments extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
   }
 
   componentWillMount() {
     this.props.fetchComments(this.props.params.postId)
-      .then(() => {
+      .then(res => {
+        console.log(res);
       });
   }
 
@@ -21,16 +21,11 @@ class PostsComments extends Component {
       text: this.refs.commentInput.value,
       postId: this.props.params.postId
     };
-
     this.props.createComment(commentObj)
       .then((res) => {
-        console.log('successful: ', res);
-        console.log('post id: ', this.props.params.postId);
         this.refs.commentInput.value = '';
-
         this.props.fetchComments(this.props.params.postId)
           .then((res) => {
-            console.log('successful post and get comments: ', res);
           });
       });
   }
@@ -46,6 +41,7 @@ class PostsComments extends Component {
       );
     });
   }
+
   render() {
     return (
       <div className="comments">
@@ -67,6 +63,7 @@ class PostsComments extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('state in comments is: ', state.comments);
   return state.comments;
 }
 

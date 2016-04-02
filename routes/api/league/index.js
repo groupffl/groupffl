@@ -8,10 +8,13 @@
   const User = require(global.models + '/User');
 
   router.get('/:leagueId/posts', User.isLoggedIn, (req, res) => {
-    Post.find({ league: req.params.leagueId }).populate('author').exec((err, posts) => {
-      if (err) { return res.status(400).send(err); }
-      res.send(posts);
-    });
+    Post.
+      find({ league: req.params.leagueId }).
+      populate('author').
+      exec((err, posts) => {
+        if (err) { return res.status(400).send(err); }
+        res.send(posts);
+      });
   });
 
   router.get('/:leagueId', User.isLoggedIn, League.detailsMW, (req, res) => {
@@ -19,12 +22,10 @@
   });
 
   router.get('/', User.isLoggedIn, User.getUserLeaguesMW, (req, res) => {
-    // console.log('userLeagues', req.userLeagues);
     res.send(req.userLeagues);
   });
 
   router.post('/', User.isLoggedIn, League.createMW, User.getUserLeaguesMW, (req, res) => {
-    console.log('newLeague', req.userLeagues);
     res.send(req.userLeagues);
   });
 

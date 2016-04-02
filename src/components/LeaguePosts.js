@@ -16,8 +16,7 @@ class LeaguePosts extends Component {
   }
 
   renderComments(postId) {
-    console.log('params', this.props.params.postId);
-    console.log('this post id', postId);
+    console.log('postId', postId);
     if (postId == this.props.params.postId) {
       return (
         <div>
@@ -36,15 +35,21 @@ class LeaguePosts extends Component {
     this.props.createPost(postObj)
     .then((res) => {
       this.refs.postInput.value = '';
-      console.log('post created: ', res);
       this.props.fetchPosts(this.props.params.id)
         .then(() => {
         });
     });
   }
 
+  handleClick(postId) {
+    this.props.fetchComments(postId)
+      .then(res => {
+        console.log('successfully received comments', res);
+      });
+  }
+
+
   renderList() {
-    console.log('state', this.state);
     return this.props.all.map(post =>
       (
         <li key={post._id}>
@@ -52,7 +57,9 @@ class LeaguePosts extends Component {
           <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
           <p>{post.description}</p>
           <div className="post-link-wrapper">
-            <Link to={`/league/${post.league}/posts/${post._id}`}>Comments: {post.comments.length}</Link>
+            <Link to={`/league/${post.league}/posts/${post._id}`}
+              onClick={this.handleClick.bind(this, post._id)}>
+              Comments: {post.comments.length}</Link>
           </div>
           {this.renderComments(post._id)}
         </li>
