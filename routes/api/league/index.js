@@ -19,7 +19,7 @@
   });
 
   router.get('/', User.isLoggedIn, User.getUserLeaguesMW, (req, res) => {
-    console.log('userLeagues', req.userLeagues);
+    // console.log('userLeagues', req.userLeagues);
     res.send(req.userLeagues);
   });
 

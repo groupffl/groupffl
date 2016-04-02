@@ -57,6 +57,7 @@ export function logoutUser() {
 }
 
 export function createLeague(props) {
+  console.log('data sent in post request', props);
   const request = axios.post(CREATE_LEAGUE_URL, props);
 
   return {

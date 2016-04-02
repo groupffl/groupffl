@@ -35,7 +35,8 @@ class LeagueInfo extends Component {
           <h4>FFL URL</h4>
           <a href="#">httpffl.com/league/9090909</a>
           <h4>Commissioner</h4>
-          <p>Email: {leagueInfo.commissioner.email}</p>
+          <p>Team Name:<br />{leagueInfo.commissionerTeamName}</p>
+          <p>Email:<br />{leagueInfo.commissioner.email}</p>
           <h4>Related Links</h4>
           <a className="related-links" href="http://games.espn.go.com/frontpage/football">ESPN Fantasy News</a>
           <a className="related-links" href="http://football.fantasysports.yahoo.com/">Yahoo Fantasy News</a>
@@ -48,6 +49,7 @@ class LeagueInfo extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('league info is: ', state.leagueInfo);
   return state.leagueInfo;
 }
 

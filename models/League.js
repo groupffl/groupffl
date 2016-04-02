@@ -5,13 +5,16 @@
   let leagueSchema = new mongoose.Schema({
     name: { type: String, required: true },
     commissioner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    commissionerTeamName: { type: String },
     teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }],
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
     fflUrl: { type: String }
   });
 
   leagueSchema.statics.createMW = (req, res, next) => {
-    if (!req.body.team || !req.body.name || !req.body.fflUrl) { return res.status(400).send('Missing League name, Team name, or URL'); }
+    console.log('in createMW ');
+    // if (!req.body.team || !req.body.name || !req.body.fflUrl) { return res.status(400).send('Missing League name, Team name, or URL'); }
+    if (!req.body.team || !req.body.name) { return res.status(400).send('Missing League name, Team name, or URL'); }
     let title = req.body.name.trim();
     let titleReg = new RegExp(`^${title}$`, 'i');
 
@@ -20,10 +23,13 @@
 
     League.findOne({ name: titleReg }).exec()
     .then(league => {
+      console.log('in League find one: ', league);
       if (league) { throw new Error('A League with this name already exists'); }
 
+      console.log('in find one League');
       newLeague.name = req.body.name;
       newLeague.commissioner = req.user;
+      newLeague.commissionerTeamName = req.body.team; 
       newLeague.fflUrl = req.body.fflUrl;
 
       newTeam.name = req.body.team;
@@ -31,6 +37,7 @@
       newTeam.league = newLeague._id;
       mongoose.model('User').findById(req.user).exec()
       .then(user => {
+        console.log('in find USER ');
         user.leagues.push(newLeague._id);
         user.teams.push(newTeam._id);
 
@@ -39,7 +46,7 @@
           league: newLeague
         };
         req.resData.league.teams[0] = newTeam;
-        req.resData.league.commissioner.username = user.username;
+        req.resData.league.commissioner.username = user.username; // NOTE: User may not have username
         req.resData.league.commissioner.email = user.email;
         return user.save();
       })
@@ -78,6 +85,7 @@
                 mongoose.model('User').populate(league, { path: 'commissioner teams.owner posts.author.owner', model: 'User', select: 'email' }, (err, league) => {
                   if (err) { return res.status(400).send(err); }
                   req.details = league;
+                  console.log('league details is: ', league);
                   next();
                 });
               });

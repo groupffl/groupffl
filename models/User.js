@@ -9,7 +9,7 @@
   const deepPopulate = require('mongoose-deep-populate')(mongoose);
 
   let userSchema = new mongoose.Schema({
-    // username: { type: String, lowercase: true, trim: true, required: true },
+    //username: { type: String, lowercase: true, trim: true },
     password: { type: String, required: true },
     email: { type: mongoose.Schema.Types.Email, lowercase: true, trim: true, required: true },
     leagues: [{ type: mongoose.Schema.Types.ObjectId, ref: 'League' }],

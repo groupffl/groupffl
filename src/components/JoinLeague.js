@@ -50,7 +50,7 @@ class JoinLeague extends Component {
                   {team.touched ? team.error : ''}
                 </div>
             </div>
-            <button type="submit" className="btn btn-success form-control">Join</button>
+            <button type="submit" className="btn form-control">Join</button>
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">
