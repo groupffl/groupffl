@@ -25,14 +25,6 @@ class LeaguePosts extends Component {
     }
   }
 
-  handleCommentsClick(postId) {
-    // console.log('in handle comments click', postId);
-    // this.props.fetchComments(postId)
-    //   .then(res => {
-    //     console.log('successfully received comments', res);
-    //   });
-  }
-
   renderList() {
     return this.props.all.map(post =>
       (

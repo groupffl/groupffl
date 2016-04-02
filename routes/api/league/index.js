@@ -13,7 +13,7 @@
       populate('author').
       exec((err, posts) => {
         if (err) { return res.status(400).send(err); }
-        res.send(posts);
+        res.send(posts.reverse());
       });
   });
 
