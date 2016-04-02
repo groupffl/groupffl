@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import { createPost, fetchPosts, fetchComments } from '../actions/index';
 import moment from 'moment';
 
+var commentsDisplayedFlagG = false;
+
 class LeaguePosts extends Component {
   constructor(props) {
     super(props);
@@ -26,16 +28,33 @@ class LeaguePosts extends Component {
   }
 
   renderList() {
-    return this.props.all.map(post =>
-      (
-        <li key={post._id}>
+    if (commentsDisplayedFlagG === true) {
+      commentsDisplayedFlagG = false;
+      return this.props.all.map(post =>
+        (
+          <li key={post._id}>
           <h4>{post.author.name}</h4>
           <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
           <p>{post.description}</p>
           <div className="post-link-wrapper">
-            <Link to={`/league/${post.league}/posts/${post._id}`}>Comments: {post.comments.length}</Link>
+            <Link to={`/league/${post.league}/posts`}>Comments: {post.comments.length}</Link>
           </div>
           {this.renderComments(post._id)}
+          </li>
+        )
+      );
+    }
+    commentsDisplayedFlagG = true;
+    return this.props.all.map(post =>
+      (
+        <li key={post._id}>
+        <h4>{post.author.name}</h4>
+        <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
+        <p>{post.description}</p>
+        <div className="post-link-wrapper">
+        <Link to={`/league/${post.league}/posts/${post._id}`}>Comments: {post.comments.length}</Link>
+        </div>
+        {this.renderComments(post._id)}
         </li>
       )
     );
