@@ -33,7 +33,7 @@ class LeagueInfo extends Component {
           <h4>League ID</h4>
           <p>{leagueInfo._id}</p>
           <h4>FFL URL</h4>
-          <a href="#">httpffl.com/league/9090909</a>
+          <a href="#">{leagueInfo.fflUrl}</a>
           <h4>Commissioner</h4>
           <p>Team Name:<br />{leagueInfo.commissionerTeamName}</p>
           <p>Email:<br />{leagueInfo.commissioner.email}</p>
