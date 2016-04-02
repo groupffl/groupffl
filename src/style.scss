@@ -183,7 +183,6 @@ body {
 
 .join-panel {
 
-  // background-color: white;
   margin-top: 25px;
 
   a:hover {
@@ -244,12 +243,9 @@ body {
         display: inline-block;
         vertical-align: middle;
       }
-
     }
   }
-
 }
-
 
 .league-header {
   background-color: $nflblue;
@@ -301,7 +297,6 @@ body {
         margin: 0;
         color: #888;
       }
-
     }
   }
 }
@@ -359,8 +354,6 @@ body {
     text-align: center;
   }
 }
-
-
 
 .join-league-form {
   background-color: lightgray;
@@ -442,8 +435,6 @@ body {
 
   .league-members-list {
     background-color: white;
-    //height: 400px;
-    //overflow: scroll;
 
     ul {
       background-color: white;
@@ -470,13 +461,8 @@ body {
       li:hover {
         // background-color: #eee;
       }
-
-
     }
   }
-
-
-
 }
 
 .league-posts {
@@ -484,11 +470,11 @@ body {
   background-color: #f0f0f0;
   text-align: center;
 
-  .post-wrapper {
-    background-color: #f0f0f0;
-    margin: 25px 10px 10px 10px;
-    min-height: 1500px;
-    padding-bottom: 30px;
+    .post-wrapper {
+      background-color: #f0f0f0;
+      margin: 25px 10px 10px 10px;
+      min-height: 1500px;
+      padding-bottom: 30px;
 
     .post-text {
       margin-top: 0px;
@@ -509,14 +495,11 @@ body {
         padding: 6px 10px;
         font-size: 12px;
       }
-
     }
-
 
     .post-list-wrapper {
       margin-top: 20px;
       background-color: #f0f0f0;
-
 
       ul {
         list-style: none;
@@ -566,7 +549,6 @@ body {
 }
 
 .comments {
-  // background-color: green;
   padding: 0px;
 
   .comment-area {
@@ -591,9 +573,7 @@ body {
   }
 
   .comments-list-wrapper {
-
     ul {
-
       li {
         padding-top: 0px !important;
         padding-left: 40px !important;
@@ -616,8 +596,16 @@ body {
   }
 }
 
+.media-feeds-no-data {
+  position: absolute;
+  margin-top: 25px;
+
+  p {
+    margin-top: 3px; 
+  }
+}
+
 .media-feeds {
-  // height: 600px;
   background-color: #f0f0f0;
 
   h3 {
@@ -629,7 +617,6 @@ body {
   }
 
   .media-rss {
-    // height: 600px;
     overflow: scroll;
 
     ul {

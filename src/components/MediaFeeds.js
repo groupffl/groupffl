@@ -26,10 +26,11 @@ class MediaFeeds extends Component {
 
   render() {
     if (!this.props.rss.data) {
+      console.log('no media');
       return (
-        <div>
+        <div className="media-feeds-no-data">
           <img src="http://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0103%2Fr41245_1296x729_16%2D9.jpg&w=570" width="100%" alt=""/>
-          No fantasy news available...
+          <p>No fantasy news available...</p>
         </div>
       );
     }
