@@ -26,9 +26,14 @@ body {
 
   a {
     margin-left: -20px;
-    // text-transform: uppercase;
-    color:#f0f0f0;
+    color: #f0f0f0;
     font-family: 'Oswald', sans-serif;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: red;
   }
 
   .subtitle {
@@ -601,7 +606,7 @@ body {
   margin-top: 25px;
 
   p {
-    margin-top: 3px; 
+    margin-top: 3px;
   }
 }
 
