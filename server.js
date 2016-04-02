@@ -8,7 +8,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const chalk = require('chalk');
 const cookieParser = require('cookie-parser');
-// const favicon      = require('favicon');
 const logger = require('morgan');
 const path = require('path');
 
