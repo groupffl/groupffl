@@ -41,13 +41,7 @@ class LeaguePosts extends Component {
           <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
           <p>{post.description}</p>
           <div className="post-link-wrapper">
-            {/*}
-            <Link to={`/league/${post.league}/posts/${post._id}`}
-              onClick={this.handleCommentsClick.bind(this, post._id)}>
-              Comments: {post.comments.length}</Link>
-            */}
-            <Link to={`/league/${post.league}/posts/${post._id}`}>
-              Comments: {post.comments.length}</Link>
+            <Link to={`/league/${post.league}/posts/${post._id}`}>Comments: {post.comments.length}</Link>
           </div>
           {this.renderComments(post._id)}
         </li>

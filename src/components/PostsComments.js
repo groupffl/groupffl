@@ -7,18 +7,17 @@ import moment from 'moment';
 class PostsComments extends Component {
   constructor(props) {
     super(props);
-    console.log('in constructor in PostsComments');
-    this.props.fetchComments(this.props.params.postId)
-      .then(res => {
-        console.log('comments in component will mount in constructor ', res);
-      });
+    // console.log('in constructor in PostsComments');
+    // this.props.fetchComments(this.props.params.postId)
+    //   .then(res => {
+    //     console.log('comments in component will mount in constructor ', res);
+    //   });
   }
 
   componentWillMount() {
     console.log('in components will mount');
     this.props.fetchComments(this.props.params.postId)
-      .then(res => {
-        console.log('comments in component will mount ', res);
+      .then(() => {
       });
   }
 
