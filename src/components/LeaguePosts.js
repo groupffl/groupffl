@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { createPost, fetchPosts } from '../actions/index';
+import { createPost, fetchPosts, fetchComments } from '../actions/index';
 import moment from 'moment';
 
 class LeaguePosts extends Component {
@@ -16,7 +16,6 @@ class LeaguePosts extends Component {
   }
 
   renderComments(postId) {
-    console.log('postId', postId);
     if (postId == this.props.params.postId) {
       return (
         <div>
@@ -24,6 +23,36 @@ class LeaguePosts extends Component {
         </div>
       );
     }
+  }
+
+  handleCommentsClick(postId) {
+    // console.log('in handle comments click', postId);
+    // this.props.fetchComments(postId)
+    //   .then(res => {
+    //     console.log('successfully received comments', res);
+    //   });
+  }
+
+  renderList() {
+    return this.props.all.map(post =>
+      (
+        <li key={post._id}>
+          <h4>{post.author.name}</h4>
+          <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
+          <p>{post.description}</p>
+          <div className="post-link-wrapper">
+            {/*}
+            <Link to={`/league/${post.league}/posts/${post._id}`}
+              onClick={this.handleCommentsClick.bind(this, post._id)}>
+              Comments: {post.comments.length}</Link>
+            */}
+            <Link to={`/league/${post.league}/posts/${post._id}`}>
+              Comments: {post.comments.length}</Link>
+          </div>
+          {this.renderComments(post._id)}
+        </li>
+      )
+    );
   }
 
   addPost() {
@@ -39,32 +68,6 @@ class LeaguePosts extends Component {
         .then(() => {
         });
     });
-  }
-
-  handleClick(postId) {
-    this.props.fetchComments(postId)
-      .then(res => {
-        console.log('successfully received comments', res);
-      });
-  }
-
-
-  renderList() {
-    return this.props.all.map(post =>
-      (
-        <li key={post._id}>
-          <h4>{post.author.name}</h4>
-          <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
-          <p>{post.description}</p>
-          <div className="post-link-wrapper">
-            <Link to={`/league/${post.league}/posts/${post._id}`}
-              onClick={this.handleClick.bind(this, post._id)}>
-              Comments: {post.comments.length}</Link>
-          </div>
-          {this.renderComments(post._id)}
-        </li>
-      )
-    );
   }
 
   render() {
@@ -90,4 +93,4 @@ function mapStateToProps(state) {
   return state.leaguePosts;
 }
 
-export default connect(mapStateToProps, { createPost, fetchPosts })(LeaguePosts);
+export default connect(mapStateToProps, { createPost, fetchPosts, fetchComments })(LeaguePosts);

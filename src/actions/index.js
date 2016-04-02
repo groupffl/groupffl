@@ -147,6 +147,7 @@ export function createComment(commentObj) {
 }
 
 export function fetchComments(postId) {
+  console.log('in fetch comments action creator. postId is: ', postId);
   const request = axios.get(`${FETCH_COMMENTS_URL}${postId}/comments`);
 
   return {

@@ -9,8 +9,9 @@ import LeagueInfoReducer from './reducer_league_info';
 import LeagueMembersReducer from './reducer_league_members.js';
 import LeaguePostsReducer from './reducer_league_posts.js';
 import ReducerPostComments from './reducer_post_comments.js';
-
 import { reducer as formReducer } from 'redux-form';
+
+console.log('in rootReducer');
 
 const rootReducer = combineReducers({
   form: formReducer,

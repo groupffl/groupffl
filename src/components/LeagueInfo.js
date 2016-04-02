@@ -10,7 +10,6 @@ class LeagueInfo extends Component {
   componentWillMount() {
     this.props.fetchLeagueInfo(this.props.leagueId)
       .then(() => {
-        console.log('fetched league data in league');
       });
   }
 
@@ -46,7 +45,6 @@ class LeagueInfo extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('league info is: ', state.leagueInfo);
   return state.leagueInfo;
 }
 

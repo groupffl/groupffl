@@ -7,7 +7,6 @@ class LeaguesPanel extends Component {
   componentWillMount() {
     this.props.fetchLeagues()
       .then(() => {
-        console.log('fetched Leagues');
       });
   }
 
@@ -15,7 +14,6 @@ class LeaguesPanel extends Component {
     if (typeof this.props.leagues == 'string') {
       this.props.fetchLeagues()
         .then(() => {
-          console.log('fetched Leagues');
         });
     }
   }
@@ -23,7 +21,6 @@ class LeaguesPanel extends Component {
   handleClick(id) {
     this.props.fetchLeagueInfo(id)
       .then(() => {
-        console.log('fetched league data');
       });
   }
 

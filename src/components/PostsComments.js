@@ -7,12 +7,18 @@ import moment from 'moment';
 class PostsComments extends Component {
   constructor(props) {
     super(props);
+    console.log('in constructor in PostsComments');
+    this.props.fetchComments(this.props.params.postId)
+      .then(res => {
+        console.log('comments in component will mount in constructor ', res);
+      });
   }
 
   componentWillMount() {
+    console.log('in components will mount');
     this.props.fetchComments(this.props.params.postId)
       .then(res => {
-        console.log(res);
+        console.log('comments in component will mount ', res);
       });
   }
 
@@ -31,6 +37,7 @@ class PostsComments extends Component {
   }
 
   renderList() {
+    console.log('in renderList in posts comments. this.props.all is: ', this.props.all);
     return this.props.all.map(comment => {
       return (
         <li key={comment._id}>
@@ -43,6 +50,7 @@ class PostsComments extends Component {
   }
 
   render() {
+    console.log('in render in posts comments');
     return (
       <div className="comments">
         <div className="comment-area">

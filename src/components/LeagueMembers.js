@@ -10,7 +10,6 @@ class LeagueMembers extends Component {
   componentWillMount() {
     this.props.fetchLeagueMembers(this.props.leagueId)
       .then(() => {
-        console.log('got team members: ');
       });
   }
 
