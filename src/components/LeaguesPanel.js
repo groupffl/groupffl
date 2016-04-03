@@ -6,26 +6,22 @@ import { Link } from 'react-router';
 class LeaguesPanel extends Component {
   componentWillMount() {
     this.props.fetchLeagues()
-      .then(() => {
-      });
+      .then(() => {});
   }
 
   componentWillUpdate() {
     if (typeof this.props.leagues == 'string') {
       this.props.fetchLeagues()
-        .then(() => {
-        });
+        .then(() => {});
     }
   }
 
   handleClick(id) {
     this.props.fetchLeagueInfo(id)
-      .then(() => {
-      });
+      .then(() => {});
   }
 
   renderList() {
-
     if (!this.props.isLoggedIn) {
       return (
         <div>

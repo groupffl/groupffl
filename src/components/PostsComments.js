@@ -7,18 +7,11 @@ import moment from 'moment';
 class PostsComments extends Component {
   constructor(props) {
     super(props);
-    // console.log('in constructor in PostsComments');
-    // this.props.fetchComments(this.props.params.postId)
-    //   .then(res => {
-    //     console.log('comments in component will mount in constructor ', res);
-    //   });
   }
 
   componentWillMount() {
-    console.log('in components will mount');
     this.props.fetchComments(this.props.params.postId)
-      .then(() => {
-      });
+      .then(() => {});
   }
 
   createComment() {
@@ -27,29 +20,24 @@ class PostsComments extends Component {
       postId: this.props.params.postId
     };
     this.props.createComment(commentObj)
-      .then((res) => {
+      .then(() => {
         this.refs.commentInput.value = '';
         this.props.fetchComments(this.props.params.postId)
-          .then((res) => {
-          });
+          .then(() => {});
       });
   }
 
   renderList() {
-    console.log('in renderList in posts comments. this.props.all is: ', this.props.all);
-    return this.props.all.map(comment => {
-      return (
+    return this.props.all.map(comment => (
         <li key={comment._id}>
           <h4>{comment.author.name}</h4>
           <h6>{moment(comment.date).format('MMMM Do, YYYY, h:mm a')}</h6>
           <p>{comment.text}</p>
         </li>
-      );
-    });
+    ));
   }
 
   render() {
-    console.log('in render in posts comments');
     return (
       <div className="comments">
         <div className="comment-area">
@@ -70,8 +58,7 @@ class PostsComments extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state in comments is: ', state.comments);
   return state.comments;
 }
 
- export default connect(mapStateToProps, { createComment, fetchComments })(PostsComments);
+export default connect(mapStateToProps, { createComment, fetchComments })(PostsComments);

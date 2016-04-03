@@ -4,8 +4,6 @@ import { reduxForm } from 'redux-form';
 import { loginUser, verifyLogin } from '../actions/index';
 // import { Link, browserHistory } from 'react-router';
 
-
-
 class LoginForm extends Component {
 
   componentWillMount() {

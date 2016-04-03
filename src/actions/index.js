@@ -57,7 +57,6 @@ export function logoutUser() {
 }
 
 export function createLeague(props) {
-  console.log('data sent in post request', props);
   const request = axios.post(CREATE_LEAGUE_URL, props);
 
   return {
@@ -147,7 +146,6 @@ export function createComment(commentObj) {
 }
 
 export function fetchComments(postId) {
-  console.log('in fetch comments action creator. postId is: ', postId);
   const request = axios.get(`${FETCH_COMMENTS_URL}${postId}/comments`);
 
   return {
