@@ -46,10 +46,10 @@ class CreateLeague extends Component {
           <img src="http://i.imgur.com/addEGTI.png" width="13%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-            <div>
+            <div className="form-verify-error">
               {this.state.message}
             </div>
-            <div>
+            <div className="form-verify-success">
               {this.state.success}
             </div>
             <div className={`form-group ${name.touched && name.invalid ? 'has-danger' : ''}`}>

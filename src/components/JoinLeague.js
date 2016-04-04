@@ -6,6 +6,14 @@ import { joinLeague, verifyLogin } from '../actions/index';
 // import { Link, browserHistory } from 'react-router';
 
 class JoinLeague extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: '',
+      success: ''
+    };
+  }
+
 
   componentWillMount() {
     if (!this.props.isLoggedIn) {
@@ -15,8 +23,20 @@ class JoinLeague extends Component {
 
   onSubmit(props) {
     this.props.joinLeague(props)
-      .then(() => true);
+      .then(() => {
+        this.props.resetForm();
+        this.setState({
+          message: '',
+          success: 'Joined league successfully.'
+        });
+      }, () => {
+        this.setState({
+          message: 'League ID invalid or team name already taken.',
+          success: ''
+        });
+      });
   }
+
   render() {
     const { fields: { leagueId, team }, handleSubmit } = this.props;
 
@@ -28,6 +48,12 @@ class JoinLeague extends Component {
           <img src=" http://i.imgur.com/gG4Gqys.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <div className="form-verify-error">
+              {this.state.message}
+            </div>
+            <div className="form-verify-success">
+              {this.state.success}
+            </div>
             <div className={`form-group ${leagueId.touched && leagueId.invalid ? 'has-danger' : ''}`}>
               <input
                 type="text"
