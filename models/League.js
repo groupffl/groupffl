@@ -52,12 +52,13 @@
       .then(() => next())
       .catch(err => {
         console.log(err);
-        res.status(400).send(err.message);
+        res.status(400).send({ verify: false, message: err.message });
       });
     })
     .catch(err => {
       console.log(err);
-      res.status(400).send(err.message);
+      console.log(err.message);
+      res.status(400).send({ verify: false, message: err.message });
     });
   };
 

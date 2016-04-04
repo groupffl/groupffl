@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import { createLeague } from '../actions/index';
@@ -8,7 +8,8 @@ class CreateLeague extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: ''
+      message: '',
+      success: ''
     };
   }
 
@@ -20,10 +21,17 @@ class CreateLeague extends Component {
 
   onSubmit(props) {
     this.props.createLeague(props)
-      .then(response => {
-        console.log(this.props);
+      .then( () => {
         this.props.resetForm();
-        console.log(response);
+        this.setState({
+          message: '',
+          success: 'League created successfully'
+        });
+      }, () => {
+        this.setState({
+          message: 'League name already taken.',
+          success: ''
+        });
       });
   }
 
@@ -38,6 +46,12 @@ class CreateLeague extends Component {
           <img src="http://i.imgur.com/addEGTI.png" width="13%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <div>
+              {this.state.message}
+            </div>
+            <div>
+              {this.state.success}
+            </div>
             <div className={`form-group ${name.touched && name.invalid ? 'has-danger' : ''}`}>
               <input type="text" className="form-control" placeholder="Enter a league name"
               {...name} />
