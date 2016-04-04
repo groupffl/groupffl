@@ -60,7 +60,9 @@ class LoginForm extends Component {
           <img src=" http://i.imgur.com/FwW4B2K.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-            {this.state.message}
+            <div className="form-verify-error">
+              {this.state.message}
+            </div>
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
               <input
                 type="email"

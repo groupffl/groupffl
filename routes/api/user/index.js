@@ -10,7 +10,7 @@
   });
 
   router.post('/login', User.login, (req, res) => {
-    res.send('Welcome back!');
+    res.send({ verify: true, message: 'Welcome back!' });
   });
 
   router.get('/logout', (req, res) => {
