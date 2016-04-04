@@ -1,10 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import { createLeague } from '../actions/index';
 // import { Link, browserHistory } from 'react-router';
 
 class CreateLeague extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: ''
+    };
+  }
+
   componentWillMount() {
     if (!this.props.isLoggedIn) {
       this.props.history.push('/login');
@@ -13,9 +20,13 @@ class CreateLeague extends Component {
 
   onSubmit(props) {
     this.props.createLeague(props)
-      .then(() => true/* this.props.fetchLeagues(); */);
+      .then(response => {
+        console.log(this.props);
+        this.props.resetForm();
+        console.log(response);
+      });
   }
-  // {/*<div className="login-register-form">*/}
+
   render() {
     const { fields: { name, fflUrl, team }, handleSubmit } = this.props;
 
