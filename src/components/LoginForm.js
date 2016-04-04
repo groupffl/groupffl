@@ -6,6 +6,12 @@ import Spinner from './Spinner';
 // import { Link, browserHistory } from 'react-router';
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: ''
+    };
+  }
 
   componentWillMount() {
     if (this.props.isLoggedIn) {
@@ -23,7 +29,9 @@ class LoginForm extends Component {
         if (response.payload.data.verify){
           this.props.history.push('/');
         } else {
-          console.log(response.payload.data.message);
+          this.setState({
+            message: response.payload.data.message
+          });
         }
       });
   }
@@ -52,7 +60,7 @@ class LoginForm extends Component {
           <img src=" http://i.imgur.com/FwW4B2K.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-            {this.showError()}
+            {this.state.message}
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
               <input
                 type="email"
