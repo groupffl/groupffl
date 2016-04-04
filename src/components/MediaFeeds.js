@@ -9,9 +9,11 @@ class MediaFeeds extends Component {
   }
 
   renderList() {
-    if (this.props.rss.data.statusCode == 403) {
+    if (this.props.rss.length === 0 || this.props.rss.data.statusCode == 401) {
+    // if (this.props.rss.data.statusCode === 401) {
+      console.log('inside render list error');
       return (
-        <div>Out of call volume quota</div>
+        <p>No fantasy news available...</p>
       );
     }
     return this.props.rss.data.map(article =>
@@ -25,14 +27,13 @@ class MediaFeeds extends Component {
   }
 
   render() {
-    if (!this.props.rss.data) {
-      return (
-        <div className="media-feeds-no-data">
-          <img src="http://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0103%2Fr41245_1296x729_16%2D9.jpg&w=570" width="100%" alt=""/>
-          <p>No fantasy news available...</p>
-        </div>
-      );
-    }
+  //   if (!this.props.rss.data) {
+  //    return (
+  //      <div>
+  //        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Football.gif" alt=""/>
+  //      </div>
+  //    );
+  //  }
     return (
       <div className="media-feeds">
         <h3>News</h3>
@@ -50,6 +51,7 @@ class MediaFeeds extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('state is: ', state);
   return { rss: state.rss.rss };
 }
 
