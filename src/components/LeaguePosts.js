@@ -25,6 +25,7 @@ class LeaguePosts extends Component {
   }
 
   renderList() {
+    console.log(this.props.all);
     return this.props.all.map(post =>
       (
         <li key={post._id}>
