@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "setup": "npm i && webpack --colors --progress",
     "lint": "eslint . --ext .js --ext .jsx || true",
     "production": "webpack -p",
     "start": "nodemon server.js",
