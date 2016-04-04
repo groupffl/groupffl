@@ -6,10 +6,16 @@ import Spinner from './Spinner';
 // import { Link, browserHistory } from 'react-router'; // Only for Cancel
 
 class RegisterForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: ''
+    };
+  }
+
 
   componentWillMount() {
     if (this.props.isLoggedIn) {
-
       this.props.history.push('/');
     }
   }
@@ -17,11 +23,16 @@ class RegisterForm extends Component {
   onSubmit(props) {
     this.props.beginSpinner();
     this.props.registerUser(props)
-      .then(() => {
+      .then((response) => {
         this.props.endSpinner();
         this.props.verifyLogin();
-        this.props.history.push('/');
-        console.log('resolved');
+        if (response.payload.data.verify){
+          this.props.history.push('/');
+        } else {
+          this.setState({
+            message: response.payload.data.message
+          });
+        }
       });
   }
 
@@ -49,6 +60,9 @@ class RegisterForm extends Component {
           <img src="http://i.imgur.com/92Fh6AU.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <div className="form-verify-error">
+              {this.state.message}
+            </div>
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
               <input
                 type="text"

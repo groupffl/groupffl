@@ -45,7 +45,7 @@
   userSchema.statics.register = (req, res, next) => {
     User.findOne({ email: req.body.email.toLowerCase() }, (err, foundUser) => {
       if (err) { return res.status(400).send(err); }
-      if (foundUser) { return res.status(400).send('This e-mail is currently in use'); }
+      if (foundUser) { return res.status(400).send({ verify: false, message: 'Email has already been taken.' }); }
       let user = new User();
       user.email = req.body.email.toLowerCase();
       bcrypt.hash(req.body.password, 6, (err, hash) => {
