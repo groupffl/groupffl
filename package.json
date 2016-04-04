@@ -4,10 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "setup": "npm i && webpack --colors --progress",
     "lint": "eslint . --ext .js --ext .jsx || true",
     "production": "webpack -p",
-    "start": "webpack && nodemon server.js",
+    "start": "npm i && webpack && nodemon server.js",
     "webpack": "webpack --colors --progress --watch"
   },
   "repository": {
