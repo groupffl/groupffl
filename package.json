@@ -7,7 +7,7 @@
     "setup": "npm i && webpack --colors --progress",
     "lint": "eslint . --ext .js --ext .jsx || true",
     "production": "webpack -p",
-    "start": "nodemon server.js",
+    "start": "webpack && nodemon server.js",
     "webpack": "webpack --colors --progress --watch"
   },
   "repository": {
