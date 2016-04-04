@@ -32,7 +32,7 @@ body {
 
   a:hover {
     text-decoration: none;
-    color: red;
+    color: $nflred;
   }
 
   .subtitle {
@@ -55,7 +55,7 @@ body {
   }
 
   .navbar-login:hover {
-    color:red;
+    color:$nflred;
   }
 
   .navbar-logout {
@@ -63,7 +63,7 @@ body {
   }
 
   .navbar-logout:hover {
-    color:red;
+    color: $nflred;
   }
 
   .navbar-register {
@@ -72,7 +72,7 @@ body {
   }
 
   .navbar-register:hover {
-    color:red;
+    color: $nflred;
   }
 }
 
@@ -81,7 +81,7 @@ body {
 }
 
 .register-form-btn:hover {
-  color: red;
+  color: $nflred;
 }
 
 .register-form-btn:focus {
@@ -93,7 +93,7 @@ body {
 }
 
 .login-form-btn:hover {
-  color: red;
+  color: $nflred;
 }
 
 .login-form-btn:focus {
@@ -120,13 +120,7 @@ body {
   bottom: 13px;
 }
 
-.form-btn {
-  color: #f0f0f0;
-}
 
-.form-btn:hover {
-  color: red;
-}
 
 .form-btn:focus {
   color: #f0f0f0;
@@ -345,6 +339,8 @@ body {
         padding-bottom: 8px;
         background-color: $nflblue;
         border-color: $nflblue;
+        color: #f0f0f0;
+        outline: none;
       }
       a {
         padding-top: 8px;
@@ -356,6 +352,13 @@ body {
     padding-top: 20px;
     display: block;
     text-align: center;
+  }
+  .form-btn:hover {
+    background-color: #004599;
+    border-color: #004599;
+  }
+  .form-btn:focus {
+    outline: none;
   }
 }
 
