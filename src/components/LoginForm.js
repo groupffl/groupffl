@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { loginUser, verifyLogin } from '../actions/index';
+import { loginUser, verifyLogin, beginSpinner, endSpinner } from '../actions/index';
+import Spinner from './Spinner';
 // import { Link, browserHistory } from 'react-router';
 
 class LoginForm extends Component {
@@ -13,11 +14,26 @@ class LoginForm extends Component {
   }
 
   onSubmit(props) {
+    this.props.beginSpinner();
     this.props.loginUser(props)
       .then(() => {
+        this.props.endSpinner();
         this.props.verifyLogin();
         this.props.history.push('/');
       });
+  }
+
+  renderButton() {
+    if (this.props.isLoading) {
+      return (
+        <button type="submit" className="btn form-btn form-control">
+          <Spinner />
+        </button>
+      );
+    }
+    return (
+      <button type="submit" className="btn form-btn form-control">Sign in</button>
+    );
   }
 
   render() {
@@ -51,7 +67,7 @@ class LoginForm extends Component {
             <div className="text-help-login">
               {password.touched ? password.error : ''}
             </div>
-            <button type="submit" className="btn form-btn form-control">Sign in</button>
+            {this.renderButton()}
             <a className="pull-right" href="#">Forgot password?</a>
           </form>
         </div>
@@ -78,11 +94,15 @@ function validate(values) {
 }
 
 function mapStateToProps(state) {
-  return state.isLoggedIn;
+  console.log('state', state);
+  return {
+    isLoggedIn: state.isLoggedIn.isLoggedIn,
+    isLoading: state.isLoading
+  };
 }
 
 export default reduxForm({
   form: 'LoginForm',
   fields: ['email', 'password'],
   validate
-}, mapStateToProps, { loginUser, verifyLogin })(LoginForm);
+}, mapStateToProps, { loginUser, verifyLogin, beginSpinner, endSpinner })(LoginForm);

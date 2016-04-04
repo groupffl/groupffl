@@ -17,7 +17,7 @@ class RegisterForm extends Component {
     console.log(props);
     this.props.registerUser(props)
       .then(() => {
-        this.props.history.push('/login');
+        this.props.history.push('/');
         console.log('resolved');
       });
   }
