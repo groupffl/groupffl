@@ -14,7 +14,6 @@
   });
 
   router.get('/logout', (req, res) => {
-    console.log('logout');
     res.clearCookie('authToken').redirect('/');
   });
 

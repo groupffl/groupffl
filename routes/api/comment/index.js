@@ -14,7 +14,6 @@
   });
 
   router.post('/', User.isLoggedIn, Comment.createMW, (req, res) => {
-    console.log('in post comments route');
     res.send('Comment created');
   });
 

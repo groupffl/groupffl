@@ -137,7 +137,6 @@ export function fetchPosts(id) {
 }
 
 export function createComment(commentObj) {
-  console.log('post id in action: ', commentObj);
   const request = axios.post(`${CREATE_COMMENT_URL}`, commentObj);
 
   return {
@@ -147,8 +146,6 @@ export function createComment(commentObj) {
 }
 
 export function fetchComments(postId) {
-  console.log('post id in fetch comments: ', postId);
-  //      /:postId/comments
   const request = axios.get(`${FETCH_COMMENTS_URL}${postId}/comments`);
 
   return {

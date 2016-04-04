@@ -14,7 +14,6 @@ class JoinLeague extends Component {
   }
 
   onSubmit(props) {
-    console.log('on submit', props);
     this.props.joinLeague(props)
       .then(() => true);
   }
@@ -26,7 +25,7 @@ class JoinLeague extends Component {
         <h3>Join an existing league.</h3>
         <h4 className="login-title">Join with the league ID.</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
-          <img src="../images/handshake.png" width="35%" alt=""/>
+          <img src=" http://i.imgur.com/gG4Gqys.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className={`form-group ${leagueId.touched && leagueId.invalid ? 'has-danger' : ''}`}>
@@ -51,7 +50,7 @@ class JoinLeague extends Component {
                   {team.touched ? team.error : ''}
                 </div>
             </div>
-            <button type="submit" className="btn btn-success form-control">Join</button>
+            <button type="submit" className="btn form-control form-btn">Join</button>
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">

@@ -7,13 +7,11 @@ import moment from 'moment';
 class PostsComments extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
   }
 
   componentWillMount() {
     this.props.fetchComments(this.props.params.postId)
-      .then(() => {
-      });
+      .then(() => {});
   }
 
   createComment() {
@@ -21,31 +19,24 @@ class PostsComments extends Component {
       text: this.refs.commentInput.value,
       postId: this.props.params.postId
     };
-
     this.props.createComment(commentObj)
-      .then((res) => {
-        console.log('successful: ', res);
-        console.log('post id: ', this.props.params.postId);
+      .then(() => {
         this.refs.commentInput.value = '';
-
         this.props.fetchComments(this.props.params.postId)
-          .then((res) => {
-            console.log('successful post and get comments: ', res);
-          });
+          .then(() => {});
       });
   }
 
   renderList() {
-    return this.props.all.map(comment => {
-      return (
+    return this.props.all.map(comment => (
         <li key={comment._id}>
           <h4>{comment.author.name}</h4>
           <h6>{moment(comment.date).format('MMMM Do, YYYY, h:mm a')}</h6>
           <p>{comment.text}</p>
         </li>
-      );
-    });
+    ));
   }
+
   render() {
     return (
       <div className="comments">
@@ -70,4 +61,4 @@ function mapStateToProps(state) {
   return state.comments;
 }
 
- export default connect(mapStateToProps, { createComment, fetchComments })(PostsComments);
+export default connect(mapStateToProps, { createComment, fetchComments })(PostsComments);

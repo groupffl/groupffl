@@ -2,21 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-
 class MediaFeeds extends Component {
   componentWillMount() {
     this.props.fetchRSS()
-      .then(() => {
-        console.log('recieved fantasydata');
-      });
+     .then(() => {});
   }
 
   renderList() {
-
-    console.log(this.props.rss);
-    if (this.props.rss.data.statusCode == 403) {
+    if (this.props.rss.length === 0 || this.props.rss.data.statusCode == 401) {
+    // if (this.props.rss.data.statusCode === 401) {
+      console.log('inside render list error');
       return (
-        <div>Out of call volume quota</div>
+        <p>No fantasy news available...</p>
       );
     }
     return this.props.rss.data.map(article =>
@@ -25,20 +22,18 @@ class MediaFeeds extends Component {
         className="list-group-item">
         <h5>{article.Title}</h5>
         <h6>{article.Content} <strong><a href={article.Url} target="_blank"> More</a></strong></h6>
-
       </li>
     );
   }
 
   render() {
-
-    if (!this.props.rss.data) {
-      return (
-        <div>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Football.gif" alt=""/>
-        </div>
-      );
-    }
+  //   if (!this.props.rss.data) {
+  //    return (
+  //      <div>
+  //        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Football.gif" alt=""/>
+  //      </div>
+  //    );
+  //  }
     return (
       <div className="media-feeds">
         <h3>News</h3>
@@ -56,6 +51,7 @@ class MediaFeeds extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('state is: ', state);
   return { rss: state.rss.rss };
 }
 
