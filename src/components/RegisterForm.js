@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { registerUser, beginSpinner, endSpinner } from '../actions/index';
+import { registerUser, verifyLogin, beginSpinner, endSpinner } from '../actions/index';
 import Spinner from './Spinner';
 // import { Link, browserHistory } from 'react-router'; // Only for Cancel
 
@@ -19,6 +19,7 @@ class RegisterForm extends Component {
     this.props.registerUser(props)
       .then(() => {
         this.props.endSpinner();
+        this.props.verifyLogin();
         this.props.history.push('/');
         console.log('resolved');
       });
@@ -119,4 +120,4 @@ export default reduxForm({
   form: 'RegisterForm',
   fields: ['email', 'password', 'password2'],
   validate
-}, mapStateToProps, { registerUser, beginSpinner, endSpinner } )(RegisterForm);
+}, mapStateToProps, { registerUser, verifyLogin, beginSpinner, endSpinner } )(RegisterForm);

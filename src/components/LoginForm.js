@@ -16,10 +16,15 @@ class LoginForm extends Component {
   onSubmit(props) {
     this.props.beginSpinner();
     this.props.loginUser(props)
-      .then(() => {
+      .then((response) => {
         this.props.endSpinner();
         this.props.verifyLogin();
-        this.props.history.push('/');
+        console.log(response);
+        if (response.payload.data.verify){
+          this.props.history.push('/');
+        } else {
+          console.log(response.payload.data.message);
+        }
       });
   }
 
@@ -47,6 +52,7 @@ class LoginForm extends Component {
           <img src=" http://i.imgur.com/FwW4B2K.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            {this.showError()}
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
               <input
                 type="email"
@@ -94,7 +100,6 @@ function validate(values) {
 }
 
 function mapStateToProps(state) {
-  console.log('state', state);
   return {
     isLoggedIn: state.isLoggedIn.isLoggedIn,
     isLoading: state.isLoading

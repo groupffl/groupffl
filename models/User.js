@@ -48,7 +48,7 @@
       if (foundUser) { return res.status(400).send('This e-mail is currently in use'); }
       let user = new User();
       user.email = req.body.email.toLowerCase();
-      bcrypt.hash(req.body.password, 16, (err, hash) => {
+      bcrypt.hash(req.body.password, 6, (err, hash) => {
         if (err) { return res.status(400).send(err); }
         user.password = hash;
         user.save(err => {
@@ -63,7 +63,7 @@
     if (!req.body.email || !req.body.password) { return res.status(400).send('Missing e-mail or password'); }
     User.findOne({ email: req.body.email }, (err, foundUser) => {
       if (err) { return res.status(400).send(err); }
-      if (!foundUser) { return res.status(400).send('No user found with this e-mail address'); }
+      if (!foundUser) { return res.status(400).send({ verify: false, message: 'No user found with this e-mail address' }); }
       bcrypt.compare(req.body.password, foundUser.password, (err, correct) => {
         if (err) { return res.status(400).send(err); }
         if (!correct) { return res.status(403).send('Incorrect password'); }
