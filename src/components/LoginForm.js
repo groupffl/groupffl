@@ -51,7 +51,7 @@ class LoginForm extends Component {
             <div className="text-help-login">
               {password.touched ? password.error : ''}
             </div>
-            <button type="submit" className="btn login-form-btn form-control">Sign in</button>
+            <button type="submit" className="btn form-btn form-control">Sign in</button>
             <a className="pull-right" href="#">Forgot password?</a>
           </form>
         </div>

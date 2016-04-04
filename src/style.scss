@@ -7,21 +7,11 @@ body {
   background-color: #f0f0f0;
   font-family: helvetica;
 }
-
-// a {
-//   color: #f0f0f0;
-// }
-
 .navbar {
-  // background-color: white;
-  // margin-top: 25px;
-  // background-color: #2c2c2c;
   background-color: $nflblue;
   padding-bottom: 10px;
   margin-bottom: 0;
   border-radius: 0;
-  // min-width: 1000px;
-  // width: 1000px;
 
   a {
     margin-left: -20px;
@@ -33,6 +23,10 @@ body {
   a:hover {
     text-decoration: none;
     color: $nflred;
+  }
+
+  a:focus {
+
   }
 
   .subtitle {
@@ -54,16 +48,8 @@ body {
     margin-top: 20px;
   }
 
-  .navbar-login:hover {
-    color:$nflred;
-  }
-
   .navbar-logout {
     margin-top: 20px;
-  }
-
-  .navbar-logout:hover {
-    color: $nflred;
   }
 
   .navbar-register {
@@ -71,33 +57,6 @@ body {
     margin-right: 5px;
   }
 
-  .navbar-register:hover {
-    color: $nflred;
-  }
-}
-
-.register-form-btn {
-  color: #f0f0f0;
-}
-
-.register-form-btn:hover {
-  color: $nflred;
-}
-
-.register-form-btn:focus {
-  color: #f0f0f0;
-}
-
-.login-form-btn {
-  color: #f0f0f0;
-}
-
-.login-form-btn:hover {
-  color: $nflred;
-}
-
-.login-form-btn:focus {
-  color: #f0f0f0;
 }
 
 .text-help {
