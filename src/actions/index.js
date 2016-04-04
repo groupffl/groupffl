@@ -16,6 +16,8 @@ export const CREATE_POST = 'CREATE_POST';
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
+export const BEGIN_SPINNER = 'BEGIN_SPINNER';
+export const END_SPINNER = 'END_SPINNER';
 
 const REGISTER_URL = '/api/user/register';
 const LOGIN_URL = '/api/user/login';
@@ -137,7 +139,6 @@ export function fetchPosts(id) {
 }
 
 export function createComment(commentObj) {
-  console.log('post id in action: ', commentObj);
   const request = axios.post(`${CREATE_COMMENT_URL}`, commentObj);
 
   return {
@@ -147,12 +148,24 @@ export function createComment(commentObj) {
 }
 
 export function fetchComments(postId) {
-  console.log('post id in fetch comments: ', postId);
-  //      /:postId/comments
   const request = axios.get(`${FETCH_COMMENTS_URL}${postId}/comments`);
 
   return {
     type: FETCH_COMMENTS,
     payload: request
+  };
+}
+
+export function beginSpinner() {
+  return {
+    type: BEGIN_SPINNER,
+    payload: true
+  };
+}
+
+export function endSpinner() {
+  return {
+    type: END_SPINNER,
+    payload: false
   };
 }

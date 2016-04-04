@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { createPost, fetchPosts } from '../actions/index';
+import { createPost, fetchPosts, fetchComments } from '../actions/index';
 import moment from 'moment';
 
 class LeaguePosts extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentWillMount() {
     this.props.fetchPosts(this.props.params.id)
-      .then(() => {
-      });
+      .then(() => {});
   }
 
   renderComments(postId) {
-    console.log('params', this.props.params.postId);
-    console.log('this post id', postId);
     if (postId == this.props.params.postId) {
       return (
         <div>
@@ -27,24 +24,7 @@ class LeaguePosts extends Component {
     }
   }
 
-  addPost() {
-    const postObj = {
-      description: this.refs.postInput.value,
-      leagueId: this.props.params.id,
-      title: 'NA'
-    };
-    this.props.createPost(postObj)
-    .then((res) => {
-      this.refs.postInput.value = '';
-      console.log('post created: ', res);
-      this.props.fetchPosts(this.props.params.id)
-        .then(() => {
-        });
-    });
-  }
-
   renderList() {
-    console.log('state', this.state);
     return this.props.all.map(post =>
       (
         <li key={post._id}>
@@ -58,6 +38,21 @@ class LeaguePosts extends Component {
         </li>
       )
     );
+  }
+
+  addPost() {
+    const postObj = {
+      description: this.refs.postInput.value,
+      leagueId: this.props.params.id,
+      title: 'NA'
+    };
+    this.props.createPost(postObj)
+      .then( () => {
+        this.refs.postInput.value = '';
+        this.props.fetchPosts(this.props.params.id)
+          .then(() => {
+          });
+      });
   }
 
   render() {
@@ -83,4 +78,4 @@ function mapStateToProps(state) {
   return state.leaguePosts;
 }
 
-export default connect(mapStateToProps, { createPost, fetchPosts })(LeaguePosts);
+export default connect(mapStateToProps, { createPost, fetchPosts, fetchComments })(LeaguePosts);

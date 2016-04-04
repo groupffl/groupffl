@@ -9,7 +9,7 @@
   const deepPopulate = require('mongoose-deep-populate')(mongoose);
 
   let userSchema = new mongoose.Schema({
-    // username: { type: String, lowercase: true, trim: true, required: true },
+    //username: { type: String, lowercase: true, trim: true },
     password: { type: String, required: true },
     email: { type: mongoose.Schema.Types.Email, lowercase: true, trim: true, required: true },
     leagues: [{ type: mongoose.Schema.Types.ObjectId, ref: 'League' }],
@@ -45,10 +45,10 @@
   userSchema.statics.register = (req, res, next) => {
     User.findOne({ email: req.body.email.toLowerCase() }, (err, foundUser) => {
       if (err) { return res.status(400).send(err); }
-      if (foundUser) { return res.status(400).send('This e-mail is currently in use'); }
+      if (foundUser) { return res.status(400).send({ verify: false, message: 'Email has already been taken.' }); }
       let user = new User();
       user.email = req.body.email.toLowerCase();
-      bcrypt.hash(req.body.password, 16, (err, hash) => {
+      bcrypt.hash(req.body.password, 6, (err, hash) => {
         if (err) { return res.status(400).send(err); }
         user.password = hash;
         user.save(err => {
@@ -63,10 +63,10 @@
     if (!req.body.email || !req.body.password) { return res.status(400).send('Missing e-mail or password'); }
     User.findOne({ email: req.body.email }, (err, foundUser) => {
       if (err) { return res.status(400).send(err); }
-      if (!foundUser) { return res.status(400).send('No user found with this e-mail address'); }
+      if (!foundUser) { return res.status(400).send({ verify: false, message: 'Email address not found' }); }
       bcrypt.compare(req.body.password, foundUser.password, (err, correct) => {
         if (err) { return res.status(400).send(err); }
-        if (!correct) { return res.status(403).send('Incorrect password'); }
+        if (!correct) { return res.status(403).send({ verify: false, message: 'Incorrect password' }); }
         let authData = {
           username: foundUser.username,
           email: foundUser.email,

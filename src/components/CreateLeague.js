@@ -5,6 +5,14 @@ import { createLeague } from '../actions/index';
 // import { Link, browserHistory } from 'react-router';
 
 class CreateLeague extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: '',
+      success: ''
+    };
+  }
+
   componentWillMount() {
     if (!this.props.isLoggedIn) {
       this.props.history.push('/login');
@@ -13,19 +21,37 @@ class CreateLeague extends Component {
 
   onSubmit(props) {
     this.props.createLeague(props)
-      .then(() => true/* this.props.fetchLeagues(); */);
+      .then( () => {
+        this.props.resetForm();
+        this.setState({
+          message: '',
+          success: 'League created successfully'
+        });
+      }, () => {
+        this.setState({
+          message: 'League name already taken.',
+          success: ''
+        });
+      });
   }
+
   render() {
-    const { fields: { name, leagueURL, team }, handleSubmit } = this.props;
+    const { fields: { name, fflUrl, team }, handleSubmit } = this.props;
 
     return (
       <div className="login-register-form">
-        <h3>Be a league commisioner.</h3>
+        <h3>Be a league commissioner.</h3>
         <h4 className="login-title">Create a league.</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
-          <img src="../images/trophy.png" width="35%" alt=""/>
+          <img src="http://i.imgur.com/addEGTI.png" width="13%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <div className="form-verify-error">
+              {this.state.message}
+            </div>
+            <div className="form-verify-success">
+              {this.state.success}
+            </div>
             <div className={`form-group ${name.touched && name.invalid ? 'has-danger' : ''}`}>
               <input type="text" className="form-control" placeholder="Enter a league name"
               {...name} />
@@ -33,21 +59,21 @@ class CreateLeague extends Component {
                 {name.touched ? name.error : ''}
               </div>
             </div>
-            <div className={`form-group ${leagueURL.touched && leagueURL.invalid ? 'has-danger' : ''}`}>
+            <div className={`form-group ${fflUrl.touched && fflUrl.invalid ? 'has-danger' : ''}`}>
               <input type="text" className="form-control" placeholder="Enter the url from your fantasy site"
-              {...leagueURL} />
+              {...fflUrl} />
               <div className="text-help">
-                {leagueURL.touched ? leagueURL.error : ''}
+                {fflUrl.touched ? fflUrl.error : ''}
               </div>
             </div>
-            <div className={`form-group ${leagueURL.touched && team.invalid ? 'has-danger' : ''}`}>
+            <div className={`form-group ${fflUrl.touched && team.invalid ? 'has-danger' : ''}`}>
               <input type="text" className="form-control" placeholder="Enter your team name"
               {...team} />
               <div className="text-help">
                 {team.touched ? team.error : ''}
               </div>
             </div>
-            <button type="submit" className="btn btn-success form-control">Create</button>
+            <button type="submit" className="btn form-control form-btn">Create</button>
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">
@@ -64,8 +90,8 @@ function validate(values) {
   if (!values.name) {
     errors.name = 'Enter a league name';
   }
-  if (!values.leagueURL) {
-    errors.leagueURL = 'Enter a league URL';
+  if (!values.fflUrl) {
+    errors.fflUrl = 'Enter a league URL';
   }
   if (!values.team) {
     errors.team = 'Enter a team name';
@@ -80,6 +106,6 @@ function mapStateToProps(state) {
 
 export default reduxForm({
   form: 'CreateLeague',
-  fields: ['name', 'leagueURL', 'team'],
+  fields: ['name', 'fflUrl', 'team'],
   validate
 }, mapStateToProps, { createLeague })(CreateLeague);

@@ -11,6 +11,7 @@
     request(RSS_URL, {
       // headers: { 'Ocp-Apim-Subscription-Key': process.env.FANTASYDATA_API_KEY }
     }, function(err, response) {
+      // console.log('err: ', err);
       if (err) { return res.status(400).send(err); }
       res.send(response.body);
     });

@@ -2,33 +2,31 @@ $blueish: #44FFFF;
 $nflblue: #00316b;
 $nflred: #d20000;
 
-
 body {
   // background: $blueish;
   background-color: #f0f0f0;
   font-family: helvetica;
 }
-
-// a {
-//   color: #f0f0f0;
-// }
-
 .navbar {
-  // background-color: white;
-  // margin-top: 25px;
-  // background-color: #2c2c2c;
   background-color: $nflblue;
   padding-bottom: 10px;
   margin-bottom: 0;
   border-radius: 0;
-  // min-width: 1000px;
-  // width: 1000px;
 
   a {
     margin-left: -20px;
-    // text-transform: uppercase;
     color: #f0f0f0;
     font-family: 'Oswald', sans-serif;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: $nflred;
+  }
+
+  a:focus {
+
   }
 
   .subtitle {
@@ -38,6 +36,7 @@ body {
   }
 
   .navbar-buttons {
+    color:#f0f0f0;
     margin-right: -20px;
   }
 
@@ -57,6 +56,33 @@ body {
     margin-top: 20px;
     margin-right: 5px;
   }
+
+}
+
+.text-help {
+  color:$nflred;
+}
+
+.text-help-register {
+  color:$nflred;
+}
+
+.text-help-password-again {
+  position: relative;
+  color:$nflred;
+  bottom:13px;
+}
+
+.text-help-login {
+  position:relative;
+  color:$nflred;
+  bottom: 13px;
+}
+
+
+
+.form-btn:focus {
+  color: #f0f0f0;
 }
 
 .media-panel {
@@ -114,13 +140,12 @@ body {
 
 .join-panel {
 
-  // background-color: white;
   margin-top: 25px;
 
   a:hover {
 
     .join-icons-panel {
-      background-color: #eee;
+      background-color:  #E0E0E0; //#E8E8E8; #eee;
 
       .bold {
         color: red;
@@ -175,12 +200,9 @@ body {
         display: inline-block;
         vertical-align: middle;
       }
-
     }
   }
-
 }
-
 
 .league-header {
   background-color: $nflblue;
@@ -208,7 +230,7 @@ body {
       text-decoration: none;
 
       li {
-        background-color: #eee;
+        background-color: #E0E0E0; //#E8E8E8;
       }
     }
 
@@ -232,7 +254,6 @@ body {
         margin: 0;
         color: #888;
       }
-
     }
   }
 }
@@ -267,6 +288,14 @@ body {
 
     form {
 
+      .form-verify-error {
+        color: $nflred;
+      }
+
+      .form-verify-success {
+        color: green;
+      }
+
       input {
         padding-top: 20px;
         padding-bottom: 20px;
@@ -277,6 +306,8 @@ body {
         padding-bottom: 8px;
         background-color: $nflblue;
         border-color: $nflblue;
+        color: #f0f0f0;
+        outline: none;
       }
       a {
         padding-top: 8px;
@@ -289,9 +320,14 @@ body {
     display: block;
     text-align: center;
   }
+  .form-btn:hover {
+    background-color: #004599;
+    border-color: #004599;
+  }
+  .form-btn:focus {
+    outline: none;
+  }
 }
-
-
 
 .join-league-form {
   background-color: lightgray;
@@ -333,7 +369,7 @@ body {
       display:block;
       padding-bottom: 16px;
       color: #004599;
-      padding-left: 20px;
+      //padding-left: 20px;
     }
 
     .related-links {
@@ -356,7 +392,7 @@ body {
       color: #888;
       margin: 0px;
       padding-bottom: 16px;
-      padding-left: 20px;
+      // padding-left: 20px;
     }
   }
 
@@ -373,8 +409,6 @@ body {
 
   .league-members-list {
     background-color: white;
-    //height: 400px;
-    //overflow: scroll;
 
     ul {
       background-color: white;
@@ -401,13 +435,8 @@ body {
       li:hover {
         // background-color: #eee;
       }
-
-
     }
   }
-
-
-
 }
 
 .league-posts {
@@ -415,11 +444,11 @@ body {
   background-color: #f0f0f0;
   text-align: center;
 
-  .post-wrapper {
-    background-color: #f0f0f0;
-    margin: 25px 10px 10px 10px;
-    min-height: 1500px;
-    padding-bottom: 30px;
+    .post-wrapper {
+      background-color: #f0f0f0;
+      margin: 25px 10px 10px 10px;
+      min-height: 1500px;
+      padding-bottom: 30px;
 
     .post-text {
       margin-top: 0px;
@@ -440,14 +469,11 @@ body {
         padding: 6px 10px;
         font-size: 12px;
       }
-
     }
-
 
     .post-list-wrapper {
       margin-top: 20px;
       background-color: #f0f0f0;
-
 
       ul {
         list-style: none;
@@ -497,7 +523,6 @@ body {
 }
 
 .comments {
-  // background-color: green;
   padding: 0px;
 
   .comment-area {
@@ -522,9 +547,7 @@ body {
   }
 
   .comments-list-wrapper {
-
     ul {
-
       li {
         padding-top: 0px !important;
         padding-left: 40px !important;
@@ -547,8 +570,16 @@ body {
   }
 }
 
+.media-feeds-no-data {
+  position: absolute;
+  margin-top: 25px;
+
+  p {
+    margin-top: 3px;
+  }
+}
+
 .media-feeds {
-  // height: 600px;
   background-color: #f0f0f0;
 
   h3 {
@@ -560,7 +591,6 @@ body {
   }
 
   .media-rss {
-    // height: 600px;
     overflow: scroll;
 
     ul {
@@ -601,6 +631,10 @@ body {
       a {
         color: $nflblue;
         display: inline-block;
+      }
+
+      p {
+        margin-left: 18px;
       }
     }
   }

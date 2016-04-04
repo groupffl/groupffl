@@ -14,7 +14,6 @@
   });
 
   router.post('/', User.isLoggedIn, Team.createMW, User.getUserLeaguesMW, (req, res) => {
-    console.log('in Team route: ', req.userLeagues);
     res.send(req.userLeagues);
   });
 

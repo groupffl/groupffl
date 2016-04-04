@@ -6,10 +6,10 @@ import LeagueReducer from './reducer_league';
 import TeamReducer from './reducer_team';
 import AuthReducer from './reducer_authentication';
 import LeagueInfoReducer from './reducer_league_info';
-import LeagueMembersReducer from './reducer_league_members.js';
-import LeaguePostsReducer from './reducer_league_posts.js';
-import ReducerPostComments from './reducer_post_comments.js';
-
+import LeagueMembersReducer from './reducer_league_members';
+import LeaguePostsReducer from './reducer_league_posts';
+import ReducerPostComments from './reducer_post_comments';
+import LoadingReducer from './reducer_loading';
 import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
@@ -23,7 +23,8 @@ const rootReducer = combineReducers({
   leagueInfo: LeagueInfoReducer,
   leagueMembers: LeagueMembersReducer,
   leaguePosts: LeaguePostsReducer,
-  comments: ReducerPostComments
+  comments: ReducerPostComments,
+  isLoading: LoadingReducer
 });
 
 export default rootReducer;
