@@ -52,6 +52,7 @@
         .then(() => {
           newPost.title = req.body.title;
           newPost.description = req.body.description;
+          newPost.date = Date.now();
           return newPost.save();
         })
         .catch(err => {

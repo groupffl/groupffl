@@ -34,6 +34,7 @@
       })
       .then(() => {
         newComment.text = req.body.text;
+        newComment.date = Date.now();
         return newComment.save();
       })
       .then(() => {

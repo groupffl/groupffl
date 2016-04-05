@@ -24,14 +24,12 @@ class LeaguePosts extends Component {
     }
   }
 
-
   renderList() {
-    console.log(this.props.all);
     return this.props.all.map(post =>
       (
         <li key={post._id}>
           <h4>{post.author.name}</h4>
-          <h6>{post.date}</h6>
+          <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
           <p>{post.description}</p>
           <div className="post-link-wrapper">
             <Link to={`/league/${post.league}/posts/${post._id}`}>Comments: {post.comments.length}</Link>
@@ -40,7 +38,6 @@ class LeaguePosts extends Component {
         </li>
       )
     );
-    {/*{moment(post.date).format('MMMM Do, YYYY, h:mm a')}*/}
   }
 
   addPost() {
