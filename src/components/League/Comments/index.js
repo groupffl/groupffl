@@ -7,6 +7,9 @@ import Comment from './Comment';
 class PostsComments extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      inputText: ''
+    };
   }
 
   componentWillMount() {
@@ -14,14 +17,22 @@ class PostsComments extends Component {
       .then(() => {});
   }
 
-  createComment(refs) {
+  handleCommentInput(inputText) {
+    this.setState({
+      inputText
+    });
+  }
+
+  addComment(inputTextValue) {
     const commentObj = {
-      text: refs.commentInput.value,
+      text: inputTextValue,
       postId: this.props.params.postId
     };
     this.props.createComment(commentObj)
       .then(() => {
-        refs.commentInput.value = '';
+        this.setState({
+          inputText: ''
+        });
         this.props.fetchComments(this.props.params.postId)
           .then(() => {});
       });
@@ -37,7 +48,10 @@ class PostsComments extends Component {
     return (
       <div className="comments">
         <div className="comment-area">
-          <CommentInput createComment={this.createComment.bind(this)} />
+          <CommentInput
+            onAddComment={this.addComment.bind(this)}
+            onCommentInput={this.handleCommentInput.bind(this)}
+            inputText={this.state.inputText} />
         </div>
         <div className="comments-list-wrapper">
           <ul>
