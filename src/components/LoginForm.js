@@ -60,6 +60,7 @@ class LoginForm extends Component {
           <img src=" http://i.imgur.com/FwW4B2K.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            {this.props.promptLogin}
             <div className="form-verify-error">
               {this.state.message}
             </div>
@@ -112,7 +113,8 @@ function validate(values) {
 function mapStateToProps(state) {
   return {
     isLoggedIn: state.isLoggedIn.isLoggedIn,
-    isLoading: state.isLoading
+    isLoading: state.isLoading,
+    promptLogin: state.promptLogin
   };
 }
 

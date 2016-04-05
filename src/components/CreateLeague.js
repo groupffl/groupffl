@@ -15,6 +15,7 @@ class CreateLeague extends Component {
 
   componentWillMount() {
     if (!this.props.isLoggedIn) {
+
       this.props.history.push('/login');
     }
   }
