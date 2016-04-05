@@ -20,7 +20,9 @@ class LeaguePosts extends Component {
 
   componentWillMount() {
     this.props.fetchPosts(this.props.params.id)
-      .then(() => {});
+      .then(response => {
+        console.log(response);
+      });
   }
 
   renderComments(postId) {
@@ -48,7 +50,8 @@ class LeaguePosts extends Component {
       title: 'NA'
     };
     this.props.createPost(postObj)
-      .then( () => {
+      .then(response => {
+        console.log(response);
         this.setState({
           inputText: ''
         });

@@ -53,7 +53,10 @@
           newPost.title = req.body.title;
           newPost.description = req.body.description;
           newPost.date = Date.now();
-          return newPost.save();
+          return newPost.save(err => {
+            if (err) { return res.status(400).send(err); }
+            req.postObj = newPost;
+          });
         })
         .catch(err => {
           res.status(400).send(err);

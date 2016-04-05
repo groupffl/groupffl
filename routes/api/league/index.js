@@ -10,7 +10,7 @@
   router.get('/:leagueId/posts', User.isLoggedIn, (req, res) => {
     Post.
       find({ league: req.params.leagueId }).
-      populate('author').
+      populate('author comments').
       exec((err, posts) => {
         if (err) { return res.status(400).send(err); }
         console.log('posts: ', posts);
