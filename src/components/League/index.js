@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 import LeagueInfo from './LeagueInfo';
 import MediaFeeds from './MediaFeeds';
-import LeagueMembers from './LeagueMembers';
+import LeagueMembers from './Members';
 
 class League extends Component {
   componentWillMount() {

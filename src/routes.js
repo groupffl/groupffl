@@ -7,7 +7,7 @@ import RegisterForm from './components/App/Forms/RegisterForm';
 import LoginForm from './components/App/Forms/LoginForm';
 import JoinLeague from './components/App/Forms/JoinLeague';
 import CreateLeague from './components/App/Forms/CreateLeague';
-import League from './components/League/League';
+import League from './components/League';
 import LeaguePosts from './components/League/LeaguePosts';
 import PostsComments from './components/League/PostsComments';
 

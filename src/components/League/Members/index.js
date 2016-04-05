@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLeagueMembers } from '../../actions/index';
+import { fetchLeagueMembers } from '../../../actions/index';
+
+import MemberLink from './MemberLink';
 
 class LeagueMembers extends Component {
   constructor(props) {
@@ -21,12 +23,8 @@ class LeagueMembers extends Component {
     }
 
     return this.props.leagueMembers.teams.map(team =>
-    (
-        <li>
-          <div>
-            <h5>{team.name}</h5>
-          </div>
-        </li>
+      (
+        <MemberLink team={team} />
       )
     );
   }
