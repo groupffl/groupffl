@@ -5,7 +5,7 @@ import {
   joinLeague,
   verifyLogin,
   promptLogin
-} from '../actions/index';
+} from '../../../actions/index';
 
 class JoinLeague extends Component {
   constructor(props) {

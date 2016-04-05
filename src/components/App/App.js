@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { verifyLogin } from '../actions/index';
+import { verifyLogin } from '../../actions/index';
 
 import JoinPanel from './JoinPanel';
 import LeaguesPanel from './LeaguesPanel';
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
 
 class App extends Component {
   componentWillMount() {

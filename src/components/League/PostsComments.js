@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createComment } from '../actions/index';
-import { fetchComments } from '../actions/index';
+import { createComment, fetchComments } from '../../actions/index';
 import moment from 'moment';
 
 class PostsComments extends Component {

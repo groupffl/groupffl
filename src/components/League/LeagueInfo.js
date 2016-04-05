@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLeagueInfo } from '../actions/index';
+import { fetchLeagueInfo } from '../../actions/index';
 
 class LeagueInfo extends Component {
   componentWillMount() {

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { fetchLeagueData, verifyLogin } from '../actions/index';
+import { fetchLeagueData, verifyLogin } from '../../actions/index';
 import { connect } from 'react-redux';
-
-
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
 import LeagueInfo from './LeagueInfo';
 import MediaFeeds from './MediaFeeds';
 import LeagueMembers from './LeagueMembers';

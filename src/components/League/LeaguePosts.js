@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { createPost, fetchPosts, fetchComments } from '../actions/index';
+import { createPost, fetchPosts, fetchComments } from '../../actions/index';
 import moment from 'moment';
 
 class LeaguePosts extends Component {

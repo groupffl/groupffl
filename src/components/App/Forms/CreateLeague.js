@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { createLeague, promptLogin } from '../actions/index';
+import { createLeague, promptLogin } from '../../../actions/index';
 
 class CreateLeague extends Component {
   constructor(props) {
