@@ -1,4 +1,4 @@
-import { JOIN_LEAGUE } from '../actions/index';
+import { JOIN_LEAGUE } from '../actions/LeagueActions';
 
 const INITIAL_STATE = { league: null };
 

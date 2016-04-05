@@ -2,7 +2,7 @@ import {
   CREATE_LEAGUE,
   JOIN_LEAGUE,
   FETCH_LEAGUES
-} from '../actions/index';
+} from '../actions/LeagueActions';
 
 import {
   LOGOUT_USER

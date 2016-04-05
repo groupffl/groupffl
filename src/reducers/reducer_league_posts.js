@@ -1,4 +1,4 @@
-import { FETCH_POSTS } from '../actions/index';
+import { FETCH_POSTS } from '../actions/PostActions';
 
 const INITIAL_STATE = { all: [], displayCommentsToggle: false };
 

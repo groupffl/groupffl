@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import {
   createLeague
-} from '../../../actions/index';
+} from '../../../actions/LeagueActions';
 
 import {
   promptLogin

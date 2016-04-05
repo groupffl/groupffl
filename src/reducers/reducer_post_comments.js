@@ -1,4 +1,4 @@
-import { FETCH_COMMENTS } from '../actions/index';
+import { FETCH_COMMENTS } from '../actions/PostActions';
 
 const INITIAL_STATE = { comment: null, all: [] };
 

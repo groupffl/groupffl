@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLeagueInfo } from '../../../actions/index';
+import { fetchLeagueInfo } from '../../../actions/LeagueActions';
 import RelatedLinks from './RelatedLinks';
 
 class LeagueInfo extends Component {

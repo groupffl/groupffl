@@ -4,7 +4,7 @@ import { reduxForm } from 'redux-form';
 
 import {
   joinLeague
-} from '../../../actions/index';
+} from '../../../actions/LeagueActions';
 
 import {
   verifyLogin,

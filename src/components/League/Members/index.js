@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLeagueMembers } from '../../../actions/index';
+import { fetchLeagueMembers } from '../../../actions/LeagueActions';
 
 import MemberLink from './MemberLink';
 

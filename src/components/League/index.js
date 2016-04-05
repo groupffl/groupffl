@@ -5,7 +5,7 @@ import LeagueInfo from './Info';
 import MediaFeeds from './Media';
 import LeagueMembers from './Members';
 
-import { fetchLeagueData } from '../../actions/index';
+import { fetchLeagueData } from '../../actions/LeagueActions';
 import { verifyLogin } from '../../actions/UserActions';
 
 class League extends Component {

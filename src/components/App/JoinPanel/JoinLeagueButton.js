@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { verifyLogin } from '../../../actions/UserActions';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Glyphicon } from 'react-bootstrap';
+import { verifyLogin } from '../../../actions/UserActions';
 
 class JoinLeagueButton extends Component {
   handleClick() {
