@@ -3,7 +3,7 @@ import { fetchLeagueData, verifyLogin } from '../../actions/index';
 import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 import LeagueInfo from './Info';
-import MediaFeeds from './MediaFeeds';
+import MediaFeeds from './Media';
 import LeagueMembers from './Members';
 
 class League extends Component {

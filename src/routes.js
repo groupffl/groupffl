@@ -8,7 +8,7 @@ import LoginForm from './components/App/Forms/LoginForm';
 import JoinLeague from './components/App/Forms/JoinLeague';
 import CreateLeague from './components/App/Forms/CreateLeague';
 import League from './components/League';
-import LeaguePosts from './components/League/LeaguePosts';
+import LeaguePosts from './components/League/Posts';
 import PostsComments from './components/League/PostsComments';
 
 export default (

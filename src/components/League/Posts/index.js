@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { createPost, fetchPosts, fetchComments } from '../../actions/index';
-import moment from 'moment';
+import { createPost, fetchPosts, fetchComments } from '../../../actions/index';
+import PostInput from './PostInput';
+import Post from './Post';
 
 class LeaguePosts extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   componentWillMount() {
     this.props.fetchPosts(this.props.params.id)
       .then(() => {});
@@ -27,28 +23,20 @@ class LeaguePosts extends Component {
   renderList() {
     return this.props.all.map(post =>
       (
-        <li key={post._id}>
-          <h4>{post.author.name}</h4>
-          <h6>{moment(post.date).format('MMMM Do, YYYY, h:mm a')}</h6>
-          <p>{post.description}</p>
-          <div className="post-link-wrapper">
-            <Link to={`/league/${post.league}/posts/${post._id}`}>Comments: {post.comments.length}</Link>
-          </div>
-          {this.renderComments(post._id)}
-        </li>
+        <Post post={post} renderComments={this.renderComments.bind(this)} />
       )
     );
   }
 
-  addPost() {
+  addPost(refs) {
     const postObj = {
-      description: this.refs.postInput.value,
+      description: refs.postInput.value,
       leagueId: this.props.params.id,
       title: 'NA'
     };
     this.props.createPost(postObj)
       .then( () => {
-        this.refs.postInput.value = '';
+        refs.postInput.value = '';
         this.props.fetchPosts(this.props.params.id)
           .then(() => {
           });
@@ -59,10 +47,7 @@ class LeaguePosts extends Component {
     return (
       <div className="league-posts">
         <div className="post-wrapper">
-          <div className="post-text">
-            <textarea ref="postInput" type="text" placeholder=""/>
-            <button onClick={this.addPost.bind(this)} className="btn btn-primary pull-right">Post</button>
-          </div>
+        <PostInput addPost={ this.addPost.bind(this) } />
           <div className="post-list-wrapper">
             <ul>
               {this.renderList()}
