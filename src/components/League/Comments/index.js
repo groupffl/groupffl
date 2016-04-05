@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createComment, fetchComments } from '../../actions/index';
+import { createComment, fetchComments } from '../../../actions/index';
 import moment from 'moment';
+import CommentInput from './CommentInput';
 
 class PostsComments extends Component {
   constructor(props) {
@@ -13,14 +14,14 @@ class PostsComments extends Component {
       .then(() => {});
   }
 
-  createComment() {
+  createComment(refs) {
     const commentObj = {
-      text: this.refs.commentInput.value,
+      text: refs.commentInput.value,
       postId: this.props.params.postId
     };
     this.props.createComment(commentObj)
       .then(() => {
-        this.refs.commentInput.value = '';
+        refs.commentInput.value = '';
         this.props.fetchComments(this.props.params.postId)
           .then(() => {});
       });
@@ -40,11 +41,7 @@ class PostsComments extends Component {
     return (
       <div className="comments">
         <div className="comment-area">
-          <textarea ref="commentInput" className="comment-area" />
-          <button
-          onClick={this.createComment.bind(this)}
-          className="btn btn-success pull-right">Comment
-          </button>
+          <CommentInput createComment={this.createComment.bind(this)} />
         </div>
         <div className="comments-list-wrapper">
           <ul>
