@@ -81,4 +81,8 @@ function mapStateToProps(state) {
   return state.leaguePosts;
 }
 
-export default connect(mapStateToProps, { createPost, fetchPosts, fetchComments })(LeaguePosts);
+export default connect(mapStateToProps, {
+  createPost,
+  fetchPosts,
+  fetchComments
+})(LeaguePosts);

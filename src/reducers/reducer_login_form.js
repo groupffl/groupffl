@@ -1,4 +1,4 @@
-import { LOGIN_USER } from '../actions/index';
+import { LOGIN_USER } from '../actions/UserActions';
 
 const INITIAL_STATE = { login: null };
 

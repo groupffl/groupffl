@@ -1,4 +1,4 @@
-import { PROMPT_LOGIN } from '../actions/index';
+import { PROMPT_LOGIN } from '../actions/UserActions';
 
 export default function(state = null, action) {
   switch (action.type) {

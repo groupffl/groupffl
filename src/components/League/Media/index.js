@@ -38,7 +38,6 @@ class MediaFeeds extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state is: ', state);
   return { rss: state.rss.rss };
 }
 

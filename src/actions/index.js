@@ -1,27 +1,15 @@
 import axios from 'axios';
-import Cookies from 'cookies-js';
-
-export const REGISTER_USER = 'REGISTER_USER';
-export const LOGIN_USER = 'LOGIN_USER';
-export const LOGOUT_USER = 'LOGOUT_USER';
 
 export const FETCH_RSS = 'FETCH_RSS';
 export const CREATE_LEAGUE = 'CREATE_LEAGUE';
 export const JOIN_LEAGUE = 'JOIN_LEAGUE';
 export const FETCH_LEAGUES = 'FETCH_LEAGUES';
-export const VERIFY_LOGIN = 'VERIFY_LOGIN';
 export const FETCH_LEAGUE_INFO = 'FETCH_LEAGUE_INFO';
 export const FETCH_LEAGUE_MEMBERS = 'FETCH_LEAGUE_MEMBERS';
 export const CREATE_POST = 'CREATE_POST';
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
-export const BEGIN_SPINNER = 'BEGIN_SPINNER';
-export const END_SPINNER = 'END_SPINNER';
-export const PROMPT_LOGIN = 'PROMPT_LOGIN';
-
-const REGISTER_URL = '/api/user/register';
-const LOGIN_URL = '/api/user/login';
 
 const RSS_URL_BACK = '/api/feed/rss';
 const CREATE_LEAGUE_URL = '/api/league';
@@ -33,31 +21,6 @@ const CREATE_POST_URL = '/api/post';
 const FETCH_POSTS_URL = '/api/league/';
 const CREATE_COMMENT_URL = '/api/comment/';
 const FETCH_COMMENTS_URL = '/api/post/';
-
-export function registerUser(props) {
-  const request = axios.post(REGISTER_URL, { email: props.email, password: props.password });
-
-  return {
-    type: REGISTER_USER,
-    payload: request
-  };
-}
-
-export function loginUser(props) {
-  const request = axios.post(LOGIN_URL, props);
-
-  return {
-    type: LOGIN_USER,
-    payload: request
-  };
-}
-
-export function logoutUser() {
-  return {
-    type: LOGOUT_USER,
-    payload: null
-  };
-}
 
 export function createLeague(props) {
   const request = axios.post(CREATE_LEAGUE_URL, props);
@@ -92,14 +55,6 @@ export function fetchLeagues() {
   return {
     type: FETCH_LEAGUES,
     payload: request
-  };
-}
-
-export function verifyLogin() {
-  const cookie = Cookies.get('authToken') ? true : false;
-  return {
-    type: VERIFY_LOGIN,
-    payload: cookie
   };
 }
 
@@ -154,27 +109,5 @@ export function fetchComments(postId) {
   return {
     type: FETCH_COMMENTS,
     payload: request
-  };
-}
-
-export function beginSpinner() {
-  return {
-    type: BEGIN_SPINNER,
-    payload: true
-  };
-}
-
-export function endSpinner() {
-  return {
-    type: END_SPINNER,
-    payload: false
-  };
-}
-
-export function promptLogin(redirectMessage) {
-  console.log(redirectMessage);
-  return {
-    type: PROMPT_LOGIN,
-    payload: redirectMessage
   };
 }

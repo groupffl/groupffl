@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { fetchLeagueData, verifyLogin } from '../../actions/index';
 import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 import LeagueInfo from './Info';
 import MediaFeeds from './Media';
 import LeagueMembers from './Members';
+
+import { fetchLeagueData } from '../../actions/index';
+import { verifyLogin } from '../../actions/UserActions';
 
 class League extends Component {
   componentWillMount() {

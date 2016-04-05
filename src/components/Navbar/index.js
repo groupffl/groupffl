@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { verifyLogin } from '../../actions/index';
+import { verifyLogin } from '../../actions/UserActions';
 import Cookies from 'cookies-js';
 
 class Navbar extends Component {
@@ -65,6 +65,7 @@ class Navbar extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   return state.isLoggedIn;
 }
 

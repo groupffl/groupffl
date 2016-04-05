@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import Spinner from './Spinner';
+
 import {
   loginUser,
   verifyLogin,
-  beginSpinner,
-  endSpinner,
   promptLogin
-} from '../../../actions/index';
+} from '../../../actions/UserActions';
+
+import {
+  beginSpinner,
+  endSpinner
+} from '../../../actions/SpinnerActions';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -32,11 +36,11 @@ class LoginForm extends Component {
   onSubmit(props) {
     this.props.beginSpinner();
     this.props.loginUser(props)
-      .then((response) => {
+      .then(response => {
         this.props.endSpinner();
         this.props.verifyLogin();
         console.log(response);
-        if (response.payload.data.verify){
+        if (response.payload.data.verify) {
           this.props.history.push('/');
         } else {
           const REDIRECT_MESSAGE = null;
@@ -123,7 +127,6 @@ function validate(values) {
 }
 
 function mapStateToProps(state) {
-  console.log('state', state)
   return {
     isLoggedIn: state.isLoggedIn.isLoggedIn,
     isLoading: state.isLoading,

@@ -1,9 +1,12 @@
 import {
   CREATE_LEAGUE,
   JOIN_LEAGUE,
-  FETCH_LEAGUES,
+  FETCH_LEAGUES
+} from '../actions/index';
+
+import {
   LOGOUT_USER
- } from '../actions/index';
+} from '../actions/UserActions';
 
 const INITIAL_STATE = { all: [], league: null, leagueData: null };
 

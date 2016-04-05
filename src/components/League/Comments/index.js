@@ -67,4 +67,7 @@ function mapStateToProps(state) {
   return state.comments;
 }
 
-export default connect(mapStateToProps, { createComment, fetchComments })(PostsComments);
+export default connect(mapStateToProps, {
+  createComment,
+  fetchComments
+})(PostsComments);

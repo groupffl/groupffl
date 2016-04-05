@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
+
 import {
-  joinLeague,
+  joinLeague
+} from '../../../actions/index';
+
+import {
   verifyLogin,
   promptLogin
-} from '../../../actions/index';
+} from '../../../actions/UserActions';
 
 class JoinLeague extends Component {
   constructor(props) {

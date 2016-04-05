@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { verifyLogin } from '../../actions/index';
+import { verifyLogin } from '../../actions/UserActions';
 
 import JoinPanel from './JoinPanel';
 import LeaguesPanel from './LeaguesPanel';

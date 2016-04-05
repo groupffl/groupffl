@@ -1,4 +1,4 @@
-import { REGISTER_USER } from '../actions/index';
+import { REGISTER_USER } from '../actions/UserActions';
 
 const INITIAL_STATE = { register: null };
 

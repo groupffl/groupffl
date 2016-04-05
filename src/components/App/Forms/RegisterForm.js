@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { registerUser, verifyLogin, beginSpinner, endSpinner } from '../../../actions/index';
 import Spinner from './Spinner';
+
+import {
+  registerUser,
+  verifyLogin
+} from '../../../actions/UserActions';
+
+import {
+  beginSpinner,
+  endSpinner
+} from '../../../actions/SpinnerActions';
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -11,7 +20,6 @@ class RegisterForm extends Component {
       message: ''
     };
   }
-
 
   componentWillMount() {
     if (this.props.isLoggedIn) {
