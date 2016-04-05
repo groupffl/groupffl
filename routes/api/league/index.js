@@ -13,7 +13,6 @@
       populate('author comments').
       exec((err, posts) => {
         if (err) { return res.status(400).send(err); }
-        console.log('posts: ', posts);
         res.send(posts.reverse());
       });
   });

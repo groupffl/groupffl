@@ -35,7 +35,10 @@
       .then(() => {
         newComment.text = req.body.text;
         newComment.date = Date.now();
-        return newComment.save();
+        return newComment.save(err => {
+          if (err) { return res.status(400).send(err); }
+          req.commentObj = newComment;
+        });
       })
       .then(() => {
         next();

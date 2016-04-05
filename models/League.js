@@ -76,7 +76,6 @@
                 mongoose.model('User').populate(league, { path: 'commissioner teams.owner posts.author.owner', model: 'User', select: 'email' }, (err, league) => {
                   if (err) { return res.status(400).send(err); }
                   req.details = league;
-                  console.log('league details is: ', league);
                   next();
                 });
               });
