@@ -3,6 +3,8 @@ import axios from 'axios';
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const CREATE_POST = 'CREATE_POST';
+export const RECEIVE_POST = 'RECEIVE_POST';
+
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
 
@@ -33,6 +35,13 @@ export function createPost(postObj) {
   return {
     type: CREATE_POST,
     payload: request
+  };
+}
+
+export function receivePost(post) {
+  return {
+    type: RECEIVE_POST,
+    payload: post
   };
 }
 

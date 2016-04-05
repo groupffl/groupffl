@@ -6,7 +6,8 @@ import {
   createPost,
   fetchPosts,
   fetchComments,
-  receivePosts
+  receivePosts,
+  receivePost
 } from '../../../actions/PostActions';
 
 class LeaguePosts extends Component {
@@ -58,6 +59,7 @@ class LeaguePosts extends Component {
     this.props.createPost(postObj)
       .then(response => {
         console.log(response);
+        this.props.receivePost(response.payload.data);
         this.setState({
           inputText: ''
         });
@@ -91,5 +93,6 @@ export default connect(mapStateToProps, {
   createPost,
   fetchPosts,
   fetchComments,
-  receivePosts
+  receivePosts,
+  receivePost
 })(LeaguePosts);
