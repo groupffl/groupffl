@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import Spinner from '../Spinner';
+import Spinner from './Spinner';
 import {
   loginUser,
   verifyLogin,

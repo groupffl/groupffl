@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import { registerUser, verifyLogin, beginSpinner, endSpinner } from '../../../actions/index';
-import Spinner from '../Spinner';
+import Spinner from './Spinner';
 
 class RegisterForm extends Component {
   constructor(props) {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchLeagues, fetchLeagueInfo } from '../../actions/index';
 import { Link } from 'react-router';
+import DemoVideo from './DemoVideo';
 
 class LeaguesPanel extends Component {
   componentWillMount() {
@@ -25,24 +26,18 @@ class LeaguesPanel extends Component {
   renderList() {
     if (!this.props.isLoggedIn) {
       return (
-        <div>
-          <img src="../images/demo.png" width="100%" height="420px" alt=""/>
-        </div>
+        <DemoVideo />
       );
     }
     if (this.props.leagues.length == 0) {
       return (
-        <div>
-          <img src="../images/demo.png" width="100%" height="420px" alt=""/>
-        </div>
+        <DemoVideo />
       );
     }
 
     if (typeof this.props.leagues == 'string') {
       return (
-        <div>
-          <img src="../images/demo.png" width="100%" height="420px" alt=""/>
-        </div>
+        <DemoVideo />
       );
     }
 

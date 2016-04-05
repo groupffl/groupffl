@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { verifyLogin } from '../../actions/index';
 
-import JoinPanel from './JoinPanel';
+import JoinPanel from '../JoinPanel/index';
 import LeaguesPanel from './LeaguesPanel';
 import Navbar from '../Navbar';
 
