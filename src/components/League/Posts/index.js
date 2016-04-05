@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createPost, fetchPosts, fetchComments } from '../../../actions/PostActions';
 import PostInput from './PostInput';
 import Post from './Post';
+import {
+  createPost,
+  fetchPosts,
+  fetchComments,
+  receivePosts
+} from '../../../actions/PostActions';
 
 class LeaguePosts extends Component {
   constructor(props) {
@@ -22,6 +27,7 @@ class LeaguePosts extends Component {
     this.props.fetchPosts(this.props.params.id)
       .then(response => {
         console.log(response);
+        this.props.receivePosts(response.payload.data);
       });
   }
 
@@ -55,9 +61,6 @@ class LeaguePosts extends Component {
         this.setState({
           inputText: ''
         });
-        this.props.fetchPosts(this.props.params.id)
-          .then(() => {
-          });
       });
   }
 
@@ -87,5 +90,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   createPost,
   fetchPosts,
-  fetchComments
+  fetchComments,
+  receivePosts
 })(LeaguePosts);
