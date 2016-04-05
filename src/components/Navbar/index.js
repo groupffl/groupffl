@@ -65,7 +65,6 @@ class Navbar extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return state.isLoggedIn;
 }
 

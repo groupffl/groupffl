@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createComment, fetchComments } from '../../../actions/index';
+import { createComment, fetchComments } from '../../../actions/PostActions';
 import CommentInput from './CommentInput';
 import Comment from './Comment';
 

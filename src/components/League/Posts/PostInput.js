@@ -14,7 +14,6 @@ export default class PostInput extends Component {
   }
 
   render() {
-    console.log('this.refs', this.refs);
     return (
       <div className="post-text">
         <textarea
