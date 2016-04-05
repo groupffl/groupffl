@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLeagues, fetchLeagueInfo } from '../../actions/index';
-import { Link } from 'react-router';
+import { fetchLeagues, fetchLeagueInfo } from '../../../actions/index';
 import DemoVideo from './DemoVideo';
+import LeagueLink from './LeagueLink';
 
 class LeaguesPanel extends Component {
   componentWillMount() {
@@ -24,33 +24,16 @@ class LeaguesPanel extends Component {
   }
 
   renderList() {
-    if (!this.props.isLoggedIn) {
-      return (
-        <DemoVideo />
-      );
-    }
-    if (this.props.leagues.length == 0) {
+    const { isLoggedIn, leagues } = this.props;
+
+    if (!isLoggedIn || leagues.length == 0 || typeof leagues == 'string') {
       return (
         <DemoVideo />
       );
     }
 
-    if (typeof this.props.leagues == 'string') {
-      return (
-        <DemoVideo />
-      );
-    }
-
-    return this.props.leagues.map(league =>
-      <Link to={'league/' + league._id +'/posts'}
-            onClick={this.handleClick.bind(this, league._id)}>
-        <li key={league._id}>
-          <div>
-            <h4>{league.teamName}</h4>
-            <h5>{league.leagueName}</h5>
-          </div>
-        </li>
-      </Link>
+    return leagues.map(league =>
+      <LeagueLink league={league} handleClick={this.handleClick.bind(this)}/>
     );
   }
 

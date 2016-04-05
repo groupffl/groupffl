@@ -1,15 +1,15 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './components/App';
-import MediaVideo from './components/MediaVideo';
-import RegisterForm from './components/RegisterForm';
-import LoginForm from './components/LoginForm';
-import JoinLeague from './components/JoinLeague';
-import CreateLeague from './components/CreateLeague';
-import League from './components/League';
-import LeaguePosts from './components/LeaguePosts';
-import PostsComments from './components/PostsComments';
+import App from './components/App/App';
+import MediaVideo from './components/App/MediaVideo';
+import RegisterForm from './components/App/Forms/RegisterForm';
+import LoginForm from './components/App/Forms/LoginForm';
+import JoinLeague from './components/App/Forms/JoinLeague';
+import CreateLeague from './components/App/Forms/CreateLeague';
+import League from './components/League/League';
+import LeaguePosts from './components/League/LeaguePosts';
+import PostsComments from './components/League/PostsComments';
 
 export default (
   <div>
