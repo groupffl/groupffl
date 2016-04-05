@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { joinLeague, verifyLogin } from '../actions/index';
-// import Cookies from 'cookies-js';
-// import { Link, browserHistory } from 'react-router';
+import {
+  joinLeague,
+  verifyLogin,
+  promptLogin
+} from '../actions/index';
 
 class JoinLeague extends Component {
   constructor(props) {
@@ -17,6 +19,8 @@ class JoinLeague extends Component {
 
   componentWillMount() {
     if (!this.props.isLoggedIn) {
+      const REDIRECT_MESSAGE = 'Please login to join a league.';
+      this.props.promptLogin(REDIRECT_MESSAGE);
       this.props.history.push('/login');
     }
   }
@@ -108,4 +112,4 @@ export default reduxForm({
   form: 'JoinLeague',
   fields: ['leagueId', 'team'],
   validate
-}, mapStateToProps, { joinLeague, verifyLogin })(JoinLeague);
+}, mapStateToProps, { joinLeague, verifyLogin, promptLogin })(JoinLeague);

@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { loginUser, verifyLogin, beginSpinner, endSpinner } from '../actions/index';
 import Spinner from './Spinner';
+import {
+  loginUser,
+  verifyLogin,
+  beginSpinner,
+  endSpinner,
+  promptLogin
+} from '../actions/index';
 // import { Link, browserHistory } from 'react-router';
 
 class LoginForm extends Component {
@@ -19,6 +25,11 @@ class LoginForm extends Component {
     }
   }
 
+  componentWillUnmount() {
+    const REDIRECT_MESSAGE = null;
+    this.props.promptLogin(REDIRECT_MESSAGE);
+  }
+
   onSubmit(props) {
     this.props.beginSpinner();
     this.props.loginUser(props)
@@ -29,6 +40,8 @@ class LoginForm extends Component {
         if (response.payload.data.verify){
           this.props.history.push('/');
         } else {
+          const REDIRECT_MESSAGE = null;
+          this.props.promptLogin(REDIRECT_MESSAGE);
           this.setState({
             message: response.payload.data.message
           });
@@ -51,7 +64,7 @@ class LoginForm extends Component {
 
   render() {
     const { fields: { email, password }, handleSubmit } = this.props;
-
+    console.log('in render', this.props.promptLogin);
     return (
       <div className="login-register-form">
         <h3>One account. All your leagues.</h3>
@@ -61,6 +74,7 @@ class LoginForm extends Component {
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className="form-verify-error">
+              {this.props.loginPrompt}
               {this.state.message}
             </div>
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
@@ -110,9 +124,11 @@ function validate(values) {
 }
 
 function mapStateToProps(state) {
+  console.log('state', state)
   return {
     isLoggedIn: state.isLoggedIn.isLoggedIn,
-    isLoading: state.isLoading
+    isLoading: state.isLoading,
+    loginPrompt: state.promptLogin
   };
 }
 
@@ -120,4 +136,10 @@ export default reduxForm({
   form: 'LoginForm',
   fields: ['email', 'password'],
   validate
-}, mapStateToProps, { loginUser, verifyLogin, beginSpinner, endSpinner })(LoginForm);
+}, mapStateToProps, {
+  loginUser,
+  verifyLogin,
+  beginSpinner,
+  endSpinner,
+  promptLogin
+})(LoginForm);
