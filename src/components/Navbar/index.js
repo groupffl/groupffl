@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { verifyLogin } from '../actions/index';
+import { verifyLogin } from '../../actions/index';
 import Cookies from 'cookies-js';
 
 class Navbar extends Component {

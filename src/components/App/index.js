@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { verifyLogin } from '../../actions/index';
 
-import JoinPanel from './JoinPanel/index';
-import LeaguesPanel from './LeaguesPanel/LeaguesPanel';
+import JoinPanel from './JoinPanel';
+import LeaguesPanel from './LeaguesPanel';
 import Navbar from '../Navbar';
 
 class App extends Component {
