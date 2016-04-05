@@ -5,6 +5,19 @@ import PostInput from './PostInput';
 import Post from './Post';
 
 class LeaguePosts extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputText: ''
+    };
+  }
+
+  handlePostInput(inputText) {
+    this.setState({
+      inputText
+    });
+  }
+
   componentWillMount() {
     this.props.fetchPosts(this.props.params.id)
       .then(() => {});
@@ -28,15 +41,17 @@ class LeaguePosts extends Component {
     );
   }
 
-  addPost(refs) {
+  addPost(inputTextValue) {
     const postObj = {
-      description: refs.postInput.value,
+      description: inputTextValue,
       leagueId: this.props.params.id,
       title: 'NA'
     };
     this.props.createPost(postObj)
       .then( () => {
-        refs.postInput.value = '';
+        this.setState({
+          inputText: ''
+        });
         this.props.fetchPosts(this.props.params.id)
           .then(() => {
           });
@@ -47,7 +62,10 @@ class LeaguePosts extends Component {
     return (
       <div className="league-posts">
         <div className="post-wrapper">
-        <PostInput addPost={ this.addPost.bind(this) } />
+        <PostInput
+          onAddPost={this.addPost.bind(this)}
+          onPostInput={this.handlePostInput.bind(this)}
+          inputText={this.state.inputText} />
           <div className="post-list-wrapper">
             <ul>
               {this.renderList()}
