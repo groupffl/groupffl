@@ -32,20 +32,10 @@ class LeaguePosts extends Component {
       });
   }
 
-  renderComments(postId) {
-    if (postId == this.props.params.postId) {
-      return (
-        <div>
-          {this.props.children}
-        </div>
-      );
-    }
-  }
-
   renderList() {
     return this.props.all.map(post =>
       (
-        <Post post={post} renderComments={this.renderComments.bind(this)} />
+        <Post post={post} />
       )
     );
   }

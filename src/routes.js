@@ -21,9 +21,7 @@ export default (
       <Route path="create" component={CreateLeague} />
     </Route>
     <Route path="/league/:id" component={League}>
-      <Route path="posts" component={LeaguePosts}>
-        <Route path=":postId" component={PostsComments} />
-      </Route>
+      <IndexRoute component={LeaguePosts} />
     </Route>
   </div>
 );

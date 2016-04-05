@@ -8,7 +8,6 @@ import AuthReducer from './reducer_authentication';
 import LeagueInfoReducer from './reducer_league_info';
 import LeagueMembersReducer from './reducer_league_members';
 import LeaguePostsReducer from './reducer_league_posts';
-import ReducerPostComments from './reducer_post_comments';
 import LoadingReducer from './reducer_loading';
 import promptLoginReducer from './reducer_prompt_login';
 import { reducer as formReducer } from 'redux-form';
@@ -24,7 +23,6 @@ const rootReducer = combineReducers({
   leagueInfo: LeagueInfoReducer,
   leagueMembers: LeagueMembersReducer,
   leaguePosts: LeaguePostsReducer,
-  comments: ReducerPostComments,
   isLoading: LoadingReducer,
   promptLogin: promptLoginReducer
 });

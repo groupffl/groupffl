@@ -12,11 +12,6 @@ class PostsComments extends Component {
     };
   }
 
-  componentWillMount() {
-    this.props.fetchComments(this.props.params.postId)
-      .then(() => {});
-  }
-
   handleCommentInput(inputText) {
     this.setState({
       inputText
@@ -33,13 +28,11 @@ class PostsComments extends Component {
         this.setState({
           inputText: ''
         });
-        this.props.fetchComments(this.props.params.postId)
-          .then(() => {});
       });
   }
 
   renderList() {
-    return this.props.all.map(comment => (
+    return this.props.comments.map(comment => (
       <Comment comment={comment} />
     ));
   }
@@ -63,11 +56,7 @@ class PostsComments extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return state.comments;
-}
-
-export default connect(mapStateToProps, {
+export default connect(null, {
   createComment,
   fetchComments
 })(PostsComments);

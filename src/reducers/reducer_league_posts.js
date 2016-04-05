@@ -11,7 +11,6 @@ export default function(state = { all: [] }, action) {
       return { all: action.payload };
     case RECEIVE_POST:
       return { all: [action.payload].concat(state.all) };
-      // return [ ...state, action.payload ];
     default:
       return state;
   }
