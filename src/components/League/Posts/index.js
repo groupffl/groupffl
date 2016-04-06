@@ -29,7 +29,6 @@ class LeaguePosts extends Component {
   componentWillMount() {
     this.props.fetchPosts(this.props.params.id)
       .then(response => {
-        console.log(response);
         const allPosts = response.payload.data.map(post => {
           post.toggle = false;
           return post;

@@ -25,7 +25,6 @@ class PostsComments extends Component {
     };
     this.props.createComment(commentObj)
       .then(response => {
-        console.log(response);
         this.props.receiveComment(response.payload.data);
         this.setState({
           inputText: ''

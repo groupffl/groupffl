@@ -11,7 +11,6 @@ class LeaguesPanel extends Component {
   }
 
   componentWillUpdate() {
-    console.log(this.props.leagues);
     if (typeof this.props.leagues == 'string') {
       this.props.fetchLeagues()
         .then(() => {});
