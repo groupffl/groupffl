@@ -16,7 +16,7 @@ class MediaFeeds extends Component {
       );
     }
     return this.props.rss.data.map(article =>
-      <Article article={ article } />
+      <Article article={ article } key={ article.NewsID } />
     );
   }
 

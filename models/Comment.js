@@ -9,7 +9,8 @@
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'Team', required: true },
     post: { type: mongoose.Schema.Types.ObjectId, ref: 'Post', required: true },
     text: { type: String, maxlength: 30000, required: true },
-    date: { type: Date, default: Date.now() }
+    date: { type: Date, default: Date.now() },
+    authorName: { type: String }
   });
 
   // text, postId
@@ -24,6 +25,7 @@
       .then(team => {
         if (!team) { throw new Error('You do not have a team in this League'); }
         newComment.author = team._id;
+        newComment.authorName = team.name;
         team.comments.push(newComment);
         return team.save();
       })

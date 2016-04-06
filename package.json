@@ -19,6 +19,13 @@
   "bugs": {
     "url": "https://github.com/groupffl/groupffl/issues"
   },
+  "babel": {
+    "presets": [
+      "react",
+      "babel-preset-es2015",
+      "babel-preset-stage-0"
+    ]
+  },
   "homepage": "https://github.com/groupffl/groupffl#readme",
   "dependencies": {
     "axios": "^0.9.1",

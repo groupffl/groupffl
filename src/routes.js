@@ -9,7 +9,6 @@ import JoinLeague from './components/App/Forms/JoinLeague';
 import CreateLeague from './components/App/Forms/CreateLeague';
 import League from './components/League';
 import LeaguePosts from './components/League/Posts';
-import PostsComments from './components/League/Comments';
 
 export default (
   <div>

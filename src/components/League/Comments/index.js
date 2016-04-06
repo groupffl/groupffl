@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createComment, fetchComments } from '../../../actions/PostActions';
+import { createComment, receiveComment } from '../../../actions/PostActions';
 import CommentInput from './CommentInput';
 import Comment from './Comment';
 
@@ -21,10 +21,12 @@ class PostsComments extends Component {
   addComment(inputTextValue) {
     const commentObj = {
       text: inputTextValue,
-      postId: this.props.params.postId
+      postId: this.props.post._id
     };
     this.props.createComment(commentObj)
-      .then(() => {
+      .then(response => {
+        console.log(response);
+        this.props.receiveComment(response.payload.data);
         this.setState({
           inputText: ''
         });
@@ -32,7 +34,7 @@ class PostsComments extends Component {
   }
 
   renderList() {
-    return this.props.comments.map(comment => (
+    return this.props.post.comments.map(comment => (
       <Comment comment={comment} />
     ));
   }
@@ -58,5 +60,5 @@ class PostsComments extends Component {
 
 export default connect(null, {
   createComment,
-  fetchComments
+  receiveComment
 })(PostsComments);
