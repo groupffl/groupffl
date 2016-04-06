@@ -8,7 +8,8 @@ import {
   fetchComments,
   receivePosts,
   receivePost,
-  toggleComments
+  toggleComments,
+  deletePost
 } from '../../../actions/PostActions';
 
 class LeaguePosts extends Component {
@@ -18,6 +19,7 @@ class LeaguePosts extends Component {
       inputText: ''
     };
     this.handleToggle = this.handleToggle.bind(this);
+    this.handlePostDelete = this.handlePostDelete.bind(this);
   }
 
   handlePostInput(inputText) {
@@ -41,10 +43,21 @@ class LeaguePosts extends Component {
     this.props.toggleComments(post);
   }
 
+  handlePostDelete(post) {
+    console.log('handle post delete');
+    this.props.deletePost(post)
+      .then(response => {
+        console.log(response);
+      });
+  }
+
   renderList() {
     return this.props.all.map(post =>
       (
-        <Post post={post} handleToggle={this.handleToggle} />
+        <Post
+          post={post}
+          handleToggle={this.handleToggle}
+          handlePostDelete={this.handlePostDelete} />
       )
     );
   }
