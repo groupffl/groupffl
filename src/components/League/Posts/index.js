@@ -45,6 +45,7 @@ class LeaguePosts extends Component {
 
   handlePostDelete(post) {
     console.log('handle post delete');
+    console.log(post);
     this.props.deletePost(post)
       .then(response => {
         console.log(response);
@@ -107,5 +108,6 @@ export default connect(mapStateToProps, {
   fetchComments,
   receivePosts,
   receivePost,
-  toggleComments
+  toggleComments,
+  deletePost
 })(LeaguePosts);

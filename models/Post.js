@@ -13,10 +13,6 @@
   });
 
   postSchema.statics.createMW = (req, res, next) => {
-    console.log('req.body', req.body);
-    console.log('req.user', req.user);
-
-
     mongoose.model('Team').findOne({ owner: req.user, league: req.body.leagueId }, (err, team) => {
       if (err) { res.status(400).send(err); }
       console.log('team in Post model', team);
@@ -74,6 +70,34 @@
       .catch(err => res.status(400).send(err.message));
     });
   };
+
+  postSchema.statics.deleteMW = (req, res, next) => {
+    console.log('req.body', req.body);
+    mongoose.model('Team').findOne({ owner: req.user, league: req.body.league }, (err, team) => {
+      if (err) { res.status(400).send(err); }
+      const newPosts = team.posts.filter(post => {
+        return post != req.body._id;
+      });
+
+      team.posts = newPosts;
+      //team.save();
+      //next();
+    });
+    mongoose.model('Comment').find({}, (err, comments) => {
+      if(err) { return res.send('No comments with this post id'); }
+      const newComments = comments.filter(comment => {
+        return comment.post != req.body._id;
+      });
+      console.log('comments to delete', newComments);
+      // newComments.save();
+    });
+    mongoose.model('Post').findByIdAndRemove(req.body._id, (err, post) => {
+      if(err) { return res.send('No post with this post id'); }
+      req.deletePost = post;
+      next();
+    });
+  };
+
   const Post = mongoose.model('Post', postSchema);
   module.exports = Post;
 }());
