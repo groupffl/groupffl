@@ -28,6 +28,7 @@ class LeaguePosts extends Component {
     this.props.fetchPosts(this.props.params.id)
       .then(response => {
         console.log(response);
+
         this.props.receivePosts(response.payload.data);
       });
   }
