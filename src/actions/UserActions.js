@@ -37,6 +37,7 @@ export function logoutUser() {
 
 export function verifyLogin() {
   const cookie = Cookies.get('authToken') ? true : false;
+  
   return {
     type: VERIFY_LOGIN,
     payload: cookie

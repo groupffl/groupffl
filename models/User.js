@@ -74,6 +74,7 @@
           iat: Date.now()
         };
         let authToken = jwt.encode(authData, JWT_SECRET);
+        res.cookie('userId', authData._id);
         res.cookie('authToken', authToken);
         next();
       });
