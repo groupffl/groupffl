@@ -29,7 +29,7 @@
         mongoose.model('Team').findOne({ _id: req.body.teamId, owner: req.user }).exec()
         .then(team => {
           if (!team) { throw new Error('You do not own a Team with this ID'); }
-          newPost.author = team._id;
+          newPost.author = team;
           newPost.authorName = team.name;
           team.posts.push(newPost);
           return team.save();

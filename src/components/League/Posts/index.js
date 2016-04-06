@@ -71,7 +71,7 @@ class LeaguePosts extends Component {
     };
     this.props.createPost(postObj)
       .then(response => {
-        console.log(response);
+        console.log('nre post: ', response);
         this.props.receivePost(response.payload.data);
         this.setState({
           inputText: ''
