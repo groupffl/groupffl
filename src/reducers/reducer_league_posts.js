@@ -1,7 +1,8 @@
 import {
   RECEIVE_POSTS,
   RECEIVE_POST,
-  RECEIVE_COMMENT
+  RECEIVE_COMMENT,
+  TOGGLE_COMMENTS
 } from '../actions/PostActions';
 
 // const INITIAL_STATE = { all: [], displayCommentsToggle: false };
@@ -23,6 +24,17 @@ export default function(state = { all: [] }, action) {
         };
       });
       return { all: postArray };
+    case TOGGLE_COMMENTS:
+      const postToggleArray = state.all.map(post => {
+        if (post._id != action.payload._id) {
+          return post;
+        }
+        return {
+          ...post,
+          toggle: !post.toggle
+        };
+      });
+      return { all: postToggleArray };
     default:
       return state;
   }

@@ -7,7 +7,8 @@ import {
   fetchPosts,
   fetchComments,
   receivePosts,
-  receivePost
+  receivePost,
+  toggleComments
 } from '../../../actions/PostActions';
 
 class LeaguePosts extends Component {
@@ -38,8 +39,7 @@ class LeaguePosts extends Component {
   }
 
   handleToggle(post) {
-    
-    console.log(post);
+    this.props.toggleComments(post);
   }
 
   renderList() {
@@ -94,5 +94,6 @@ export default connect(mapStateToProps, {
   fetchPosts,
   fetchComments,
   receivePosts,
-  receivePost
+  receivePost,
+  toggleComments
 })(LeaguePosts);

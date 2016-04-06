@@ -6,6 +6,7 @@ export const CREATE_POST = 'CREATE_POST';
 export const RECEIVE_POST = 'RECEIVE_POST';
 export const CREATE_COMMENT = 'CREATE_COMMENT';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
+export const TOGGLE_COMMENTS = 'TOGGLE_COMMENTS';
 
 const CREATE_POST_URL = '/api/post';
 const FETCH_POSTS_URL = '/api/league/';
@@ -56,5 +57,12 @@ export function receiveComment(comment) {
   return {
     type: RECEIVE_COMMENT,
     payload: comment
+  };
+}
+
+export function toggleComments(post) {
+  return {
+    type: TOGGLE_COMMENTS,
+    payload: post
   };
 }

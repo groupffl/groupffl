@@ -40,21 +40,27 @@ class PostsComments extends Component {
   }
 
   render() {
-    return (
-      <div className="comments">
-        <div className="comment-area">
-          <CommentInput
-            onAddComment={this.addComment.bind(this)}
-            onCommentInput={this.handleCommentInput.bind(this)}
-            inputText={this.state.inputText} />
+    if (this.props.post.toggle) {
+      return (
+        <div className="comments">
+          <div className="comment-area">
+            <CommentInput
+              onAddComment={this.addComment.bind(this)}
+              onCommentInput={this.handleCommentInput.bind(this)}
+              inputText={this.state.inputText} />
+          </div>
+          <div className="comments-list-wrapper">
+            <ul>
+              {this.renderList()}
+            </ul>
+          </div>
         </div>
-        <div className="comments-list-wrapper">
-          <ul>
-            {this.renderList()}
-          </ul>
-        </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 }
 
