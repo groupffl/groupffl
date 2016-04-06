@@ -9,7 +9,8 @@ import {
   receivePosts,
   receivePost,
   toggleComments,
-  deletePost
+  deletePost,
+  receiveDeletePost
 } from '../../../actions/PostActions';
 
 class LeaguePosts extends Component {
@@ -44,11 +45,10 @@ class LeaguePosts extends Component {
   }
 
   handlePostDelete(post) {
-    console.log('handle post delete');
-    console.log(post);
     this.props.deletePost(post)
       .then(response => {
         console.log(response);
+        this.props.receiveDeletePost(post);
       });
   }
 
@@ -99,6 +99,7 @@ class LeaguePosts extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('state.leaguePosts: ', state.leaguePosts);
   return state.leaguePosts;
 }
 
@@ -109,5 +110,6 @@ export default connect(mapStateToProps, {
   receivePosts,
   receivePost,
   toggleComments,
-  deletePost
+  deletePost,
+  receiveDeletePost
 })(LeaguePosts);

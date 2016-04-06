@@ -15,7 +15,6 @@
   postSchema.statics.createMW = (req, res, next) => {
     mongoose.model('Team').findOne({ owner: req.user, league: req.body.leagueId }, (err, team) => {
       if (err) { res.status(400).send(err); }
-      console.log('team in Post model', team);
       req.body.teamId = team._id;
 
       if (!req.body.leagueId || !req.body.description || !req.body.teamId) {
@@ -26,8 +25,6 @@
       .then(league => {
         if (!league) { throw new Error('There is no League with this ID'); }
         if (!league.teams.indexOf(req.body.teamId) === -1) { return res.status(400).send('This Team does not belong to this League'); }
-        //console.log('')
-        // newPost.league = league.id;
         newPost.league = league._id;
         mongoose.model('Team').findOne({ _id: req.body.teamId, owner: req.user }).exec()
         .then(team => {
@@ -41,7 +38,6 @@
           res.status(400).send(err);
         })
         .then(() => {
-          console.log('league:', league);
           return league.save();
         })
         .catch(err => {
@@ -72,24 +68,18 @@
   };
 
   postSchema.statics.deleteMW = (req, res, next) => {
-    console.log('req.body', req.body);
     mongoose.model('Team').findOne({ owner: req.user, league: req.body.league }, (err, team) => {
       if (err) { res.status(400).send(err); }
       const newPosts = team.posts.filter(post => {
         return post != req.body._id;
       });
-
       team.posts = newPosts;
-      //team.save();
-      //next();
     });
     mongoose.model('Comment').find({}, (err, comments) => {
       if(err) { return res.send('No comments with this post id'); }
       const newComments = comments.filter(comment => {
         return comment.post != req.body._id;
       });
-      console.log('comments to delete', newComments);
-      // newComments.save();
     });
     mongoose.model('Post').findByIdAndRemove(req.body._id, (err, post) => {
       if(err) { return res.send('No post with this post id'); }

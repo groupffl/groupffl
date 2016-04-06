@@ -71,10 +71,16 @@ export function toggleComments(post) {
 }
 
 export function deletePost(post) {
-  console.log(post);
   const request = axios.put(`${DELETE_POST_URL}`, post);
   return {
     type: DELETE_POST,
     payload: request
+  };
+}
+
+export function receiveDeletePost(post) {
+  return {
+    type: RECEIVE_DELETE_POST,
+    payload: post
   };
 }

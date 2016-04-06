@@ -29,8 +29,7 @@ router.post('/', User.isLoggedIn, Post.createMW, (req, res) => {
 });
 
 router.put('/', User.isLoggedIn, Post.deleteMW, (req, res) => {
-  console.log('in route delete', req.deletePost);
-  res.send();
+  res.send(req.deletePost);
 });
 
 module.exports = router;

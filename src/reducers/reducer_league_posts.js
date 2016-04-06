@@ -2,7 +2,8 @@ import {
   RECEIVE_POSTS,
   RECEIVE_POST,
   RECEIVE_COMMENT,
-  TOGGLE_COMMENTS
+  TOGGLE_COMMENTS,
+  RECEIVE_DELETE_POST
 } from '../actions/PostActions';
 
 // const INITIAL_STATE = { all: [], displayCommentsToggle: false };
@@ -35,6 +36,11 @@ export default function(state = { all: [] }, action) {
         };
       });
       return { all: postToggleArray };
+    case RECEIVE_DELETE_POST:
+      const newPostsArray = state.all.filter(post => {
+        return post._id != action.payload._id;
+      })
+      return { all: newPostsArray };
     default:
       return state;
   }
