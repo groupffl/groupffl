@@ -1,4 +1,4 @@
-import { FETCH_LEAGUE_INFO } from '../actions/index';
+import { FETCH_LEAGUE_INFO } from '../actions/LeagueActions';
 
 const INITIAL_STATE = { leagueInfo: null };
 

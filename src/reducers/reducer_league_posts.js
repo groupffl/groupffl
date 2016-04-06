@@ -1,11 +1,40 @@
-import { FETCH_POSTS } from '../actions/index';
+import {
+  RECEIVE_POSTS,
+  RECEIVE_POST,
+  RECEIVE_COMMENT,
+  TOGGLE_COMMENTS
+} from '../actions/PostActions';
 
-const INITIAL_STATE = { all: [], displayCommentsToggle: false };
+// const INITIAL_STATE = { all: [], displayCommentsToggle: false };
 
-export default function(state = INITIAL_STATE, action) {
+export default function(state = { all: [] }, action) {
   switch (action.type) {
-    case FETCH_POSTS:
-      return { all: action.payload.data };
+    case RECEIVE_POSTS:
+      return { all: action.payload };
+    case RECEIVE_POST:
+      return { all: [action.payload].concat(state.all) };
+    case RECEIVE_COMMENT:
+      const postArray = state.all.map(post => {
+        if (post._id != action.payload.post) {
+          return post;
+        }
+        return {
+          ...post,
+          comments: post.comments.concat(action.payload)
+        };
+      });
+      return { all: postArray };
+    case TOGGLE_COMMENTS:
+      const postToggleArray = state.all.map(post => {
+        if (post._id != action.payload._id) {
+          return post;
+        }
+        return {
+          ...post,
+          toggle: !post.toggle
+        };
+      });
+      return { all: postToggleArray };
     default:
       return state;
   }

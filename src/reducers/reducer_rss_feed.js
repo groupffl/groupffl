@@ -1,4 +1,4 @@
-import { FETCH_RSS } from '../actions/index';
+import { FETCH_RSS } from '../actions/LeagueActions';
 
 const INITIAL_STATE = { rss: [] };
 

@@ -48,7 +48,7 @@
       if (foundUser) { return res.status(400).send({ verify: false, message: 'Email has already been taken.' }); }
       let user = new User();
       user.email = req.body.email.toLowerCase();
-      bcrypt.hash(req.body.password, 6, (err, hash) => {
+      bcrypt.hash(req.body.password, 13, (err, hash) => {
         if (err) { return res.status(400).send(err); }
         user.password = hash;
         user.save(err => {

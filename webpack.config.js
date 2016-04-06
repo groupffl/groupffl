@@ -21,6 +21,10 @@ module.exports = {
         loaders: ["style", "css", "sass"]
       },
       {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader:'file'
+      },
+      {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loaders: ["uglify", "babel"],

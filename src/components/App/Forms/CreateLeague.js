@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { createLeague } from '../actions/index';
-// import { Link, browserHistory } from 'react-router';
+import {
+  createLeague
+} from '../../../actions/LeagueActions';
+
+import {
+  promptLogin
+} from '../../../actions/UserActions';
 
 class CreateLeague extends Component {
   constructor(props) {
@@ -15,6 +20,8 @@ class CreateLeague extends Component {
 
   componentWillMount() {
     if (!this.props.isLoggedIn) {
+      const REDIRECT_MESSAGE = 'Please login to create a league.';
+      this.props.promptLogin(REDIRECT_MESSAGE);
       this.props.history.push('/login');
     }
   }
@@ -108,4 +115,4 @@ export default reduxForm({
   form: 'CreateLeague',
   fields: ['name', 'fflUrl', 'team'],
   validate
-}, mapStateToProps, { createLeague })(CreateLeague);
+}, mapStateToProps, { createLeague, promptLogin })(CreateLeague);

@@ -1,4 +1,4 @@
-import { FETCH_LEAGUE_MEMBERS } from '../actions/index';
+import { FETCH_LEAGUE_MEMBERS } from '../actions/LeagueActions';
 
 const INITIAL_STATE = { leagueMembers: [] };
 

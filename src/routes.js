@@ -2,14 +2,13 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/App';
-import MediaVideo from './components/MediaVideo';
-import RegisterForm from './components/RegisterForm';
-import LoginForm from './components/LoginForm';
-import JoinLeague from './components/JoinLeague';
-import CreateLeague from './components/CreateLeague';
+import MediaVideo from './components/App/Forms';
+import RegisterForm from './components/App/Forms/RegisterForm';
+import LoginForm from './components/App/Forms/LoginForm';
+import JoinLeague from './components/App/Forms/JoinLeague';
+import CreateLeague from './components/App/Forms/CreateLeague';
 import League from './components/League';
-import LeaguePosts from './components/LeaguePosts';
-import PostsComments from './components/PostsComments';
+import LeaguePosts from './components/League/Posts';
 
 export default (
   <div>
@@ -21,9 +20,7 @@ export default (
       <Route path="create" component={CreateLeague} />
     </Route>
     <Route path="/league/:id" component={League}>
-      <Route path="posts" component={LeaguePosts}>
-        <Route path=":postId" component={PostsComments} />
-      </Route>
+      <IndexRoute component={LeaguePosts} />
     </Route>
   </div>
 );

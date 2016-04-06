@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { loginUser, verifyLogin, beginSpinner, endSpinner } from '../actions/index';
 import Spinner from './Spinner';
-// import { Link, browserHistory } from 'react-router';
 
-class LoginForm extends Component {
+import {
+  registerUser,
+  verifyLogin
+} from '../../../actions/UserActions';
+
+import {
+  beginSpinner,
+  endSpinner
+} from '../../../actions/SpinnerActions';
+
+class RegisterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,11 +29,10 @@ class LoginForm extends Component {
 
   onSubmit(props) {
     this.props.beginSpinner();
-    this.props.loginUser(props)
+    this.props.registerUser(props)
       .then((response) => {
         this.props.endSpinner();
         this.props.verifyLogin();
-        console.log(response);
         if (response.payload.data.verify){
           this.props.history.push('/');
         } else {
@@ -45,19 +52,19 @@ class LoginForm extends Component {
       );
     }
     return (
-      <button type="submit" className="btn form-btn form-control">Sign in</button>
+      <button type="submit" className="btn form-btn form-control">Register</button>
     );
   }
 
   render() {
-    const { fields: { email, password }, handleSubmit } = this.props;
+    const { fields: { email, password, password2 }, handleSubmit } = this.props;
 
     return (
       <div className="login-register-form">
         <h3>One account. All your leagues.</h3>
-        <h4 className="login-title">Sign in with your email</h4>
+        <h4 className="login-title">Register with your email.</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
-          <img src=" http://i.imgur.com/FwW4B2K.png" width="35%" alt=""/>
+          <img src="http://i.imgur.com/92Fh6AU.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className="form-verify-error">
@@ -65,30 +72,39 @@ class LoginForm extends Component {
             </div>
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
               <input
-                type="email"
+                type="text"
                 className="form-control"
                 placeholder="Enter your email"
                 {...email} />
+              <div className="text-help-register">
+                {email.touched ? email.error : ''}
+              </div>
             </div>
-            <div className="text-help-login">
-              {email.touched ? email.error : ''}
-            </div>
-            <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
+            <div className={`form-group ${password.touched && password.invalid ? 'has-danger' : ''}`}>
               <input
                 type="password"
                 className="form-control"
                 placeholder="Enter your password"
                 {...password} />
+              <div className="text-help-register">
+                {password.touched ? password.error : ''}
+              </div>
             </div>
-            <div className="text-help-login">
-              {password.touched ? password.error : ''}
-            </div>
+            <div className={`form-group ${password2.touched && password2.invalid ? 'has-danger' : ''}`}>
+              <input
+                type="password"
+                className="form-control form-reg-password-again"
+                placeholder="Enter your password (again)"
+                {...password2} />
+              </div>
+              <div className="text-help-password-again">
+                {password2.touched ? password2.error : ''}
+              </div>
             {this.renderButton()}
-            <a className="pull-right" href="#">Forgot password?</a>
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">
-          <Link to="/register" className="login-noaccount" href="#">I do not have an account</Link>
+          <Link to="/login" className="login-noaccount" href="#">I already have an account</Link>
         </div>
       </div>
     );
@@ -101,11 +117,16 @@ function validate(values) {
   if (!values.email) {
     errors.email = 'Enter an email';
   }
-
   if (!values.password) {
     errors.password = 'Enter a password';
   }
+  if (!values.password2) {
+    errors.password2 = 'Enter a password';
+  }
 
+  if (values.password !== values.password2) {
+    errors.password2 = 'Passwords Do Not Match';
+  }
   return errors;
 }
 
@@ -117,7 +138,7 @@ function mapStateToProps(state) {
 }
 
 export default reduxForm({
-  form: 'LoginForm',
-  fields: ['email', 'password'],
+  form: 'RegisterForm',
+  fields: ['email', 'password', 'password2'],
   validate
-}, mapStateToProps, { loginUser, verifyLogin, beginSpinner, endSpinner })(LoginForm);
+}, mapStateToProps, { registerUser, verifyLogin, beginSpinner, endSpinner } )(RegisterForm);

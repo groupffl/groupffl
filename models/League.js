@@ -31,30 +31,26 @@
       newTeam.name = req.body.team;
       newTeam.owner = req.user;
       newTeam.league = newLeague._id;
-      mongoose.model('User').findById(req.user).exec()
-      .then(user => {
-        user.leagues.push(newLeague._id);
-        user.teams.push(newTeam._id);
-        req.resData = {
-          message: 'League created',
-          league: newLeague
-        };
-        req.resData.league.teams[0] = newTeam;
-        req.resData.league.commissioner.username = user.username; // NOTE: User may not have username
-        req.resData.league.commissioner.email = user.email;
-        return user.save();
-      })
-      .then(() => {
-        newLeague.teams[0] = newTeam._id; //array has all of team data in an object pre-populated (for some reason), overwritten here
-        return newLeague.save();
-      })
-      .then(() => newTeam.save())
-      .then(() => next())
-      .catch(err => {
-        console.log(err);
-        res.status(400).send({ verify: false, message: err.message });
-      });
+      return mongoose.model('User').findById(req.user).exec();
     })
+    .then(user => {
+      user.leagues.push(newLeague._id);
+      user.teams.push(newTeam._id);
+      req.resData = {
+        message: 'League created',
+        league: newLeague
+      };
+      req.resData.league.teams[0] = newTeam;
+      req.resData.league.commissioner.username = user.username; // NOTE: User may not have username
+      req.resData.league.commissioner.email = user.email;
+      return user.save();
+    })
+    .then(() => {
+      newLeague.teams[0] = newTeam._id; //array has all of team data in an object pre-populated (for some reason), overwritten here
+      return newLeague.save();
+    })
+    .then(() => newTeam.save())
+    .then(() => next())
     .catch(err => {
       console.log(err);
       console.log(err.message);
@@ -80,7 +76,6 @@
                 mongoose.model('User').populate(league, { path: 'commissioner teams.owner posts.author.owner', model: 'User', select: 'email' }, (err, league) => {
                   if (err) { return res.status(400).send(err); }
                   req.details = league;
-                  console.log('league details is: ', league);
                   next();
                 });
               });

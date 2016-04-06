@@ -8,6 +8,7 @@
     league: { type: mongoose.Schema.Types.ObjectId, ref: 'League', required: true },
     // title: { type: String, required: true },
     description: { type: String, maxlength: 30000, required: true },
+    authorName: { type: String },
     date: { type: Date, default: Date.now() }
   });
 
@@ -36,6 +37,7 @@
         .then(team => {
           if (!team) { throw new Error('You do not own a Team with this ID'); }
           newPost.author = team._id;
+          newPost.authorName = team.name;
           team.posts.push(newPost);
           return team.save();
         })
@@ -52,7 +54,11 @@
         .then(() => {
           newPost.title = req.body.title;
           newPost.description = req.body.description;
-          return newPost.save();
+          newPost.date = Date.now();
+          return newPost.save(err => {
+            if (err) { return res.status(400).send(err); }
+            req.postObj = newPost;
+          });
         })
         .catch(err => {
           res.status(400).send(err);

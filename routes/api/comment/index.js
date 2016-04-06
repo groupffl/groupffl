@@ -14,7 +14,7 @@
   });
 
   router.post('/', User.isLoggedIn, Comment.createMW, (req, res) => {
-    res.send('Comment created');
+    res.send(req.commentObj);
   });
 
   module.exports = router;
