@@ -25,8 +25,7 @@ class LeagueInfo extends Component {
       <div>
         <h3>{leagueInfo.name}</h3>
         <div className="league-info-details">
-          <h4>League ID</h4>
-          <a href={mailto} target="_blank">{leagueInfo._id}</a>
+          <a href={mailto} target="_blank">Invite Members</a>
           <h4>FFL URL</h4>
           <a href="#">{leagueInfo.fflUrl}</a>
           <h4>Commissioner</h4>
