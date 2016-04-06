@@ -16,6 +16,7 @@ class LeaguePosts extends Component {
     this.state = {
       inputText: ''
     };
+    this.handleToggle = this.handleToggle.bind(this);
   }
 
   handlePostInput(inputText) {
@@ -28,15 +29,23 @@ class LeaguePosts extends Component {
     this.props.fetchPosts(this.props.params.id)
       .then(response => {
         console.log(response);
-
-        this.props.receivePosts(response.payload.data);
+        const allPosts = response.payload.data.map(post => {
+          post.toggle = false;
+          return post;
+        });
+        this.props.receivePosts(allPosts);
       });
+  }
+
+  handleToggle(post) {
+    
+    console.log(post);
   }
 
   renderList() {
     return this.props.all.map(post =>
       (
-        <Post post={post} />
+        <Post post={post} handleToggle={this.handleToggle} />
       )
     );
   }
