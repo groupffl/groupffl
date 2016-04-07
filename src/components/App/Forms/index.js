@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
 import { Glyphicon } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import DemoVideo from './DemoVideo';
 
-export default class MediaVideo extends Component {
+class MediaVideo extends Component {
+  renderVideo() {
+    if (this.props.isLoggedIn) {
+      return (
+        <iframe width="84%" height="320px" src="https://www.youtube.com/embed/Y_NmwtttzA8" frameborder="0" allowfullscreen></iframe>
+      );
+    }
+    return (
+      <DemoVideo />
+    );
+  }
+
   render() {
     return (
       <div className="media-panel">
@@ -23,8 +36,14 @@ export default class MediaVideo extends Component {
             <h4 className="light">of what you've been missing.</h4>
           </div>
         </div>
-        <iframe width="84%" height="320px" src="https://www.youtube.com/embed/Y_NmwtttzA8" frameborder="0" allowfullscreen></iframe>
+        {this.renderVideo()}
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return state.isLoggedIn;
+}
+
+export default connect(mapStateToProps)(MediaVideo);

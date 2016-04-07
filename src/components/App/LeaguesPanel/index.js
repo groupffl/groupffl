@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchLeagues, fetchLeagueInfo } from '../../../actions/LeagueActions';
-import DemoVideo from './DemoVideo';
 import LeagueLink from './LeagueLink';
 
 class LeaguesPanel extends Component {
@@ -27,7 +26,7 @@ class LeaguesPanel extends Component {
 
     if (!isLoggedIn || leagues.length == 0 || typeof leagues == 'string') {
       return (
-        <DemoVideo />
+        <div>No Leagues</div>
       );
     }
     return leagues.map(league =>
