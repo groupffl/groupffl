@@ -19,8 +19,7 @@ class JoinLeague extends Component {
       success: ''
     };
   }
-
-
+  
   componentWillMount() {
     if (!this.props.isLoggedIn) {
       const REDIRECT_MESSAGE = 'Please login to join a league.';
