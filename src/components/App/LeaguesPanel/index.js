@@ -9,13 +9,6 @@ class LeaguesPanel extends Component {
       .then(() => {});
   }
 
-  componentWillUpdate() {
-    if (typeof this.props.leagues == 'string') {
-      this.props.fetchLeagues()
-        .then(() => {});
-    }
-  }
-
   handleClick(id) {
     this.props.fetchLeagueInfo(id)
       .then(() => {});
@@ -23,8 +16,8 @@ class LeaguesPanel extends Component {
 
   renderList() {
     const { isLoggedIn, leagues } = this.props;
-
-    if (!isLoggedIn || leagues.length == 0 || typeof leagues == 'string') {
+    console.log(leagues);
+    if (!isLoggedIn || !leagues || leagues.length == 0 || typeof leagues == 'string') {
       return (
         <div className="text-center">
           <br/>

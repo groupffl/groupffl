@@ -14,6 +14,8 @@ import {
   endSpinner
 } from '../../../actions/SpinnerActions';
 
+import { fetchLeagues } from '../../../actions/LeagueActions';
+
 class LoginForm extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +43,8 @@ class LoginForm extends Component {
         this.props.verifyLogin();
         if (response.payload.data.verify) {
           this.props.history.push('/');
+          this.props.fetchLeagues()
+            .then(() => {});
         } else {
           const REDIRECT_MESSAGE = null;
           const INCORRECT_EMAIL_PASS = 'Incorrect email or password';
@@ -142,5 +146,6 @@ export default reduxForm({
   verifyLogin,
   beginSpinner,
   endSpinner,
-  promptLogin
+  promptLogin,
+  fetchLeagues
 })(LoginForm);

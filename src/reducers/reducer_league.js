@@ -21,7 +21,7 @@ export default function(state = INITIAL_STATE, action) {
     case JOIN_LEAGUE:
       return { all: action.payload.data };
     case LOGOUT_USER:
-      return { all: [] };
+      return { all: undefined };
     default:
       return state;
   }
