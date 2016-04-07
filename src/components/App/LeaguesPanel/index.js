@@ -30,9 +30,8 @@ class LeaguesPanel extends Component {
         <DemoVideo />
       );
     }
-
     return leagues.map(league =>
-      <LeagueLink league={league} handleClick={this.handleClick.bind(this)}/>
+      <LeagueLink key={league._id} league={league} handleClick={this.handleClick.bind(this)}/>
     );
   }
 
