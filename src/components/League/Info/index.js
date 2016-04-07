@@ -19,13 +19,19 @@ class LeagueInfo extends Component {
     }
 
     const { leagueInfo } = this.props;
-    const mailto =`mailto:?to=&subject=Join%20My%20League%20On%20GFFL!&body=localhost:3000/join%0D%0Aleague%20ID:%20${leagueInfo._id}`; // FIXME: Replace localhost with deployed URL
+    const subject = `Join%20My%20League%20On%20GFFL!`;
+    const title = `I just created a league on Group Fantasy Football League!`;
+    const subtitle = `Use this ID to join my league: ${leagueInfo._id}`;
+    const body = `Get started!  `;
+    const gffl = `http://www.groupffl.com/join`;
+    const enter = `%0D%0A%0D%0A`;
+    const mailto =`mailto:?to=&subject=${subject}&body=${title}${enter}${subtitle}${enter}${body}${gffl}`;
 
     return (
       <div>
         <h3>{leagueInfo.name}</h3>
         <div className="league-info-details">
-          <a href={mailto} target="_blank">Invite Members</a>
+          <a href={mailto} >Invite Members</a>
           <h4>FFL URL</h4>
           <a href="#">{leagueInfo.fflUrl}</a>
           <h4>Commissioner</h4>
