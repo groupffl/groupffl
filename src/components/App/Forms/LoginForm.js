@@ -39,12 +39,11 @@ class LoginForm extends Component {
       .then(response => {
         this.props.endSpinner();
         this.props.verifyLogin();
-        console.log(response);
         if (response.payload.data.verify) {
           this.props.history.push('/');
         } else {
           const REDIRECT_MESSAGE = null;
-          const INCORRECT_EMAIL_PASS = 'Incorrect email or password'
+          const INCORRECT_EMAIL_PASS = 'Incorrect email or password';
           this.props.promptLogin(REDIRECT_MESSAGE);
           this.setState({
             message: INCORRECT_EMAIL_PASS
@@ -68,7 +67,6 @@ class LoginForm extends Component {
 
   render() {
     const { fields: { email, password }, handleSubmit } = this.props;
-    console.log('in render', this.props.promptLogin);
     return (
       <div className="login-register-form">
         <h3>One account. All your leagues.</h3>
