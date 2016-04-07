@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { verifyLogin } from '../../actions/UserActions';
+import { verifyLogin, logoutUser } from '../../actions/UserActions';
 import Cookies from 'cookies-js';
 
 class Navbar extends Component {
@@ -16,6 +16,7 @@ class Navbar extends Component {
   logoutClick() {
     Cookies.expire('authToken');
     Cookies.expire('userId');
+    this.props.logoutUser();
     this.props.verifyLogin();
   }
 
@@ -68,4 +69,4 @@ function mapStateToProps(state) {
   return state.isLoggedIn;
 }
 
-export default connect(mapStateToProps, { verifyLogin })(Navbar);
+export default connect(mapStateToProps, { verifyLogin, logoutUser })(Navbar);

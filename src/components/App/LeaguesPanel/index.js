@@ -26,7 +26,14 @@ class LeaguesPanel extends Component {
 
     if (!isLoggedIn || leagues.length == 0 || typeof leagues == 'string') {
       return (
-        <div>No Leagues</div>
+        <div className="text-center">
+          <br/>
+          <h4>Join or Create a League</h4>
+          <br/>
+          <br/>
+          <br/>
+          <img src="http://i.imgur.com/jKqzOpv.png" width="100%" alt=""/>
+        </div>
       );
     }
     return leagues.map(league =>
