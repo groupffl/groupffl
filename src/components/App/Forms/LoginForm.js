@@ -44,9 +44,10 @@ class LoginForm extends Component {
           this.props.history.push('/');
         } else {
           const REDIRECT_MESSAGE = null;
+          const INCORRECT_EMAIL_PASS = 'Incorrect email or password'
           this.props.promptLogin(REDIRECT_MESSAGE);
           this.setState({
-            message: response.payload.data.message
+            message: INCORRECT_EMAIL_PASS
           });
         }
       });

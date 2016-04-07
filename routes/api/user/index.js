@@ -13,9 +13,5 @@
     res.send({ verify: true, message: 'Welcome back!' });
   });
 
-  router.get('/logout', (req, res) => {
-    res.clearCookie('authToken').redirect('/');
-  });
-
   module.exports = router;
 }());

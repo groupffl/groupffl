@@ -3,7 +3,6 @@ import Cookies from 'cookies-js';
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
-export const LOGOUT_USER = 'LOGOUT_USER';
 export const VERIFY_LOGIN = 'VERIFY_LOGIN';
 export const PROMPT_LOGIN = 'PROMPT_LOGIN';
 
@@ -28,16 +27,9 @@ export function loginUser(props) {
   };
 }
 
-export function logoutUser() {
-  return {
-    type: LOGOUT_USER,
-    payload: null
-  };
-}
-
 export function verifyLogin() {
   const cookie = Cookies.get('authToken') ? true : false;
-  
+
   return {
     type: VERIFY_LOGIN,
     payload: cookie
