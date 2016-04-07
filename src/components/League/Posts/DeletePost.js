@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cookies from 'cookies-js';
+import { Glyphicon } from 'react-bootstrap';
 
 export default class DeletePost extends Component {
 
@@ -8,7 +9,20 @@ export default class DeletePost extends Component {
     // console.log('post in delete post: ', this.props.post);
     if (userId == this.props.post.author.owner) {
       return (
-        <div><a onClick={this.props.handlePostDelete.bind(this, this.props.post)} href="#">Delete</a></div>
+        <div className="dropdown delete-link">
+        <span
+          className="dropdown-toggle"
+          type="button"
+          data-toggle="dropdown">
+          <Glyphicon glyph="option-horizontal" />
+        </span>
+          <div className="dropdown-menu">
+              <a
+                onClick={this.props.handlePostDelete.bind(this, this.props.post)}
+                className="dropdown-item">Delete
+              </a>
+          </div>
+        </div>
       );
     }
     return (

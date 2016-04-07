@@ -512,15 +512,38 @@ body {
 
           .post-link-wrapper {
             margin: 0px;
-            text-align: right;
+            text-align: left;
             background-color: white;
             padding-top: 8px;
 
-            a {
+            .comment-link {
               display: block;
               padding-right: 10px;
-              color: $nflred;
+              color: #666;
+              text-decoration: underline;
+              width: 140px;
             }
+
+            .comment-link:hover {
+              cursor: pointer;
+            }
+
+            .delete-link {
+              color: #999;
+              float: right;
+              margin-top: -24px;
+              margin-right: 10px;
+              font-size: 24px;
+
+              .dropdown-menu {
+                text-align: center;
+              }
+            }
+
+            .delete-link:hover {
+              cursor: pointer;
+            }
+
           }
         }
       }

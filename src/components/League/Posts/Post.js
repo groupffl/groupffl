@@ -9,8 +9,8 @@ const Post = ({ post, post: { _id, authorName, date, description, comments }, ha
     <h6>{moment(date).format('MMMM Do, YYYY, h:mm a')}</h6>
     <p>{description}</p>
     <div className="post-link-wrapper">
-    <DeletePost post={post} handlePostDelete={handlePostDelete} />
-    <a onClick={handleToggle.bind(this, post)}>Comments: {comments.length}</a>
+      <a className="comment-link" onClick={handleToggle.bind(this, post)}>Comments: {comments.length}</a>
+      <DeletePost post={post} handlePostDelete={handlePostDelete} />
     </div>
     <Comments post={post} />
   </li>
