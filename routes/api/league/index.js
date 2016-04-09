@@ -7,6 +7,9 @@
   const Post = require(global.models + '/Post');
   const User = require(global.models + '/User');
 
+  var mailgun = require('mailgun-js')({apiKey: process.env.MAILGUN_KEY, domain: process.env.MAILGUN_DOMAIN});
+
+
   router.get('/:leagueId/posts', User.isLoggedIn, (req, res) => {
     Post.
       find({ league: req.params.leagueId }).
@@ -31,7 +34,25 @@
 
   router.post('/invite', User.isLoggedIn, (req, res) => {
     console.log('in leagues/invite route');
-    res.send('PLACEHOLDER TEST: Successfully invited members');
+    // var data = {
+    //   from: 'Autovision <mdeggies@sandbox19714487a4e84db7abe48144d77098b7.mailgun.org>', //sent from here
+    //   to: user.email,
+    //   subject: 'Thanks for Registering at AutoVision!',
+    //   text: 'https://autovision.herokuapp.com/#/'
+    // };
+    /*
+    var data = {
+      from: '<GroupFFL> admin@groupffl.com',
+      to: 'groupfflj@gmail.com',
+      subject: 'Join My League at GroupFFL!',
+      text: 'http://www.groupffl.com/'
+    };
+    mailgun.messages().send(data, function (error, body) {
+      console.log('mailgun data:',body);
+      // res.send(user);
+      res.send('PLACEHOLDER TEST: Successfully sent email to groupfflj@gmail.com');
+    });
+    */
   });
 
   module.exports = router;
