@@ -40,19 +40,22 @@
     //   subject: 'Thanks for Registering at AutoVision!',
     //   text: 'https://autovision.herokuapp.com/#/'
     // };
-    /*
+
     var data = {
-      from: '<GroupFFL> admin@groupffl.com',
+      from: 'groupfflj@gmail.com',
       to: 'groupfflj@gmail.com',
       subject: 'Join My League at GroupFFL!',
       text: 'http://www.groupffl.com/'
     };
+    console.log('data is: ', data);
+
     mailgun.messages().send(data, function (error, body) {
-      console.log('mailgun data:',body);
+      console.log('error is: ', error);
+      console.log('mailgun data:', body);
       // res.send(user);
       res.send('PLACEHOLDER TEST: Successfully sent email to groupfflj@gmail.com');
     });
-    */
+
   });
 
   module.exports = router;
