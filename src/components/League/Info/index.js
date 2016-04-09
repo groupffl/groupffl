@@ -19,19 +19,20 @@ class LeagueInfo extends Component {
     }
 
     const { leagueInfo } = this.props;
-    const subject = `Join%20My%20League%20On%20GFFL!`;
-    const title = `I just created a league on Group Fantasy Football League!`;
-    const subtitle = `Use this ID to join my league: ${leagueInfo._id}`;
-    const body = `Get started!  `;
-    const gffl = `http://www.groupffl.com/join`;
-    const enter = `%0D%0A%0D%0A`;
-    const mailto =`mailto:?to=&subject=${subject}&body=${title}${enter}${subtitle}${enter}${body}${gffl}`;
+    // const subject = `Join%20My%20League%20On%20GFFL!`;
+    // const title = `I just created a league on Group Fantasy Football League!`;
+    // const subtitle = `Use this ID to join my league: ${leagueInfo._id}`;
+    // const body = `Get started!  `;
+    // const gffl = `http://www.groupffl.com/join`;
+    // const enter = `%0D%0A%0D%0A`;
+    // const mailto =`mailto:?to=&subject=${subject}&body=${title}${enter}${subtitle}${enter}${body}${gffl}`;
 
     return (
       <div>
         <h3>{leagueInfo.name}</h3>
         <div className="league-info-details">
-          <a href={mailto} >Invite Members</a>
+          {/*<a href={mailto} >Invite Members</a>*/}
+          <a href=''>Invite Members</a>
           <h4>FFL URL</h4>
           <a href="#">{leagueInfo.fflUrl}</a>
           <h4>Commissioner</h4>
