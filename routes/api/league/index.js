@@ -29,5 +29,10 @@
     res.send(req.userLeagues);
   });
 
+  router.post('/invite', User.isLoggedIn, (req, res) => {
+    console.log('in leagues/invite route');
+    res.send('PLACEHOLDER TEST: Successfully invited members');
+  });
+
   module.exports = router;
 }());

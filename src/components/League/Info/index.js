@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchLeagueInfo } from '../../../actions/LeagueActions';
+import { fetchLeagueInfo, inviteLeagueMembers } from '../../../actions/LeagueActions';
 import RelatedLinks from './RelatedLinks';
 
 class LeagueInfo extends Component {
@@ -9,15 +9,20 @@ class LeagueInfo extends Component {
       .then(() => {});
   }
 
+  inviteMembers() {
+    console.log('invite members');
+    this.props.inviteLeagueMembers()
+      .then(response => {
+        console.log('response: ', response);
+      });
+  }
+
   render() {
-
-
     if (!this.props.leagueInfo) {
       return (
         <div>loading league data...</div>
       );
     }
-
     const { leagueInfo } = this.props;
     // const subject = `Join%20My%20League%20On%20GFFL!`;
     // const title = `I just created a league on Group Fantasy Football League!`;
@@ -32,7 +37,7 @@ class LeagueInfo extends Component {
         <h3>{leagueInfo.name}</h3>
         <div className="league-info-details">
           {/*<a href={mailto} >Invite Members</a>*/}
-          <a href=''>Invite Members</a>
+          <a className="invite-members" onClick={this.inviteMembers.bind(this)}>Invite Members</a>
           <h4>FFL URL</h4>
           <a href="#">{leagueInfo.fflUrl}</a>
           <h4>Commissioner</h4>
@@ -49,4 +54,4 @@ function mapStateToProps(state) {
   return state.leagueInfo;
 }
 
-export default connect(mapStateToProps, { fetchLeagueInfo })(LeagueInfo);
+export default connect(mapStateToProps, { fetchLeagueInfo, inviteLeagueMembers })(LeagueInfo);
