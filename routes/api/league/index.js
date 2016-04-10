@@ -33,6 +33,7 @@
 
   router.post('/invite', User.isLoggedIn, (req, res) => {
     console.log('in leagues/invite route');
+    console.log('req.body in invite route: ', req.body);
     var data = {
       from: 'groupfflj@gmail.com',
       to: 'groupfflj@gmail.com',

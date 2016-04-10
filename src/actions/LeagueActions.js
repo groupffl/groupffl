@@ -71,8 +71,9 @@ export function fetchLeagueMembers(id) {
   };
 }
 
-export function inviteLeagueMembers() {
-  const request = axios.post(`${INVITE_LEAGUE_MEMBERS_URL}`);
+export function inviteLeagueMembers(emails) {
+  console.log('emails is: ', emails);
+  const request = axios.post(`${INVITE_LEAGUE_MEMBERS_URL}`, emails);
 
   return {
     type: INVITE_LEAGUE_MEMBERS,

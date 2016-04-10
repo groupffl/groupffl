@@ -36,14 +36,14 @@ class LeagueInfo extends Component {
       .then(() => {});
   }
 
-  inviteMembers() {
-    console.log('invite members');
-    // this.props.inviteLeagueMembers()
-    //   .then(response => {
-    //     console.log('response: ', response);
-    //   });
+  onSubmit(emails) {
+    console.log('in on submit');
+    console.log('this.refs.value', emails);
+    this.props.inviteLeagueMembers(emails)
+      .then(response => {
+        console.log('response: ', response);
+      });
   }
-
   render() {
     if (!this.props.leagueInfo) {
       return (
@@ -58,7 +58,7 @@ class LeagueInfo extends Component {
     // const gffl = `http://www.groupffl.com/join`;
     // const enter = `%0D%0A%0D%0A`;
     // const mailto =`mailto:?to=&subject=${subject}&body=${title}${enter}${subtitle}${enter}${body}${gffl}`;
-    
+
     return (
       <div>
         <h3>{leagueInfo.name}</h3>
@@ -77,7 +77,7 @@ class LeagueInfo extends Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal.bind(this)}
           style={customStyles}>
-          <InviteMembersForm />
+          <InviteMembersForm onSubmit={this.onSubmit.bind(this)}/>
           <button className="btn btn-primary" onClick={this.closeModal.bind(this)}>close</button>
         </Modal>
       </div>
