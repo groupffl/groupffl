@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { fetchLeagueInfo, inviteLeagueMembers } from '../../../actions/LeagueActions';
 import RelatedLinks from './RelatedLinks';
 import Modal from 'react-modal';
+import InviteMembersForm from './InviteMembersForm';
 
 const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
   }
 };
-
 
 class LeagueInfo extends Component {
   constructor(props) {
@@ -30,6 +30,7 @@ class LeagueInfo extends Component {
   closeModal() {
     this.setState({ modalIsOpen: false });
   }
+
   componentWillMount() {
     this.props.fetchLeagueInfo(this.props.leagueId)
       .then(() => {});
@@ -57,7 +58,7 @@ class LeagueInfo extends Component {
     // const gffl = `http://www.groupffl.com/join`;
     // const enter = `%0D%0A%0D%0A`;
     // const mailto =`mailto:?to=&subject=${subject}&body=${title}${enter}${subtitle}${enter}${body}${gffl}`;
-
+    
     return (
       <div>
         <h3>{leagueInfo.name}</h3>
@@ -76,17 +77,8 @@ class LeagueInfo extends Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal.bind(this)}
           style={customStyles}>
-
-          <h2>Hello</h2>
-          <button onClick={this.closeModal.bind(this)}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
+          <InviteMembersForm />
+          <button className="btn btn-primary" onClick={this.closeModal.bind(this)}>close</button>
         </Modal>
       </div>
     );
