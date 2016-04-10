@@ -2,8 +2,34 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchLeagueInfo, inviteLeagueMembers } from '../../../actions/LeagueActions';
 import RelatedLinks from './RelatedLinks';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+
 
 class LeagueInfo extends Component {
+  constructor(props) {
+    super(props);
+    // this.setState({ modalIsOpen: false });
+    this.state = { modalIsOpen: false };
+  }
+
+  openModal() {
+    this.setState({ modalIsOpen: true });
+  }
+
+  closeModal() {
+    this.setState({ modalIsOpen: false });
+  }
   componentWillMount() {
     this.props.fetchLeagueInfo(this.props.leagueId)
       .then(() => {});
@@ -11,10 +37,10 @@ class LeagueInfo extends Component {
 
   inviteMembers() {
     console.log('invite members');
-    this.props.inviteLeagueMembers()
-      .then(response => {
-        console.log('response: ', response);
-      });
+    // this.props.inviteLeagueMembers()
+    //   .then(response => {
+    //     console.log('response: ', response);
+    //   });
   }
 
   render() {
@@ -37,7 +63,8 @@ class LeagueInfo extends Component {
         <h3>{leagueInfo.name}</h3>
         <div className="league-info-details">
           {/*<a href={mailto} >Invite Members</a>*/}
-          <a className="invite-members" onClick={this.inviteMembers.bind(this)}>Invite Members</a>
+          {/*<a className="invite-members" onClick={this.inviteMembers.bind(this)}>Invite Members</a>*/}
+          <a className="invite-members" onClick={this.openModal.bind(this)}>Invite Members</a>
           <h4>FFL URL</h4>
           <a href="#">{leagueInfo.fflUrl}</a>
           <h4>Commissioner</h4>
@@ -45,6 +72,22 @@ class LeagueInfo extends Component {
           <p>Email:<br />{leagueInfo.commissioner.email}</p>
           <RelatedLinks />
         </div>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal.bind(this)}
+          style={customStyles}>
+
+          <h2>Hello</h2>
+          <button onClick={this.closeModal.bind(this)}>close</button>
+          <div>I am a modal</div>
+          <form>
+            <input />
+            <button>tab navigation</button>
+            <button>stays</button>
+            <button>inside</button>
+            <button>the modal</button>
+          </form>
+        </Modal>
       </div>
     );
   }
