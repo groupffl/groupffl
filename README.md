@@ -1,2 +1,2 @@
 # groupffl
-## A Project by Geroge, Jeff, and Zack
+## A Project by George, Jeff, and Zack

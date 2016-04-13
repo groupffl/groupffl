@@ -39,7 +39,11 @@ class LeagueInfo extends Component {
   onSubmit(emails) {
     console.log('in on submit');
     console.log('this.refs.value', emails);
-    this.props.inviteLeagueMembers(emails)
+    const emailsObj = {
+      emails: emails
+    };
+
+    this.props.inviteLeagueMembers(emailsObj)
       .then(response => {
         console.log('response: ', response);
       });

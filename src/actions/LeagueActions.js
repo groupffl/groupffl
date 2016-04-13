@@ -73,6 +73,7 @@ export function fetchLeagueMembers(id) {
 
 export function inviteLeagueMembers(emails) {
   console.log('emails is: ', emails);
+  alert(emails);
   const request = axios.post(`${INVITE_LEAGUE_MEMBERS_URL}`, emails);
 
   return {
