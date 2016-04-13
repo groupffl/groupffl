@@ -12,6 +12,6 @@ Create a user account to form/join leagues, post messages/comments in your leagu
 
 React, React-Redux, React-Router, Express/Node.js, Mongoose/MongoDB, webpack, bcrypt-nodejs
 
-###Group Members:
+###Project Members:
 
 Jeff Tabachnick, George Wee, Zack Winchell
