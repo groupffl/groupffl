@@ -34,9 +34,11 @@
   router.post('/invite', User.isLoggedIn, (req, res) => {
     console.log('in leagues/invite route');
     console.log('req.body in invite route: ', req.body);
+    // const currentUserEmail = req.body.currentUserEmail;
+    const recipientsEmails = ['groupfflj@gmail.com'];
     var data = {
       from: 'groupfflj@gmail.com',
-      to: 'groupfflj@gmail.com',
+      to: recipientsEmails,
       subject: 'Join My League at GroupFFL!',
       text: 'http://www.groupffl.com/'
     };
