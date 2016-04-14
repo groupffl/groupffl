@@ -39,7 +39,7 @@ class LeagueInfo extends Component {
   onSubmit(emails) {
     const recipientsEmails = emails.replace(/\s+/g, '').split(',');
     const emailsObj = {
-      senderEmail: 'groupfflj@gmail.com', // Need current user email
+      senderEmail: this.props.leagueInfo.commissioner.email,
       recipientsEmails: recipientsEmails
     };
     this.props.inviteLeagueMembers(emailsObj)
@@ -47,13 +47,14 @@ class LeagueInfo extends Component {
         console.log('response: ', response);
       });
   }
-  
+
   render() {
     if (!this.props.leagueInfo) {
       return (
         <div>loading league data...</div>
       );
     }
+    console.log('this.props is: ', this.props);
     const { leagueInfo } = this.props;
     // const subject = `Join%20My%20League%20On%20GFFL!`;
     // const title = `I just created a league on Group Fantasy Football League!`;
@@ -90,6 +91,7 @@ class LeagueInfo extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('state is: ', state);
   return state.leagueInfo;
 }
 
