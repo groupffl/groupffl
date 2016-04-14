@@ -37,17 +37,17 @@ class LeagueInfo extends Component {
   }
 
   onSubmit(emails) {
-    console.log('in on submit');
-    console.log('this.refs.value', emails);
+    const recipientsEmails = emails.replace(/\s+/g, '').split(',');
     const emailsObj = {
-      emails: emails
+      senderEmail: 'groupfflj@gmail.com', // Need current user email
+      recipientsEmails: recipientsEmails
     };
-
     this.props.inviteLeagueMembers(emailsObj)
       .then(response => {
         console.log('response: ', response);
       });
   }
+  
   render() {
     if (!this.props.leagueInfo) {
       return (

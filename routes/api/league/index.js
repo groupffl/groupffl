@@ -32,12 +32,11 @@
   });
 
   router.post('/invite', User.isLoggedIn, (req, res) => {
-    console.log('in leagues/invite route');
     console.log('req.body in invite route: ', req.body);
-    // const currentUserEmail = req.body.currentUserEmail;
-    const recipientsEmails = ['groupfflj@gmail.com'];
+    const senderEmail = 'groupfflj@gmail.com'; // Will be: req.body.senderEmail;
+    const recipientsEmails = ['groupfflj@gmail.com']; // Will be: req.body.recipientsEmails;
     var data = {
-      from: 'groupfflj@gmail.com',
+      from: senderEmail,
       to: recipientsEmails,
       subject: 'Join My League at GroupFFL!',
       text: 'http://www.groupffl.com/'
@@ -47,7 +46,7 @@
       console.log('mailgun data:', body);
       if (error) { res.status(400).send(error); }
       console.log('mailgun data:', body);
-      res.send('PLACEHOLDER TEST: Successfully sent email to groupfflj@gmail.com');
+      res.send('Mailgun TEST: Email successfully sent to groupfflj@gmail.com');
     });
   });
 

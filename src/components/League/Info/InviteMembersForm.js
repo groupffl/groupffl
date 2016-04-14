@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 export default class InviteMembersForm extends Component {
   handleSubmit() {
-    alert('handleSubmit', this.refs.inputEmails.value);
     this.props.onSubmit(this.refs.inputEmails.value);
   }
 
