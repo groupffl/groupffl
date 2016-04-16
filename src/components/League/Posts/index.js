@@ -71,7 +71,6 @@ class LeaguePosts extends Component {
     };
     this.props.createPost(postObj)
       .then(response => {
-        console.log('nre post: ', response);
         this.props.receivePost(response.payload.data);
         this.setState({
           inputText: ''
@@ -99,7 +98,6 @@ class LeaguePosts extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state.leaguePosts: ', state.leaguePosts);
   return state.leaguePosts;
 }
 

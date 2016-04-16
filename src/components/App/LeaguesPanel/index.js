@@ -16,7 +16,6 @@ class LeaguesPanel extends Component {
 
   renderList() {
     const { isLoggedIn, leagues } = this.props;
-    console.log(leagues);
     if (!isLoggedIn || !leagues || leagues.length == 0 || typeof leagues == 'string') {
       return (
         <div className="text-center">
