@@ -69,7 +69,8 @@ class LeagueInfo extends Component {
         <InviteMembersModal
           show={this.state.show}
           close={this.closeModal.bind(this)}
-          sendInvitations={this.sendInvitations.bind(this)}/>
+          sendInvitations={this.sendInvitations.bind(this)}
+        />
       </div>
     );
   }
