@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { fetchLeagueInfo, inviteLeagueMembers } from '../../../actions/LeagueActions';
 import RelatedLinks from './RelatedLinks';
 import { Button, Modal } from 'react-bootstrap';
-import InviteMembersForm from './InviteMembersForm';
+import InviteMembersModal from './InviteMembersModal';
 
+// import InviteMembersForm from './InviteMembersForm';
 // import Modal from 'react-modal'; // r-m
 
 // react-modal
@@ -40,7 +41,24 @@ class LeagueInfo extends Component {
       .then(() => {});
   }
 
-  onSubmit(emails) {
+  // onSubmit(emails) {
+  //   const recipientsEmails = emails.replace(/\s+/g, '').split(',');
+  //   const emailsObj = {
+  //     senderEmail: this.props.leagueInfo.commissioner.email,
+  //     recipientsEmails: recipientsEmails
+  //   };
+  //   this.props.inviteLeagueMembers(emailsObj)
+  //     .then(response => {
+  //       console.log('response: ', response);
+  //     });
+  // }
+
+  sendInvitations(emails) {
+    console.log('clicked close modal button');
+    // console.log('input text is: ', this.refs.inputEmails.value);
+    console.log('emails is: ', emails);
+    this.setState({ show: false });
+
     const recipientsEmails = emails.replace(/\s+/g, '').split(',');
     const emailsObj = {
       senderEmail: this.props.leagueInfo.commissioner.email,
@@ -52,21 +70,11 @@ class LeagueInfo extends Component {
       });
   }
 
-  sendInvitations() {
-    console.log('clicked close modal button');
-    console.log('input text is: ', this.refs.inputEmails.value);
-
-    const recipientsEmails = this.refs.inputEmails.value.replace(/\s+/g, '').split(',');
-    const emailsObj = {
-      senderEmail: this.props.leagueInfo.commissioner.email,
-      recipientsEmails: recipientsEmails
-    };
-    this.props.inviteLeagueMembers(emailsObj)
-      .then(response => {
-        console.log('response: ', response);
-      });
-    this.setState({ show: false });
+  openModal() {
+    console.log('inside open modal');
+    this.setState({ show: true });
   }
+
   render() {
     // let close = () => this.setState({ show: false }); // r-b
 
@@ -92,7 +100,8 @@ class LeagueInfo extends Component {
           {/*<a href={mailto} >Invite Members</a>*/}
           {/*<a className="invite-members" onClick={this.inviteMembers.bind(this)}>Invite Members</a>*/}
           {/* r-m // <a className="invite-members" onClick={this.openModal.bind(this)}>Invite Members</a>*/}
-          <a className="invite-members" onClick={() => this.setState({ show: true})}>Invite Members</a>
+          {/* r-m before refactor // <a className="invite-members" onClick={() => this.setState({ show: true})}>Invite Members</a>*/}
+          <a className="invite-members" onClick={this.openModal.bind(this)}>Invite Members</a>
           <h4>FFL URL</h4>
           <a href="#">{leagueInfo.fflUrl}</a>
           <h4>Commissioner</h4>
@@ -100,34 +109,7 @@ class LeagueInfo extends Component {
           <p>Email:<br />{leagueInfo.commissioner.email}</p>
           <RelatedLinks />
         </div>
-
-
-        <div className="modal-container" style={{height: 200}}>
-
-          <Modal
-            show={this.state.show}
-            onHide={close}
-            container={this}
-            aria-labelledby="contained-modal-title"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title">Contained Modal</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <form>
-                <p>Invite Members</p>
-                <input
-                  ref="inputEmails"
-                  type="text" />
-              </form>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={this.sendInvitations.bind(this)}>Send</Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
-
-
+        <InviteMembersModal show={this.state.show} sendInvitations={this.sendInvitations.bind(this)}/>
       </div>
     );
   }
@@ -141,6 +123,32 @@ class LeagueInfo extends Component {
 // >
 //   Launch contained modal
 // </Button>
+
+// <div className="modal-container" style={{height: 200}}>
+//   <Modal
+//     show={this.state.show}
+//     onHide={close}
+//     container={this}
+//     aria-labelledby="contained-modal-title"
+//   >
+//     <Modal.Header closeButton>
+//       <Modal.Title id="contained-modal-title">Contained Modal</Modal.Title>
+//     </Modal.Header>
+//     <Modal.Body>
+//       <form>
+//         <p>Invite Members</p>
+//         <input
+//           ref="inputEmails"
+//           type="text" />
+//       </form>
+//     </Modal.Body>
+//     <Modal.Footer>
+//       <Button onClick={this.sendInvitations.bind(this)}>Send</Button>
+//     </Modal.Footer>
+//   </Modal>
+// </div>
+//
+//
 
 // r-m
 // <Modal
