@@ -33,6 +33,10 @@ class LeagueInfo extends Component {
     this.setState({ show: true });
   }
 
+  closeModal() {
+    this.setState({ show: false });
+  }
+
   render() {
     if (!this.props.leagueInfo) {
       return (
@@ -62,7 +66,10 @@ class LeagueInfo extends Component {
           <p>Email:<br />{leagueInfo.commissioner.email}</p>
           <RelatedLinks />
         </div>
-        <InviteMembersModal show={this.state.show} sendInvitations={this.sendInvitations.bind(this)}/>
+        <InviteMembersModal
+          show={this.state.show}
+          close={this.closeModal.bind(this)}
+          sendInvitations={this.sendInvitations.bind(this)}/>
       </div>
     );
   }

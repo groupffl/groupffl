@@ -402,6 +402,17 @@ body {
     }
   }
 
+  .modal-container {
+    input {
+      width: 100%;
+      border: none;
+    }
+
+    input:focus {
+      outline: none;
+    }
+  }
+
   // react-bootstrap modal
   // .modal-container {
   //   position: relative;
