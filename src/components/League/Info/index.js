@@ -4,14 +4,18 @@ import { fetchLeagueInfo } from '../../../actions/LeagueActions';
 import RelatedLinks from './RelatedLinks';
 
 class LeagueInfo extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.props.fetchLeagueInfo(this.props.leagueId)
       .then(() => {});
   }
 
+  // componentWillMount() {
+  //   this.props.fetchLeagueInfo(this.props.leagueId)
+  //     .then(() => {});
+  // }
+
   render() {
-
-
     if (!this.props.leagueInfo) {
       return (
         <div>loading league data...</div>

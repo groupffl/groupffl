@@ -4,10 +4,16 @@ import * as actions from '../../../actions/LeagueActions';
 import Article from './Article';
 
 class MediaFeeds extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.props.fetchRSS()
      .then(() => {});
   }
+
+  // componentWillMount() {
+  //   this.props.fetchRSS()
+  //    .then(() => {});
+  // }
 
   renderList() {
     if (this.props.rss.length === 0 || this.props.rss.data.statusCode == 401) {

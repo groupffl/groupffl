@@ -4,10 +4,16 @@ import { fetchLeagues, fetchLeagueInfo } from '../../../actions/LeagueActions';
 import LeagueLink from './LeagueLink';
 
 class LeaguesPanel extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.props.fetchLeagues()
       .then(() => {});
   }
+
+  // componentWillMount() {
+  //   this.props.fetchLeagues()
+  //     .then(() => {});
+  // }
 
   handleClick(id) {
     this.props.fetchLeagueInfo(id)

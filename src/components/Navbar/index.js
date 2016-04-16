@@ -5,10 +5,6 @@ import { verifyLogin, logoutUser } from '../../actions/UserActions';
 import Cookies from 'cookies-js';
 
 class Navbar extends Component {
-  componentWillMount() {
-    // action to check if user is logged in.
-  }
-
   handleClick() {
     this.props.verifyLogin();
   }

@@ -9,9 +9,14 @@ import { fetchLeagueData } from '../../actions/LeagueActions';
 import { verifyLogin } from '../../actions/UserActions';
 
 class League extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
     this.props.verifyLogin();
   }
+
+  // componentWillMount() {
+  //   this.props.verifyLogin();
+  // }
 
   render() {
     return (

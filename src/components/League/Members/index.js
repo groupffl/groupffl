@@ -7,13 +7,15 @@ import MemberLink from './MemberLink';
 class LeagueMembers extends Component {
   constructor(props) {
     super(props);
+    this.props.fetchLeagueMembers(this.props.leagueId)
+      .then(() => {});
   }
 
-  componentWillMount() {
-    this.props.fetchLeagueMembers(this.props.leagueId)
-      .then(() => {
-      });
-  }
+  // componentWillMount() {
+  //   this.props.fetchLeagueMembers(this.props.leagueId)
+  //     .then(() => {
+  //     });
+  // }
 
   renderTeamList() {
     if (!this.props.leagueMembers.teams) {

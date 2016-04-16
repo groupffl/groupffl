@@ -58,7 +58,7 @@ class PostsComments extends Component {
     } else {
       return (
         <div></div>
-      )
+      );
     }
   }
 }

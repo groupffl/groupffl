@@ -19,13 +19,16 @@ class RegisterForm extends Component {
     this.state = {
       message: ''
     };
-  }
-
-  componentWillMount() {
     if (this.props.isLoggedIn) {
       this.props.history.push('/');
     }
   }
+
+  // componentWillMount() {
+  //   if (this.props.isLoggedIn) {
+  //     this.props.history.push('/');
+  //   }
+  // }
 
   onSubmit(props) {
     this.props.beginSpinner();

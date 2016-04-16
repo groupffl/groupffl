@@ -19,17 +19,10 @@ class LeaguePosts extends Component {
     this.state = {
       inputText: ''
     };
+
     this.handleToggle = this.handleToggle.bind(this);
     this.handlePostDelete = this.handlePostDelete.bind(this);
-  }
 
-  handlePostInput(inputText) {
-    this.setState({
-      inputText
-    });
-  }
-
-  componentWillMount() {
     this.props.fetchPosts(this.props.params.id)
       .then(response => {
         const allPosts = response.payload.data.map(post => {
@@ -39,6 +32,23 @@ class LeaguePosts extends Component {
         this.props.receivePosts(allPosts);
       });
   }
+
+  handlePostInput(inputText) {
+    this.setState({
+      inputText
+    });
+  }
+
+  // componentWillMount() {
+  //   this.props.fetchPosts(this.props.params.id)
+  //     .then(response => {
+  //       const allPosts = response.payload.data.map(post => {
+  //         post.toggle = false;
+  //         return post;
+  //       });
+  //       this.props.receivePosts(allPosts);
+  //     });
+  // }
 
   handleToggle(post) {
     this.props.toggleComments(post);
