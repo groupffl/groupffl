@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 import LeagueInfo from './Info';
@@ -21,6 +22,8 @@ class League extends Component {
   render() {
     return (
       <div>
+        <Helmet
+          title="League" />
         <Navbar />
         <div className="container">
           <div className="row">
