@@ -11,18 +11,24 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.props.verifyLogin();
+    this.state = {
+      title1: 'aomething'
+    };
   }
 
-  // componentWillMount() {
-  //   this.props.verifyLogin();
-  // }
+  componentDidMount() {
+    this.setState({
+      title1: 'something2'
+    });
+  }
 
   render() {
+    console.log(this.state.title1);
     return (
       <div>
         <Helmet
           htmlAttributes={{"lang": "en", "amp": undefined}}
-          title="testing"
+          title={this.state.title1}
           meta={[
               {"name": "description", "content": "Helmet application"},
               {"property": "og:type", "content": "article"}
