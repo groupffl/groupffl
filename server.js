@@ -16,7 +16,7 @@ global.models = path.join(__dirname, '/models/');
 const app = express();
 
 const mongoose = require('mongoose');
-const mongoUrl = process.env.MLAB_URI || 'mongodb://localhost/ffln';
+const mongoUrl = process.env.MLAB_URI || 'mongodb://localhost/fflnm';
 
 const mongoConnectMsg = process.env.MLAB_URI ? '.' : chalk.cyan(` ${mongoUrl}`);
 

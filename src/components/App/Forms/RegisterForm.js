@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import Spinner from './Spinner';
@@ -64,6 +65,10 @@ class RegisterForm extends Component {
 
     return (
       <div className="login-register-form">
+      
+        <Helmet
+          title="Group Fantasy Football League Register Form" />
+
         <h3>One account. All your leagues.</h3>
         <h4 className="login-title">Register with your email.</h4>
         <div className="form-wrapper col-xs-6 col-xs-offset-3">
