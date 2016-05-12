@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { verifyLogin } from '../../actions/UserActions';
 
@@ -19,6 +20,13 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Helmet
+          htmlAttributes={{"lang": "en", "amp": undefined}}
+          title="testing"
+          meta={[
+              {"name": "description", "content": "Helmet application"},
+              {"property": "og:type", "content": "article"}
+          ]} />
         <Navbar />
         <div className="container">
           <div className="row">

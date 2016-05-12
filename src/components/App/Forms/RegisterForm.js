@@ -67,7 +67,7 @@ class RegisterForm extends Component {
       <div className="login-register-form">
 
         <Helmet
-          base={{"target": "_self", "href": "www.groupffl.com/register"}}
+          base={{"target": "_self", "href": "http://www.groupffl.com/register"}}
           title="Group Fantasy Football League Register Form" />
 
         <h3>One account. All your leagues.</h3>
