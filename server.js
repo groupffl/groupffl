@@ -38,7 +38,7 @@ app.use('/api', require('./routes/api'));
 
 
 
-app.use('/*', (req, res) => {
+app.get('/*', (req, res) => {
   var head = Helmet.rewind();
   const html = `
   <!DOCTYPE html>
@@ -63,6 +63,7 @@ app.use('/*', (req, res) => {
   </html>
   `;
   res.write(html);
+  res.end();
 });
 
 app.use((req, res, next) => {
