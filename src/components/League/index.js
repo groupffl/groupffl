@@ -23,7 +23,7 @@ class League extends Component {
     return (
       <div>
         <Helmet
-          title="League" />
+          title="GroupFFL - League" />
         <Navbar />
         <div className="container">
           <div className="row">

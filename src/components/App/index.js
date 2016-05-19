@@ -18,7 +18,7 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({
-      title1: 'something2'
+      title1: 'GroupFFL - Home'
     });
   }
 

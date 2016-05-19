@@ -68,7 +68,7 @@ class RegisterForm extends Component {
 
         <Helmet
           base={{"target": "_self", "href": "http://www.groupffl.com/register"}}
-          title="Group Fantasy Football League Register Form" />
+          title="GroupFFL - Register" />
 
         <h3>One account. All your leagues.</h3>
         <h4 className="login-title">Register with your email.</h4>
