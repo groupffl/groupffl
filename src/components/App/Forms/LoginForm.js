@@ -80,7 +80,7 @@ class LoginForm extends Component {
 
         <Helmet
           base={{"target": "_self", "href": "http://www.groupffl.com/login"}}
-          title="Group Fantasy Football League Login Form" />
+          title="GroupFFL - Login" />
 
         <h3>One account. All your leagues.</h3>
         <h4 className="login-title">Sign in with your email</h4>
