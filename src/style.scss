@@ -11,48 +11,6 @@ body {
   min-width: 1170px;
 }
 
-.league-member-title {
-  margin-top: 25px;
-  margin-bottom: 0px;
-
-  background-color: $nflblue;
-  color: #f0f0f0;
-  text-align: center;
-  padding: 16px;
-  text-transform: uppercase;
-}
-
-.league-members-list {
-  background-color: white;
-
-  ul {
-    background-color: white;
-    padding-left: 0px;
-    margin-bottom: 0px;
-    text-align: left;
-    min-height: 300px;
-
-    li {
-      list-style: none;
-
-      div {
-        margin-left: 20px;
-        margin-right: 20px;
-        border-bottom: 1px solid #ccc;
-        padding: 10px 20px;
-
-        h5 {
-          color: #333;
-        }
-      }
-    }
-
-    li:hover {
-      // background-color: #eee;
-    }
-  }
-}
-
 
 .league-posts {
   height: 600px;
