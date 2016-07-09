@@ -24,11 +24,11 @@ class Navbar extends Component {
         <div>
           <Link to="/register"
             className="btn"
-            styleName="navbar-buttons navbar-register"
+            styleName="btn navbar-buttons navbar-register"
             onClick={this.handleClick.bind(this)}> Register</Link>
           <Link to="/login"
             className="btn"
-            styleName="navbar-buttons navbar-login"
+            styleName="btn navbar-buttons navbar-login"
             onClick={this.handleClick.bind(this)}> Login</Link>
         </div>
       );
@@ -37,7 +37,7 @@ class Navbar extends Component {
         <div>
           <Link to="/"
             className="btn"
-            styleName="navbar-buttons navbar-logout"
+            styleName="btn navbar-buttons navbar-logout"
             onClick={this.logoutClick.bind(this)}>Logout</Link>
         </div>
       );

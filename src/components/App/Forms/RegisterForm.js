@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import Spinner from './Spinner';
+import styles from './index.scss';
 
 import {
   registerUser,
@@ -58,19 +60,16 @@ class RegisterForm extends Component {
     const { fields: { email, password, password2 }, handleSubmit } = this.props;
 
     return (
-      <div className="login-register-form">
-
-        <Helmet
-          base={{"target": "_self", "href": "http://www.groupffl.com/register"}}
-          title="GroupFFL - Register" />
-
+      <div styleName="login-register-form">
         <h3>One account. All your leagues.</h3>
-        <h4 className="login-title">Register with your email.</h4>
-        <div className="form-wrapper col-xs-6 col-xs-offset-3">
+        <h4>Register with your email.</h4>
+        <div
+          className="col-xs-6 col-xs-offset-3"
+          styleName="form-wrapper">
           <img src="http://i.imgur.com/92Fh6AU.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-            <div className="form-verify-error">
+            <div styleName="form-verify-error">
               {this.state.message}
             </div>
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
@@ -79,7 +78,7 @@ class RegisterForm extends Component {
                 className="form-control"
                 placeholder="Enter your email"
                 {...email} />
-              <div className="text-help-register">
+              <div styleName="text-help-register">
                 {email.touched ? email.error : ''}
               </div>
             </div>
@@ -89,25 +88,26 @@ class RegisterForm extends Component {
                 className="form-control"
                 placeholder="Enter your password"
                 {...password} />
-              <div className="text-help-register">
+              <div styleName="text-help-register">
                 {password.touched ? password.error : ''}
               </div>
             </div>
             <div className={`form-group ${password2.touched && password2.invalid ? 'has-danger' : ''}`}>
               <input
                 type="password"
-                className="form-control form-reg-password-again"
+                className="form-control"
+
                 placeholder="Enter your password (again)"
                 {...password2} />
               </div>
-              <div className="text-help-password-again">
+              <div styleName="text-help-password-again">
                 {password2.touched ? password2.error : ''}
               </div>
             {this.renderButton()}
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">
-          <Link to="/login" className="login-noaccount" href="#">I already have an account</Link>
+          <Link to="/login" styleName="login-noaccount" href="#">I already have an account</Link>
         </div>
       </div>
     );
@@ -144,4 +144,4 @@ export default reduxForm({
   form: 'RegisterForm',
   fields: ['email', 'password', 'password2'],
   validate
-}, mapStateToProps, { registerUser, verifyLogin, beginSpinner, endSpinner } )(RegisterForm);
+}, mapStateToProps, { registerUser, verifyLogin, beginSpinner, endSpinner } )(CSSModules(RegisterForm, styles));
