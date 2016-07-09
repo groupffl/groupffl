@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions/LeagueActions';
 import Article from './Article';
+import styles from './index.scss';
 
 class MediaFeeds extends Component {
   constructor(props) {
@@ -23,11 +25,11 @@ class MediaFeeds extends Component {
 
   render() {
     return (
-      <div className="media-feeds">
+      <div styleName="media-feeds">
         <h3>News</h3>
         <img src="http://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0103%2Fr41245_1296x729_16%2D9.jpg&w=570" width="100%" alt=""/>
           <div className="row">
-            <div className="media-rss">
+            <div styleName="media-rss">
               <ul>
                 {this.renderList()}
               </ul>
@@ -42,4 +44,4 @@ function mapStateToProps(state) {
   return { rss: state.rss.rss };
 }
 
-export default connect(mapStateToProps, actions)(MediaFeeds);
+export default connect(mapStateToProps, actions)(CSSModules(MediaFeeds, styles));

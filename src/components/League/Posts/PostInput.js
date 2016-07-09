@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
+import styles from './index.scss';
 
-export default class PostInput extends Component {
+class PostInput extends Component {
   handleChange() {
     this.props.onPostInput(
       this.refs.postInput.value
@@ -15,7 +17,7 @@ export default class PostInput extends Component {
 
   render() {
     return (
-      <div className="post-text">
+      <div styleName="post-text">
         <textarea
           ref="postInput"
           type="text"
@@ -28,3 +30,5 @@ export default class PostInput extends Component {
     );
   }
 }
+
+export default CSSModules(PostInput, styles);

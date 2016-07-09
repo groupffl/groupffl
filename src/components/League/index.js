@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 import LeagueInfo from './Info';
 import MediaFeeds from './Media';
 import LeagueMembers from './Members';
+import styles from './index.scss';
 
 import { fetchLeagueData } from '../../actions/LeagueActions';
 import { verifyLogin } from '../../actions/UserActions';
@@ -21,10 +23,10 @@ class League extends Component {
         <Helmet
           title="GroupFFL - League" />
         <Navbar />
-        <div className="container">
+        <div className="container" style={{minWidth: '1170px'}}>
           <div className="row">
             <div className="col-xs-3">
-              <div className="league-info">
+              <div styleName="league-info">
                 <LeagueInfo leagueId={this.props.params.id} />
                 <LeagueMembers leagueId={this.props.params.id} />
               </div>
@@ -48,4 +50,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchLeagueData, verifyLogin })(League);
+export default connect(mapStateToProps, { fetchLeagueData, verifyLogin })(CSSModules(League, styles));

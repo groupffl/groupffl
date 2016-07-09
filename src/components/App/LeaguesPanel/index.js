@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { fetchLeagues, fetchLeagueInfo } from '../../../actions/LeagueActions';
 import LeagueLink from './LeagueLink';
+import styles from './index.scss';
 
 class LeaguesPanel extends Component {
   constructor(props) {
@@ -37,8 +39,8 @@ class LeaguesPanel extends Component {
   render() {
     return (
       <div>
-        <h3 className="league-header">My Leagues</h3>
-        <div className="league-panel">
+        <h3 styleName="league-header">My Leagues</h3>
+        <div styleName="league-panel">
           <ul>
             {this.renderList()}
           </ul>
@@ -55,4 +57,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchLeagues, fetchLeagueInfo })(LeaguesPanel);
+export default connect(mapStateToProps, { fetchLeagues, fetchLeagueInfo })(CSSModules(LeaguesPanel, styles));
