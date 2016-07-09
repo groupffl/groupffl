@@ -39,17 +39,6 @@ class LeaguePosts extends Component {
     });
   }
 
-  // componentWillMount() {
-  //   this.props.fetchPosts(this.props.params.id)
-  //     .then(response => {
-  //       const allPosts = response.payload.data.map(post => {
-  //         post.toggle = false;
-  //         return post;
-  //       });
-  //       this.props.receivePosts(allPosts);
-  //     });
-  // }
-
   handleToggle(post) {
     this.props.toggleComments(post);
   }
@@ -57,7 +46,6 @@ class LeaguePosts extends Component {
   handlePostDelete(post) {
     this.props.deletePost(post)
       .then(response => {
-        console.log(response);
         this.props.receiveDeletePost(post);
       });
   }
@@ -81,7 +69,6 @@ class LeaguePosts extends Component {
     };
     this.props.createPost(postObj)
       .then(response => {
-        console.log('nre post: ', response);
         this.props.receivePost(response.payload.data);
         this.setState({
           inputText: ''
@@ -109,7 +96,6 @@ class LeaguePosts extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state.leaguePosts: ', state.leaguePosts);
   return state.leaguePosts;
 }
 

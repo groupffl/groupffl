@@ -7,7 +7,6 @@
   const RSS_URL = 'https://api.fantasydata.net/nfl/v2/json/News';
 
   router.get('/rss', (req, res) => {
-    console.log('in rss');
     request(RSS_URL, {
       headers: { 'Ocp-Apim-Subscription-Key': process.env.FANTASYDATA_API_KEY }
     }, function(err, response) {

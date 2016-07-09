@@ -10,11 +10,6 @@ class MediaFeeds extends Component {
      .then(() => {});
   }
 
-  // componentWillMount() {
-  //   this.props.fetchRSS()
-  //    .then(() => {});
-  // }
-
   renderList() {
     if (this.props.rss.length === 0 || this.props.rss.data.statusCode == 401) {
       return (

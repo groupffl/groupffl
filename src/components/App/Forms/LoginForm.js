@@ -26,13 +26,7 @@ class LoginForm extends Component {
     if (this.props.isLoggedIn) {
       this.props.history.push('/');
     }
-  }
-
-  // componentWillMount() {
-  //   if (this.props.isLoggedIn) {
-  //     this.props.history.push('/');
-  //   }
-  // }
+  }  
 
   componentWillUnmount() {
     const REDIRECT_MESSAGE = null;

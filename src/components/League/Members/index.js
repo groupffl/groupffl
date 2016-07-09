@@ -11,12 +11,6 @@ class LeagueMembers extends Component {
       .then(() => {});
   }
 
-  // componentWillMount() {
-  //   this.props.fetchLeagueMembers(this.props.leagueId)
-  //     .then(() => {
-  //     });
-  // }
-
   renderTeamList() {
     if (!this.props.leagueMembers.teams) {
       return (

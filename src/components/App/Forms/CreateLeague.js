@@ -24,14 +24,6 @@ class CreateLeague extends Component {
     }
   }
 
-  // componentWillMount() {
-  //   if (!this.props.isLoggedIn) {
-  //     const REDIRECT_MESSAGE = 'Please login to create a league.';
-  //     this.props.promptLogin(REDIRECT_MESSAGE);
-  //     this.props.history.push('/login');
-  //   }
-  // }
-
   onSubmit(props) {
     this.props.createLeague(props)
       .then( () => {

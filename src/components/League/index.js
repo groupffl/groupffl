@@ -15,10 +15,6 @@ class League extends Component {
     this.props.verifyLogin();
   }
 
-  // componentWillMount() {
-  //   this.props.verifyLogin();
-  // }
-
   render() {
     return (
       <div>
