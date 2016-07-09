@@ -25,14 +25,6 @@ class JoinLeague extends Component {
     }
   }
 
-  // componentWillMount() {
-  //   if (!this.props.isLoggedIn) {
-  //     const REDIRECT_MESSAGE = 'Please login to join a league.';
-  //     this.props.promptLogin(REDIRECT_MESSAGE);
-  //     this.props.history.push('/login');
-  //   }
-  // }
-
   onSubmit(props) {
     this.props.joinLeague(props)
       .then(() => {

@@ -9,6 +9,4 @@ let routes = require('./src/routes');
 
 Router.run(routes, Router.HistoryLocation, function(Root, state) {
     React.render(<Root />, document.getElementById('app'));
-
-    console.log('Rendered app on client');
 });

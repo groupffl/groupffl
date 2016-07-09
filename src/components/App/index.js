@@ -23,7 +23,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.title1);
     return (
       <div>
         <Helmet

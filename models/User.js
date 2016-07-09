@@ -82,7 +82,6 @@
   };
 
   userSchema.statics.isLoggedIn = (req, res, next) => {
-    console.log('cookie', req.cookies.authToken);
     if (!req.cookies.authToken) { return res.status(403).send('You must be logged in to perform this action (1)'); }
     try {
       let userData = jwt.decode(req.cookies.authToken, JWT_SECRET);
@@ -97,29 +96,6 @@
     }
   };
 
-  // userSchema.statics.getUserLeaguesMW = (req, res, next) => {
-  //   User.findById(req.user, (err, user) => {
-  //     // TODO: error handling
-  //     console.log(user);
-  //     req.userLeagues = [];
-  //     req.userLeagues = user.leagues.map(league => {
-  //       var teamName = league.teams.filter(team => {
-  //         console.log('team', team)
-  //         return req.user == team;
-  //       });
-  //       console.log(teamName);
-  //       return {
-  //         leagueName: league.name,
-  //         teamName: teamName
-  //       };
-  //     });
-  //     console.log(req.userLeagues);
-  //     next();
-  //   }).deepPopulate('leagues.teams', function(err, post) {
-  //     console.log(post);
-  //   });
-  // }
-
   userSchema.statics.getUserLeaguesMW = (req, res, next) => {
     User.findById(req.user).deepPopulate('leagues.teams').exec( (err, user) => {
       if (err) { return res.status(400).send(err); }
@@ -131,7 +107,6 @@
           _id: league._id
         };
       });
-      console.log('user leagues in get user leagues', req.userLeagues);
       next();
     });
   };
