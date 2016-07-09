@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import Cookies from 'cookies-js';
 import { Glyphicon } from 'react-bootstrap';
+import styles from './index.scss';
 
-export default class DeletePost extends Component {
+class DeletePost extends Component {
 
   render() {
     const userId = Cookies.get('userId').split(':')[1].replace(/"/g, '');
     if (userId == this.props.post.author.owner) {
       return (
-        <div className="dropdown delete-link">
+        <div
+          className="dropdown"
+          styleName="delete-link">
         <span
           className="dropdown-toggle"
           type="button"
@@ -29,3 +33,5 @@ export default class DeletePost extends Component {
     );
   }
 }
+
+export default CSSModules(DeletePost, styles);
