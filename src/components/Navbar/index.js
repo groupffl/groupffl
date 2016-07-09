@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { verifyLogin, logoutUser } from '../../actions/UserActions';
 import Cookies from 'cookies-js';
+import styles from './index.scss';
 
 class Navbar extends Component {
   handleClick() {
@@ -21,10 +23,12 @@ class Navbar extends Component {
       return (
         <div>
           <Link to="/register"
-            className="btn navbar-buttons navbar-register"
+            className="btn"
+            styleName="navbar-buttons navbar-register"
             onClick={this.handleClick.bind(this)}> Register</Link>
           <Link to="/login"
-            className="btn navbar-buttons navbar-login"
+            className="btn"
+            styleName="navbar-buttons navbar-login"
             onClick={this.handleClick.bind(this)}> Login</Link>
         </div>
       );
@@ -32,7 +36,8 @@ class Navbar extends Component {
       return (
         <div>
           <Link to="/"
-            className="btn navbar-buttons navbar-logout"
+            className="btn"
+            styleName="navbar-buttons navbar-logout"
             onClick={this.logoutClick.bind(this)}>Logout</Link>
         </div>
       );
@@ -65,4 +70,4 @@ function mapStateToProps(state) {
   return state.isLoggedIn;
 }
 
-export default connect(mapStateToProps, { verifyLogin, logoutUser })(Navbar);
+export default connect(mapStateToProps, { verifyLogin, logoutUser })(CSSModules(Navbar, styles, {allowMultiple: true}));
