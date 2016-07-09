@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext .js --ext .jsx || true",
     "production": "webpack -p",
+    "dev": "webpack && nodemon server.js",
     "start": "npm i && webpack && nodemon server.js",
     "webpack": "webpack --colors --progress --watch"
   },
