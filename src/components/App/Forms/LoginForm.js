@@ -79,7 +79,6 @@ class LoginForm extends Component {
       <div className="login-register-form">
 
         <Helmet
-          base={{"target": "_self", "href": "http://www.groupffl.com/login"}}
           title="GroupFFL - Login" />
 
         <h3>One account. All your leagues.</h3>
