@@ -12,41 +12,6 @@ body {
   min-width: 1170px;
 }
 
-.navbar {
-  background-color: $nflblue;
-  padding-bottom: 10px;
-  margin-bottom: 0;
-  border-radius: 0;
-  min-width: 1170px;
-
-  a {
-    margin-left: -20px;
-    color: #f0f0f0;
-    font-family: 'Oswald', sans-serif;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: none;
-    color: $nflred;
-  }
-
-  a:focus {
-
-  }
-
-  .subtitle {
-    font-size: 20px;
-    margin-left: 20px;
-    font-family: helvetica;
-  }
-
-  .navbar-logo {
-    margin-top: 2px;
-  }
-
-}
-
 .text-help {
   color:$nflred;
 }

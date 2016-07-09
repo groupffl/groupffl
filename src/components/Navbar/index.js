@@ -46,19 +46,26 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div className="col-xs-12 navbar">
+      <div
+        className="col-xs-12 navbar"
+        styleName="navbar">
         <div className="container">
-          <div className="pull-left navbar-logo">
+          <div
+            className="pull-left"
+            styleName="navbar-logo">
             <h3>
-              <Link to="/" className="navbar-logo-button"> GFFL
-                <span className="subtitle">Group Fantasy Football League</span>
+              <Link to="/"> GFFL
+                <span styleName="subtitle">Group Fantasy Football League</span>
               </Link>
             </h3>
           </div>
-          <div className="pull-right navbar-buttons">
+          <div
+            className="pull-right"
+            styleName="navbar-buttons">
             {this.renderNavButtons()}
           </div>
-          <div className="text-center navbar-title">
+          <div
+            className="text-center">
           </div>
         </div>
       </div>
