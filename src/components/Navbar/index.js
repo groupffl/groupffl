@@ -49,7 +49,7 @@ class Navbar extends Component {
       <div
         className="col-xs-12 navbar"
         styleName="navbar">
-        <div className="container">
+        <div className="container" style={{minWidth: '1170px'}}>
           <div
             className="pull-left"
             styleName="navbar-logo">

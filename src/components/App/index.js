@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <div className="container">
+        <div className="container" style={{minWidth: '1170px'}}>
           <div className="row">
             <div className="col-xs-8">
               {this.props.children}
