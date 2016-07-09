@@ -11,93 +11,48 @@ body {
   min-width: 1170px;
 }
 
-.league-info {
-  background-color: #f0f0f0;
+.league-member-title {
   margin-top: 25px;
+  margin-bottom: 0px;
 
-  h3 {
-    margin-top: 25px;
-    color: #333;
-  }
+  background-color: $nflblue;
+  color: #f0f0f0;
+  text-align: center;
+  padding: 16px;
+  text-transform: uppercase;
+}
 
-  .league-info-details {
+.league-members-list {
+  background-color: white;
+
+  ul {
     background-color: white;
-    padding: 20px;
-
-    a {
-      margin: 0px;
-      display:block;
-      padding-bottom: 16px;
-      color: #004599;
-      //padding-left: 20px;
-    }
-
-    .related-links {
-      margin: 0;
-      padding-bottom: 0px;
-    }
-
-    a:hover {
-      text-decoration: none;
-      color: #005ccc;
-    }
-
-    h4 {
-      color: #333;
-      margin: 0px;
-      padding-bottom: 4px;
-    }
-
-    p {
-      color: #888;
-      margin: 0px;
-      padding-bottom: 16px;
-      // padding-left: 20px;
-    }
-  }
-
-  .league-member-title {
-    margin-top: 25px;
+    padding-left: 0px;
     margin-bottom: 0px;
+    text-align: left;
+    min-height: 300px;
 
-    background-color: $nflblue;
-    color: #f0f0f0;
-    text-align: center;
-    padding: 16px;
-    text-transform: uppercase;
-  }
+    li {
+      list-style: none;
 
-  .league-members-list {
-    background-color: white;
+      div {
+        margin-left: 20px;
+        margin-right: 20px;
+        border-bottom: 1px solid #ccc;
+        padding: 10px 20px;
 
-    ul {
-      background-color: white;
-      padding-left: 0px;
-      margin-bottom: 0px;
-      text-align: left;
-      min-height: 300px;
-
-      li {
-        list-style: none;
-
-        div {
-          margin-left: 20px;
-          margin-right: 20px;
-          border-bottom: 1px solid #ccc;
-          padding: 10px 20px;
-
-          h5 {
-            color: #333;
-          }
+        h5 {
+          color: #333;
         }
       }
+    }
 
-      li:hover {
-        // background-color: #eee;
-      }
+    li:hover {
+      // background-color: #eee;
     }
   }
 }
+
 
 .league-posts {
   height: 600px;
