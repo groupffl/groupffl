@@ -23,17 +23,29 @@ class MediaVideo extends Component {
         <div>
           <h2>Connect with friends and the football world around you with GroupFFL.</h2>
           <div styleName="icons-panel">
-            <span><Glyphicon glyph="comment" /></span>
+            <span>
+              <Glyphicon
+                glyph="comment"
+                styleName="glyphicon" />
+            </span>
             <h4 styleName="bold">Talk fantasy football</h4>
             <h4 styleName="light">with friends on your league timeline.</h4>
           </div>
           <div styleName="icons-panel">
-            <span><Glyphicon glyph="bullhorn" /></span>
+            <span>
+              <Glyphicon
+                glyph="bullhorn"
+                styleName="glyphicon" />
+            </span>
             <h4 styleName="bold">Get recent news</h4>
             <h4 styleName="light">from around the league.</h4>
           </div>
           <div styleName="icons-panel">
-            <span><Glyphicon glyph="globe" /></span>
+            <span>
+              <Glyphicon
+                glyph="globe"
+                styleName="glyphicon" />
+            </span>
             <h4 styleName="bold">Find more</h4>
             <h4 styleName="light">of what you've been missing.</h4>
           </div>
