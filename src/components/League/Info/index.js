@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { fetchLeagueInfo } from '../../../actions/LeagueActions';
 import RelatedLinks from './RelatedLinks';
+import styles from './index.scss';
 
 class LeagueInfo extends Component {
   constructor(props) {
@@ -9,11 +11,6 @@ class LeagueInfo extends Component {
     this.props.fetchLeagueInfo(this.props.leagueId)
       .then(() => {});
   }
-
-  // componentWillMount() {
-  //   this.props.fetchLeagueInfo(this.props.leagueId)
-  //     .then(() => {});
-  // }
 
   render() {
     if (!this.props.leagueInfo) {
@@ -34,7 +31,7 @@ class LeagueInfo extends Component {
     return (
       <div>
         <h3>{leagueInfo.name}</h3>
-        <div className="league-info-details">
+        <div styleName="league-info-details">
           <a href={mailto} >Invite Members</a>
           <h4>FFL URL</h4>
           <a href="#">{leagueInfo.fflUrl}</a>
@@ -52,4 +49,4 @@ function mapStateToProps(state) {
   return state.leagueInfo;
 }
 
-export default connect(mapStateToProps, { fetchLeagueInfo })(LeagueInfo);
+export default connect(mapStateToProps, { fetchLeagueInfo })(CSSModules(LeagueInfo, styles));

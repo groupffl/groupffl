@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Glyphicon } from 'react-bootstrap';
 import { verifyLogin } from '../../../actions/UserActions';
+import styles from './index.scss';
 
 class CreateLeagueButton extends Component {
   handleClick() {
@@ -12,11 +14,13 @@ class CreateLeagueButton extends Component {
   render() {
     return (
       <Link to="/create"
-        className="create-button join-panel-buttons"
+        styleName="join-panel-buttons"
         onClick={this.handleClick.bind(this)}>
-        <div className="join-icons-panel">
-          <span><Glyphicon glyph="plus" /></span>
-          <h3 className="bold">Create</h3>
+        <div styleName="join-icons-panel">
+          <span><Glyphicon
+            glyph="plus"
+            styleName="glyphicon" /></span>
+          <h3 styleName="bold">Create</h3>
           <h3>a league</h3>
         </div>
       </Link>
@@ -24,4 +28,4 @@ class CreateLeagueButton extends Component {
   }
 }
 
-export default connect(null, { verifyLogin })(CreateLeagueButton);
+export default connect(null, { verifyLogin })(CSSModules(CreateLeagueButton, styles, {allowMultiple: true}));

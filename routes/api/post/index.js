@@ -10,11 +10,6 @@ router.get('/:postId/comments', (req, res) => {
     if (err) { return res.status(400).send(err); }
     res.send(comments.reverse());
   }).populate('author');
-  // Comment.find({ post: req.params.postId }).sort({ date: 'descending' }).exec((err, comments) => {
-  //   if (err) { return res.status(400).send(err); }
-  //   console.log('getting comments in reverse order, comments');
-  //   res.send(comments);
-  // });
 });
 
 router.get('/', User.isLoggedIn, (req, res) => {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { verifyLogin } from '../../actions/UserActions';
 
@@ -11,30 +10,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.props.verifyLogin();
-    this.state = {
-      title1: 'aomething'
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      title1: 'GroupFFL - Home'
-    });
   }
 
   render() {
-    console.log(this.state.title1);
     return (
       <div>
-        <Helmet
-          htmlAttributes={{"lang": "en", "amp": undefined}}
-          title={this.state.title1}
-          meta={[
-              {"name": "description", "content": "Helmet application"},
-              {"property": "og:type", "content": "article"}
-          ]} />
         <Navbar />
-        <div className="container">
+        <div className="container" style={{minWidth: '1170px'}}>
           <div className="row">
             <div className="col-xs-8">
               {this.props.children}

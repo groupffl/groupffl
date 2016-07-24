@@ -45,7 +45,6 @@ export function verifyLogin() {
 }
 
 export function promptLogin(redirectMessage) {
-  console.log(redirectMessage);
   return {
     type: PROMPT_LOGIN,
     payload: redirectMessage

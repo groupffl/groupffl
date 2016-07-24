@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import Spinner from './Spinner';
+import styles from './index.scss';
 
 import {
   loginUser,
@@ -27,12 +29,6 @@ class LoginForm extends Component {
       this.props.history.push('/');
     }
   }
-
-  // componentWillMount() {
-  //   if (this.props.isLoggedIn) {
-  //     this.props.history.push('/');
-  //   }
-  // }
 
   componentWillUnmount() {
     const REDIRECT_MESSAGE = null;
@@ -69,26 +65,30 @@ class LoginForm extends Component {
       );
     }
     return (
-      <button type="submit" className="btn form-btn form-control">Sign in</button>
+      <button
+        type="submit"
+        className="btn form-btn form-control"
+        styleName="form-btn">Sign in</button>
     );
   }
 
   render() {
     const { fields: { email, password }, handleSubmit } = this.props;
     return (
-      <div className="login-register-form">
+      <div styleName="login-register-form">
 
         <Helmet
-          base={{"target": "_self", "href": "http://www.groupffl.com/login"}}
           title="GroupFFL - Login" />
 
         <h3>One account. All your leagues.</h3>
-        <h4 className="login-title">Sign in with your email</h4>
-        <div className="form-wrapper col-xs-6 col-xs-offset-3">
+        <h4>Sign in with your email</h4>
+        <div
+          className="col-xs-6 col-xs-offset-3"
+          styleName="form-wrapper">
           <img src=" http://i.imgur.com/FwW4B2K.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-            <div className="form-verify-error">
+            <div styleName="form-verify-error">
               {this.props.loginPrompt}
               {this.state.message}
             </div>
@@ -99,7 +99,7 @@ class LoginForm extends Component {
                 placeholder="Enter your email"
                 {...email} />
             </div>
-            <div className="text-help-login">
+            <div styleName="text-help-login">
               {email.touched ? email.error : ''}
             </div>
             <div className={`form-group ${email.touched && email.invalid ? 'has-danger' : ''}`}>
@@ -109,7 +109,7 @@ class LoginForm extends Component {
                 placeholder="Enter your password"
                 {...password} />
             </div>
-            <div className="text-help-login">
+            <div styleName="text-help-login">
               {password.touched ? password.error : ''}
             </div>
             {this.renderButton()}
@@ -117,7 +117,7 @@ class LoginForm extends Component {
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">
-          <Link to="/register" className="login-noaccount" href="#">I do not have an account</Link>
+          <Link to="/register" styleName="login-noaccount" href="#">I do not have an account</Link>
         </div>
       </div>
     );
@@ -157,4 +157,4 @@ export default reduxForm({
   endSpinner,
   promptLogin,
   fetchLeagues
-})(LoginForm);
+})(CSSModules(LoginForm, styles));

@@ -1,0 +1,63 @@
+$blueish: #44FFFF;
+$nflblue: #00316b;
+$nflred: #d20000;
+
+.container {
+  min-width: 1170px;
+}
+
+.navbar-buttons {
+  color:#f0f0f0;
+  margin-right: -20px;
+}
+
+.navbar-register {
+  margin-top: 20px;
+  margin-right: 5px;
+}
+
+.navbar-login {
+  margin-top: 20px;
+}
+
+.navbar-logout {
+  margin-top: 20px;
+}
+
+.container {
+  min-width: 1170px;
+}
+
+.navbar {
+  background-color: $nflblue;
+  padding-bottom: 10px;
+  margin-bottom: 0;
+  border-radius: 0;
+  min-width: 1170px;
+
+  a {
+    margin-left: -20px;
+    color: #f0f0f0;
+    font-family: 'Oswald', sans-serif;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: $nflred;
+  }
+}
+
+.btn:focus {
+  color: #f0f0f0 !important;
+}
+
+.navbar-logo {
+  margin-top: 2px;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin-left: 20px;
+  font-family: helvetica;
+}

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import PostInput from './PostInput';
 import Post from './Post';
+import styles from './index.scss';
 import {
   createPost,
   fetchPosts,
@@ -39,17 +41,6 @@ class LeaguePosts extends Component {
     });
   }
 
-  // componentWillMount() {
-  //   this.props.fetchPosts(this.props.params.id)
-  //     .then(response => {
-  //       const allPosts = response.payload.data.map(post => {
-  //         post.toggle = false;
-  //         return post;
-  //       });
-  //       this.props.receivePosts(allPosts);
-  //     });
-  // }
-
   handleToggle(post) {
     this.props.toggleComments(post);
   }
@@ -57,7 +48,6 @@ class LeaguePosts extends Component {
   handlePostDelete(post) {
     this.props.deletePost(post)
       .then(response => {
-        console.log(response);
         this.props.receiveDeletePost(post);
       });
   }
@@ -81,7 +71,6 @@ class LeaguePosts extends Component {
     };
     this.props.createPost(postObj)
       .then(response => {
-        console.log('nre post: ', response);
         this.props.receivePost(response.payload.data);
         this.setState({
           inputText: ''
@@ -91,13 +80,13 @@ class LeaguePosts extends Component {
 
   render() {
     return (
-      <div className="league-posts">
-        <div className="post-wrapper">
+      <div styleName="league-posts">
+        <div styleName="post-wrapper">
         <PostInput
           onAddPost={this.addPost.bind(this)}
           onPostInput={this.handlePostInput.bind(this)}
           inputText={this.state.inputText} />
-          <div className="post-list-wrapper">
+          <div styleName="post-list-wrapper">
             <ul>
               {this.renderList()}
             </ul>
@@ -109,7 +98,6 @@ class LeaguePosts extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state.leaguePosts: ', state.leaguePosts);
   return state.leaguePosts;
 }
 
@@ -122,4 +110,4 @@ export default connect(mapStateToProps, {
   toggleComments,
   deletePost,
   receiveDeletePost
-})(LeaguePosts);
+})(CSSModules(LeaguePosts, styles));

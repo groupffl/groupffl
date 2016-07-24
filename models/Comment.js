@@ -20,7 +20,6 @@
     mongoose.model('Post').findById(req.body.postId).exec()
     .then(post => {
       if (!post) { throw new Error('There is no Post with this ID'); }
-      console.log('post 1:', post);
       mongoose.model('Team').findOne({ owner: req.user, league: post.league }).exec()
       .then(team => {
         if (!team) { throw new Error('You do not have a team in this League'); }

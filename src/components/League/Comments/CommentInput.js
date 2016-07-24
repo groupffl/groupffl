@@ -18,7 +18,6 @@ export default class CommentInput extends Component {
       <div>
         <textarea
           ref="commentInput"
-          className="comment-area"
           value={this.props.inputText}
           onChange={this.handleChange.bind(this)} />
         <button

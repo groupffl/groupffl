@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
+import styles from './index.scss';
 
 import {
   joinLeague
@@ -25,14 +27,6 @@ class JoinLeague extends Component {
     }
   }
 
-  // componentWillMount() {
-  //   if (!this.props.isLoggedIn) {
-  //     const REDIRECT_MESSAGE = 'Please login to join a league.';
-  //     this.props.promptLogin(REDIRECT_MESSAGE);
-  //     this.props.history.push('/login');
-  //   }
-  // }
-
   onSubmit(props) {
     this.props.joinLeague(props)
       .then(() => {
@@ -53,17 +47,19 @@ class JoinLeague extends Component {
     const { fields: { leagueId, team }, handleSubmit } = this.props;
 
     return (
-      <div className="login-register-form">
+      <div styleName="login-register-form">
         <h3>Join an existing league.</h3>
-        <h4 className="login-title">Join with the league ID.</h4>
-        <div className="form-wrapper col-xs-6 col-xs-offset-3">
+        <h4>Join with the league ID.</h4>
+        <div
+          className="col-xs-6 col-xs-offset-3"
+          styleName="form-wrapper">
           <img src=" http://i.imgur.com/gG4Gqys.png" width="35%" alt=""/>
           <form
             onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-            <div className="form-verify-error">
+            <div styleName="form-verify-error">
               {this.state.message}
             </div>
-            <div className="form-verify-success">
+            <div styleName="form-verify-success">
               {this.state.success}
             </div>
             <div className={`form-group ${leagueId.touched && leagueId.invalid ? 'has-danger' : ''}`}>
@@ -73,7 +69,7 @@ class JoinLeague extends Component {
                 placeholder="Enter the league ID"
                 {...leagueId}
                 />
-                <div className="text-help">
+                <div styleName="text-help">
                   {leagueId.touched ? leagueId.error : ''}
                 </div>
             </div>
@@ -84,7 +80,7 @@ class JoinLeague extends Component {
                 placeholder="Enter your team name"
                 {...team}
                 />
-                <div className="text-help">
+                <div styleName="text-help">
                   {team.touched ? team.error : ''}
                 </div>
             </div>
@@ -92,7 +88,7 @@ class JoinLeague extends Component {
           </form>
         </div>
         <div className="col-xs-6 col-xs-offset-3">
-          <Link to="/create" className="login-noaccount" href="#">I want to create a league</Link>
+          <Link to="/create" styleName="login-noaccount" href="#">I want to create a league</Link>
         </div>
       </div>
     );
@@ -120,4 +116,4 @@ export default reduxForm({
   form: 'JoinLeague',
   fields: ['leagueId', 'team'],
   validate
-}, mapStateToProps, { joinLeague, verifyLogin, promptLogin })(JoinLeague);
+}, mapStateToProps, { joinLeague, verifyLogin, promptLogin })(CSSModules(JoinLeague, styles));

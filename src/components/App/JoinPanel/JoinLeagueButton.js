@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Glyphicon } from 'react-bootstrap';
 import { verifyLogin } from '../../../actions/UserActions';
+import styles from './index.scss';
 
 class JoinLeagueButton extends Component {
   handleClick() {
@@ -12,11 +14,15 @@ class JoinLeagueButton extends Component {
   render() {
     return (
       <Link to="/join"
-        className="join-button join-panel-buttons"
+        styleName="join-panel-buttons"
         onClick={this.handleClick.bind(this)}>
-        <div className="join-icons-panel">
-          <span><Glyphicon glyph="arrow-right" /></span>
-          <h3 className="bold">Join</h3>
+        <div styleName="join-icons-panel">
+          <span>
+            <Glyphicon
+              glyph="arrow-right"
+              styleName="glyphicon" />
+          </span>
+          <h3 styleName="bold">Join</h3>
           <h3>a league</h3>
         </div>
       </Link>
@@ -24,4 +30,4 @@ class JoinLeagueButton extends Component {
   }
 }
 
-export default connect(null, { verifyLogin })(JoinLeagueButton);
+export default connect(null, { verifyLogin })(CSSModules(JoinLeagueButton, styles, {allowMultiple: true}));
