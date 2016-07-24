@@ -17,9 +17,11 @@ class JoinLeagueButton extends Component {
         styleName="join-panel-buttons"
         onClick={this.handleClick.bind(this)}>
         <div styleName="join-icons-panel">
-          <span><Glyphicon
-          glyph="arrow-right"
-          styleName="glyphicon" /></span>
+          <span>
+            <Glyphicon
+              glyph="arrow-right"
+              styleName="glyphicon" />
+          </span>
           <h3 styleName="bold">Join</h3>
           <h3>a league</h3>
         </div>
