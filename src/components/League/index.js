@@ -23,7 +23,7 @@ class League extends Component {
         <Helmet
           title="GroupFFL - League" />
         <Navbar />
-        <div className="container" style={{minWidth: '1170px'}}>
+        <div className="container">
           <div className="row">
             <div className="col-xs-3">
               <div styleName="league-info">
