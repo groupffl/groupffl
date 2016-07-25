@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import styles from './Hero.scss';
 
 class Hero extends Component {
@@ -26,8 +27,7 @@ class Hero extends Component {
 
     return links.map((link, i) => {
       let linkStyle;
-      console.log(this.props.path);
-      console.log(link.path.slice(1));
+
       if (this.props.path === link.path.slice(1)) {
         linkStyle = 'active';
       } else {
@@ -53,11 +53,15 @@ class Hero extends Component {
         <h1 styleName="title">Group Fantasy Football League</h1>
         <h3 styleName="subtitle">Connect with friends and the football world around you with GroupFFL</h3>
         <div styleName="league-nav">
-          {this.renderLinks()}
+          { this.props.isLoggedIn ? this.renderLinks() : null }
         </div>
       </div>
     );
   }
 }
 
-export default CSSModules(Hero, styles);
+function mapStateToProps(state) {
+  return state.isLoggedIn;
+}
+
+export default connect(mapStateToProps)(CSSModules(Hero, styles));
