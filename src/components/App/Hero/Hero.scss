@@ -6,6 +6,7 @@ $nflred: #d20000;
   margin-top: -77px;
   background-size: cover;
   background-position: bottom center;
+  box-shadow: 0px 100vh rgba(0, 0, 0, 0.3) inset;
   .title {
     margin: 0;
     text-align: center;
@@ -37,6 +38,7 @@ $nflred: #d20000;
     font-size: 20px;
     padding-left: 10px;
     padding-right: 10px;
+    padding-bottom: 6px;
   }
   .active {
     opacity: 1;
@@ -44,13 +46,3 @@ $nflred: #d20000;
     border-bottom: 6px solid $nflred;
   }
 }
-
-// .hero:before {
-//   content: "";
-//   z-index: -1;
-//   -webkit-filter: blur(5px);
-//   -moz-filter: blur(5px);
-//   -o-filter: blur(5px);
-//   -ms-filter: blur(5px);
-//   filter: blur(5px);
-// }
