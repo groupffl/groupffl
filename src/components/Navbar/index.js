@@ -46,17 +46,15 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div
-        className="col-xs-12 navbar"
-        styleName="navbar">
-        <div className="container" style={{minWidth: '1170px'}}>
+      <div className="container-fluid">
+        <div
+          className="col-xs-12 navbar"
+          styleName="navbar">
           <div
             className="pull-left"
             styleName="navbar-logo">
             <h3>
-              <Link to="/"> GFFL
-                <span styleName="subtitle">Group Fantasy Football League</span>
-              </Link>
+              <Link to="/">GFFL</Link>
             </h3>
           </div>
           <div
