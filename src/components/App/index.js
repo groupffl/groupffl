@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { verifyLogin } from '../../actions/UserActions';
 
-import Hero from './Hero/Hero';
+import Hero from 'components/App/Hero/Hero';
 import LeaguesPanel from './LeaguesPanel';
 import Navbar from '../Navbar';
 
