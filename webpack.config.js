@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   entry: "./src/index.js",
   cache: true,
@@ -32,6 +34,12 @@ module.exports = {
           mangle: true
         }
       }
+    ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+    root: [
+      path.resolve('./src')
     ]
   },
   eslint: {
