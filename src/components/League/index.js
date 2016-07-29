@@ -6,6 +6,7 @@ import Navbar from '../Navbar';
 import LeagueInfo from './Info';
 import MediaFeeds from './Media';
 import LeagueMembers from './Members';
+import Hero from 'components/League/Hero/Hero';
 import styles from './index.scss';
 
 import { fetchLeagueData } from '../../actions/LeagueActions';
@@ -23,6 +24,8 @@ class League extends Component {
         <Helmet
           title="GroupFFL - League" />
         <Navbar />
+        <Hero
+          leagueInfo={this.props.leagueInfo} />
         <div className="container">
           <div className="row">
             <div className="col-xs-3">
@@ -46,7 +49,8 @@ class League extends Component {
 
 function mapStateToProps(state) {
   return {
-    isLoggedIn: state.isLoggedIn.isLoggedIn
+    isLoggedIn: state.isLoggedIn.isLoggedIn,
+    leagueInfo: state.leagueInfo.leagueInfo
   };
 }
 
