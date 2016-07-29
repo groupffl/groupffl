@@ -18,15 +18,15 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-          <Hero
-            path={path}
-          />
-          <div className="col-xs-6">
-            <LeaguesPanel />
-          </div>
-          <div className="col-xs-6">
-          {this.props.children}
-          </div>
+        <Hero
+          path={path}
+        />
+        <div className="col-xs-6">
+          <LeaguesPanel />
+        </div>
+        <div className="col-xs-6">
+        {this.props.children}
+        </div>
       </div>
     );
   }
