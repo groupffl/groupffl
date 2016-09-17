@@ -46,10 +46,10 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <div
-          className="col-xs-12 navbar"
-          styleName="navbar">
+      <div
+        className="navbar"
+        styleName="navbar">
+        <div className="container-fluid">
           <div
             className="pull-left"
             styleName="navbar-logo">
