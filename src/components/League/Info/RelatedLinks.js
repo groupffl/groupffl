@@ -6,7 +6,7 @@ import relatedLinks from '../../../../data/relatedLinks.js';
 function RelatedLinks() {
   return (
     <div>
-      <h4>Related Links</h4>
+      {/*<h4>Fantasy Help</h4>
       {
         relatedLinks.map((link, i) => {
           return (
@@ -19,7 +19,7 @@ function RelatedLinks() {
             </a>
           );
         })
-      }
+      }*/}
     </div>
   );
 }

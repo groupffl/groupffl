@@ -1,4 +1,4 @@
-
+@import "../../../assets/variables.scss";
 
 $blueish: #44FFFF;
 $nflblue: #00316b;
@@ -9,9 +9,27 @@ h3 {
   color: #333;
 }
 
-.league-info-details {
-  background-color: white;
-  padding: 20px;
+.league-info-list {
+  padding-left: 0;
+  margin-top: 20px;
+  background-color: #f0f0f0;
+  list-style: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 1px 3px 0;
+
+  .league-info-list-item {
+    font-size: 14px;
+    padding: 14px;
+    color: $nfl-black1;
+    border-bottom: 1px solid $nfl-white2;
+    &:hover {
+      background-color: #f6f6f6;
+      color: $nfl-black1;
+    }
+  }
+  .active {
+    background-color: #fcfcfc;
+    font-weight: bold;
+  }
 
   a {
     margin: 0px;

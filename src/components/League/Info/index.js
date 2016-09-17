@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { fetchLeagueInfo } from '../../../actions/LeagueActions';
 import RelatedLinks from './RelatedLinks';
 import styles from './index.scss';
@@ -27,19 +28,38 @@ class LeagueInfo extends Component {
     const gffl = `http://www.groupffl.com/join`;
     const enter = `%0D%0A%0D%0A`;
     const mailto =`mailto:?to=&subject=${subject}&body=${title}${enter}${subtitle}${enter}${body}${gffl}`;
+    console.log(leagueInfo);
 
     return (
       <div>
-        <h3>{leagueInfo.name}</h3>
-        <div styleName="league-info-details">
-          <a href={mailto} >Invite Members</a>
-          <h4>FFL URL</h4>
-          <a href="#">{leagueInfo.fflUrl}</a>
-          <h4>Commissioner</h4>
-          <p>Team Name:<br />{leagueInfo.commissionerTeamName}</p>
-          <p>Email:<br />{leagueInfo.commissioner.email}</p>
+        <h4>{leagueInfo.name}</h4>
+        <ul styleName="league-info-list">
+          <Link to="/" styleName="league-info-list-item active" href="#">
+            <li>Timeline</li>
+          </Link>
+          <Link to="/" styleName="league-info-list-item" href="#">
+            <li>Power Rankings</li>
+          </Link>
+          <Link to="/" styleName="league-info-list-item" href="#">
+            <li>Rules</li>
+          </Link>
+          <Link to="/" styleName="league-info-list-item" href="#">
+            <li>Side Bets</li>
+          </Link>
+          <Link to="/" styleName="league-info-list-item" href="#">
+            <li>Keepers</li>
+          </Link>
+          <Link to="/" styleName="league-info-list-item" href="#">
+            <li>Fantasy Help</li>
+          </Link>
+          <Link to="/" styleName="league-info-list-item" href="#">
+            <li>Teams</li>
+          </Link>
+
+          {/*<a href={mailto} >Invite Members</a>*/}
+          {/*<a href="#">{leagueInfo.fflUrl}</a>*/}
           <RelatedLinks />
-        </div>
+        </ul>
       </div>
     );
   }
@@ -49,4 +69,4 @@ function mapStateToProps(state) {
   return state.leagueInfo;
 }
 
-export default connect(mapStateToProps, { fetchLeagueInfo })(CSSModules(LeagueInfo, styles));
+export default connect(mapStateToProps, { fetchLeagueInfo })(CSSModules(LeagueInfo, styles, {allowMultiple: true}));
