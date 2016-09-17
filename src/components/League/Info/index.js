@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchLeagueInfo } from '../../../actions/LeagueActions';
 import RelatedLinks from './RelatedLinks';
+import Teams from './Teams';
 import styles from './index.scss';
 
 class LeagueInfo extends Component {
@@ -11,6 +12,30 @@ class LeagueInfo extends Component {
     super(props);
     this.props.fetchLeagueInfo(this.props.leagueId)
       .then(() => {});
+    this.handleFantasyHelpClick = this.handleFantasyHelpClick.bind(this);
+    this.handleTeamsClick = this.handleTeamsClick.bind(this);
+    this.handleHighlightClick = this.handleHighlightClick.bind(this);
+    this.state = {
+      showFantasyLinks: false,
+      showTeams: false,
+      active: ''
+    };
+  }
+
+  handleHighlightClick(active) {
+    this.setState({
+      active: active
+    });
+  }
+  handleFantasyHelpClick() {
+    this.setState({
+      showFantasyLinks: !this.state.showFantasyLinks
+    });
+  }
+  handleTeamsClick() {
+    this.setState({
+      showTeams: !this.state.showTeams
+    });
   }
 
   render() {
@@ -28,37 +53,97 @@ class LeagueInfo extends Component {
     const gffl = `http://www.groupffl.com/join`;
     const enter = `%0D%0A%0D%0A`;
     const mailto =`mailto:?to=&subject=${subject}&body=${title}${enter}${subtitle}${enter}${body}${gffl}`;
-    console.log(leagueInfo);
 
     return (
       <div>
         <h4>{leagueInfo.name}</h4>
         <ul styleName="league-info-list">
-          <Link to="/" styleName="league-info-list-item active" href="#">
+          <div onClick={() => this.handleHighlightClick('')}
+                styleName={
+                  this.state.active == ''
+                  ?
+                  "league-info-list-item active"
+                  :
+                  "league-info-list-item"
+                }
+                to="/"
+                href="#">
             <li>Timeline</li>
-          </Link>
-          <Link to="/" styleName="league-info-list-item" href="#">
+          </div>
+          <div onClick={() => this.handleHighlightClick('power-rankings')}
+                styleName={
+                  this.state.active == 'power-rankings'
+                  ?
+                  "league-info-list-item active"
+                  :
+                  "league-info-list-item"
+                }
+                to="/"
+                href="#">
             <li>Power Rankings</li>
-          </Link>
-          <Link to="/" styleName="league-info-list-item" href="#">
+          </div>
+          <div onClick={() => this.handleHighlightClick('rules')}
+                styleName={
+                  this.state.active == 'rules'
+                  ?
+                  "league-info-list-item active"
+                  :
+                  "league-info-list-item"
+                }
+                to="/"
+                href="#">
             <li>Rules</li>
-          </Link>
-          <Link to="/" styleName="league-info-list-item" href="#">
+          </div>
+          <div onClick={() => this.handleHighlightClick('side-bets')}
+                styleName={
+                  this.state.active == 'side-bets'
+                  ?
+                  "league-info-list-item active"
+                  :
+                  "league-info-list-item"
+                }
+                to="/"
+                href="#">
             <li>Side Bets</li>
-          </Link>
-          <Link to="/" styleName="league-info-list-item" href="#">
+          </div>
+          <div onClick={() => this.handleHighlightClick('keepers')}
+                styleName={
+                  this.state.active == 'keepers'
+                  ?
+                  "league-info-list-item active"
+                  :
+                  "league-info-list-item"
+                }
+                to="/"
+                href="#">
             <li>Keepers</li>
-          </Link>
-          <Link to="/" styleName="league-info-list-item" href="#">
-            <li>Fantasy Help</li>
-          </Link>
-          <Link to="/" styleName="league-info-list-item" href="#">
+          </div>
+          <div
+            styleName="league-info-list-item"
+            onClick={this.handleTeamsClick}>
             <li>Teams</li>
-          </Link>
-
+          </div>
+          {
+            this.state.showTeams
+            ?
+            <Teams leagueId={this.props.leagueId} />
+            :
+            null
+          }
+          <div
+            styleName="league-info-list-item"
+            onClick={this.handleFantasyHelpClick}>
+            <li>Fantasy Help</li>
+          </div>
+          {
+            this.state.showFantasyLinks
+            ?
+            <RelatedLinks />
+            :
+            null
+          }
           {/*<a href={mailto} >Invite Members</a>*/}
           {/*<a href="#">{leagueInfo.fflUrl}</a>*/}
-          <RelatedLinks />
         </ul>
       </div>
     );

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 import LeagueInfo from './Info';
 import MediaFeeds from './Media';
-import LeagueMembers from './Members';
 import Hero from 'components/League/Hero/Hero';
 import styles from './index.scss';
 
@@ -29,7 +28,6 @@ class League extends Component {
             <div className="col-xs-3">
               <div styleName="league-info">
                 <LeagueInfo leagueId={this.props.params.id} />
-                <LeagueMembers leagueId={this.props.params.id} />
               </div>
             </div>
             <div className="col-xs-6" leagueId={this.props.params.id}>

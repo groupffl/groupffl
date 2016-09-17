@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { fetchLeagueMembers } from '../../../actions/LeagueActions';
 import styles from './index.scss';
-
-import MemberLink from './MemberLink';
 
 class LeagueMembers extends Component {
   constructor(props) {
@@ -22,7 +21,12 @@ class LeagueMembers extends Component {
 
     return this.props.leagueMembers.teams.map(team =>
       (
-        <MemberLink team={team} />
+        <Link
+          to="/"
+          styleName="league-info-list-tab"
+          href="#">
+          <li>{team.name}</li>
+        </Link>
       )
     );
   }
@@ -30,12 +34,7 @@ class LeagueMembers extends Component {
   render() {
     return (
       <div>
-        <h4 styleName="league-member-title">Members</h4>
-        <div styleName="league-members-list">
-          <ul>
-            {this.renderTeamList()}
-          </ul>
-        </div>
+        {this.renderTeamList()}
       </div>
     );
   }

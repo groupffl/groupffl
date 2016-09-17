@@ -6,20 +6,19 @@ import relatedLinks from '../../../../data/relatedLinks.js';
 function RelatedLinks() {
   return (
     <div>
-      {/*<h4>Fantasy Help</h4>
       {
         relatedLinks.map((link, i) => {
           return (
             <a
-              styleName="related-links"
+              styleName="league-info-list-tab"
               href={link.url}
               target="_blank"
               key={i}>
-              {link.title}
+              <li>{link.title}</li>
             </a>
           );
         })
-      }*/}
+      }
     </div>
   );
 }

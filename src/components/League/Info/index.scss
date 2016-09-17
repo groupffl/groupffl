@@ -12,7 +12,7 @@ h3 {
 .league-info-list {
   padding-left: 0;
   margin-top: 20px;
-  background-color: #f0f0f0;
+  background-color: $nfl-red2;
   list-style: none;
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 3px 0;
 
@@ -20,10 +20,25 @@ h3 {
     font-size: 14px;
     padding: 14px;
     color: $nfl-black1;
+    background-color: #f0f0f0;
     border-bottom: 1px solid $nfl-white2;
     &:hover {
-      background-color: #f6f6f6;
+      background-color: #fcfcfc;
       color: $nfl-black1;
+      cursor: pointer;
+    }
+  }
+  .league-info-list-tab {
+    font-size: 14px;
+    padding: 14px;
+    color: $nfl-black1;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid $nfl-white2;
+    margin-left: 6px;
+    &:hover {
+      background-color: #fcfcfc;
+      color: $nfl-black1;
+      cursor: pointer;
     }
   }
   .active {
