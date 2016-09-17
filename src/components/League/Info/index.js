@@ -119,6 +119,10 @@ class LeagueInfo extends Component {
                 href="#">
             <li>Keepers</li>
           </Link>
+          {/*<a href={mailto} >Invite Members</a>*/}
+          {/*<a href="#">{leagueInfo.fflUrl}</a>*/}
+        </ul>
+        <ul styleName="league-info-list">
           <div
             styleName="league-info-list-item"
             onClick={this.handleTeamsClick}>
@@ -137,6 +141,8 @@ class LeagueInfo extends Component {
             :
             null
           }
+        </ul>
+        <ul styleName="league-info-list">
           <div
             styleName="league-info-list-item"
             onClick={this.handleFantasyHelpClick}>
@@ -152,8 +158,6 @@ class LeagueInfo extends Component {
             :
             null
           }
-          {/*<a href={mailto} >Invite Members</a>*/}
-          {/*<a href="#">{leagueInfo.fflUrl}</a>*/}
         </ul>
       </div>
     );

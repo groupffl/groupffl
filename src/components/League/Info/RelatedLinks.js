@@ -29,12 +29,36 @@ class RelatedLinks extends Component {
     });
   }
 
+
+
   render() {
+    const customStyles = {
+      overlay: {
+        position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+        backgroundColor: 'rgba(0, 51, 153, 0.2)'
+      },
+      content: {
+        top: '5%',
+        left: '5%',
+        right: '5%',
+        bottom: '5%',
+        border: '5px solid #fff',
+        background: '#fff',
+        borderRadius: '4px',
+        outline: 'none',
+        padding: '0px'
+      }
+    };
     return (
       <div>
         <Modal
           isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}>
+          onRequestClose={this.closeModal}
+          style={customStyles}>
           <iframe src={this.state.modalUrl} frameborder="0" height="100%" width="100%"></iframe>
         </Modal>
         {
