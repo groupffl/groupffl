@@ -22,16 +22,16 @@ class League extends Component {
         <Helmet
           title="GroupFFL - League" />
         <Navbar />
-        <div className="container" styleName="container">
+        <div className="container-fluid" styleName="container">
           <div className="row">
-            <div className="col-lg-3 col-sm-3">
+            <div className="col-lg-3 col-sm-4">
               <div styleName="league-info">
                 <LeagueInfo
                   leagueId={this.props.params.id}
                   path={this.props.routes[2].path} />
               </div>
             </div>
-            <div className="col-lg-6 col-sm-9"
+            <div className="col-lg-6 col-sm-8"
               leagueId={this.props.params.id}>
               {this.props.children}
             </div>
