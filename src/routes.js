@@ -12,6 +12,7 @@ import PowerRankings from './components/League/PowerRankings';
 import Rules from './components/League/Rules';
 import SideBets from './components/League/SideBets';
 import Keepers from './components/League/Keepers';
+import Team from './components/League/Team';
 
 export default (
   <div>
@@ -22,12 +23,13 @@ export default (
       <Route path="join" component={JoinLeague} />
       <Route path="create" component={CreateLeague} />
     </Route>
-    <Route path="/league/:id" component={League}>
+    <Route path="league/:id" component={League}>
       <IndexRoute component={LeaguePosts} />
       <Route path="power-rankings" component={PowerRankings} />
       <Route path="rules" component={Rules}/>
       <Route path="side-bets" component={SideBets}/>
       <Route path="keepers" component={Keepers}/>
+      <Route path="team/:teamID" component={Team} />
     </Route>
   </div>
 );

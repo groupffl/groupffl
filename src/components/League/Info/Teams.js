@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { fetchLeagueMembers } from '../../../actions/LeagueActions';
 import styles from './index.scss';
 
-class LeagueMembers extends Component {
+class Teams extends Component {
   constructor(props) {
     super(props);
     this.props.fetchLeagueMembers(this.props.leagueId)
@@ -22,8 +22,15 @@ class LeagueMembers extends Component {
     return this.props.leagueMembers.teams.map(team =>
       (
         <Link
-          to="/"
-          styleName="league-info-list-tab"
+          to={`/league/${this.props.leagueId}/team/${team._id}`}
+          onClick={() => this.props.onHandleClick(team._id)}
+          styleName={
+            this.props.active == team._id
+            ?
+            "league-info-list-tab active"
+            :
+            "league-info-list-tab"
+          }
           href="#">
           <li>{team.name}</li>
         </Link>
@@ -32,6 +39,7 @@ class LeagueMembers extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         {this.renderTeamList()}
@@ -44,4 +52,4 @@ function mapStateToProps(state) {
   return state.leagueMembers;
 }
 
-export default connect(mapStateToProps, { fetchLeagueMembers })(CSSModules(LeagueMembers, styles));
+export default connect(mapStateToProps, { fetchLeagueMembers })(CSSModules(Teams, styles, {allowMultiple:true}));

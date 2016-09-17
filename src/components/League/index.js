@@ -14,7 +14,6 @@ class League extends Component {
   constructor(props) {
     super(props);
     this.props.verifyLogin();
-    console.log(this.props.routes[2].path);
   }
 
   render() {
