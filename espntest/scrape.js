@@ -17,7 +17,7 @@ request('http://games.espn.go.com/frontpage/football', function (error, response
 
 
     // ESPN top headlines
-    console.log('----------------------------------');
+    console.log('---------------ESPN Headlines-------------------');
     $('.mod-mem-carousel li a').each(function(i, element){
     	var $this = $(this);
       var topStoryHref = $this.attr('href');
@@ -42,12 +42,23 @@ request('http://www.nfl.com/fantasyfootball', function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
 
-    console.log('--------------------------------');
+    console.log('-------------NFL-------------------');
     // NFL news-stream
-    $('#news-stream li p').each(function(i, element){
-      var a = $(this).text();
-      console.log(a);
+    var nflFeed = [];
+    $('#news-stream li').each(function(i, element){
+      var $this = $(this);
+      var title = $this.find('h3').text().trim();
+      var content = $this.find('p').text().replace("Read", "").trim();
+      var url = "www.nfl.com" + $this.find('a').attr('href');
+      var article = {};
+      article.Title = title;
+      article.Content = content;
+      article.Url = url;
+      if (i < 5) {
+        nflFeed.push(article);
+      }
     });
+    console.log(nflFeed);
     console.log('--------------------------------');
   }
 });

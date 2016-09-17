@@ -5,6 +5,7 @@
   const router = express.Router();
   const request = require('request');
   const RSS_URL = 'https://api.fantasydata.net/nfl/v2/json/News';
+  var cheerio = require('cheerio');
 
   let cache = {};
 
@@ -18,12 +19,33 @@
   }, 21600000);
 
   // Return cached response
+  // router.get('/rss', (req, res) => {
+  //   if (cache) {
+  //     return res.send(cache);
+  //   } else {
+  //     getApiReponse();
+  //   }
+  // });
+
   router.get('/rss', (req, res) => {
-    if (cache) {
-      return res.send(cache);
-    } else {
-      getApiReponse();
-    }
+    request('http://www.nfl.com/fantasyfootball', function(error, response, html) {
+      if (!error && response.statusCode == 200) {
+        var $ = cheerio.load(html);
+        var nflFeed = [];
+        $('#news-stream li').each(function(i) {
+          var $this = $(this);
+          var article = {
+            Title: $this.find('h3').text().trim(),
+            Content: $this.find('p').text().replace('Read', '').trim(),
+            Url: 'www.nfl.com' + $this.find('a').attr('href')
+          };
+          if (i < 20) {
+            nflFeed.push(article);
+          }
+        });
+        return res.send(nflFeed);
+      }
+    });
   });
 
   // Make Api Call
