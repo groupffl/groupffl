@@ -1,18 +1,18 @@
 module.exports = [
   {
-    url: 'http://games.espn.go.com/frontpage/football',
-    title: 'ESPN Fantasy News'
-  },
-  {
-    url: 'http://football.fantasysports.yahoo.com',
-    title: 'Yahoo Fantasy News'
-  },
-  {
     url: 'http://www.nfl.com/fantasyfootball',
-    title: 'NFL Fantasy News'
+    title: 'NFL Fantasy'
   },
   {
-    url: 'http://www.rotoworld.com/playernews/nfl/football',
-    title: 'Rotoworld Fantasy News'
+    url: 'http://games.espn.go.com/frontpage/football',
+    title: 'ESPN Fantasy'
+  },
+  {
+    url: 'https://www.fantasypros.com/nfl/',
+    title: 'Fantasy Pros'
+  },
+  {
+    url: 'http://www.thehuddle.com/',
+    title: 'The Huddle'
   }
 ];
