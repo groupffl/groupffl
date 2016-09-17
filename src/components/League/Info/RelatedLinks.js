@@ -34,12 +34,7 @@ class RelatedLinks extends Component {
   render() {
     const customStyles = {
       overlay: {
-        position          : 'fixed',
-    top               : 0,
-    left              : 0,
-    right             : 0,
-    bottom            : 0,
-        backgroundColor: 'rgba(0, 51, 153, 0.2)'
+        backgroundColor: 'rgba(0, 49, 107, 0.3)'
       },
       content: {
         top: '5%',

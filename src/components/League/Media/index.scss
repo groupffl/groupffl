@@ -1,29 +1,47 @@
+@import "../../../assets/variables.scss";
+
+
 $blueish: #44FFFF;
 $nflblue: #00316b;
 $nflred: #d20000;
 
 .media-feeds {
 
-  h3 {
+  h4 {
     margin-top: 25px;
     color: #333;
   }
 
   img {
+    border-left: 1px solid $nfl-white2;
+    border-right: 1px solid $nfl-white2;
   }
 
   .media-rss {
 
     ul {
       padding-left: 0;
-      margin-top: 10px;
       border-radius: 0px;
+      list-style: none;
+      box-shadow: rgba(0, 0, 0, 0.05) 0 1px 3px 0;
 
-      li {
+      .media-list-item {
         border-radius: 0px;
-        border: none;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        border-bottom: 1px solid $nfl-white2;
+        padding: 20px 14px;
+        &:hover {
+          cursor: pointer;
+          background-color: #f0f0f0;
+          h5 {
+            background-color: #f0f0f0;
+          }
+          h6 {
+            background-color: #f0f0f0;
+          }
+        }
+        &:focus {
+          background-color: #ffffff;
+        }
       }
 
       h5 {
@@ -31,10 +49,7 @@ $nflred: #d20000;
         background-color: white;
         color: $nflred;
         font-family: 'Oswald', sans-serif;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 20px;
-        padding-bottom: 4px;
+        padding-bottom: 14px;
       }
 
       h6 {
@@ -42,9 +57,6 @@ $nflred: #d20000;
         background-color: white;
         color: #666;
         line-height: 16px;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-bottom: 20px;
       }
 
       a {

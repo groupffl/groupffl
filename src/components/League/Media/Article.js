@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
+import CSSModules from 'react-css-modules';
 import UIHelper from 'helpers/ui-helper';
+import styles from './index.scss';
 
-export default class Article extends Component {
+class Article extends Component {
   static propTypes = {
     article: React.PropTypes.object
   }
 
   render() {
+    console.log(this.props);
     let { article } = this.props;
 
     return (
-      <li
-        className="list-group-item">
-        <h5>{article.Title}</h5>
-        <h6>{UIHelper.regexQuotes(article.Content)}
-          <strong><a href={this.props.article.Url} target="_blank"> More</a></strong>
-        </h6>
-      </li>
+      <a href={this.props.article.Url} target="_blank" className="list-group-item" styleName="media-list-item">
+        <li>
+          <h5>{article.Title}</h5>
+          <h6>{UIHelper.regexQuotes(article.Content)}</h6>
+        </li>
+      </a>
     );
   }
 }
+
+export default CSSModules(Article, styles);
