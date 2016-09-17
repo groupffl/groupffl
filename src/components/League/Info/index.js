@@ -15,10 +15,11 @@ class LeagueInfo extends Component {
     this.handleFantasyHelpClick = this.handleFantasyHelpClick.bind(this);
     this.handleTeamsClick = this.handleTeamsClick.bind(this);
     this.handleHighlightClick = this.handleHighlightClick.bind(this);
+    console.log(this.props.path);
     this.state = {
       showFantasyLinks: false,
       showTeams: false,
-      active: ''
+      active: this.props.path
     };
   }
 
@@ -60,7 +61,7 @@ class LeagueInfo extends Component {
         <ul styleName="league-info-list">
           <Link onClick={() => this.handleHighlightClick('')}
                 styleName={
-                  this.state.active == ''
+                  this.state.active == undefined
                   ?
                   "league-info-list-item active"
                   :
