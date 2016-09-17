@@ -10,10 +10,11 @@ import Modal from 'react-modal';
 class MediaFeeds extends Component {
   constructor(props) {
     super(props);
-    this.props.fetchRSS()
+    this.props.fetchRSS('nfl')
      .then(() => {});
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.changeFeed = this.changeFeed.bind(this);
     this.state = {
       modalUrl: '',
       modalIsOpen: false
@@ -32,6 +33,11 @@ class MediaFeeds extends Component {
       modalUrl: '',
       modalIsOpen: false
     });
+  }
+
+  changeFeed(host) {
+    this.props.fetchRSS(host)
+     .then(() => {});
   }
 
   renderList() {
@@ -85,7 +91,10 @@ class MediaFeeds extends Component {
           style={customStyles}>
           <iframe src={this.state.modalUrl} frameborder="0" height="100%" width="100%"></iframe>
         </Modal>
-        <h4>News</h4>
+        <h4
+          onClick={() => this.changeFeed()}>ROTO</h4>
+        <h4
+          onClick={() => this.changeFeed('nfl')}>NFL</h4>
         <img src="http://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0103%2Fr41245_1296x729_16%2D9.jpg&w=570" width="100%" alt=""/>
           <div styleName="media-rss">
             <ul>

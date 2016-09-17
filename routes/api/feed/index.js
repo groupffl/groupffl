@@ -19,15 +19,15 @@
   }, 21600000);
 
   // Return cached response
-  // router.get('/rss', (req, res) => {
-  //   if (cache) {
-  //     return res.send(cache);
-  //   } else {
-  //     getApiReponse();
-  //   }
-  // });
-
   router.get('/rss', (req, res) => {
+    if (cache) {
+      return res.send(cache);
+    } else {
+      getApiReponse();
+    }
+  });
+
+  router.get('/rssnfl', (req, res) => {
     request('http://www.nfl.com/fantasyfootball', function(error, response, html) {
       if (!error && response.statusCode == 200) {
         var $ = cheerio.load(html);
@@ -37,7 +37,7 @@
           var article = {
             Title: $this.find('h3').text().trim(),
             Content: $this.find('p').text().replace('Read', '').trim(),
-            Url: 'www.nfl.com' + $this.find('a').attr('href')
+            Url: 'http://www.nfl.com' + $this.find('a').attr('href')
           };
           if (i < 20) {
             nflFeed.push(article);

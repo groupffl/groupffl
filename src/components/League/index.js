@@ -29,6 +29,11 @@ class League extends Component {
                 <LeagueInfo
                   leagueId={this.props.params.id}
                   path={this.props.routes[2].path} />
+                  <div className="row">
+                    <div className="hidden-lg col-xs-12">
+                      <MediaFeeds />
+                    </div>
+                  </div>
               </div>
             </div>
             <div className="col-lg-6 col-sm-8"

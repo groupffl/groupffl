@@ -7,7 +7,8 @@ export const FETCH_LEAGUES = 'FETCH_LEAGUES';
 export const FETCH_LEAGUE_INFO = 'FETCH_LEAGUE_INFO';
 export const FETCH_LEAGUE_MEMBERS = 'FETCH_LEAGUE_MEMBERS';
 
-const RSS_URL_BACK = '/api/feed/rss';
+const RSS_URL_ROTO = '/api/feed/rss';
+const RSS_URL_NFL = '/api/feed/rssnfl';
 const CREATE_LEAGUE_URL = '/api/league';
 const JOIN_LEAGUE_URL = '/api/team';
 const FETCH_LEAGUES_URL = '/api/league';
@@ -33,8 +34,13 @@ export function joinLeague(props) {
   };
 }
 
-export function fetchRSS() {
-  const request = axios.get(RSS_URL_BACK);
+export function fetchRSS(outlet) {
+  let request;
+  if (outlet == 'nfl') {
+    request = axios.get(RSS_URL_NFL);
+  } else {
+    request = axios.get(RSS_URL_ROTO);
+  }
 
   return {
     type: FETCH_RSS,
