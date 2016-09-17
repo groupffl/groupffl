@@ -28,6 +28,9 @@ h4 {
       color: $nfl-black1;
       cursor: pointer;
     }
+    &:focus {
+      text-decoration: none;
+    }
     .item-flex {
       display: flex;
       flex-direction: row;
@@ -45,6 +48,9 @@ h4 {
       background-color: #fcfcfc;
       color: $nfl-black1;
       cursor: pointer;
+    }
+    &:focus {
+      text-decoration: none;
     }
   }
   .active {

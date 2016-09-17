@@ -58,7 +58,7 @@ class LeagueInfo extends Component {
       <div>
         <h4>{leagueInfo.name}</h4>
         <ul styleName="league-info-list">
-          <Link onClick={() => this.handleHighlightClick('')}
+          <Link onClick={() => this.handleHighlightClick(undefined)}
                 styleName={
                   this.state.active == undefined
                   ?
