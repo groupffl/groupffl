@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Navbar from '../Navbar';
 import LeagueInfo from './Info';
 import MediaFeeds from './Media';
-import Hero from 'components/League/Hero/Hero';
 import styles from './index.scss';
 
 import { fetchLeagueData } from '../../actions/LeagueActions';

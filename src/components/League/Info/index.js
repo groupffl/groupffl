@@ -58,7 +58,7 @@ class LeagueInfo extends Component {
       <div>
         <h4>{leagueInfo.name}</h4>
         <ul styleName="league-info-list">
-          <div onClick={() => this.handleHighlightClick('')}
+          <Link onClick={() => this.handleHighlightClick('')}
                 styleName={
                   this.state.active == ''
                   ?
@@ -66,23 +66,24 @@ class LeagueInfo extends Component {
                   :
                   "league-info-list-item"
                 }
-                to="/"
+                to={`/league/${this.props.leagueId}`}
                 href="#">
             <li>Timeline</li>
-          </div>
-          <div onClick={() => this.handleHighlightClick('power-rankings')}
-                styleName={
-                  this.state.active == 'power-rankings'
-                  ?
-                  "league-info-list-item active"
-                  :
-                  "league-info-list-item"
-                }
-                to="/"
-                href="#">
+          </Link>
+          <Link
+            to={`/league/${this.props.leagueId}/power-rankings`}
+            onClick={() => this.handleHighlightClick('power-rankings')}
+            styleName={
+              this.state.active == 'power-rankings'
+              ?
+              "league-info-list-item active"
+              :
+              "league-info-list-item"
+            }
+            href="#">
             <li>Power Rankings</li>
-          </div>
-          <div onClick={() => this.handleHighlightClick('rules')}
+          </Link>
+          <Link onClick={() => this.handleHighlightClick('rules')}
                 styleName={
                   this.state.active == 'rules'
                   ?
@@ -90,11 +91,11 @@ class LeagueInfo extends Component {
                   :
                   "league-info-list-item"
                 }
-                to="/"
+                to={`/league/${this.props.leagueId}/rules`}
                 href="#">
             <li>Rules</li>
-          </div>
-          <div onClick={() => this.handleHighlightClick('side-bets')}
+          </Link>
+          <Link onClick={() => this.handleHighlightClick('side-bets')}
                 styleName={
                   this.state.active == 'side-bets'
                   ?
@@ -102,11 +103,11 @@ class LeagueInfo extends Component {
                   :
                   "league-info-list-item"
                 }
-                to="/"
+                to={`/league/${this.props.leagueId}/side-bets`}
                 href="#">
             <li>Side Bets</li>
-          </div>
-          <div onClick={() => this.handleHighlightClick('keepers')}
+          </Link>
+          <Link onClick={() => this.handleHighlightClick('keepers')}
                 styleName={
                   this.state.active == 'keepers'
                   ?
@@ -114,10 +115,10 @@ class LeagueInfo extends Component {
                   :
                   "league-info-list-item"
                 }
-                to="/"
+                to={`/league/${this.props.leagueId}/keepers`}
                 href="#">
             <li>Keepers</li>
-          </div>
+          </Link>
           <div
             styleName="league-info-list-item"
             onClick={this.handleTeamsClick}>
