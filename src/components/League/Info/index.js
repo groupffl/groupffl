@@ -122,7 +122,10 @@ class LeagueInfo extends Component {
           <div
             styleName="league-info-list-item"
             onClick={this.handleTeamsClick}>
-            <li>Teams</li>
+            <li styleName="item-flex">
+              <div>Teams</div>
+              {this.state.showTeams ? <div>&darr;</div> : <div>&rarr;</div>}
+            </li>
           </div>
           {
             this.state.showTeams
@@ -137,7 +140,10 @@ class LeagueInfo extends Component {
           <div
             styleName="league-info-list-item"
             onClick={this.handleFantasyHelpClick}>
-            <li>Fantasy Help</li>
+            <li styleName="item-flex">
+              <div>Fantasy Help</div>
+              {this.state.showFantasyLinks ? <div>&darr;</div> : <div>&rarr;</div>}
+            </li>
           </div>
           {
             this.state.showFantasyLinks

@@ -27,6 +27,11 @@ h3 {
       color: $nfl-black1;
       cursor: pointer;
     }
+    .item-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   .league-info-list-tab {
     font-size: 14px;
