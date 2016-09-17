@@ -9,9 +9,8 @@ class Hero extends Component {
 
   render() {
     const backgroundStyle = {
-      backgroundImage: 'url(https://images.unsplash.com/photo-1462611849295-bcb823bf8f5f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=3e9989c235126ce50b8a139bc900301f)'
+      backgroundImage: 'url(http://www.lightheadedbeds.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/1/31127-00-rfr_football_helmets_1600px.jpg)'
     };
-    console.log(this.props);
 
     let { leagueInfo } = this.props;
 

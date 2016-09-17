@@ -24,8 +24,6 @@ class League extends Component {
         <Helmet
           title="GroupFFL - League" />
         <Navbar />
-        <Hero
-          leagueInfo={this.props.leagueInfo} />
         <div className="container">
           <div className="row">
             <div className="col-xs-3">
