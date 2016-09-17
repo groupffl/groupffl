@@ -23,7 +23,6 @@ class LeagueInfo extends Component {
   }
 
   handleHighlightClick(active) {
-    console.log(active);
     this.setState({
       active: active
     });
