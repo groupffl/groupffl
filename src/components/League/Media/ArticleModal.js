@@ -9,7 +9,6 @@ class ArticleModal extends Component {
   }
 
   render() {
-    console.log(this.props);
     let { article } = this.props;
 
     return (

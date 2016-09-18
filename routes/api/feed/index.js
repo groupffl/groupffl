@@ -8,26 +8,67 @@
   var cheerio = require('cheerio');
 
   let cache = {};
-
-  // Initiate Api Call
-  getApiReponse();
-
-  // Get new live updates every 6 hours
-  // Limit 1000 uses per API Key
-  setInterval(function() {
-    getApiReponse();
-  }, 21600000);
-
+  let cacheTime = 600000;
+   
   // Return cached response
   router.get('/rssroto', (req, res) => {
-    if (cache) {
-      return res.send(cache);
+    if (cache.rotoFeed && (Date.now() - cache.rotoFeed.time < cacheTime )) {
+      res.send(cache.rotoFeed.content);
     } else {
-      getApiReponse();
+      getRotoFeed(res);
     }
   });
 
   router.get('/rssnfl', (req, res) => {
+    if (cache.nflFeed && (Date.now() - cache.nflFeed.time < cacheTime )) {
+      res.send(cache.nflFeed.content);
+    } else {
+      getNflFeed(res);
+    }
+  });
+
+  router.get('/rssespn', (req, res) => {
+    if (cache.espnFeed && (Date.now() - cache.espnFeed.time < cacheTime )) {
+      res.send(cache.espnFeed.content);
+    } else {
+      getEspnFeed(res);
+    }
+  });
+
+  router.get('/rsspros', (req, res) => {
+    if (cache.prosFeed && (Date.now() - cache.prosFeed.time < cacheTime )) {
+      res.send(cache.prosFeed.content);
+    } else {
+      getProsFeed(res);
+    }
+  });
+
+  function getRotoFeed(res) {
+    request('http://www.rotoworld.com/headlines/nfl/', function(error, response, html) {
+      if (!error && response.statusCode == 200) {
+        var $ = cheerio.load(html);
+        var rotoFeed = [];
+        $('.pb').each(function(i) {
+          var $this = $(this);
+          var article = {
+            Title: $this.find('.headline > .player > a').text(),
+            Content: $this.find('.impact').text().trim(),
+            Url: 'http://www.rotoworld.com/headlines/nfl' + $this.find('a').attr('href')
+          };
+          if (i < 20) {
+            rotoFeed.push(article);
+          }
+        });
+        cache.rotoFeed = {
+          content: rotoFeed,
+          time: Date.now()
+        };
+        return res.send(rotoFeed);
+      }
+    });
+  }
+
+  function getNflFeed(res) {
     request('http://www.nfl.com/fantasyfootball', function(error, response, html) {
       if (!error && response.statusCode == 200) {
         var $ = cheerio.load(html);
@@ -43,12 +84,16 @@
             nflFeed.push(article);
           }
         });
+        cache.nflFeed = {
+          content: nflFeed,
+          time: Date.now()
+        };
         return res.send(nflFeed);
       }
     });
-  });
+  }
 
-  router.get('/rssespn', (req, res) => {
+  function getEspnFeed(res) {
     request('http://www.espn.com/fantasy/football/', function(error, response, html) {
       if (!error && response.statusCode == 200) {
         var $ = cheerio.load(html);
@@ -61,15 +106,22 @@
             Url: 'http://espn.com' + $this.find('a').attr('href')
           };
           if (i < 20) {
-            espnFeed.push(article);
+            if (article.Title) {
+              espnFeed.push(article);
+            }
           }
         });
+        cache.espnFeed = {
+          content: espnFeed,
+          time: Date.now()
+        };
         return res.send(espnFeed);
       }
     });
-  });
-  router.get('/rsspros', (req, res) => {
-    request('https://www.fantasypros.com/', function (error, response, html) {
+  }
+
+  function getProsFeed(res) {
+    request('https://www.fantasypros.com/', function(error, response, html) {
       if (!error && response.statusCode == 200) {
         var $ = cheerio.load(html);
         var prosFeed = [];
@@ -84,18 +136,12 @@
             prosFeed.push(article);
           }
         });
+        cache.prosFeed = {
+          content: prosFeed,
+          time: Date.now()
+        };
         return res.send(prosFeed);
       }
-    });
-  });
-
-  // Make Api Call
-  function getApiReponse() {
-    request(RSS_URL, {
-      headers: { 'Ocp-Apim-Subscription-Key': process.env.FANTASYDATA_API_KEY }
-    }, function(err, response) {
-      if (err) { return console.log(err); }
-      cache = response.body;
     });
   }
 

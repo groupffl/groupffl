@@ -10,15 +10,17 @@ import Modal from 'react-modal';
 class MediaFeeds extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.props.fetchRSS('roto')
      .then(() => {});
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
     this.changeFeed = this.changeFeed.bind(this);
+    this.toggleDropDown = this.toggleDropDown.bind(this);
     this.state = {
       modalUrl: '',
-      modalIsOpen: false
+      modalIsOpen: false,
+      activeFeed: 'Rotoworld News',
+      showDropDown: false
     };
   }
 
@@ -36,9 +38,19 @@ class MediaFeeds extends Component {
     });
   }
 
-  changeFeed(host) {
+  changeFeed(host, news) {
+    this.setState({
+      showDropDown: !this.state.showDropDown,
+      activeFeed: news
+    });
     this.props.fetchRSS(host)
      .then(() => {});
+  }
+
+  toggleDropDown() {
+    this.setState({
+      showDropDown: !this.state.showDropDown
+    });
   }
 
   renderList() {
@@ -92,10 +104,23 @@ class MediaFeeds extends Component {
           style={customStyles}>
           <iframe src={this.state.modalUrl} frameborder="0" height="100%" width="100%"></iframe>
         </Modal>
-        <h4 onClick={() => this.changeFeed('roto')}>ROTO</h4>
-        <h4 onClick={() => this.changeFeed('nfl')}>NFL</h4>
-        <h4 onClick={() => this.changeFeed('espn')}>ESPN</h4>
-        <h4 onClick={() => this.changeFeed('pros')}>Pros</h4>
+        <h4>Fantasy News</h4>
+        <ul styleName="rss-feed-list">
+          <li styleName="rss-feed-list-item item-flex" onClick={this.toggleDropDown}>
+            <div>{this.state.activeFeed}</div>
+            {this.state.showDropDown ? <div>&darr;</div> : <div>&rarr;</div>}
+          </li>
+          {
+            this.state.showDropDown ?
+            <div>
+              <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('roto', 'Rotoworld News')}>Rotoworld News</li>
+              <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('nfl', 'NFL News')}>NFL News</li>
+              <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('espn', 'ESPN News')}>ESPN News</li>
+              <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('pros', 'Fantasy Pros News')}>Fantasy Pros News</li>
+            </div>
+            : null
+          }
+        </ul>
         <img src="http://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0103%2Fr41245_1296x729_16%2D9.jpg&w=570" width="100%" alt=""/>
           <div styleName="media-rss">
             <ul>
@@ -111,4 +136,4 @@ function mapStateToProps(state) {
   return { rss: state.rss.rss };
 }
 
-export default connect(mapStateToProps, actions)(CSSModules(MediaFeeds, styles));
+export default connect(mapStateToProps, actions)(CSSModules(MediaFeeds, styles, {allowMultiple:true}));

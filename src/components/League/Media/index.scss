@@ -9,7 +9,54 @@ $nflred: #d20000;
 
   h4 {
     margin-top: 25px;
-    color: #333;
+  }
+
+  .rss-feed-list {
+    margin-top: 10px;
+    padding-left: 0;
+    background-color: $nfl-red2;
+    box-shadow: rgba(0, 0, 0, 0.05) 0 1px 3px 0;
+
+    .rss-feed-list-item {
+      list-style: none;
+      font-size: 14px;
+      padding: 14px;
+      color: $nfl-black1;
+      background-color: #fcfcfc;
+      border-bottom: 1px solid $nfl-white2;
+      &:hover {
+        background-color: #fcfcfc;
+        color: $nfl-black1;
+        cursor: pointer;
+      }
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+    .item-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .rss-feed-list-item-tab {
+      margin-left: 6px;
+      list-style: none;
+      font-size: 14px;
+      padding: 14px;
+      color: $nfl-black1;
+      background-color: #f0f0f0;
+      border-bottom: 1px solid $nfl-white2;
+      &:hover {
+        background-color: #fcfcfc;
+        color: $nfl-black1;
+        cursor: pointer;
+      }
+      &:focus {
+        text-decoration: none;
+      }
+    }
   }
 
   img {
