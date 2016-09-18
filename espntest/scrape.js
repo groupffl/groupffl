@@ -2,22 +2,22 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 
-request('https://www.fantasypros.com/', function (error, response, html) {
+request('http://www.rotoworld.com/headlines/nfl/', function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
-    var prosFeed = [];
-    $('.article').each(function(i) {
+    var rotoFeed = [];
+    $('.pb').each(function(i) {
       var $this = $(this);
       var article = {
-        Title: $this.find('.title').text(),
-        Content: $this.find('.subtitle').text(),
-        Url: $this.find('a').attr('href')
+        Title: $this.find('.headline > .player > a').text(),
+        Content: $this.find('.impact').text().trim(),
+        Url: 'http://www.rotoworld.com/headlines/nfl' + $this.find('a').attr('href')
       };
-      if (i < 10) {
-        prosFeed.push(article);
+      if (i < 20) {
+        rotoFeed.push(article);
       }
     });
-    console.log(prosFeed);
+    console.log(rotoFeed);
   }
 });
 
