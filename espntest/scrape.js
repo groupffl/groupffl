@@ -2,25 +2,6 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 
-request('http://www.rotoworld.com/headlines/nfl/', function (error, response, html) {
-  if (!error && response.statusCode == 200) {
-    var $ = cheerio.load(html);
-    var rotoFeed = [];
-    $('.pb').each(function(i) {
-      var $this = $(this);
-      var article = {
-        Title: $this.find('.headline > .player > a').text(),
-        Content: $this.find('.impact').text().trim(),
-        Url: 'http://www.rotoworld.com/headlines/nfl' + $this.find('a').attr('href')
-      };
-      if (i < 20) {
-        rotoFeed.push(article);
-      }
-    });
-    console.log(rotoFeed);
-  }
-});
-
 request('http://www.rotoworld.com/playernews/nfl/football-player-news', function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
