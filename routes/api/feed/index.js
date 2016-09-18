@@ -19,7 +19,7 @@
   }, 21600000);
 
   // Return cached response
-  router.get('/rss', (req, res) => {
+  router.get('/rssroto', (req, res) => {
     if (cache) {
       return res.send(cache);
     } else {
@@ -44,6 +44,47 @@
           }
         });
         return res.send(nflFeed);
+      }
+    });
+  });
+
+  router.get('/rssespn', (req, res) => {
+    request('http://www.espn.com/fantasy/football/', function(error, response, html) {
+      if (!error && response.statusCode == 200) {
+        var $ = cheerio.load(html);
+        var espnFeed = [];
+        $('.news-feed-item').each(function(i) {
+          var $this = $(this);
+          var article = {
+            Title: $this.find('h1').text(),
+            Content: $this.find('p').text(),
+            Url: 'http://espn.com' + $this.find('a').attr('href')
+          };
+          if (i < 20) {
+            espnFeed.push(article);
+          }
+        });
+        return res.send(espnFeed);
+      }
+    });
+  });
+  router.get('/rsspros', (req, res) => {
+    request('https://www.fantasypros.com/', function (error, response, html) {
+      if (!error && response.statusCode == 200) {
+        var $ = cheerio.load(html);
+        var prosFeed = [];
+        $('.article').each(function(i) {
+          var $this = $(this);
+          var article = {
+            Title: $this.find('.title').text(),
+            Content: $this.find('.subtitle').text(),
+            Url: $this.find('a').attr('href')
+          };
+          if (i < 10) {
+            prosFeed.push(article);
+          }
+        });
+        return res.send(prosFeed);
       }
     });
   });
