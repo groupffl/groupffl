@@ -81,6 +81,7 @@ class LeaguePosts extends Component {
   render() {
     return (
       <div styleName="league-posts">
+      <h2>Smack Board</h2>
         <div styleName="post-wrapper">
         <PostInput
           onAddPost={this.addPost.bind(this)}

@@ -1,3 +1,5 @@
+@import "../../../assets/variables.scss";
+
 $blueish: #44FFFF;
 $nflblue: #00316b;
 $nflred: #d20000;
@@ -7,28 +9,59 @@ $nflred: #d20000;
   height: 600px;
   text-align: center;
 
-    .post-wrapper {
-      margin: 25px 0px 10px 0px;
-      min-height: 1500px;
-      padding-bottom: 30px;
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .post-wrapper {
+    margin: 0px 0px 10px 0px;
+    min-height: 1500px;
+    padding-bottom: 30px;
+
+    .post {
+      border: 1px solid;
+      border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+      border-radius: 3px;
+    }
 
     .post-text {
       margin-top: 0px;
-      padding: 20px;
-      background-color: white;
-      padding-bottom: 52px;
+      padding: 10px 10px 10px 10px;
+      border-bottom: 1px solid $nfl-white2;
+      background-color: #fff;
 
       textarea {
+        padding: 10px 10px 40px 10px;
         display: inline-block;
         width: 100%;
-        padding: 10px;
         background-color: white;
         margin-bottom: 6px;
+        resize: none;
+        border: 1px solid $nfl-white2;
+        outline: none;
       }
+      ::-webkit-input-placeholder {
+        color: #999;
+      }
+      ::-moz-placeholder {
+        color: #999;
+      }
+      :-ms-input-placeholder {
+        color: #999;
+      }
+      :-moz-placeholder {
+        color: #999;
+      }
+    }
 
+    .post-button {
+      background-color: #fff;
+      padding: 10px;
+      text-align: right;
       button {
+        display: inline-block;
         background-color: $nflblue;
-        padding: 6px 10px;
+        padding: 6px 20px;
         font-size: 12px;
       }
     }
@@ -45,6 +78,9 @@ $nflred: #d20000;
           padding: 20px;
           margin-bottom: 20px;
           background-color: white;
+          border: 1px solid;
+          border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+          border-radius: 3px;
 
           h4 {
             margin: 0px;

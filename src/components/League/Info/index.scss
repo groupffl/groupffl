@@ -21,10 +21,10 @@ h4 {
     font-size: 14px;
     padding: 14px;
     color: $nfl-black1;
-    background-color: #f0f0f0;
+    background-color: #f6f7f9;
     border-bottom: 1px solid $nfl-white2;
     &:hover {
-      background-color: #fcfcfc;
+      background-color: #fff;
       color: $nfl-black1;
       cursor: pointer;
     }
@@ -41,11 +41,11 @@ h4 {
     font-size: 14px;
     padding: 14px;
     color: $nfl-black1;
-    background-color: #f0f0f0;
+    background-color: #f6f7f9;
     border-bottom: 1px solid $nfl-white2;
     margin-left: 6px;
     &:hover {
-      background-color: #fcfcfc;
+      background-color: #fff;
       color: $nfl-black1;
       cursor: pointer;
     }
@@ -54,7 +54,7 @@ h4 {
     }
   }
   .active {
-    background-color: #fcfcfc;
+    background-color: #fff;
     font-weight: bold;
   }
 

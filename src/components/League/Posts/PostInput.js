@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './index.scss';
+import Textarea from 'react-textarea-autosize';
 
 class PostInput extends Component {
   handleChange() {
@@ -17,15 +18,21 @@ class PostInput extends Component {
 
   render() {
     return (
-      <div styleName="post-text">
-        <textarea
-          ref="postInput"
-          type="text"
-          value={this.props.inputText}
-          onChange={this.handleChange.bind(this)} />
-        <button
-          onClick={this.handleClick.bind(this)}
-          className="btn btn-primary pull-right">Post</button>
+      <div styleName="post">
+        <div styleName="post-text">
+          <Textarea
+            ref="postInput"
+            type="text"
+            placeholder="Say Something!"
+            value={this.props.inputText}
+            onChange={this.handleChange.bind(this)}>
+          </Textarea>
+        </div>
+        <div styleName="post-button">
+          <button
+            onClick={this.handleClick.bind(this)}
+            className="btn btn-primary">Post</button>
+        </div>
       </div>
     );
   }
