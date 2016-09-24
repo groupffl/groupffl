@@ -13,6 +13,10 @@
     });
   });
 
+  router.get('/team/:leagueId', User.isLoggedIn, Team.getMyTeam, (req, res) => {
+    res.send(req.myTeam);
+  });
+
   router.post('/', User.isLoggedIn, Team.createMW, User.getUserLeaguesMW, (req, res) => {
     res.send(req.userLeagues);
   });

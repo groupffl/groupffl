@@ -7,16 +7,18 @@ import LeagueInfo from './Info';
 import MediaFeeds from './Media';
 import styles from './index.scss';
 
-import { fetchLeagueData } from '../../actions/LeagueActions';
+import { fetchLeagueData, fetchTeam } from '../../actions/LeagueActions';
 import { verifyLogin } from '../../actions/UserActions';
 
 class League extends Component {
   constructor(props) {
     super(props);
     this.props.verifyLogin();
+    this.props.fetchTeam(this.props.params.id);
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <Helmet
@@ -53,8 +55,9 @@ class League extends Component {
 function mapStateToProps(state) {
   return {
     isLoggedIn: state.isLoggedIn.isLoggedIn,
-    leagueInfo: state.leagueInfo.leagueInfo
+    leagueInfo: state.leagueInfo.leagueInfo,
+    myTeam: state.myTeam.myTeam
   };
 }
 
-export default connect(mapStateToProps, { fetchLeagueData, verifyLogin })(CSSModules(League, styles));
+export default connect(mapStateToProps, { fetchLeagueData, fetchTeam, verifyLogin })(CSSModules(League, styles));

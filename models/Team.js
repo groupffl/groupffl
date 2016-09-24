@@ -9,6 +9,7 @@
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     name: { type: String, required: true },
     imgUrl: { type: String },
+    bio: { type: String },
     trashTalkRating: { type: Number, default: 0 },
     description: { type: String }
   });
@@ -38,6 +39,8 @@
             newTeam.name = req.body.team.trim();
             newTeam.owner = foundUser._id;
             newTeam.league = foundLeague._id;
+            newTeam.imgUrl = 'https://s3-us-west-1.amazonaws.com/groupffl/default_image.png';
+            newTeam.bio = 'I am the owner of ' + newTeam.name;
 
             foundLeague.teams.push(newTeam._id);
             foundUser.teams.push(newTeam._id);
@@ -61,6 +64,14 @@
         });
       });
     });
+  };
+
+  teamSchema.statics.getMyTeam = (req, res) => {
+    mongoose.model('Team').findOne({ owner: req.user, league: req.params.leagueId }, (err, myTeam) => {
+      if (err) { return res.status(400).send(err); }
+      return res.send(myTeam);
+    });
+
   };
 
   const Team = mongoose.model('Team', teamSchema);
