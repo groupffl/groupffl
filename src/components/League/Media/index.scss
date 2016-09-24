@@ -12,6 +12,7 @@ $nflred: #d20000;
   }
 
   .rss-feed-list {
+    position: relative;
     margin-top: 10px;
     padding-left: 0;
     background-color: $nfl-red2;
@@ -40,8 +41,15 @@ $nflred: #d20000;
       justify-content: space-between;
     }
 
+    .rss-feed-dropdown {
+      position: absolute;
+      top: 48px;
+      z-index: 100;
+      width: 100%;
+    }
+
     .rss-feed-list-item-tab {
-      margin-left: 6px;
+      // margin-left: 6px;
       list-style: none;
       font-size: 14px;
       padding: 14px;

@@ -111,12 +111,28 @@ class MediaFeeds extends Component {
             {this.state.showDropDown ? <div>&darr;</div> : <div>&rarr;</div>}
           </li>
           {
-            this.state.showDropDown ?
-            <div>
-              <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('roto', 'Rotoworld News')}>Rotoworld News</li>
-              <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('nfl', 'NFL News')}>NFL News</li>
-              <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('espn', 'ESPN News')}>ESPN News</li>
-              <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('pros', 'Fantasy Pros News')}>Fantasy Pros News</li>
+            this.state.showDropDown
+            ? <div styleName="rss-feed-dropdown">
+              {
+                (this.state.activeFeed != 'Rotoworld News')
+                ? <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('roto', 'Rotoworld News')}>Rotoworld News</li>
+                : null
+              }
+              {
+                (this.state.activeFeed != 'NFL News')
+                ? <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('nfl', 'NFL News')}>NFL News</li>
+                : null
+              }
+              {
+                (this.state.activeFeed != 'ESPN News')
+                ? <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('espn', 'ESPN News')}>ESPN News</li>
+                : null
+              }
+              {
+                (this.state.activeFeed != 'Fantasy Pros News')
+                ? <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('pros', 'Fantasy Pros News')}>Fantasy Pros News</li>
+                : null
+              }
             </div>
             : null
           }
