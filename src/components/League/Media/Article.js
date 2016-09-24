@@ -14,8 +14,9 @@ class Article extends Component {
     return (
       <a href={this.props.article.Url} target="_blank" className="list-group-item" styleName="media-list-item">
         <li>
+          <h6>{article.Header}</h6>
           <h5>{article.Title}</h5>
-          <h6>{UIHelper.regexQuotes(article.Content)}</h6>
+          <p>{UIHelper.regexQuotes(article.Content)}</p>
         </li>
       </a>
     );

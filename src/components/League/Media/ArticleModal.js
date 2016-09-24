@@ -16,8 +16,9 @@ class ArticleModal extends Component {
         className="list-group-item"
         styleName="media-list-item"
         onClick={() => this.props.onHandleClick(this.props.article.Url) }>
+        <h6>{article.Header}</h6>
         <h5>{article.Title}</h5>
-        <h6>{UIHelper.regexQuotes(article.Content)}</h6>
+        <p>{UIHelper.regexQuotes(article.Content)}</p>
       </li>
     );
   }

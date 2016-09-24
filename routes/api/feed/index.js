@@ -9,7 +9,7 @@
 
   let cache = {};
   let cacheTime = 600000;
-   
+
   // Return cached response
   router.get('/rssroto', (req, res) => {
     if (cache.rotoFeed && (Date.now() - cache.rotoFeed.time < cacheTime )) {
@@ -51,6 +51,7 @@
         $('.pb').each(function(i) {
           var $this = $(this);
           var article = {
+            Header: 'Rotoworld News',
             Title: $this.find('.headline > .player > a').text(),
             Content: $this.find('.impact').text().trim(),
             Url: 'http://www.rotoworld.com/headlines/nfl' + $this.find('a').attr('href')
@@ -76,6 +77,7 @@
         $('#news-stream li').each(function(i) {
           var $this = $(this);
           var article = {
+            Header: 'NFL News',
             Title: $this.find('h3').text().trim(),
             Content: $this.find('p').text().replace('Read', '').trim(),
             Url: 'http://www.nfl.com' + $this.find('a').attr('href')
@@ -101,6 +103,7 @@
         $('.news-feed-item').each(function(i) {
           var $this = $(this);
           var article = {
+            Header: 'ESPN News',
             Title: $this.find('h1').text(),
             Content: $this.find('p').text(),
             Url: 'http://espn.com' + $this.find('a').attr('href')
@@ -128,6 +131,7 @@
         $('.article').each(function(i) {
           var $this = $(this);
           var article = {
+            Header: 'Fantasy Pros News',
             Title: $this.find('.title').text(),
             Content: $this.find('.subtitle').text(),
             Url: $this.find('a').attr('href')
