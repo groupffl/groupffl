@@ -27,7 +27,7 @@ $nflred: #d20000;
     .post-text {
       margin-top: 0px;
       padding: 10px 10px 10px 10px;
-      border-bottom: 1px solid $nfl-white2;
+      border-bottom: 1px solid #e9ebee;
       background-color: #fff;
 
       textarea {
@@ -37,7 +37,7 @@ $nflred: #d20000;
         background-color: white;
         margin-bottom: 6px;
         resize: none;
-        border: 1px solid $nfl-white2;
+        border: 1px solid #e9ebee;
         outline: none;
       }
       ::-webkit-input-placeholder {
@@ -63,6 +63,7 @@ $nflred: #d20000;
         background-color: $nflblue;
         padding: 6px 20px;
         font-size: 12px;
+        outline: none;
       }
     }
 
@@ -75,42 +76,50 @@ $nflred: #d20000;
 
         li {
           text-align: left;
-          padding: 20px;
+          padding: 20px 0 0 0;
           margin-bottom: 20px;
           background-color: white;
           border: 1px solid;
           border-color: #e5e6e9 #dfe0e4 #d0d1d5;
           border-radius: 3px;
 
-          h4 {
+          h5 {
             margin: 0px;
-            padding-bottom: 4px;
+            color: $nfl-blue1;
+            padding-bottom: 8px;
+            padding-left: 20px;
+            padding-right: 20px;
           }
 
           h6 {
             margin: 0px;
             color: #999;
-            font-weight: lighter;
-            padding-bottom: 12px;
+            font-weight: 300;
+            padding-bottom: 14px;
+            padding-left: 20px;
+            padding-right: 20px;
           }
 
           p {
             margin: 0px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 8px;
+            border-bottom: 1px solid #e9ebee;
+            padding-bottom: 14px;
+            margin-left: 20px;
+            margin-right: 20px;
           }
 
           .post-link-wrapper {
             margin: 0px;
             text-align: left;
             background-color: white;
-            padding-top: 8px;
+            padding: 12px 20px;
 
             .comment-link {
               display: block;
               padding-right: 10px;
               color: #666;
               width: 140px;
+              font-size: 12px;
             }
 
             .comment-link:hover {

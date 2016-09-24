@@ -44,16 +44,16 @@ class PostsComments extends Component {
     if (this.props.post.toggle) {
       return (
         <div styleName="comments">
+          <div styleName="comments-list-wrapper">
+            <ul>
+              {this.renderList()}
+            </ul>
+          </div>
           <div styleName="comment-area">
             <CommentInput
               onAddComment={this.addComment.bind(this)}
               onCommentInput={this.handleCommentInput.bind(this)}
               inputText={this.state.inputText} />
-          </div>
-          <div styleName="comments-list-wrapper">
-            <ul>
-              {this.renderList()}
-            </ul>
           </div>
         </div>
       );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Textarea from 'react-textarea-autosize';
 
 export default class CommentInput extends Component {
   handleChange() {
@@ -16,10 +17,12 @@ export default class CommentInput extends Component {
   render() {
     return (
       <div>
-        <textarea
+        <Textarea
+          placeholder="Write a comment..."
           ref="commentInput"
           value={this.props.inputText}
-          onChange={this.handleChange.bind(this)} />
+          onChange={this.handleChange.bind(this)}>
+        </Textarea>
         <button
           onClick={this.handleClick.bind(this)}
           className="btn btn-success pull-right">Comment
