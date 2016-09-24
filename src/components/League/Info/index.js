@@ -71,6 +71,19 @@ class LeagueInfo extends Component {
             <li>Timeline</li>
           </Link>
           <Link
+            to={`/league/${this.props.leagueId}/myteam`}
+            onClick={() => this.handleHighlightClick('myteam')}
+            styleName={
+              this.state.active == 'myteam'
+              ?
+              "league-info-list-item active"
+              :
+              "league-info-list-item"
+            }
+            href="#">
+            <li>My Team</li>
+          </Link>
+          <Link
             to={`/league/${this.props.leagueId}/power-rankings`}
             onClick={() => this.handleHighlightClick('power-rankings')}
             styleName={

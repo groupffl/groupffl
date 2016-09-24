@@ -18,7 +18,6 @@ class League extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <Helmet
@@ -30,7 +29,8 @@ class League extends Component {
               <div styleName="league-info">
                 <LeagueInfo
                   leagueId={this.props.params.id}
-                  path={this.props.routes[2].path} />
+                  path={this.props.routes[2].path}
+                  myTeam={this.props.myTeam} />
                   <div className="row">
                     <div className="hidden-lg col-xs-12">
                       <MediaFeeds />
@@ -55,8 +55,7 @@ class League extends Component {
 function mapStateToProps(state) {
   return {
     isLoggedIn: state.isLoggedIn.isLoggedIn,
-    leagueInfo: state.leagueInfo.leagueInfo,
-    myTeam: state.myTeam.myTeam
+    leagueInfo: state.leagueInfo.leagueInfo
   };
 }
 
