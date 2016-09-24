@@ -9,7 +9,9 @@ class Rules extends Component {
 
   render() {
     return (
-      <div styleName="test">Rules</div>
+      <div styleName="rules">
+        <h2>Rules</h2>
+      </div>
     );
   }
 }

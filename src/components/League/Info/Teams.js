@@ -19,17 +19,16 @@ class Teams extends Component {
       );
     }
 
-    return this.props.leagueMembers.teams.map(team =>
+    return this.props.leagueMembers.teams.map((team, i) =>
       (
         <Link
+          key={i}
           to={`/league/${this.props.leagueId}/team/${team._id}`}
           onClick={() => this.props.onHandleClick(team._id)}
           styleName={
             this.props.active == team._id
-            ?
-            "league-info-list-tab active"
-            :
-            "league-info-list-tab"
+            ? 'league-info-list-tab active'
+            : 'league-info-list-tab'
           }
           href="#">
           <li>{team.name}</li>
@@ -51,4 +50,4 @@ function mapStateToProps(state) {
   return state.leagueMembers;
 }
 
-export default connect(mapStateToProps, { fetchLeagueMembers })(CSSModules(Teams, styles, {allowMultiple:true}));
+export default connect(mapStateToProps, { fetchLeagueMembers })(CSSModules(Teams, styles, { allowMultiple: true }));

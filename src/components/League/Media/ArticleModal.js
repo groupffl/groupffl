@@ -13,6 +13,7 @@ class ArticleModal extends Component {
 
     return (
       <li
+        key={Math.random()}
         className="list-group-item"
         styleName="media-list-item"
         onClick={() => this.props.onHandleClick(this.props.article.Url) }>

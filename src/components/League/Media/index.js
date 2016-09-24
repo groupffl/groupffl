@@ -10,7 +10,7 @@ import Modal from 'react-modal';
 class MediaFeeds extends Component {
   constructor(props) {
     super(props);
-    this.props.fetchRSS('roto')
+    this.props.fetchRSS('nfl')
      .then(() => {});
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -19,7 +19,8 @@ class MediaFeeds extends Component {
     this.state = {
       modalUrl: '',
       modalIsOpen: false,
-      activeFeed: 'Rotoworld News',
+      activeFeed: 'NFL News',
+      imageNum: 45,
       showDropDown: false
     };
   }
@@ -38,10 +39,11 @@ class MediaFeeds extends Component {
     });
   }
 
-  changeFeed(host, news) {
+  changeFeed(host, news, imageNum) {
     this.setState({
       showDropDown: !this.state.showDropDown,
-      activeFeed: news
+      activeFeed: news,
+      imageNum: imageNum
     });
     this.props.fetchRSS(host)
      .then(() => {});
@@ -115,29 +117,29 @@ class MediaFeeds extends Component {
             ? <div styleName="rss-feed-dropdown">
               {
                 (this.state.activeFeed != 'Rotoworld News')
-                ? <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('roto', 'Rotoworld News')}>Rotoworld News</li>
+                ? <li key={Math.random()} styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('roto', 'Rotoworld News', 46)}>Rotoworld News</li>
                 : null
               }
               {
                 (this.state.activeFeed != 'NFL News')
-                ? <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('nfl', 'NFL News')}>NFL News</li>
+                ? <li key={Math.random()} styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('nfl', 'NFL News', 45)}>NFL News</li>
                 : null
               }
               {
                 (this.state.activeFeed != 'ESPN News')
-                ? <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('espn', 'ESPN News')}>ESPN News</li>
+                ? <li key={Math.random()} styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('espn', 'ESPN News', 22)}>ESPN News</li>
                 : null
               }
               {
                 (this.state.activeFeed != 'Fantasy Pros News')
-                ? <li styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('pros', 'Fantasy Pros News')}>Fantasy Pros News</li>
+                ? <li key={Math.random()} styleName="rss-feed-list-item-tab" onClick={() => this.changeFeed('pros', 'Fantasy Pros News', 58)}>Fantasy Pros News</li>
                 : null
               }
             </div>
             : null
           }
         </ul>
-        <img src="http://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0103%2Fr41245_1296x729_16%2D9.jpg&w=570" width="100%" alt=""/>
+        <img src={`http://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2016%2F0103%2Fr412${this.state.imageNum}_1296x729_16%2D9.jpg&w=570`} width="100%" alt=""/>
           <div styleName="media-rss">
             <ul>
               {this.renderList()}
