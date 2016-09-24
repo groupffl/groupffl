@@ -79,6 +79,7 @@ class LeaguePosts extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div styleName="league-posts">
       <h2>Smack Board</h2>

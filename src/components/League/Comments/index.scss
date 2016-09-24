@@ -32,6 +32,11 @@ $nflred: #d20000;
       background-color: $nflblue;
       border: $nflblue;
       color: #f0f0f0;
+      outline: none;
+      &:focus {
+        outline: none;
+        background-color: $nflblue;
+      }
     }
   }
 
