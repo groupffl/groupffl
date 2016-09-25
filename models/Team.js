@@ -1,6 +1,13 @@
 (function() {
   'use strict';
   const mongoose = require('mongoose');
+  var uuid = require('node-uuid');
+  var AWS = require('aws-sdk');
+  AWS.config = new AWS.Config();
+  AWS.config.accessKeyId = process.env.AWSAccessKeyId;
+  AWS.config.secretAccessKey = process.env.AWSSecretKey;
+  var s3 = new AWS.S3();
+  // var upload = multer({ storage: multer.memoryStorage() });
 
   let teamSchema = new mongoose.Schema({
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
@@ -71,7 +78,31 @@
       if (err) { return res.status(400).send(err); }
       return res.send(myTeam);
     });
+  };
 
+  teamSchema.statics.updateImage = (req, res) => {
+    var filename = req.file.originalname;
+    var ext = filename.match(/\.\w+$/)[0] || '';
+    var key = uuid.v1() + ext;
+    var params = {
+      Bucket: process.env.AWS_BUCKET,
+      Key: key,
+      Body: req.file.buffer
+    };
+
+    s3.putObject(params, function(err, data) {
+      if (err) {
+        console.log(err);
+        return res.status(400).send(err);
+      }
+      mongoose.model('Team').findOne({ owner: req.user, league: req.params.leagueId }, (err, myTeam) => {
+        if (err) { return res.status(400).send(err); }
+        myTeam.imgUrl = process.env.AWS_URL + "/" + process.env.AWS_BUCKET + "/" + key;
+        myTeam.save((err, team) => {
+          return res.send(team);
+        });
+      });
+    });
   };
 
   const Team = mongoose.model('Team', teamSchema);

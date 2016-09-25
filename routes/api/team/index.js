@@ -2,6 +2,8 @@
   'use strict';
   const express = require('express');
   const router = express.Router();
+  var multer = require('multer');
+  var upload = multer({ storage: multer.memoryStorage() });
 
   const Team = require(global.models + '/Team');
   const User = require(global.models + '/User');
@@ -14,6 +16,10 @@
   });
 
   router.get('/team/:leagueId', User.isLoggedIn, Team.getMyTeam, (req, res) => {
+    res.send(req.myTeam);
+  });
+
+  router.post('/image/:leagueId', User.isLoggedIn, upload.single('file'), Team.updateImage, (req, res) => {
     res.send(req.myTeam);
   });
 
