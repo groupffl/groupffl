@@ -20,21 +20,27 @@ class MyTeam extends Component {
 
   render() {
     return (
-      <div styleName="rules">
+      <div styleName="contain">
         <h2>My Team</h2>
         {
           this.props.myTeam
           ?
-          <div>
-            <img src={this.props.myTeam.imgUrl} width="200px" height="200px" alt=""/>
-            <form onSubmit={(e)=>this._handleSubmit(e)}>
-              <input ref="file" type="file" />
-              <button type="submit" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
-            </form>
-            <h3>{this.props.myTeam.name}</h3>
-            <p>{this.props.myTeam.bio}</p>
-            <h5>Total posts: {this.props.myTeam.posts.length}</h5>
-            <h5>Total comments: {this.props.myTeam.comments.length}</h5>
+          <div styleName="main">
+            <div styleName="team-wrapper">
+              <div styleName="image-wrapper">
+                <img src={this.props.myTeam.imgUrl} width="100%" alt=""/>
+                <form onSubmit={(e)=>this._handleSubmit(e)}>
+                  <input ref="file" type="file" />
+                  <button type="submit" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
+                </form>
+              </div>
+              <div styleName="bio-wrapper">
+                <h3>{this.props.myTeam.name}</h3>
+                <h5>Total posts: {this.props.myTeam.posts.length}</h5>
+                <h5>Total comments: {this.props.myTeam.comments.length}</h5>
+              </div>
+            </div>
+            <p>About Me: {this.props.myTeam.bio}</p>
           </div>
           : null
         }
