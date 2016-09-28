@@ -10,33 +10,29 @@ class Team extends Component {
   }
 
   renderTeam(teams) {
-    var oppTeam = null;
-    teams.forEach(team => {
-      if (team._id == this.props.params.teamID) {
-        oppTeam = team;
-      }
-    });
+    var oppTeam = teams.filter(team => team._id == this.props.params.teamID);
 
     return (
       <div styleName="main">
         <div styleName="team-wrapper">
           <div styleName="image-wrapper">
-            <img src={oppTeam.imgUrl} width="100%" alt=""/>
+            <img src={oppTeam[0].imgUrl} width="100%" alt=""/>
           </div>
           <div styleName="bio-wrapper">
-            <h3>{oppTeam.name}</h3>
-            <h5>Total posts: {oppTeam.posts.length}</h5>
-            <h5>Total comments: {oppTeam.comments.length}</h5>
+            <h3>{oppTeam[0].name}</h3>
+            <h5>Total posts: {oppTeam[0].posts.length}</h5>
+            <h5>Total comments: {oppTeam[0].comments.length}</h5>
           </div>
         </div>
-        <p>About Me: {oppTeam.bio}</p>
+        <p>About Me: {oppTeam[0].bio}</p>
       </div>
     );
   }
 
   render() {
     return (
-      <div>
+      <div styleName="contain">
+        <h2>Opposing Team</h2>
         {
           this.props.leagueInfo
           ? this.renderTeam(this.props.leagueInfo.teams)
