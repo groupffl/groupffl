@@ -1,3 +1,24 @@
-.test {
-  color: red;
+.main {
+  background: white;
+  min-height: 600px;
+  padding: 20px;
+}
+
+.team-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.image-wrapper {
+  flex: 1;
+}
+
+.bio-wrapper {
+  flex: 1;
+  margin-left: 20px;
+  h3 {
+    margin-top: 48px;
+    margin-bottom: 20px;
+  }
 }
