@@ -28,8 +28,8 @@ class PowerRankings extends Component {
     });
   }
 
-  submitRankings(refs) {
-    console.log(refs);
+  submitRankings(rankings) {
+    console.log(rankings);
     this.setState({
       creating: false
     });

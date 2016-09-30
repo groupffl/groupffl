@@ -10,7 +10,14 @@ class ListRankings extends Component {
   }
 
   handleRefs(refs) {
-    console.log(refs);
+    var rankings = this.props.leagueInfo.teams.map((team, i) => {
+      return {
+        rank: i + 1,
+        team: refs[`${i}-nickname`].value || refs[`${i}-team`].value,
+        summary: refs[`${i}-summary`].value
+      };
+    });
+    this.props.handleSubmit(rankings);
   }
 
   renderInputList() {
@@ -21,7 +28,7 @@ class ListRankings extends Component {
           <span>{i+1} </span>
           <select name="teams" ref={ i + '-team'} id={'select' + i}>
             {teams.map(team => {
-              return <option value="{team.name}">{team.name}</option>;
+              return <option value={team.name}>{team.name}</option>;
             })}
           </select>
           <div>
