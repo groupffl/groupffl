@@ -8,6 +8,7 @@
     commissionerTeamName: { type: String },
     teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }],
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+    rankings: { type: Array },
     fflUrl: { type: String }
   });
 
@@ -26,6 +27,7 @@
       newLeague.name = req.body.name;
       newLeague.commissioner = req.user;
       newLeague.commissionerTeamName = req.body.team;
+      newLeague.rankings = [];
       newLeague.fflUrl = req.body.fflUrl;
 
       newTeam.name = req.body.team;

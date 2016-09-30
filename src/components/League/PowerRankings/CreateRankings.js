@@ -10,13 +10,19 @@ class ListRankings extends Component {
   }
 
   handleRefs(refs) {
-    var rankings = this.props.leagueInfo.teams.map((team, i) => {
+    var rankingList = this.props.leagueInfo.teams.map((team, i) => {
       return {
         rank: i + 1,
         team: refs[`${i}-nickname`].value || refs[`${i}-team`].value,
         summary: refs[`${i}-summary`].value
       };
     });
+    var rankings = {
+      author: this.props.myTeam.name,
+      date: Date.now(),
+      week: 'empty',
+      rankingList: rankingList
+    };
     this.props.handleSubmit(rankings);
   }
 
