@@ -9,12 +9,14 @@ import styles from './index.scss';
 
 import { fetchLeagueData, fetchTeam } from '../../actions/LeagueActions';
 import { verifyLogin } from '../../actions/UserActions';
+import { fetchRankings } from '../../actions/RankingActions';
 
 class League extends Component {
   constructor(props) {
     super(props);
     this.props.verifyLogin();
     this.props.fetchTeam(this.props.params.id);
+    this.props.fetchRankings(this.props.params.id);
   }
 
   render() {
@@ -59,4 +61,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchLeagueData, fetchTeam, verifyLogin })(CSSModules(League, styles));
+export default connect(mapStateToProps, { fetchLeagueData, fetchTeam, verifyLogin, fetchRankings })(CSSModules(League, styles));

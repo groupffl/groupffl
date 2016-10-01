@@ -21,6 +21,7 @@ class ListRankings extends Component {
       author: this.props.myTeam.name,
       date: Date.now(),
       week: 'empty',
+      leagueId: this.props.leagueInfo._id,
       rankingList: rankingList
     };
     this.props.handleSubmit(rankings);

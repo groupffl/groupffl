@@ -29,6 +29,7 @@ class PowerRankings extends Component {
   }
 
   submitRankings(rankings) {
+
     console.log(rankings);
     this.setState({
       creating: false

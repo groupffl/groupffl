@@ -7,5 +7,6 @@ router.use('/post', require('./post'));
 router.use('/team', require('./team'));
 router.use('/user', require('./user'));
 router.use('/feed', require('./feed'));
+router.use('/ranking', require('./ranking'));
 
 module.exports = router;

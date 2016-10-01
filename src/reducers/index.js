@@ -11,6 +11,7 @@ import LeaguePostsReducer from './reducer_league_posts';
 import LoadingReducer from './reducer_loading';
 import promptLoginReducer from './reducer_prompt_login';
 import MyTeamReducer from './reducer_my_team';
+import RankingsReducer from './reducer_rankings';
 import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
   leaguePosts: LeaguePostsReducer,
   isLoading: LoadingReducer,
   promptLogin: promptLoginReducer,
-  myTeam: MyTeamReducer
+  myTeam: MyTeamReducer,
+  rankings: RankingsReducer
 });
 
 export default rootReducer;
