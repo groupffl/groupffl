@@ -14,7 +14,6 @@ class MyTeam extends Component {
     e.preventDefault();
     var fd = new FormData();
     fd.append('file', this.refs.file.files[0]);
-    console.log(this.props.myTeam);
     this.props.updateTeamImage(fd, this.props.myTeam.league);
   }
 

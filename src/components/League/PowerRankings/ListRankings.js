@@ -5,41 +5,37 @@ import styles from './index.scss';
 class ListRankings extends Component {
   constructor(props){
     super(props);
+    this.renderRankings = this.renderRankings.bind(this);
+  }
+
+  renderRankings(rankings) {
+    return rankings.map((rankingObj, i) => {
+      console.log(rankingObj);
+      return (
+        <div>
+          <h3>{rankingObj.author}</h3>
+          <h4>{rankingObj.week}</h4>
+          {rankingObj.rankingList.map(ranking => {
+            return (
+              <ul>
+                <li>
+                  <p>{ranking.rank} {ranking.team}</p>
+                  <p>{ranking.summary}</p>
+                </li>
+              </ul>
+            );
+          })}
+          <p>{rankingObj.date}</p>
+        </div>
+      );
+    });
   }
 
   render() {
     return (
       <div>
         <button onClick={this.props.handleCreate}>Create Rankings</button>
-        <h3>Author</h3>
-        <h4>Week 1</h4>
-        <ul>
-          <li>
-            <span>1</span>
-            <span>Team 1</span>
-          </li>
-          <li>
-            <span>1</span>
-            <span>Team 1</span>
-          </li>
-          <li>
-            <span>1</span>
-            <span>Team 1</span>
-          </li>
-          <li>
-            <span>1</span>
-            <span>Team 1</span>
-          </li>
-          <li>
-            <span>1</span>
-            <span>Team 1</span>
-          </li>
-          <li>
-            <span>1</span>
-            <span>Team 1</span>
-          </li>
-        </ul>
-        <p>Date</p>
+        {this.renderRankings(this.props.rankings)}
       </div>
     );
   }

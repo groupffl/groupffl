@@ -52,7 +52,8 @@ class PowerRankings extends Component {
               myTeam={this.props.myTeam}
               leagueInfo={this.props.leagueInfo} />
           : <ListRankings
-              handleCreate={this.createRankings} />
+              handleCreate={this.createRankings}
+              rankings={this.props.rankings} />
         }
       </div>
     );
@@ -60,10 +61,10 @@ class PowerRankings extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     leagueInfo: state.leagueInfo.leagueInfo,
-    myTeam: state.myTeam.myTeam
+    myTeam: state.myTeam.myTeam,
+    rankings: state.rankings.rankings
   };
 
 }
