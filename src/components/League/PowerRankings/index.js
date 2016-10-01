@@ -33,7 +33,6 @@ class PowerRankings extends Component {
   }
 
   submitRankings(rankings) {
-    console.log(this);
     this.props.saveRanking(this.props.leagueInfo._id, rankings);
     this.setState({
       creating: false
