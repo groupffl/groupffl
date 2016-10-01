@@ -8,7 +8,6 @@
     commissionerTeamName: { type: String },
     teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }],
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
-    rankings: { type: Array },
     fflUrl: { type: String }
   });
 

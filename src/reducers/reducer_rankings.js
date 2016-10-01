@@ -1,11 +1,14 @@
-import { FETCH_RANKINGS } from '../actions/RankingActions';
+import { FETCH_RANKINGS, SAVE_RANKINGS } from '../actions/RankingActions';
 
-const INITIAL_STATE = { rankings: null };
+const INITIAL_STATE = { rankings: [] };
 
 export default function(state = INITIAL_STATE, action) {
+  console.log(action);
   switch (action.type) {
     case FETCH_RANKINGS:
-      return { team: action.payload.data };
+      return { rankings: action.payload.data };
+    case SAVE_RANKINGS:
+      return { rankings: action.payload.data };
     default:
       return state;
   }

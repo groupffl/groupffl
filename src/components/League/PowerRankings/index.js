@@ -4,6 +4,8 @@ import styles from './index.scss';
 import { connect } from 'react-redux';
 import CreateRankings from './CreateRankings';
 import ListRankings from './ListRankings';
+import { fetchRankings, saveRanking } from '../../../actions/RankingActions';
+
 
 class PowerRankings extends Component {
   constructor(props){
@@ -14,6 +16,8 @@ class PowerRankings extends Component {
     this.createRankings = this.createRankings.bind(this);
     this.cancelRankings = this.cancelRankings.bind(this);
     this.submitRankings = this.submitRankings.bind(this);
+    this.props.fetchRankings(this.props.params.id);
+
   }
 
   createRankings() {
@@ -29,8 +33,8 @@ class PowerRankings extends Component {
   }
 
   submitRankings(rankings) {
-
-    console.log(rankings);
+    console.log(this);
+    this.props.saveRanking(this.props.leagueInfo._id, rankings);
     this.setState({
       creating: false
     });
@@ -56,6 +60,7 @@ class PowerRankings extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
     leagueInfo: state.leagueInfo.leagueInfo,
     myTeam: state.myTeam.myTeam
@@ -63,4 +68,4 @@ function mapStateToProps(state) {
 
 }
 
-export default connect(mapStateToProps, null)(CSSModules(PowerRankings, styles));
+export default connect(mapStateToProps, { fetchRankings, saveRanking })(CSSModules(PowerRankings, styles));

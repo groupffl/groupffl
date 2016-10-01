@@ -5,13 +5,13 @@ import RSSReducer from './reducer_rss_feed';
 import LeagueReducer from './reducer_league';
 import TeamReducer from './reducer_team';
 import AuthReducer from './reducer_authentication';
+import RankingsReducer from './reducer_rankings';
 import LeagueInfoReducer from './reducer_league_info';
 import LeagueMembersReducer from './reducer_league_members';
 import LeaguePostsReducer from './reducer_league_posts';
 import LoadingReducer from './reducer_loading';
 import promptLoginReducer from './reducer_prompt_login';
 import MyTeamReducer from './reducer_my_team';
-import RankingsReducer from './reducer_rankings';
 import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
@@ -21,14 +21,14 @@ const rootReducer = combineReducers({
   rss: RSSReducer,
   league: LeagueReducer,
   team: TeamReducer,
+  rankings: RankingsReducer,
   isLoggedIn: AuthReducer,
   leagueInfo: LeagueInfoReducer,
   leagueMembers: LeagueMembersReducer,
   leaguePosts: LeaguePostsReducer,
   isLoading: LoadingReducer,
   promptLogin: promptLoginReducer,
-  myTeam: MyTeamReducer,
-  rankings: RankingsReducer
+  myTeam: MyTeamReducer
 });
 
 export default rootReducer;

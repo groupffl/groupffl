@@ -16,7 +16,6 @@ class League extends Component {
     super(props);
     this.props.verifyLogin();
     this.props.fetchTeam(this.props.params.id);
-    this.props.fetchRankings(this.props.params.id);
   }
 
   render() {

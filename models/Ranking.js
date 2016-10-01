@@ -10,16 +10,16 @@
     rankingList: { type: Array, required: true }
   });
 
-  rankingSchema.statics.getRankings = (req, res) => {
-    console.log(req.params);
-    mongoose.Model('Ranking').find({ leagueId: req.params.leagueId }, (err, rankings) => {
-      console.log(rankings);
-      if (err) { res.status(400).send(err); }
-      return req.rankings = rankings;
-    });
-  };
+  //TODO: Move route logic to model
+  // rankingSchema.statics.getRankings = (req, res) => {
+  //
+  // };
 
-  const Ranking = mongoose.model('League', rankingSchema);
+  // rankingSchema.statics.saveRankings = (req, res) => {
+  //
+  // };
+
+  const Ranking = mongoose.model('Ranking', rankingSchema);
 
   module.exports = Ranking;
 }());
