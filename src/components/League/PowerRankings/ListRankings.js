@@ -12,7 +12,7 @@ class ListRankings extends Component {
     };
   }
 
-  openAccordion(i,j) {
+  openAccordion(i, j) {
     if (this.state.openAccordion == `${i}-${j}`) {
       return this.setState({
         openAccordion: null
@@ -24,25 +24,28 @@ class ListRankings extends Component {
   }
 
   renderRankings(rankings) {
-    return rankings.map((rankingObj, i) => {
+    return rankings.sort((a, b) => {
+      return b.date - a.date;
+    })
+    .map((rankingObj, i) => {
       return (
-        <div>
-          <h3>{rankingObj.author}</h3>
-          <h4>{rankingObj.week}</h4>
-          {rankingObj.rankingList.map((ranking, j) => {
-            return (
-              <ul>
-                <li>
-                  <p onClick={() => this.openAccordion(i, j)}>{ranking.rank} {ranking.team}</p>
-                  {
-                    this.state.openAccordion == `${i}-${j}`
-                    ? <p>{ranking.summary}</p>
-                    : null
-                  }
-                </li>
-              </ul>
-            );
-          })}
+        <div styleName="ranking-block">
+          <h3>{rankingObj.week}</h3>
+          <h4>{rankingObj.author}</h4>
+          <ul styleName="ranking-list">
+            {rankingObj.rankingList.map((ranking, j) => {
+              return (
+                  <li onClick={() => this.openAccordion(i, j)} styleName="ranking-list-item">
+                    <h5>{ranking.rank} - {ranking.team}</h5>
+                    {
+                      this.state.openAccordion == `${i}-${j}`
+                      ? <p styleName="summary">{ranking.summary}</p>
+                      : null
+                    }
+                  </li>
+              );
+            })}
+          </ul>
           <p>{rankingObj.date}</p>
         </div>
       );
@@ -51,8 +54,8 @@ class ListRankings extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.props.handleCreate}>Create Rankings</button>
+      <div styleName="rankings">
+        <button onClick={this.props.handleCreate} styleName="create-rankings">Create Rankings</button>
         {this.renderRankings(this.props.rankings)}
       </div>
     );
