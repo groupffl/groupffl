@@ -33,7 +33,7 @@ class ListRankings extends Component {
       return (
         <div>
           <span>{i+1} </span>
-          <select name="teams" ref={ i + '-team'} id={'select' + i}>
+          <select styleName="select" name="teams" ref={ i + '-team'} id={'select' + i}>
             {teams.map(team => {
               return <option value={team.name}>{team.name}</option>;
             })}

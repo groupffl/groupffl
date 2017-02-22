@@ -17,7 +17,7 @@ h4 {
   list-style: none;
   box-shadow: rgba(0, 0, 0, 0.05) 0 1px 3px 0;
 
-  .league-info-list-item {
+  &-item {
     font-size: 14px;
     padding: 14px;
     color: $nfl-black1;
@@ -37,7 +37,7 @@ h4 {
       justify-content: space-between;
     }
   }
-  .league-info-list-tab {
+  &-tab {
     font-size: 14px;
     padding: 14px;
     color: $nfl-black1;

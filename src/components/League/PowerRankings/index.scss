@@ -32,6 +32,9 @@ button {
   &:hover {
     background-color: #fff;
   }
+  &:focus {
+    outline: none;
+  }
 }
 
 .create-rankings {
@@ -64,4 +67,19 @@ button {
     padding-top: 16px;
     color: #333;
   }
+}
+
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 6px;
+  color: red;
+  height: 40px;
+}
+
+option {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }

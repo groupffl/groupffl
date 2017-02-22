@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import styles from './index.scss';
+import moment from 'moment';
 
 class ListRankings extends Component {
   constructor(props){
@@ -46,7 +47,7 @@ class ListRankings extends Component {
               );
             })}
           </ul>
-          <p>{rankingObj.date}</p>
+          <p>{moment(rankingObj.date).format('MMMM Do, YYYY')}</p>
         </div>
       );
     });
