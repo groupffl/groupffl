@@ -21,7 +21,11 @@ const mongoUrl = process.env.MLAB_URI || 'mongodb://localhost/ffln';
 const mongoConnectMsg = process.env.MLAB_URI ? '.' : chalk.cyan(` ${mongoUrl}`);
 
 mongoose.connect(mongoUrl, err => {
-  console.log(err ? chalk.red(err) : chalk.blue.bold(`Connected to MongoDB${mongoConnectMsg}`));
+  console.log(
+    err
+      ? chalk.red(err)
+      : chalk.blue.bold(`Connected to MongoDB${mongoConnectMsg}`)
+  );
 });
 
 app.set('views', path.join(__dirname, 'views'));
@@ -30,7 +34,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser({ limit: '50mb' }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -81,9 +85,7 @@ function onError(error) {
     throw error;
   }
 
-  const bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  const bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
   switch (error.code) {
     case 'EACCES':
@@ -101,9 +103,11 @@ function onError(error) {
 
 function onListening() {
   const addr = server.address();
-  const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + port;
+  const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + port;
   debug('Listening on ' + bind);
-  console.log(chalk.blue.bold(`Listening at ${chalk.green.underline(`http://localhost:${port}`)}`));
+  console.log(
+    chalk.blue.bold(
+      `Listening at ${chalk.green.underline(`http://localhost:${port}`)}`
+    )
+  );
 }
